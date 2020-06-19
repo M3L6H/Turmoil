@@ -43,7 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <Button basic inverted black>Hello World</Button>
         </div>
         <div className="test-row">
+            <Icon name="briefcase-medical" mini />
+            <Icon name="briefcase-medical" tiny />
+            <Icon name="briefcase-medical" small />
             <Icon name="briefcase-medical" />
+            <Icon name="briefcase-medical" large />
+            <Icon name="briefcase-medical" big />
+            <Icon name="briefcase-medical" huge />
+            <Icon name="briefcase-medical" massive />
         </div>
     </div>, root);
 });

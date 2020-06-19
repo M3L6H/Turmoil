@@ -20,6 +20,14 @@ export default (props) => {
         pink,
         grey,
         black,
+        mini,
+        tiny,
+        small,
+        normal,
+        large,
+        big,
+        huge,
+        massive,
         onClick 
     } = props;
 
@@ -40,6 +48,15 @@ export default (props) => {
         ${ pink && "pink" }
         ${ grey && "grey" }
         ${ black && "black" }
+        ${ (mini && "mini") ||
+           (tiny && "tiny") ||
+           (small && "small") ||
+           (normal && "normal") ||
+           (large && "large") ||
+           (big && "big") ||
+           (huge && "huge") ||
+           (massive && "massive") ||
+           "normal" }
     `;
     
     return (

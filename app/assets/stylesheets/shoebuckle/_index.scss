@@ -38,6 +38,16 @@ $btn-vertical-margin: 0px !default;
 /* Font size */
 $body-font-size: 14px !default;
 
+/* Sizes */
+$mini: 6px !default;
+$tiny: 8px !default;
+$small: 10px !default;
+$normal: 14px !default;
+$large: 22px !default;
+$big: 32px !default;
+$huge: 48px !default;
+$massive: 72px !default;
+
 /* Border */
 $small-round: 4px;
 
@@ -48,6 +58,7 @@ $bold: 2px;
 
 /* Modifiers */
 @import "colors";
+@import "sizes";
 
 /* Components */
 @import "button";

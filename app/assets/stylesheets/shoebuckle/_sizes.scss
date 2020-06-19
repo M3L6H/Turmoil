@@ -1,0 +1,33 @@
+.shoebuckle {
+    &.mini {
+        font-size: $mini;
+    }
+
+    &.tiny {
+        font-size: $tiny;
+    }
+
+    &.small {
+        font-size: $small;
+    }
+
+    &.normal {
+        font-size: $normal;
+    }
+
+    &.large {
+        font-size: $large;
+    }
+
+    &.big {
+        font-size: $big;
+    }
+
+    &.huge {
+        font-size: $huge;
+    }
+
+    &.massive {
+        font-size: $massive;
+    }
+}
