@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Icon } from './shoebuckle';
+import { Button, Icon, Label } from './shoebuckle';
 
 const App = () => (
     <div className="test">
@@ -125,6 +125,9 @@ const App = () => (
                 <Icon name="envelope" />
                 <Icon content="1,419" counter />
             </Icon.Group>
+        </div>
+        <div className="test-row">
+            <Label><Icon name="envelope" /><span>23</span></Label>
         </div>
     </div>
 );

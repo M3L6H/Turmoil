@@ -1,0 +1,9 @@
+.shoebuckle.label {
+    background: $lightest;
+    border-radius: $small-round;
+    padding: $label-vertical-padding $label-horizontal-padding;
+
+    >*:nth-child(n + 2) {
+        padding-left: $label-horizontal-padding;
+    }
+}
