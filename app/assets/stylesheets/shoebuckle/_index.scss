@@ -1,20 +1,70 @@
 /* Colors */
-$black: #08090A !default;
-$white: #FFFFFC !default;
-
 $primary: #D62828 !default;
+$secondary: #1E1F20 !default;
 $accent: #F77F00 !default;
 
-$red: #BF0603 !default;
-$green: #5FAD56 !default;
-$blue: #4464AD !default;
-$yellow: #FFEC51 !default;
+$black: #08090A !default;
+$grey: #596475 !default;
+$white: #FFFFFC !default;
 
-$lightest: #9FAFBC !default;
-$lighter: #647D90 !default;
-$light: #4B5D6C !default;
+$red: #BF0603 !default;
+$orange: #F19143 !default;
+$yellow: #FFBC0A !default;
+$olive: #65743A !default;
+$green: #5FAD56 !default;
+$teal: #32A287 !default;
+$blue: #4464AD !default;
+$violet: #856084 !default;
+$purple: #9D8DF1 !default;
+$pink: #EA526F !default;
+
+$lightest: #BAC2C9 !default;
+$lighter: #98A3AE !default;
+$light: #6F7D8C !default;
 $dark: #2C363F !default;
 $darker: #212930 !default;
 $darkest: #111518 !default;
 
+/* Color Adjustments */
+$darken-amt: 8%;
+$lighten-amt: 8%;
+
+/* Whitespace */
+$btn-horizontal-padding: 18px !default;
+$btn-vertical-padding: 10px !default;
+$btn-horizontal-margin: 2px !default;
+$btn-vertical-margin: 0px !default;
+
+/* Font size */
+$body-font-size: 14px !default;
+
+/* Border */
+$small-round: 4px;
+
+$thin: 1px;
+$bold: 2px;
+
 @import "reset";
+
+/* Components */
+@import "button";
+
+.test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.test-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 10px;
+
+    &.inverted {
+        background: $black;
+    }
+}
