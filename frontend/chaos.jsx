@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 
-import { Button } from './components/shoebuckle';
+import { Button, Icon } from './components/shoebuckle';
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
@@ -41,6 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <Button basic inverted pink>Hello World</Button>
             <Button basic inverted grey>Hello World</Button>
             <Button basic inverted black>Hello World</Button>
+        </div>
+        <div className="test-row">
+            <Icon name="briefcase-medical" />
         </div>
     </div>, root);
 });
