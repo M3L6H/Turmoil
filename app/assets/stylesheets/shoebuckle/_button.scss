@@ -55,6 +55,45 @@
         }
     }
 
+    &.animated {
+        position: relative;
+        overflow: hidden;
+
+        .btn-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-content.hidden {
+            position: absolute;
+            top: $btn-vertical-padding;
+            left: 100%;
+
+            transition: left $btn-transition-speed;
+        }
+
+        .btn-content.visible {
+            position: relative;
+            right: 0;
+            transition: right $btn-transition-speed;
+        }
+
+        &:hover {
+            background: darken($lightest, $darken-amt);
+            color: $light;
+            
+            .btn-content.hidden {
+                left: 0;
+            }
+
+            .btn-content.visible {
+                right: calc(100% + #{ 2 * $btn-horizontal-padding });
+            }
+        }
+    }
+
     &.red, &.red:hover {
         color: $red;
         border-color: $red;

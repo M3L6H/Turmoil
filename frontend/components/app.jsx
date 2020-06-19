@@ -25,6 +25,14 @@ const App = () => (
             <Button basic grey>Hello World</Button>
             <Button basic black>Hello World</Button>
         </div>
+        <div className="test-row">
+            <Button animated>
+                <Button.Content visible>Next</Button.Content>
+                <Button.Content hidden>
+                    <Icon name="arrow-right" large />
+                </Button.Content>
+            </Button>
+        </div>
         <div className="test-row inverted">
             <Button basic inverted>Hello World</Button>
             <Button basic inverted red>Hello World</Button>
