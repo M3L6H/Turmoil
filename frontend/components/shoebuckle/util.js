@@ -20,19 +20,19 @@ export const parseColor = (props) => {
     } = props;
 
     return `
-        ${ inverted && "inverted" }
-        ${ red && "red" }
-        ${ orange && "orange" }
-        ${ yellow && "yellow" }
-        ${ olive && "olive" }
-        ${ green && "green" }
-        ${ teal && "teal" }
-        ${ blue && "blue" }
-        ${ violet && "violet" }
-        ${ purple && "purple" }
-        ${ pink && "pink" }
-        ${ grey && "grey" }
-        ${ black && "black" }
+        ${ inverted ? "inverted" : "" }
+        ${ red ? "red" : "" }
+        ${ orange ? "orange" : "" }
+        ${ yellow ? "yellow" : "" }
+        ${ olive ? "olive" : "" }
+        ${ green ? "green" : "" }
+        ${ teal ? "teal" : "" }
+        ${ blue ? "blue" : "" }
+        ${ violet ? "violet" : "" }
+        ${ purple ? "purple" : "" }
+        ${ pink ? "pink" : "" }
+        ${ grey ? "grey" : "" }
+        ${ black ? "black" : "" }
     `;
 };
 

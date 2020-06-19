@@ -74,9 +74,36 @@ const App = () => (
             <Icon name="briefcase-medical" inverted black />
         </div>
         <div className="test-row">
-            <Icon.Group big>
+            <Icon.Group huge>
                 <Icon name="circle" red />
                 <Icon name="times" inverted black transform="shrink-6" />
+            </Icon.Group>
+
+            <Icon.Group huge>
+                <Icon name="bookmark" />
+                <Icon name="heart" inverted red transform="shrink-10 up-2" />
+            </Icon.Group>
+
+            <Icon.Group huge>
+                <Icon name="play" transform="rotate--90 grow-2"/>
+                <Icon name="sun" inverted transform="shrink-10 up-2"/>
+                <Icon name="moon" inverted transform="shrink-11 down-4.2 left-4"/>
+                <Icon name="star" inverted transform="shrink-11 down-4.2 right-4"/>
+            </Icon.Group>
+
+            <Icon.Group huge>
+                <Icon name="calendar" />
+                <Icon content="27" inverted transform="shrink-8 down-3" />
+            </Icon.Group>
+
+            <Icon.Group huge>
+                <Icon name="certificate" />
+                <Icon content="NEW" inverted transform="shrink-11.5 rotate--30" />
+            </Icon.Group>
+
+            <Icon.Group huge>
+                <Icon name="envelope" />
+                <Icon content="1,419" counter />
             </Icon.Group>
         </div>
     </div>

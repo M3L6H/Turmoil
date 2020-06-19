@@ -5,10 +5,7 @@ import { parseColor, parseSize, selectColor, selectSize } from './util';
 
 class Icon extends Component {
     static Group(props) {
-        const {
-            children
-        } = props;
-
+        const { children } = props;
         const childProps = { ...selectColor(props), ...selectSize(props) };
 
         const className = `
@@ -53,6 +50,7 @@ class Icon extends Component {
             children,
             content,
             name,
+            counter,
             border,
             loading,
             flipped,
@@ -67,16 +65,16 @@ class Icon extends Component {
         const className = `
             shoebuckle
             icon
-            fas
-            fa-${ name }
-            ${ border && "fa-border" }
-            ${ loading && "fa-spin" }
-            ${ flipped && `fa-flip-${ flipped }` }
-            ${ rotated && `fa-rotate-${ rotated }` }
-            ${ inverted && "fa-inverse" }
-            ${ link && "link" }
-            ${ disabled && "disabled" }
-            ${ fitted && "fitted" }
+            ${ name ? "fas" : "" }
+            fa-${ name || (counter && "layers-counter") || "layers-text" }
+            ${ border ? "fa-border" : "" }
+            ${ loading ? "fa-spin" : "" }
+            ${ flipped ? `fa-flip-${ flipped }` : "" }
+            ${ rotated ? `fa-rotate-${ rotated }` : "" }
+            ${ inverted ? "fa-inverse" : "" }
+            ${ link ? "link" : "" }
+            ${ disabled ? "disabled" : "" }
+            ${ fitted ? "fitted" : "" }
             ${ parseColor(this.props) }
             ${ parseSize(this.props) }
         `;
