@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 
+import { Button } from './components/shoebuckle';
+
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
-    ReactDOM.render(<h1>Hello World</h1>, root);
+    ReactDOM.render(<Button>Hello World</Button>, root);
 });
