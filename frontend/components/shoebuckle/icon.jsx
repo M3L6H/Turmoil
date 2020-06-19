@@ -3,6 +3,12 @@ import React from 'react';
 export default props => {
     const {
         name,
+        loading,
+        flipped,
+        rotated,
+        link,
+        disabled,
+        fitted,
         inverted,
         red,
         orange,
@@ -31,6 +37,12 @@ export default props => {
         icon
         fas
         fa-${ name }
+        ${ loading && "fa-spin" }
+        ${ flipped && `fa-flip-${ flipped }` }
+        ${ rotated && `fa-rotate-${ rotated }` }
+        ${ link && "link" }
+        ${ disabled && "disabled" }
+        ${ fitted && "fitted" }
         ${ inverted && "inverted" }
         ${ red && "red" }
         ${ orange && "orange" }

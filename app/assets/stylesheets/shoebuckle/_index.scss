@@ -35,6 +35,9 @@ $btn-vertical-padding: 10px !default;
 $btn-horizontal-margin: 2px !default;
 $btn-vertical-margin: 0px !default;
 
+$icon-horizontal-padding: 2px !default;
+$icon-vertical-padding: 0px !default;
+
 /* Font size */
 $body-font-size: 14px !default;
 
@@ -62,6 +65,7 @@ $bold: 2px;
 
 /* Components */
 @import "button";
+@import "icon";
 
 .test {
     display: flex;

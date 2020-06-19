@@ -43,14 +43,23 @@ document.addEventListener("DOMContentLoaded", () => {
             <Button basic inverted black>Hello World</Button>
         </div>
         <div className="test-row">
-            <Icon name="briefcase-medical" mini />
-            <Icon name="briefcase-medical" tiny />
-            <Icon name="briefcase-medical" small />
-            <Icon name="briefcase-medical" />
-            <Icon name="briefcase-medical" large />
-            <Icon name="briefcase-medical" big />
-            <Icon name="briefcase-medical" huge />
-            <Icon name="briefcase-medical" massive />
+            <Icon name="briefcase-medical" red mini />
+            <Icon name="briefcase-medical" yellow tiny />
+            <Icon name="briefcase-medical" green small />
+            <Icon name="briefcase-medical" blue />
+            <Icon name="briefcase-medical" purple large />
+            <Icon name="briefcase-medical" pink big />
+            <Icon name="briefcase-medical" grey huge />
+            <Icon name="briefcase-medical" black massive />
+            <Icon name="briefcase-medical" black large disabled />
+            <Icon name="circle-notch" olive large loading />
+            <Icon name="users" teal link />
+            <Icon name="snowboarding" large flipped="horizontal" orange />
+            <Icon name="snowboarding" large flipped="vertical" violet />
+            <Icon name="snowboarding" large flipped="both" teal />
+            <Icon name="snowboarding" large rotated="90" red />
+            <Icon name="snowboarding" large rotated="180" purple />
+            <Icon name="snowboarding" large rotated="270" blue />
         </div>
     </div>, root);
 });

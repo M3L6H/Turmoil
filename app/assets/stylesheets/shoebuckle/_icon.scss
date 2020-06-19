@@ -1,0 +1,19 @@
+.shoebuckle.icon {
+    padding: $icon-vertical-padding $icon-horizontal-padding;
+
+    &.disabled {
+        color: $lightest;
+    }
+
+    &.fitted {
+        padding: 0;
+    }
+
+    &.link {
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(90%);
+        }
+    }
+}
