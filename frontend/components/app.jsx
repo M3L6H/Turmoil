@@ -29,8 +29,20 @@ const App = () => (
             <Button animated>
                 <Button.Content visible>Next</Button.Content>
                 <Button.Content hidden>
-                    <Icon name="arrow-right" large />
+                    <Icon name="arrow-right" />
                 </Button.Content>
+            </Button>
+            <Button animated="vertical">
+                <Button.Content visible>
+                    <Icon name="shopping-cart" />
+                </Button.Content>
+                <Button.Content hidden>Shop</Button.Content>
+            </Button>
+            <Button animated="fade">
+                <Button.Content visible>
+                    Sign Up for a Pro Account
+                </Button.Content>
+                <Button.Content hidden>$12.99 a Month</Button.Content>
             </Button>
         </div>
         <div className="test-row inverted">

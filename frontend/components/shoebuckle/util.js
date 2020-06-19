@@ -19,21 +19,7 @@ export const parseColor = (props) => {
         black
     } = props;
 
-    return `
-        ${ inverted ? "inverted" : "" }
-        ${ red ? "red" : "" }
-        ${ orange ? "orange" : "" }
-        ${ yellow ? "yellow" : "" }
-        ${ olive ? "olive" : "" }
-        ${ green ? "green" : "" }
-        ${ teal ? "teal" : "" }
-        ${ blue ? "blue" : "" }
-        ${ violet ? "violet" : "" }
-        ${ purple ? "purple" : "" }
-        ${ pink ? "pink" : "" }
-        ${ grey ? "grey" : "" }
-        ${ black ? "black" : "" }
-    `;
+    return `${ inverted ? " inverted" : "" }${ red ? " red" : "" }${ orange ? " orange" : "" }${ yellow ? " yellow" : "" }${ olive ? " olive" : "" }${ green ? " green" : "" }${ teal ? " teal" : "" }${ blue ? " blue" : "" }${ violet ? " violet" : "" }${ purple ? " purple" : "" }${ pink ? " pink" : "" }${ grey ? " grey" : "" }${ black ? " black" : "" }`;
 };
 
 export const selectSize = ({ mini, tiny, small, normal, large, big, huge, massive })  => (
@@ -52,13 +38,13 @@ export const parseSize = (props) => {
         massive
     } = props;
 
-    return (mini && "mini") ||
-    (tiny && "tiny") ||
-    (small && "small") ||
-    (normal && "normal") ||
-    (large && "large") ||
-    (big && "big") ||
-    (huge && "huge") ||
-    (massive && "massive") ||
-    "normal";
+    return (mini && " mini") ||
+    (tiny && " tiny") ||
+    (small && " small") ||
+    (normal && " normal") ||
+    (large && " large") ||
+    (big && " big") ||
+    (huge && " huge") ||
+    (massive && " massive") ||
+    " normal";
 };

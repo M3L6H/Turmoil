@@ -58,7 +58,8 @@ $thin: 1px;
 $bold: 2px;
 
 /* Timings */
-$btn-transition-speed: 0.25s;
+$btn-move-speed: 0.25s;
+$btn-fade-speed: 0.5s;
 
 @import "reset";
 
