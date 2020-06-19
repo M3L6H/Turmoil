@@ -1,0 +1,18 @@
+h1, h2, h3, h4, h5, h6,
+div, section, span, main, body,
+form, input, button, textarea,
+img, p, a, blockquote, 
+ol, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: transparent;
+    text-decoration: none;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
