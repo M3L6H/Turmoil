@@ -8,13 +8,7 @@ class Icon extends Component {
         const { children } = props;
         const childProps = { ...selectColor(props), ...selectSize(props) };
 
-        const className = `
-            shoebuckle
-            icon-group
-            fa-layers
-            fa-fw
-            ${ parseSize(props) }
-        `;
+        const className = `shoebuckle icon-group fa-layers fa-fw${ parseSize(props) }`;
 
         const childrenWithProps = Children.map(children, child => {
             if (isValidElement(child)) {
@@ -62,22 +56,7 @@ class Icon extends Component {
             fitted
         } = this.props;
     
-        const className = `
-            shoebuckle
-            icon
-            ${ name ? "fas" : "" }
-            fa-${ name || (counter && "layers-counter") || "layers-text" }
-            ${ border ? "fa-border" : "" }
-            ${ loading ? "fa-spin" : "" }
-            ${ flipped ? `fa-flip-${ flipped }` : "" }
-            ${ rotated ? `fa-rotate-${ rotated }` : "" }
-            ${ inverted ? "fa-inverse" : "" }
-            ${ link ? "link" : "" }
-            ${ disabled ? "disabled" : "" }
-            ${ fitted ? "fitted" : "" }
-            ${ parseColor(this.props) }
-            ${ parseSize(this.props) }
-        `;
+        const className = `shoebuckle icon ${ name ? "fas" : "" } fa-${ name || (counter && "layers-counter") || "layers-text" }${ border ? " fa-border" : "" }${ loading ? " fa-spin" : "" }${ flipped ? ` fa-flip-${ flipped }` : "" }${ rotated ? ` fa-rotate-${ rotated }` : "" }${ inverted ? " fa-inverse" : "" }${ link ? " link" : "" }${ disabled ? " disabled" : "" }${ fitted ? " fitted" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
 
         return (
             <span className="shoebuckle icon-wrapper" onClick={ this._handleClick }>
