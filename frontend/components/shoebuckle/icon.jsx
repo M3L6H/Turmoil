@@ -1,7 +1,39 @@
-import React, { Component } from 'react';
+import React, { Component, Children, isValidElement, cloneElement } from 'react';
 import { withRouter } from "react-router-dom";
 
+import { parseColor, parseSize, selectColor, selectSize } from './util';
+
 class Icon extends Component {
+    static Group(props) {
+        const {
+            children
+        } = props;
+
+        const childProps = { ...selectColor(props), ...selectSize(props) };
+
+        const className = `
+            shoebuckle
+            icon-group
+            fa-layers
+            fa-fw
+            ${ parseSize(props) }
+        `;
+
+        const childrenWithProps = Children.map(children, child => {
+            if (isValidElement(child)) {
+                return cloneElement(child, { ...childProps, ...child.props });
+            }
+
+            return child;
+        });
+
+        return (
+            <span className={ className }>
+                { childrenWithProps }
+            </span>
+        );
+    }
+
     constructor(props) {
         super(props);
 
@@ -21,33 +53,15 @@ class Icon extends Component {
             children,
             content,
             name,
+            border,
             loading,
             flipped,
             rotated,
+            transform,
+            inverted,
             link,
             disabled,
-            fitted,
-            inverted,
-            red,
-            orange,
-            yellow,
-            olive,
-            green,
-            teal,
-            blue,
-            violet,
-            purple,
-            pink,
-            grey,
-            black,
-            mini,
-            tiny,
-            small,
-            normal,
-            large,
-            big,
-            huge,
-            massive
+            fitted
         } = this.props;
     
         const className = `
@@ -55,39 +69,24 @@ class Icon extends Component {
             icon
             fas
             fa-${ name }
+            ${ border && "fa-border" }
             ${ loading && "fa-spin" }
             ${ flipped && `fa-flip-${ flipped }` }
             ${ rotated && `fa-rotate-${ rotated }` }
+            ${ inverted && "fa-inverse" }
             ${ link && "link" }
             ${ disabled && "disabled" }
             ${ fitted && "fitted" }
-            ${ inverted && "inverted" }
-            ${ red && "red" }
-            ${ orange && "orange" }
-            ${ yellow && "yellow" }
-            ${ olive && "olive" }
-            ${ green && "green" }
-            ${ teal && "teal" }
-            ${ blue && "blue" }
-            ${ violet && "violet" }
-            ${ purple && "purple" }
-            ${ pink && "pink" }
-            ${ grey && "grey" }
-            ${ black && "black" }
-            ${ (mini && "mini") ||
-               (tiny && "tiny") ||
-               (small && "small") ||
-               (normal && "normal") ||
-               (large && "large") ||
-               (big && "big") ||
-               (huge && "huge") ||
-               (massive && "massive") ||
-               "normal" }
+            ${ parseColor(this.props) }
+            ${ parseSize(this.props) }
         `;
-        
+
         return (
             <span className="shoebuckle icon-wrapper" onClick={ this._handleClick }>
-                <i className={ className }>
+                <i 
+                    className={ className }
+                    data-fa-transform={ transform }
+                >
                     { children || content }
                 </i>
             </span>

@@ -51,13 +51,33 @@ const App = () => (
             <Icon name="briefcase-medical" black massive />
             <Icon name="briefcase-medical" black large disabled />
             <Icon name="circle-notch" olive large loading />
-            <Icon name="users" teal link to="/test" />
+            <Icon name="users" teal link to="/test" border />
             <Icon name="snowboarding" large flipped="horizontal" orange />
             <Icon name="snowboarding" large flipped="vertical" violet />
             <Icon name="snowboarding" large flipped="both" teal />
             <Icon name="snowboarding" large rotated="90" red />
             <Icon name="snowboarding" large rotated="180" purple />
             <Icon name="snowboarding" large rotated="270" blue />
+        </div>
+        <div className="test-row inverted">
+            <Icon name="briefcase-medical" inverted red />
+            <Icon name="briefcase-medical" inverted orange />
+            <Icon name="briefcase-medical" inverted yellow />
+            <Icon name="briefcase-medical" inverted olive />
+            <Icon name="briefcase-medical" inverted green />
+            <Icon name="briefcase-medical" inverted teal />
+            <Icon name="briefcase-medical" inverted blue />
+            <Icon name="briefcase-medical" inverted violet />
+            <Icon name="briefcase-medical" inverted purple />
+            <Icon name="briefcase-medical" inverted pink />
+            <Icon name="briefcase-medical" inverted grey />
+            <Icon name="briefcase-medical" inverted black />
+        </div>
+        <div className="test-row">
+            <Icon.Group big>
+                <Icon name="circle" red />
+                <Icon name="times" inverted black transform="shrink-6" />
+            </Icon.Group>
         </div>
     </div>
 );
