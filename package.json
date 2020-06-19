@@ -1,5 +1,39 @@
 {
-  "name": "chaos",
-  "private": true,
-  "dependencies": {}
+    "name": "chaos",
+    "private": true,
+    "dependencies": {
+        "@babel/core": "^7.10.2",
+        "@babel/preset-env": "^7.10.2",
+        "@babel/preset-react": "^7.10.1",
+        "babel-loader": "^8.1.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.0",
+        "react-router-dom": "^5.2.0",
+        "redux": "^4.0.5",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12"
+    },
+    "description": "Witness something truly epic.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack --watch --mode=development"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/M3L6H/Chaos.git"
+    },
+    "keywords": [],
+    "author": "Michael Hollingworth",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/M3L6H/Chaos/issues"
+    },
+    "homepage": "https://github.com/M3L6H/Chaos#readme"
 }
