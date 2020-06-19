@@ -1,91 +1,93 @@
-.red {
-    color: $red;
-
-    &.inverted {
-        color: lighten($red, $lighten-amt);
+.shoebuckle {
+    &.red {
+        color: $red;
+    
+        &.inverted {
+            color: lighten($red, $lighten-amt);
+        }
     }
-}
-
-.orange {
-    color: $orange;
-
-    &.inverted {
-        color: lighten($orange, $lighten-amt);
+    
+    &.orange {
+        color: $orange;
+    
+        &.inverted {
+            color: lighten($orange, $lighten-amt);
+        }
     }
-}
-
-.yellow {
-    color: $yellow;
-
-    &.inverted {
-        color: lighten($yellow, $lighten-amt);
+    
+    &.yellow {
+        color: $yellow;
+    
+        &.inverted {
+            color: lighten($yellow, $lighten-amt);
+        }
     }
-}
-
-.olive {
-    color: $olive;
-
-    &.inverted {
-        color: lighten($olive, $lighten-amt);
+    
+    &.olive {
+        color: $olive;
+    
+        &.inverted {
+            color: lighten($olive, $lighten-amt);
+        }
     }
-}
-
-.green {
-    color: $green;
-
-    &.inverted {
-        color: lighten($green, $lighten-amt);
+    
+    &.green {
+        color: $green;
+    
+        &.inverted {
+            color: lighten($green, $lighten-amt);
+        }
     }
-}
-
-.teal {
-    color: $teal;
-
-    &.inverted {
-        color: lighten($teal, $lighten-amt);
+    
+    &.teal {
+        color: $teal;
+    
+        &.inverted {
+            color: lighten($teal, $lighten-amt);
+        }
     }
-}
-
-.blue {
-    color: $blue;
-
-    &.inverted {
-        color: lighten($blue, $lighten-amt);
+    
+    &.blue {
+        color: $blue;
+    
+        &.inverted {
+            color: lighten($blue, $lighten-amt);
+        }
     }
-}
-
-.violet {
-    color: $violet;
-
-    &.inverted {
-        color: lighten($violet, $lighten-amt);
+    
+    &.violet {
+        color: $violet;
+    
+        &.inverted {
+            color: lighten($violet, $lighten-amt);
+        }
     }
-}
-
-.purple {
-    color: $purple;
-
-    &.inverted {
-        color: lighten($purple, $lighten-amt);
+    
+    &.purple {
+        color: $purple;
+    
+        &.inverted {
+            color: lighten($purple, $lighten-amt);
+        }
     }
-}
-
-.pink {
-    color: $pink;
-
-    &.inverted {
-        color: lighten($pink, $lighten-amt);
+    
+    &.pink {
+        color: $pink;
+    
+        &.inverted {
+            color: lighten($pink, $lighten-amt);
+        }
     }
-}
-
-.grey {
-    color: $grey;
-}
-
-.black {
-    color: $black;
-
-    &.inverted {
-        color: $white;
+    
+    &.grey {
+        color: $grey;
+    }
+    
+    &.black {
+        color: $black;
+    
+        &.inverted {
+            color: $white;
+        }
     }
 }
