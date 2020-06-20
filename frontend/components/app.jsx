@@ -129,9 +129,9 @@ const App = () => (
         <div className="test-row">
             <Label><Icon name="envelope" /><span>23</span></Label>
             <Label pointing>Pointing Up</Label>
-            <Label pointing="left">Pointing Left</Label>
-            <Label pointing="below">Pointing Down</Label>
             <Label pointing="right">Pointing Right</Label>
+            <Label pointing="below">Pointing Down</Label>
+            <Label pointing="left">Pointing Left</Label>
             <Button>
                 <Label floating teal small>22</Label>
                 Floating

@@ -5,6 +5,8 @@
     margin: $label-vertical-margin $label-horizontal-margin;
     padding: $label-vertical-padding $label-horizontal-padding;
 
+    position: relative;
+
     &.floating {
         position: relative;
         margin: 0;
@@ -14,7 +16,7 @@
 
         .floating-content {
             background: inherit;
-            padding: $label-vertical-padding $label-horizontal-padding;
+            padding: 1px $label-horizontal-padding;
             border-radius: $small-round;
             position: absolute;
             top: calc(-1em - #{ $label-vertical-padding });
