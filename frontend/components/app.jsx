@@ -153,6 +153,13 @@ const App = () => (
             <Label inverted grey>grey</Label>
             <Label inverted black>black</Label>
         </div>
+        <div className="test-row">
+            <Label.Group big green>
+                <Label>Group</Label>
+                <Label>group</Label>
+                <Label>grouP</Label>
+            </Label.Group>
+        </div>
     </div>
 );
 

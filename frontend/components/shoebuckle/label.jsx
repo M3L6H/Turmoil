@@ -1,9 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, Children, isValidElement, cloneElement } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { parseColor, parseSize } from './util';
+import { parseColor, parseSize, selectColor, selectSize } from './util';
 
 class Label extends Component {
+    static Group(props) {
+        const { children } = props;
+        const childProps = { ...selectColor(props), ...selectSize(props) };
+
+        const className = `shoebuckle label-group`;
+
+        const childrenWithProps = Children.map(children, child => {
+            if (isValidElement(child)) {
+                return cloneElement(child, { ...childProps, ...child.props });
+            }
+
+            return child;
+        });
+
+        return (
+            <div className={ className }>
+                { childrenWithProps }
+            </div>
+        );
+    }
+
     constructor(props) {
         super(props);
     

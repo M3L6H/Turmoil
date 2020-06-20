@@ -7,6 +7,8 @@
 
     position: relative;
 
+    display: inline-block;
+
     &.circular {
         border-radius: 50%;
         width: calc(1em + #{ 2 * $label-vertical-padding + 2 * $label-horizontal-padding });
@@ -25,6 +27,7 @@
 
     &.floating {
         position: relative;
+        top: -1em;
         margin: 0;
         padding: 0;
         width: 0;
