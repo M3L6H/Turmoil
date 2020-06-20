@@ -7,6 +7,22 @@
 
     position: relative;
 
+    &.circular {
+        border-radius: 50%;
+        width: calc(1em + #{ 2 * $label-vertical-padding + 2 * $label-horizontal-padding });
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.link {
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(90%);
+        }
+    }
+
     &.floating {
         position: relative;
         margin: 0;

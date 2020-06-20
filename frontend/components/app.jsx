@@ -136,6 +136,22 @@ const App = () => (
                 <Label floating teal small>22</Label>
                 Floating
             </Button>
+            <Label green circular huge>3</Label>
+            <Label link to="/test" orange>I'm a link</Label>
+        </div>
+        <div className="test-row inverted">
+            <Label inverted red>red</Label>
+            <Label inverted orange>orange</Label>
+            <Label inverted yellow>yellow</Label>
+            <Label inverted olive>olive</Label>
+            <Label inverted green>green</Label>
+            <Label inverted teal>teal</Label>
+            <Label inverted blue>blue</Label>
+            <Label inverted violet>violet</Label>
+            <Label inverted purple>purple</Label>
+            <Label inverted pink>pink</Label>
+            <Label inverted grey>grey</Label>
+            <Label inverted black>black</Label>
         </div>
     </div>
 );
