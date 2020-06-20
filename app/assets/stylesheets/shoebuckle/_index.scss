@@ -38,8 +38,10 @@ $btn-vertical-margin: 0px !default;
 $icon-horizontal-padding: 2px !default;
 $icon-vertical-padding: 0px !default;
 
-$label-horizontal-padding: 10px !default;
-$label-vertical-padding: 6px !default;
+$label-horizontal-padding: 8px !default;
+$label-vertical-padding: 3px !default;
+$label-horizontal-margin: 2px !default;
+$label-vertical-margin: 2px !default;
 
 /* Font size */
 $body-font-size: 14px !default;
@@ -47,7 +49,7 @@ $body-font-size: 14px !default;
 /* Sizes */
 $mini: 6px !default;
 $tiny: 8px !default;
-$small: 10px !default;
+$small: 12px !default;
 $normal: 14px !default;
 $large: 22px !default;
 $big: 32px !default;
@@ -56,6 +58,8 @@ $massive: 72px !default;
 
 /* Border */
 $small-round: 4px;
+
+$label-arrow: 5px;
 
 $thin: 1px;
 $bold: 2px;
