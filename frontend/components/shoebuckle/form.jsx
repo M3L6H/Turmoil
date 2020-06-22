@@ -7,15 +7,26 @@ export default class Form extends Component {
         this.state = {
             error: props.error || false
         };
+
+        this._handleSubmit = this._handleSubmit.bind(this);
     }
 
+    _handleSubmit(e) {
+        const { onSubmit } = this.props;
+
+        if (onSubmit) {
+            const error = onSubmit(Object.assign({}, this.state ), e);
+            this.setState({ error });
+        }
+    } 
+
     render() {
-        const { children, onSubmit } = this.props;
+        const { children } = this.props;
 
         const className = `shoebuckle form`;
         
         return (
-            <form onSubmit={ onSubmit } className={ className }>
+            <form onSubmit={ this._handleSubmit } className={ className }>
                 { children }
             </form>
         );
