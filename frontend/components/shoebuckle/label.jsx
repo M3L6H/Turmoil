@@ -56,9 +56,13 @@ class Label extends Component {
         
         return (
             <div className={ className } onClick={ this._handleClick }>
-                { pointingClass && <div className={ pointingClass }></div> }
+                { pointingClass && !floating && <div className={ pointingClass }></div> }
                 { floating ? 
-                    <div className="floating-content">{ children || content }</div> : 
+                    <div className="floating-content">
+                        { pointingClass && <div className={ pointingClass }></div> }
+                        { children || content }
+                    </div> 
+                : 
                     (children || content)
                 }
             </div>

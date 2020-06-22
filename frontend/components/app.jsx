@@ -291,6 +291,21 @@ class App extends React.Component {
                         <Button green fluid type="submit">Submit</Button>
                     </Form>
                 </div>
+                <div className="test-row">
+                    <Form>
+                        <Form.Input 
+                            label="First Name" 
+                            placeholder="First Name" 
+                            error={{ content: "First name is a required field", pointing: "below" }}
+                        />
+                        <Form.Field>
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Input placeholder="Last Name" />
+                        </Form.Field>
+                        <Form.Checkbox error label="I agree to the Terms and Conditions" />
+                        <Button green fluid type="submit">Submit</Button>
+                    </Form>
+                </div>
             </div>
         );
     }

@@ -1,5 +1,7 @@
 import React, { Component, Children, isValidElement, cloneElement } from 'react';
 
+import Label from './label';
+
 export default class Form extends Component {
     constructor(props) {
         super(props);
@@ -50,9 +52,17 @@ Form.Field = (props) => {
         return child;
     });
 
+    const { content, pointing } = error || {};
+
     return (
         <div className={ className }>
+            { content && (!pointing || pointing === "below" || pointing === "right") && (
+                <Label pointing={ pointing } content={ content } floating/>
+            ) }
             { childrenWithProps }
+            { content && (!pointing || pointing === "above" || pointing === "left") && (
+                <Label pointing={ pointing } content={ content }/>
+            ) }
         </div>
     );
 };
@@ -166,7 +176,7 @@ Form.Input = class extends Component {
         if (label) {
             return (
                 <Form.Field error={ error }>
-                    <Form.Input content={ label } />
+                    <Form.Label content={ label } />
                     { input }
                 </Form.Field>
             );
