@@ -32,7 +32,8 @@ class Button extends Component {
             secondary, 
             basic,
             animated,
-            onClick 
+            onClick,
+            type
         } = this.props;
     
         const className = `shoebuckle btn${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
@@ -41,6 +42,7 @@ class Button extends Component {
             <button
                 className={ className }
                 onClick={ onClick }
+                type={ type }
             >
                 { children || content }
             </button>
