@@ -119,17 +119,18 @@ Form.Input = class extends Component {
             name,
             onChange,
             placeholder,
+            type,
             value
         } = this.props;
 
-        const className = `shoebuckle form-input`;
+        const className = `shoebuckle form-input ${ type || "text" }-input`;
 
         const input = <input 
             className={ className }
             name={ name }
             onChange={ onChange || this._handleChange }
             placeholder={ placeholder }
-            type="text"
+            type={ type || "text" }
             value={ value === undefined ? stateValue : value }
         />;
 
