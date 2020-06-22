@@ -4,6 +4,9 @@ export default class Form extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            error: props.error || false
+        };
     }
 
     render() {
