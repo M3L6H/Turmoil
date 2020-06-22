@@ -37,6 +37,21 @@ Form.Field = class extends Component {
     }
 };
 
+Form.Label = (props) => {
+    const {
+        children,
+        content
+    } = props;
+
+    const className = `shoebuckle form-label`;
+    
+    return (
+        <label className={ className }>
+            { children || content }
+        </label>
+    );
+};
+
 Form.Input = class extends Component {
     constructor(props) {
         super(props);
@@ -56,6 +71,7 @@ Form.Input = class extends Component {
         const { value } = this.state;
         
         const { 
+            name,
             onChange,
             placeholder,
             type 
@@ -66,6 +82,7 @@ Form.Input = class extends Component {
         return (
             <input 
                 className={ className }
+                name={ name }
                 onChange={ onChange || this._handleChange }
                 placehoder={ placeholder }
                 type={ type }
