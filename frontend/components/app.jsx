@@ -4,7 +4,8 @@ import {
     Button, 
     Form,
     Icon, 
-    Label 
+    Label,
+    Message
 } from './shoebuckle';
 
 const App = () => (
@@ -206,6 +207,15 @@ const App = () => (
                 <Form.Checkbox label="I agree to the Terms and Conditions" />
                 <Button green fluid type="submit">Submit</Button>
             </Form>
+        </div>
+        <div className="test-row">
+            <Message>
+                <Message.Header>Changes in Service</Message.Header>
+                <p>
+                    We updated our privacy policy here to better service our
+                    customers. We recommend reviewing the changes.
+                </p>
+            </Message>
         </div>
     </div>
 );

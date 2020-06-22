@@ -15,7 +15,7 @@ export default class Form extends Component {
         const { onSubmit } = this.props;
 
         if (onSubmit) {
-            const error = onSubmit(Object.assign({}, this.state ), e);
+            const error = onSubmit(e, Object.assign({}, this.state ));
             this.setState({ error });
         }
     } 

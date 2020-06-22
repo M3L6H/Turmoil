@@ -1,0 +1,22 @@
+.shoebuckle.message {
+    font-size: $body-font-size;
+    width: 100%;
+    padding: $message-vertical-padding $message-horizontal-padding;
+
+    color: $dark;
+    background: $lightest;
+
+    border: $thin solid $lighter;
+    border-radius: $small-round;
+
+    &.compact {
+        width: auto;
+    }
+
+    .message-header {
+        font-size: 1.2em;
+        color: $darker;
+        font-weight: bold;
+        margin-bottom: $message-header-bottom-margin;
+    }
+}
