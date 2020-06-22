@@ -1,4 +1,6 @@
 .shoebuckle.message {
+    position: relative;
+    
     font-size: $body-font-size;
     width: 100%;
     padding: $message-vertical-padding $message-horizontal-padding;
@@ -13,6 +15,14 @@
         width: auto;
     }
 
+    &.hidden {
+        display: none;
+    }
+
+    &.floating {
+        box-shadow: $small-shadow;
+    }
+
     .message-header {
         font-size: 1.2em;
         color: $darker;
@@ -23,5 +33,18 @@
     .message-list {
         list-style: disc;
         margin-left: $message-list-left-margin;
+    }
+
+    .close-icon {
+        position: absolute;
+        top: $message-vertical-padding;
+        right: $message-horizontal-padding;
+        z-index: 1;
+
+        cursor: pointer;
+        
+        &:hover {
+            filter: brightness(90%);
+        }
     }
 }

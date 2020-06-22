@@ -5,23 +5,45 @@ export default class Message extends Component {
         super(props);
     
         this.state = {
-            visible: props.visible || true
+            stateVisible: props.visible || true
         };
+
+        this._handleDismiss = this._handleDismiss.bind(this);
+    }
+
+    _handleDismiss(e) {
+        this.props.onDismiss(e, Object.assign({}, this.state));
     }
     
     render() {
+        const { stateVisible } = this.state;
+        
         const {
             children,
             content,
-            header
+            floating,
+            header,
+            list,
+            onDismiss,
+            visible
         } = this.props;
         
-        const className = `shoebuckle message`;
+        const className = `shoebuckle message${ floating ? " floating" : "" }${ ((visible !== undefined && visible) || (visible === undefined && stateVisible)) ? "" : " hidden" }`;
         
         return (
             <div className={ className }>
+                { onDismiss && (
+                    <span onClick={ this._handleDismiss}>
+                        <i className="fa fas fa-times close-icon"></i>
+                    </span>
+                ) }
                 { header && <Message.Header content={ header } /> }
                 { children || content }
+                { list && <Message.List>
+                    { list.map((item, idx) => (
+                        <Message.Item content={ item } key={ idx } />
+                    )) }
+                </Message.List> }
             </div>
         );
     }
