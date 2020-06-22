@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { Button, Icon, Label } from './shoebuckle';
+import { 
+    Button, 
+    Form,
+    Icon, 
+    Label 
+} from './shoebuckle';
 
 const App = () => (
     <div className="test">
@@ -159,6 +164,18 @@ const App = () => (
                 <Label>group</Label>
                 <Label>grouP</Label>
             </Label.Group>
+        </div>
+        <div className="test-row">
+            <Form>
+                <Form.Field>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Input placeholder="First Name" />
+                </Form.Field>
+                <Form.Field>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Input placeholder="Last Name" />
+                </Form.Field>
+            </Form>
         </div>
     </div>
 );

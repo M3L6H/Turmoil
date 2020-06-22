@@ -1,3 +1,28 @@
 .shoebuckle.form {
+    padding: $form-vertical-padding $form-horizontal-padding;
+    width: 100%;
+
+    .shoebuckle.form-field {
+        margin-bottom: $form-field-bottom-margin;
+        
+        .shoebuckle.form-label {
+            font-size: 0.8em;
+        }
+
+        .shoebuckle.form-input {
+            padding: $form-input-vertical-padding $form-input-horizontal-padding;
+            width: 100%;
+            
+            border: $thin solid $lightest;
+            border-radius: $small-round;
     
+            display: block;
+    
+    
+            &:focus {
+                outline: none;
+                border-color: $accent;
+            }
+        }
+    }
 }

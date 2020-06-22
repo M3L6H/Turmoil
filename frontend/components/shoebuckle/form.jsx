@@ -57,7 +57,7 @@ Form.Input = class extends Component {
         super(props);
 
         this.state = {
-            value: null
+            value: ""
         };
 
         this._handleChange = this._handleChange.bind(this);
@@ -84,7 +84,7 @@ Form.Input = class extends Component {
                 className={ className }
                 name={ name }
                 onChange={ onChange || this._handleChange }
-                placehoder={ placeholder }
+                placeholder={ placeholder }
                 type={ type }
                 value={ value }
             />

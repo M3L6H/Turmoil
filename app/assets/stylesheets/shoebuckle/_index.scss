@@ -35,6 +35,14 @@ $btn-vertical-padding: 10px !default;
 $btn-horizontal-margin: 2px !default;
 $btn-vertical-margin: 0px !default;
 
+$form-horizontal-padding: 24px !default;
+$form-vertical-padding: 18px !default;
+
+$form-field-bottom-margin: 4px !default;
+
+$form-input-horizontal-padding: 6px !default;
+$form-input-vertical-padding: 4px !default;
+
 $icon-horizontal-padding: 2px !default;
 $icon-vertical-padding: 0px !default;
 
@@ -93,7 +101,8 @@ $btn-fade-speed: 0.5s;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-    padding: 10px;
+    padding: 10px 0;
+    width: 100%;
 
     &.inverted {
         background: $black;
