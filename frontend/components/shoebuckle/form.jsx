@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Children, isValidElement, cloneElement } from 'react';
 
 export default class Form extends Component {
     constructor(props) {
@@ -34,13 +34,25 @@ export default class Form extends Component {
 }
 
 Form.Field = (props) => {
-    const { children } = props;
+    const { 
+        children,
+        error
+    } = props;
 
     const className = `shoebuckle form-field`;
+    const childProps = { error };
+
+    const childrenWithProps = Children.map(children, child => {
+        if (isValidElement(child)) {
+            return cloneElement(child, { ...childProps, ...child.props });
+        }
+
+        return child;
+    });
 
     return (
         <div className={ className }>
-            { children }
+            { childrenWithProps }
         </div>
     );
 };
@@ -49,10 +61,11 @@ Form.Label = (props) => {
     const {
         children,
         content,
+        error,
         onClick
     } = props;
 
-    const className = `shoebuckle form-label`;
+    const className = `shoebuckle form-label${ error ? " error" : "" }`;
     
     return (
         <label className={ className } onClick={ onClick }>
@@ -138,7 +151,7 @@ Form.Input = class extends Component {
             value
         } = this.props;
 
-        const className = `shoebuckle form-input ${ type || "text" }-input${ error ? "error" : "" }`;
+        const className = `shoebuckle form-input ${ type || "text" }-input${ error ? " error" : "" }`;
 
         const input = <input 
             className={ className }

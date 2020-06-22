@@ -277,6 +277,20 @@ class App extends React.Component {
                     <Message success header="Success" content="You did it!" />
                     <Message error header="Error" content="Something bad happened." />
                 </div>
+                <div className="test-row">
+                    <Form>
+                        <Form.Field error>
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Input placeholder="First Name" />
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Input placeholder="Last Name" />
+                        </Form.Field>
+                        <Form.Checkbox label="I agree to the Terms and Conditions" />
+                        <Button green fluid type="submit">Submit</Button>
+                    </Form>
+                </div>
             </div>
         );
     }
