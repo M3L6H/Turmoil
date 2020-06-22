@@ -298,11 +298,14 @@ class App extends React.Component {
                             placeholder="First Name" 
                             error={{ content: "First name is a required field", pointing: "below" }}
                         />
-                        <Form.Field>
+                        <Form.Field error={{ content: "Last name is required", pointing: "above" }}>
                             <Form.Label>Last Name</Form.Label>
                             <Form.Input placeholder="Last Name" />
                         </Form.Field>
-                        <Form.Checkbox error label="I agree to the Terms and Conditions" />
+                        <Form.Checkbox 
+                            label="I agree to the Terms and Conditions" 
+                            error={{ content: "You must agree to the terms and conditions", pointing: "left" }}
+                        />
                         <Button green fluid type="submit">Submit</Button>
                     </Form>
                 </div>

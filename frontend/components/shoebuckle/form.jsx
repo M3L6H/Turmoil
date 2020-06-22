@@ -57,11 +57,11 @@ Form.Field = (props) => {
     return (
         <div className={ className }>
             { content && (!pointing || pointing === "below" || pointing === "right") && (
-                <Label pointing={ pointing } content={ content } floating/>
+                <Label error pointing={ pointing } content={ content } floating/>
             ) }
             { childrenWithProps }
             { content && (!pointing || pointing === "above" || pointing === "left") && (
-                <Label pointing={ pointing } content={ content }/>
+                <Label error pointing={ pointing } content={ content }/>
             ) }
         </div>
     );

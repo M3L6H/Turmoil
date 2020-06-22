@@ -44,6 +44,7 @@ class Label extends Component {
             children,
             content,
             pointing,
+            error,
             circular,
             floating,
             tag,
@@ -52,14 +53,16 @@ class Label extends Component {
 
         const pointingClass = pointing ? `pointing ${ pointing !== true ? "" + pointing : "above" }` : false;
         
-        const className = `shoebuckle label${ circular ? " circular" : "" }${ floating ? " floating" : "" }${ tag ? " tag" : "" }${ link ? " link" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
+        const className = `shoebuckle label${ circular ? " circular" : "" }${ error ? " error" : "" }${ floating ? " floating" : "" }${ tag ? " tag" : "" }${ link ? " link" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
+
+        const pointer = <div className={ `${ pointingClass }${ error ? " error" : "" }`}></div>;
         
         return (
             <div className={ className } onClick={ this._handleClick }>
-                { pointingClass && !floating && <div className={ pointingClass }></div> }
+                { pointingClass && !floating && pointer }
                 { floating ? 
                     <div className="floating-content">
-                        { pointingClass && <div className={ pointingClass }></div> }
+                        { pointingClass && pointer }
                         { children || content }
                     </div> 
                 : 

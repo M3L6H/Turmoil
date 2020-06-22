@@ -1,6 +1,7 @@
 .shoebuckle.label {
     background: $lightest;
     border-radius: $small-round;
+    border-color: $lightest;
     
     margin: $label-vertical-margin $label-horizontal-margin;
     padding: $label-vertical-padding $label-horizontal-padding;
@@ -55,7 +56,11 @@
             height: 0;
             border-left: $label-arrow solid transparent;
             border-right: $label-arrow solid transparent;
-            border-bottom: $label-arrow solid $lightest;
+            border-bottom: $label-arrow solid;
+
+            &.error {
+                border-bottom-color: desaturate($error, $desaturate-amt);
+            }
         }
 
         &.left {
@@ -65,7 +70,11 @@
             height: 0;
             border-top: $label-arrow solid transparent;
             border-bottom: $label-arrow solid transparent;
-            border-right: $label-arrow solid $lightest;
+            border-right: $label-arrow solid;
+
+            &.error {
+                border-right-color: desaturate($error, $desaturate-amt);
+            }
         }
 
         &.below {
@@ -75,7 +84,11 @@
             height: 0;
             border-left: $label-arrow solid transparent;
             border-right: $label-arrow solid transparent;
-            border-top: $label-arrow solid $lightest;
+            border-top: $label-arrow solid;
+
+            &.error {
+                border-top-color: desaturate($error, $desaturate-amt);
+            }
         }
 
         &.right {
@@ -85,7 +98,11 @@
             height: 0;
             border-top: $label-arrow solid transparent;
             border-bottom: $label-arrow solid transparent;
-            border-left: $label-arrow solid $lightest;
+            border-left: $label-arrow solid;
+
+            &.error {
+                border-left-color: desaturate($error, $desaturate-amt);
+            }
         }
     }
 
