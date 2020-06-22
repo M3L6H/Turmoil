@@ -21,6 +21,8 @@ export default class Message extends Component {
         const {
             children,
             content,
+            attached,
+            compact,
             floating,
             header,
             list,
@@ -28,7 +30,7 @@ export default class Message extends Component {
             visible
         } = this.props;
         
-        const className = `shoebuckle message${ floating ? " floating" : "" }${ ((visible !== undefined && visible) || (visible === undefined && stateVisible)) ? "" : " hidden" }`;
+        const className = `shoebuckle message${ attached ? ` attached-${ attached !== true ? attached : "top" }` : "" }${ compact ? " compact" : ""}${ floating ? " floating" : "" }${ ((visible !== undefined && visible) || (visible === undefined && stateVisible)) ? "" : " hidden" }`;
         
         return (
             <div className={ className }>

@@ -23,6 +23,20 @@
         box-shadow: $small-shadow;
     }
 
+    &.attached-top {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 0;
+        bottom: -$thin;
+    }
+
+    &.attached-bottom {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: 0;
+        top: -$thin;
+    }
+
     .message-header {
         font-size: 1.2em;
         color: $darker;

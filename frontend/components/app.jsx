@@ -264,6 +264,13 @@ class App extends React.Component {
                 <div className="test-row">
                     <Message floating content="A floating message!" />
                 </div>
+                <div className="test-row">
+                    <Message compact content="A message can only take up the width of its content." />
+                </div>
+                <div className="test-row column">
+                    <Message attached content="I can attach on top" />
+                    <Message attached="bottom" content="Or on the bottom!" />
+                </div>
             </div>
         );
     }
