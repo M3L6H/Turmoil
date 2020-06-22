@@ -176,6 +176,7 @@ const App = () => (
                     <Form.Input placeholder="Last Name" />
                 </Form.Field>
                 <Form.Checkbox label="I agree to the Terms and Conditions" />
+                <Button type="submit">Submit</Button>
             </Form>
         </div>
     </div>
