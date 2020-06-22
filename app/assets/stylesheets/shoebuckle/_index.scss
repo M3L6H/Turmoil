@@ -25,9 +25,22 @@ $dark: #2C363F !default;
 $darker: #212930 !default;
 $darkest: #111518 !default;
 
+$information: #D6EEFF !default;
+$warning: #e8da88 !default;
+$success: #98e090 !default;
+$error: #f37f7d !default;
+
 /* Color Adjustments */
 $darken-amt: 8%;
 $lighten-amt: 8%;
+
+$darker-amt: 20%;
+
+$much-darker-amt: 30%;
+
+$very-dark-amt: 55%;
+
+$desaturate-amt: 10%;
 
 /* Whitespace */
 $btn-horizontal-padding: 18px !default;

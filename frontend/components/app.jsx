@@ -271,6 +271,12 @@ class App extends React.Component {
                     <Message attached content="I can attach on top" />
                     <Message attached="bottom" content="Or on the bottom!" />
                 </div>
+                <div className="test-row">
+                    <Message info header="Info" content="Cool information." />
+                    <Message warning header="Warning" content="Be careful..." />
+                    <Message success header="Success" content="You did it!" />
+                    <Message error header="Error" content="Something bad happened." />
+                </div>
             </div>
         );
     }

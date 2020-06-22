@@ -23,14 +23,18 @@ export default class Message extends Component {
             content,
             attached,
             compact,
+            error,
             floating,
             header,
+            info,
             list,
             onDismiss,
-            visible
+            success,
+            visible,
+            warning
         } = this.props;
         
-        const className = `shoebuckle message${ attached ? ` attached-${ attached !== true ? attached : "top" }` : "" }${ compact ? " compact" : ""}${ floating ? " floating" : "" }${ ((visible !== undefined && visible) || (visible === undefined && stateVisible)) ? "" : " hidden" }`;
+        const className = `shoebuckle message${ attached ? ` attached-${ attached !== true ? attached : "top" }` : "" }${ compact ? " compact" : ""}${ error ? " error" : "" }${ floating ? " floating" : "" }${ info ? " info" : "" }${ success ? " success" : "" }${ ((visible !== undefined && visible) || (visible === undefined && stateVisible)) ? "" : " hidden" }${ warning ? " warning" : "" }`;
         
         return (
             <div className={ className }>
