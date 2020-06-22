@@ -28,6 +28,7 @@ class Button extends Component {
         const { 
             children, 
             content, 
+            fluid,
             primary, 
             secondary, 
             basic,
@@ -36,7 +37,7 @@ class Button extends Component {
             type
         } = this.props;
     
-        const className = `shoebuckle btn${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
+        const className = `shoebuckle btn${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ fluid ? " fluid" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
         
         return (
             <button
