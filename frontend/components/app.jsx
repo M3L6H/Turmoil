@@ -217,6 +217,17 @@ const App = () => (
                 </p>
             </Message>
         </div>
+        <div className="test-row">
+            <Message header="Changes in Service" content="Built with props!" />
+        </div>
+        <div className="test-row">
+            <Message header="New Site Features">
+                <Message.List>
+                    <Message.Item>You can now have cover images on blog pages</Message.Item>
+                    <Message.Item>Drafts will now auto-save while writing</Message.Item>
+                </Message.List>
+            </Message>
+        </div>
     </div>
 );
 

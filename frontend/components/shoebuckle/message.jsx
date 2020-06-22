@@ -41,3 +41,33 @@ Message.Header = props => {
         </div>
     );
 };
+
+Message.List = props => {
+    const {
+        children,
+        content
+    } = props;
+
+    const className = `shoebuckle message-list`;
+
+    return (
+        <ul className={ className }>
+            { children || content }
+        </ul>
+    );
+};
+
+Message.Item = props => {
+    const {
+        children,
+        content
+    } = props;
+
+    const className = `shoebuckle message-item`;
+
+    return (
+        <li className={ className }>
+            { children || content }
+        </li>
+    );
+};
