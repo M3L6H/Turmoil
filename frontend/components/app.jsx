@@ -16,6 +16,34 @@ const App = () => (
             <Button content="Shorthand" primary />
         </div>
         <div className="test-row">
+            <Button red>Red</Button>
+            <Button orange>Orange</Button>
+            <Button yellow>Yellow</Button>
+            <Button olive>Olive</Button>
+            <Button green>Green</Button>
+            <Button teal>Teal</Button>
+            <Button blue>Blue</Button>
+            <Button violet>Violet</Button>
+            <Button purple>Purple</Button>
+            <Button pink>Pink</Button>
+            <Button grey>Grey</Button>
+            <Button black>Black</Button>
+        </div>
+        <div className="test-row inverted">
+            <Button inverted red>Red</Button>
+            <Button inverted orange>Orange</Button>
+            <Button inverted yellow>Yellow</Button>
+            <Button inverted olive>Olive</Button>
+            <Button inverted green>Green</Button>
+            <Button inverted teal>Teal</Button>
+            <Button inverted blue>Blue</Button>
+            <Button inverted violet>Violet</Button>
+            <Button inverted purple>Purple</Button>
+            <Button inverted pink>Pink</Button>
+            <Button inverted grey>Grey</Button>
+            <Button inverted black>Black</Button>
+        </div>
+        <div className="test-row">
             <Button basic>Hello World</Button>
             <Button basic red>Hello World</Button>
             <Button basic orange>Hello World</Button>
@@ -176,7 +204,7 @@ const App = () => (
                     <Form.Input placeholder="Last Name" />
                 </Form.Field>
                 <Form.Checkbox label="I agree to the Terms and Conditions" />
-                <Button type="submit">Submit</Button>
+                <Button green type="submit">Submit</Button>
             </Form>
         </div>
     </div>
