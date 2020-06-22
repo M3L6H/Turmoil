@@ -19,22 +19,16 @@ export default class Form extends Component {
     }
 }
 
-Form.Field = class extends Component {
-    constructor(props) {
-        super(props);
-    }
-    
-    render() {
-        const { children } = this.props;
+Form.Field = (props) => {
+    const { children } = props;
 
-        const className = `shoebuckle form-field`;
+    const className = `shoebuckle form-field`;
 
-        return (
-            <div className={ className }>
-                { children }
-            </div>
-        );
-    }
+    return (
+        <div className={ className }>
+            { children }
+        </div>
+    );
 };
 
 Form.Label = (props) => {
@@ -71,6 +65,7 @@ Form.Input = class extends Component {
         const { value } = this.state;
         
         const { 
+            label,
             name,
             onChange,
             placeholder,
@@ -79,15 +74,25 @@ Form.Input = class extends Component {
 
         const className = `shoebuckle form-input ${ type || "text" }-input`;
 
-        return (
-            <input 
-                className={ className }
-                name={ name }
-                onChange={ onChange || this._handleChange }
-                placeholder={ placeholder }
-                type={ type }
-                value={ value }
-            />
-        );
+        const input = <input 
+            className={ className }
+            name={ name }
+            onChange={ onChange || this._handleChange }
+            placeholder={ placeholder }
+            type={ type }
+            value={ value }
+        />;
+
+        if (label) {
+            return (
+                <Form.Field>
+                    <Form.Input content={ label } />
+                    { input }
+                </Form.Field>
+            );
+        } else {
+            return input;
+        }
+
     }
 };
