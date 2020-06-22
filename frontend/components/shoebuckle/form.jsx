@@ -5,7 +5,7 @@ export default class Form extends Component {
         super(props);
 
         this.state = {
-            error: props.error || false
+            stateError: props.error || false
         };
 
         this._handleSubmit = this._handleSubmit.bind(this);
@@ -129,6 +129,7 @@ Form.Input = class extends Component {
         const { stateValue } = this.state;
         
         const { 
+            error,
             label,
             name,
             onChange,
@@ -137,7 +138,7 @@ Form.Input = class extends Component {
             value
         } = this.props;
 
-        const className = `shoebuckle form-input ${ type || "text" }-input`;
+        const className = `shoebuckle form-input ${ type || "text" }-input${ error ? "error" : "" }`;
 
         const input = <input 
             className={ className }

@@ -53,16 +53,6 @@
         }
     }
 
-    &.error {
-        background: desaturate($error, $desaturate-amt);
-        border-color: darken($error, $much-darker-amt);
-        color: darken($error, $much-darker-amt);
-
-        .message-header {
-            color: desaturate(darken($error, $very-dark-amt), $desaturate-amt);
-        }
-    }
-
     &.attached-top {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
