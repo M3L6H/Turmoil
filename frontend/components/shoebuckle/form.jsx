@@ -38,11 +38,12 @@ export default class Form extends Component {
 Form.Field = (props) => {
     const { 
         children,
-        error
+        error,
+        required
     } = props;
 
     const className = `shoebuckle form-field`;
-    const childProps = { error };
+    const childProps = { error, required };
 
     const childrenWithProps = Children.map(children, child => {
         if (isValidElement(child)) {
@@ -72,10 +73,11 @@ Form.Label = (props) => {
         children,
         content,
         error,
-        onClick
+        onClick,
+        required
     } = props;
 
-    const className = `shoebuckle form-label${ error ? " error" : "" }`;
+    const className = `shoebuckle form-label${ error ? " error" : "" }${ required ? " required" : "" }`;
     
     return (
         <label className={ className } onClick={ onClick }>
@@ -106,7 +108,8 @@ Form.Checkbox = class extends Component {
             checked,
             error,
             label,
-            onChange
+            onChange,
+            required
         } = this.props;
 
         const className = `shoebuckle form-checkbox${ error ? " error" : "" }`;
@@ -125,6 +128,7 @@ Form.Checkbox = class extends Component {
                     <Form.Label 
                         content={ label } 
                         onClick={ onChange || this._handleChange } 
+                        required={ required }
                     />
                 </Form.Field>
             );
@@ -158,6 +162,7 @@ Form.Input = class extends Component {
             name,
             onChange,
             placeholder,
+            required,
             type,
             value
         } = this.props;
@@ -176,7 +181,7 @@ Form.Input = class extends Component {
         if (label) {
             return (
                 <Form.Field error={ error }>
-                    <Form.Label content={ label } />
+                    <Form.Label content={ label } required={ required } />
                     { input }
                 </Form.Field>
             );

@@ -309,6 +309,24 @@ class App extends React.Component {
                         <Button green fluid type="submit">Submit</Button>
                     </Form>
                 </div>
+                <div className="test-row">
+                    <Form>
+                        <Form.Input 
+                            label="First Name" 
+                            placeholder="First Name" 
+                            required
+                        />
+                        <Form.Field required>
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Input placeholder="Last Name" />
+                        </Form.Field>
+                        <Form.Checkbox 
+                            label="I agree to the Terms and Conditions" 
+                            required
+                        />
+                        <Button green fluid type="submit">Submit</Button>
+                    </Form>
+                </div>
             </div>
         );
     }

@@ -16,6 +16,11 @@
             background: transparent;
             text-decoration: underline;
         }
+
+        &.required:after {
+            content: "*";
+            color: $red;
+        }
     }
             
     .form-checkbox {
