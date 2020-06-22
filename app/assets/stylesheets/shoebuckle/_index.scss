@@ -25,9 +25,22 @@ $dark: #2C363F !default;
 $darker: #212930 !default;
 $darkest: #111518 !default;
 
+$information: #D6EEFF !default;
+$warning: #e8da88 !default;
+$success: #98e090 !default;
+$error: #f37f7d !default;
+
 /* Color Adjustments */
 $darken-amt: 8%;
 $lighten-amt: 8%;
+
+$darker-amt: 20%;
+
+$much-darker-amt: 40%;
+
+$very-dark-amt: 55%;
+
+$desaturate-amt: 10%;
 
 /* Whitespace */
 $btn-horizontal-padding: 18px !default;
@@ -35,36 +48,92 @@ $btn-vertical-padding: 10px !default;
 $btn-horizontal-margin: 2px !default;
 $btn-vertical-margin: 0px !default;
 
+$form-horizontal-padding: 24px !default;
+$form-vertical-padding: 18px !default;
+
+$form-field-bottom-margin: 10px !default;
+
+$form-checkbox-right-margin: 4px !default;
+
+$form-input-horizontal-padding: 10px !default;
+$form-input-vertical-padding: 6px !default;
+
+$icon-horizontal-padding: 2px !default;
+$icon-vertical-padding: 0px !default;
+
+$label-horizontal-padding: 8px !default;
+$label-vertical-padding: 3px !default;
+$label-horizontal-margin: 2px !default;
+$label-vertical-margin: 2px !default;
+
+$message-horizontal-padding: 18px;
+$message-vertical-padding: 16px;
+
+$message-header-bottom-margin: 2px;
+
+$message-list-left-margin: 18px;
+
 /* Font size */
 $body-font-size: 14px !default;
+
+/* Sizes */
+$mini: 6px !default;
+$tiny: 9px !default;
+$small: 12px !default;
+$normal: 14px !default;
+$large: 22px !default;
+$big: 32px !default;
+$huge: 48px !default;
+$massive: 72px !default;
 
 /* Border */
 $small-round: 4px;
 
+$label-arrow: 5px;
+
 $thin: 1px;
 $bold: 2px;
 
+/* Timings */
+$btn-move-speed: 0.25s;
+$btn-fade-speed: 0.5s;
+
+/* Shadows */
+$small-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 @import "reset";
+
+/* Modifiers */
+@import "colors";
+@import "fluid";
+@import "sizes";
 
 /* Components */
 @import "button";
+@import "form";
+@import "icon";
+@import "label";
+@import "message";
 
-.test {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-}
+/* States */
+@import "error";
+@import "information";
+@import "success";
+@import "warning";
 
 .test-row {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-    padding: 10px;
+    padding: 10px 0;
+    width: 100%;
 
     &.inverted {
         background: $black;
+    }
+
+    &.column {
+        flex-direction: column;
     }
 }

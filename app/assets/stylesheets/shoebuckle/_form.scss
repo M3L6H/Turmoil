@@ -1,0 +1,59 @@
+.shoebuckle {
+    &.form {
+        padding: $form-vertical-padding $form-horizontal-padding;
+        width: 100%;
+        font-size: $body-font-size;
+    }
+
+    .form-field {
+        margin-bottom: $form-field-bottom-margin;
+    }
+            
+    .form-label {
+        font-size: 0.8em;
+
+        &.error {
+            background: transparent;
+            text-decoration: underline;
+        }
+
+        &.required:after {
+            content: "*";
+            color: $red;
+        }
+    }
+            
+    .form-checkbox {
+        height: 1em;
+        width: 1em;
+        
+        cursor: pointer;
+
+        &:focus {
+            color: $accent;
+            outline: none;
+        }
+
+        +.form-label {
+            padding-left: $form-checkbox-right-margin;
+            
+            font-size: 1em;
+            cursor: pointer;
+        }
+    }
+
+    .form-input {
+        padding: $form-input-vertical-padding $form-input-horizontal-padding;
+        width: 100%;
+        
+        border: $thin solid $lightest;
+        border-radius: $small-round;
+    
+        display: block;
+    
+        &:focus {
+            outline: none;
+            border-color: $accent;
+        }
+    }
+}

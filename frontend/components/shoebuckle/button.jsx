@@ -1,53 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default (props) => {
-    const { 
-        children, 
-        content, 
-        primary, 
-        secondary, 
-        basic,
-        inverted,
-        red,
-        orange,
-        yellow,
-        olive,
-        green,
-        teal,
-        blue,
-        violet,
-        purple,
-        pink,
-        grey,
-        black,
-        onClick 
-    } = props;
+import { parseColor, parseSize } from './util'
 
-    const className = `shoebuckle btn 
-        ${ primary && "primary" } 
-        ${ secondary && "secondary" } 
-        ${ basic && "basic" }
-        ${ inverted && "inverted" }
-        ${ red && "red" }
-        ${ orange && "orange" }
-        ${ yellow && "yellow" }
-        ${ olive && "olive" }
-        ${ green && "green" }
-        ${ teal && "teal" }
-        ${ blue && "blue" }
-        ${ violet && "violet" }
-        ${ purple && "purple" }
-        ${ pink && "pink" }
-        ${ grey && "grey" }
-        ${ black && "black" }
-    `;
+class Button extends Component {
+    static Content(props) {
+        const {
+            children,
+            content,
+            hidden,
+            visible
+        } = props;
+
+        const className = `shoebuckle btn-content${ hidden ? " hidden" : "" }${ visible ? " visible" : "" }`;
+
+        return (
+            <div className={ className }>
+                { children || content }
+            </div>
+        )
+    }
     
-    return (
-        <button
-            className={ className }
-            onClick={ onClick }
-        >
-            { children || content }
-        </button>
-    );
-};
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const { 
+            children, 
+            content, 
+            fluid,
+            primary, 
+            secondary, 
+            basic,
+            animated,
+            onClick,
+            type
+        } = this.props;
+    
+        const className = `shoebuckle btn${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ fluid ? " fluid" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
+        
+        return (
+            <button
+                className={ className }
+                onClick={ onClick }
+                type={ type }
+            >
+                { children || content }
+            </button>
+        );
+    }
+}
+
+export default Button;

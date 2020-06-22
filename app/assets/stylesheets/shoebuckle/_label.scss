@@ -1,0 +1,228 @@
+.shoebuckle.label {
+    background: $lightest;
+    border-radius: $small-round;
+    border-color: $lightest;
+    
+    margin: $label-vertical-margin $label-horizontal-margin;
+    padding: $label-vertical-padding $label-horizontal-padding;
+
+    position: relative;
+
+    display: inline-block;
+
+    &.circular {
+        border-radius: 50%;
+        width: calc(1em + #{ 2 * $label-vertical-padding + 2 * $label-horizontal-padding });
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.link {
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(90%);
+        }
+    }
+
+    &.floating {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 0;
+
+        .floating-content {
+            background: inherit;
+            padding: 1px $label-horizontal-padding;
+            border-radius: $small-round;
+            display: inline-block;
+            position: relative;
+        }
+    }
+
+    >*:nth-child(n + 2) {
+        padding-left: $label-horizontal-padding;
+    }
+
+    .pointing {
+        padding-left: 0;
+        position: absolute;
+
+        &.above {
+            top: -$label-arrow;
+            left: calc(50% - #{ $label-arrow });
+            width: 0;
+            height: 0;
+            border-left: $label-arrow solid transparent;
+            border-right: $label-arrow solid transparent;
+            border-bottom: $label-arrow solid;
+
+            &.error {
+                border-bottom-color: desaturate($error, $desaturate-amt);
+            }
+        }
+
+        &.left {
+            top: calc(50% - #{ $label-arrow });
+            left: -$label-arrow;
+            width: 0;
+            height: 0;
+            border-top: $label-arrow solid transparent;
+            border-bottom: $label-arrow solid transparent;
+            border-right: $label-arrow solid;
+
+            &.error {
+                border-right-color: desaturate($error, $desaturate-amt);
+            }
+        }
+
+        &.below {
+            bottom: -$label-arrow;
+            left: calc(50% - #{ $label-arrow });
+            width: 0;
+            height: 0;
+            border-left: $label-arrow solid transparent;
+            border-right: $label-arrow solid transparent;
+            border-top: $label-arrow solid;
+
+            &.error {
+                border-top-color: desaturate($error, $desaturate-amt);
+            }
+        }
+
+        &.right {
+            top: calc(50% - #{ $label-arrow });
+            right: -$label-arrow;
+            width: 0;
+            height: 0;
+            border-top: $label-arrow solid transparent;
+            border-bottom: $label-arrow solid transparent;
+            border-left: $label-arrow solid;
+
+            &.error {
+                border-left-color: desaturate($error, $desaturate-amt);
+            }
+        }
+    }
+
+    &.red {
+        color: $white;
+        background: $red;
+
+        &.inverted {
+            color: $white;
+            background: lighten($red, $lighten-amt);
+        }
+    }
+
+    &.orange {
+        color: $white;
+        background: $orange;
+
+        &.inverted {
+            color: $white;
+            background: lighten($orange, $lighten-amt);
+        }
+    }
+
+    &.yellow {
+        color: $white;
+        background: $yellow;
+
+        &.inverted {
+            color: $white;
+            background: lighten($yellow, $lighten-amt);
+        }
+    }
+
+    &.olive {
+        color: $white;
+        background: $olive;
+
+        &.inverted {
+            color: $white;
+            background: lighten($olive, $lighten-amt);
+        }
+    }
+
+    &.green {
+        color: $white;
+        background: $green;
+
+        &.inverted {
+            color: $white;
+            background: lighten($green, $lighten-amt);
+        }
+    }
+
+    &.teal {
+        color: $white;
+        background: $teal;
+
+        &.inverted {
+            color: $white;
+            background: lighten($teal, $lighten-amt);
+        }
+    }
+
+    &.blue {
+        color: $white;
+        background: $blue;
+
+        &.inverted {
+            color: $white;
+            background: lighten($blue, $lighten-amt);
+        }
+    }
+
+    &.violet {
+        color: $white;
+        background: $violet;
+
+        &.inverted {
+            color: $white;
+            background: lighten($violet, $lighten-amt);
+        }
+    }
+
+    &.purple {
+        color: $white;
+        background: $purple;
+
+        &.inverted {
+            color: $white;
+            background: lighten($purple, $lighten-amt);
+        }
+    }
+
+    &.pink {
+        color: $white;
+        background: $pink;
+
+        &.inverted {
+            color: $white;
+            background: lighten($pink, $lighten-amt);
+        }
+    }
+
+    &.grey {
+        color: $white;
+        background: $grey;
+
+        &.inverted {
+            color: $white;
+            background: lighten($grey, $lighten-amt);
+        }
+    }
+
+    &.black {
+        color: $white;
+        background: $black;
+
+        &.inverted {
+            color: $black;
+            background: $white;
+        }
+    }
+}

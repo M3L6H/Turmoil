@@ -1,0 +1,64 @@
+.shoebuckle.message {
+    position: relative;
+    
+    font-size: $body-font-size;
+    width: 100%;
+    padding: $message-vertical-padding $message-horizontal-padding;
+
+    color: $dark;
+    background: $lightest;
+
+    border: $thin solid $lighter;
+    border-radius: $small-round;
+
+    &.compact {
+        width: auto;
+    }
+
+    &.hidden {
+        display: none;
+    }
+
+    &.floating {
+        box-shadow: $small-shadow;
+    }
+
+    &.attached-top {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 0;
+        bottom: -$thin;
+    }
+
+    &.attached-bottom {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: 0;
+        top: -$thin;
+    }
+
+    .message-header {
+        font-size: 1.2em;
+        color: $darker;
+        font-weight: bold;
+        margin-bottom: $message-header-bottom-margin;
+    }
+
+    .message-list {
+        list-style: disc;
+        margin-left: $message-list-left-margin;
+    }
+
+    .close-icon {
+        position: absolute;
+        top: $message-vertical-padding;
+        right: $message-horizontal-padding;
+        z-index: 1;
+
+        cursor: pointer;
+        
+        &:hover {
+            filter: brightness(90%);
+        }
+    }
+}

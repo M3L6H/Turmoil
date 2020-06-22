@@ -1,0 +1,9 @@
+.shoebuckle.warning {
+    background: desaturate($warning, $desaturate-amt);
+    border-color: darken($warning, $much-darker-amt);
+    color: darken($warning, $much-darker-amt);
+
+    .message-header {
+        color: desaturate(darken($warning, $very-dark-amt), $desaturate-amt);
+    }
+}
