@@ -94,11 +94,12 @@ Form.Checkbox = class extends Component {
 
         const {
             checked,
+            error,
             label,
             onChange
         } = this.props;
 
-        const className = `shoebuckle form-checkbox`;
+        const className = `shoebuckle form-checkbox${ error ? " error" : "" }`;
 
         const checkbox = <input
             checked={ checked === undefined ? stateChecked : checked }
@@ -109,7 +110,7 @@ Form.Checkbox = class extends Component {
         
         if (label) {
             return (
-                <Form.Field>
+                <Form.Field error={ error }>
                     { checkbox }
                     <Form.Label 
                         content={ label } 
@@ -164,7 +165,7 @@ Form.Input = class extends Component {
 
         if (label) {
             return (
-                <Form.Field>
+                <Form.Field error={ error }>
                     <Form.Input content={ label } />
                     { input }
                 </Form.Field>

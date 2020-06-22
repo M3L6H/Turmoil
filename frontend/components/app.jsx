@@ -287,7 +287,7 @@ class App extends React.Component {
                             <Form.Label>Last Name</Form.Label>
                             <Form.Input placeholder="Last Name" />
                         </Form.Field>
-                        <Form.Checkbox label="I agree to the Terms and Conditions" />
+                        <Form.Checkbox error label="I agree to the Terms and Conditions" />
                         <Button green fluid type="submit">Submit</Button>
                     </Form>
                 </div>
