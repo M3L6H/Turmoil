@@ -46,30 +46,77 @@ Form.Label = (props) => {
     );
 };
 
+Form.Checkbox = class extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            stateChecked: props.checked || false
+        };
+
+        this._handleClick = this._handleClick.bind(this);
+    }
+
+    _handleClick(e) {
+        this.setState({ stateChecked: e.currentTarget.checked });
+    }
+    
+    render() {
+        const { stateChecked } = this.state;
+
+        const {
+            checked,
+            label,
+            onClick
+        } = this.props;
+
+        const className = `shoebuckle form-checkbox`;
+
+        const checkbox = <input
+            checked={ checked === undefined ? stateChecked : checked }
+            className={ className }
+            onClick={ onClick || this._handleClick }
+            type="checkbox"
+        />;
+        
+        if (label) {
+            return (
+                <Form.Field>
+                    { checkbox }
+                    <Form.Label content={ label } />
+                </Form.Field>
+            );
+        } else {
+            return checkbox;
+        }
+    }
+};
+
 Form.Input = class extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            value: ""
+            stateValue: props.value || ""
         };
 
         this._handleChange = this._handleChange.bind(this);
     }
 
     _handleChange(e) {
-        this.setState({ value: e.currentTarget.value });
+        this.setState({ stateValue: e.currentTarget.value });
     }
     
     render() {
-        const { value } = this.state;
+        const { stateValue } = this.state;
         
         const { 
             label,
             name,
             onChange,
             placeholder,
-            type 
+            type,
+            value
         } = this.props;
 
         const className = `shoebuckle form-input ${ type || "text" }-input`;
@@ -80,7 +127,7 @@ Form.Input = class extends Component {
             onChange={ onChange || this._handleChange }
             placeholder={ placeholder }
             type={ type }
-            value={ value }
+            value={ value === undefined ? stateValue : value }
         />;
 
         if (label) {
