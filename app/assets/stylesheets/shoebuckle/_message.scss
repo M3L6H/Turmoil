@@ -23,36 +23,6 @@
         box-shadow: $small-shadow;
     }
 
-    &.info {
-        background: desaturate($information, $desaturate-amt);
-        border-color: darken($information, $darker-amt);
-        color: darken($information, $much-darker-amt);
-
-        .message-header {
-            color: desaturate(darken($information, $very-dark-amt), $desaturate-amt);
-        }
-    }
-
-    &.warning {
-        background: desaturate($warning, $desaturate-amt);
-        border-color: darken($warning, $much-darker-amt);
-        color: darken($warning, $much-darker-amt);
-
-        .message-header {
-            color: desaturate(darken($warning, $very-dark-amt), $desaturate-amt);
-        }
-    }
-
-    &.success {
-        background: desaturate($success, $desaturate-amt);
-        border-color: darken($success, $much-darker-amt);
-        color: darken($success, $much-darker-amt);
-
-        .message-header {
-            color: desaturate(darken($success, $very-dark-amt), $desaturate-amt);
-        }
-    }
-
     &.attached-top {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;

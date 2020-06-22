@@ -36,7 +36,7 @@ $lighten-amt: 8%;
 
 $darker-amt: 20%;
 
-$much-darker-amt: 30%;
+$much-darker-amt: 40%;
 
 $very-dark-amt: 55%;
 
@@ -117,14 +117,9 @@ $small-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
 /* States */
 @import "error";
-
-.test {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-}
+@import "information";
+@import "success";
+@import "warning";
 
 .test-row {
     display: flex;

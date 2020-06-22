@@ -1,0 +1,9 @@
+.shoebuckle.info {
+    background: desaturate($information, $desaturate-amt);
+    border-color: darken($information, $darker-amt);
+    color: darken($information, $much-darker-amt);
+
+    .message-header {
+        color: desaturate(darken($information, $very-dark-amt), $desaturate-amt);
+    }
+}

@@ -1,0 +1,9 @@
+.shoebuckle.success {
+    background: desaturate($success, $desaturate-amt);
+    border-color: darken($success, $much-darker-amt);
+    color: darken($success, $much-darker-amt);
+
+    .message-header {
+        color: desaturate(darken($success, $very-dark-amt), $desaturate-amt);
+    }
+}
