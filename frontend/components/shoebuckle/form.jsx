@@ -34,13 +34,14 @@ Form.Field = (props) => {
 Form.Label = (props) => {
     const {
         children,
-        content
+        content,
+        onClick
     } = props;
 
     const className = `shoebuckle form-label`;
     
     return (
-        <label className={ className }>
+        <label className={ className } onClick={ onClick }>
             { children || content }
         </label>
     );
@@ -54,11 +55,11 @@ Form.Checkbox = class extends Component {
             stateChecked: props.checked || false
         };
 
-        this._handleClick = this._handleClick.bind(this);
+        this._handleChange = this._handleChange.bind(this);
     }
 
-    _handleClick(e) {
-        this.setState({ stateChecked: e.currentTarget.checked });
+    _handleChange() {
+        this.setState({ stateChecked: !this.state.stateChecked });
     }
     
     render() {
@@ -67,7 +68,7 @@ Form.Checkbox = class extends Component {
         const {
             checked,
             label,
-            onClick
+            onChange
         } = this.props;
 
         const className = `shoebuckle form-checkbox`;
@@ -75,7 +76,7 @@ Form.Checkbox = class extends Component {
         const checkbox = <input
             checked={ checked === undefined ? stateChecked : checked }
             className={ className }
-            onClick={ onClick || this._handleClick }
+            onChange={ onChange || this._handleChange }
             type="checkbox"
         />;
         
@@ -83,7 +84,10 @@ Form.Checkbox = class extends Component {
             return (
                 <Form.Field>
                     { checkbox }
-                    <Form.Label content={ label } />
+                    <Form.Label 
+                        content={ label } 
+                        onClick={ onChange || this._handleChange } 
+                    />
                 </Form.Field>
             );
         } else {
@@ -115,18 +119,17 @@ Form.Input = class extends Component {
             name,
             onChange,
             placeholder,
-            type,
             value
         } = this.props;
 
-        const className = `shoebuckle form-input ${ type || "text" }-input`;
+        const className = `shoebuckle form-input`;
 
         const input = <input 
             className={ className }
             name={ name }
             onChange={ onChange || this._handleChange }
             placeholder={ placeholder }
-            type={ type }
+            type="text"
             value={ value === undefined ? stateValue : value }
         />;
 
