@@ -21,6 +21,7 @@ class Dimension < ApplicationRecord
 
     # Associations
     belongs_to :being
+    has_many :dimension_beings, dependent: :destroy
 
     # Custom validators
     def name_cannot_include_restricted_chars

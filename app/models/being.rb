@@ -39,6 +39,7 @@ class Being < ApplicationRecord
 
     # Associations
     has_many :dimensions, dependent: :restrict_with_exception
+    has_many :dimension_beings, dependent: :destroy
 
     # Auth methods
     class << self
