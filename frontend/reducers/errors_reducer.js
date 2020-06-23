@@ -6,6 +6,25 @@ import {
 } from '../actions/beings_actions';
 
 import { 
+    RECEIVE_DIMENSION_BEINGS_ERRORS,
+    RECEIVE_DIMENSION_BEING,
+    REMOVE_DIMENSION_BEING
+} from '../actions/dimension_beings_actions';
+
+import { 
+    RECEIVE_DIMENSION_ERRORS,
+    RECEIVE_DIMENSION,
+    RECEIVE_DIMENSIONS,
+    REMOVE_DIMENSION
+} from '../actions/dimension_actions';
+
+import { 
+    RECEIVE_ROLES_ERRORS,
+    RECEIVE_ROLE,
+    REMOVE_ROLE
+} from '../actions/roles_actions';
+
+import { 
     RECEIVE_SESSION_ERRORS, 
     RECEIVE_SESSION, 
     REMOVE_SESSION 
@@ -13,6 +32,9 @@ import {
 
 const _defaultState = {
     beings: [],
+    dimensionBeings: [],
+    dimensions: [],
+    roles: [],
     session: []
 }
 
@@ -26,6 +48,26 @@ export default (state=_defaultState, action) => {
         case RECEIVE_BEINGS:
         case REMOVE_BEING:
             return { ...state, beings: [] };
+
+        case RECEIVE_DIMENSION_BEINGS_ERRORS:
+            return { ...state, dimensionBeings: action.dimensionBeings }
+        case RECEIVE_DIMENSION_BEING:
+        case REMOVE_DIMENSION_BEING:
+            return { ...state, dimensionBeings: [] }
+
+        case RECEIVE_DIMENSION_ERRORS:
+            return { ...state, dimensions: action.dimensions }
+        case RECEIVE_DIMENSION:
+        case RECEIVE_DIMENSIONS:
+        case REMOVE_DIMENSION:
+            return { ...state, dimensions: [] }
+
+        case RECEIVE_DIMENSION_ROLES_ERRORS:
+            return { ...state, roles: action.roles }
+        case RECEIVE_DIMENSION_ROLE:
+        case REMOVE_DIMENSION_ROLE:
+            return { ...state, roles: [] }
+
         case RECEIVE_SESSION_ERRORS:
             return { ...state, session: action.session };
         case RECEIVE_SESSION:
