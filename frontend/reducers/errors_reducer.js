@@ -16,7 +16,7 @@ import {
     RECEIVE_DIMENSION,
     RECEIVE_DIMENSIONS,
     REMOVE_DIMENSION
-} from '../actions/dimension_actions';
+} from '../actions/dimensions_actions';
 
 import { 
     RECEIVE_ROLES_ERRORS,
@@ -62,10 +62,10 @@ export default (state=_defaultState, action) => {
         case REMOVE_DIMENSION:
             return { ...state, dimensions: [] }
 
-        case RECEIVE_DIMENSION_ROLES_ERRORS:
+        case RECEIVE_ROLES_ERRORS:
             return { ...state, roles: action.roles }
-        case RECEIVE_DIMENSION_ROLE:
-        case REMOVE_DIMENSION_ROLE:
+        case RECEIVE_ROLE:
+        case REMOVE_ROLE:
             return { ...state, roles: [] }
 
         case RECEIVE_SESSION_ERRORS:
