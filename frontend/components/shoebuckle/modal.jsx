@@ -47,12 +47,15 @@ export default class Modal extends Component {
                 { trigger }
 
                 { open && (
-                    <div className={ className }>
+                    <div className="modal-wrapper">
                         <div 
                             className="modal-bg"
                             onClick={ this._handleClose }
                         ></div>
-                        { children || content }
+                        
+                        <div className={ className }>
+                            { children || content }
+                        </div>
                     </div>
                 )}
             </>

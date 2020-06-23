@@ -1,4 +1,14 @@
-.shoebuckle.modal {
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     .modal-bg {
         position: fixed;
         top: 0;
@@ -7,5 +17,39 @@
         right: 0;
 
         background: rgba(0, 0, 0, 0.8);
+
+        z-index: 1;
+    }
+    
+    .shoebuckle.modal {
+        background: $white;
+        z-index: 2;
+
+        border-radius: $small-round;
+
+        font-size: $body-font-size;
+
+        >*:first-child {
+            padding: $modal-padding;
+        }
+
+        >*:nth-child(n + 2) {
+            padding: $modal-padding;
+            padding-top: 0;
+        }
+
+        .modal-header {
+            font-size: 1.4em;
+            font-weight: bold;
+
+            border-bottom: $thin solid $lightest;
+
+            margin-bottom: $modal-padding;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 }

@@ -328,7 +328,16 @@ export default class Kitchensink extends Component {
                     <Modal
                         trigger={ <Button>Show Modal</Button> }
                     >
-                        
+                        <Modal.Header>
+                            My First Modal
+                        </Modal.Header>
+                        <Modal.Content>
+                            <p>This is a cool modal message to inform you of something important.</p>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button green>Got It</Button>
+                            <Button red>Never Mind</Button>
+                        </Modal.Actions>
                     </Modal>
                 </div>
             </div>

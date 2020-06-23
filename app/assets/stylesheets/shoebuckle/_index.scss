@@ -66,12 +66,16 @@ $label-vertical-padding: 3px !default;
 $label-horizontal-margin: 2px !default;
 $label-vertical-margin: 2px !default;
 
-$message-horizontal-padding: 18px;
-$message-vertical-padding: 16px;
+$message-horizontal-padding: 18px !default;
+$message-vertical-padding: 16px !default;
 
-$message-header-bottom-margin: 2px;
+$message-header-bottom-margin: 2px !default;
 
-$message-list-left-margin: 18px;
+$message-list-left-margin: 18px !default;
+
+$modal-padding: 18px !default;
+
+$modal-header-bottom-margin: 18px !default;
 
 /* Font size */
 $body-font-size: 14px !default;
