@@ -9,8 +9,23 @@ import configureStore from './store/store';
 import { fetchBeings } from './actions/beings_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
+    let store;
+
+    if (window.currentUser) {
+        const preloadedState = {
+            entities: {
+                beings: { [window.currentBeing.id]: window.currentBeing }
+            },
+            session: { currentBeingId: window.currentBeing.id }
+        };
+
+        store = configureStore(preloadedState);
+        delete window.currentUser;
+    } else {
+        store = configureStore();
+    }
+
     const root = document.getElementById("root");
-    const store = configureStore();
     ReactDOM.render(<Root store={ store } />, root);
 
     // TODO: Remove after development!!
