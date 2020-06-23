@@ -10,12 +10,13 @@ export default class Header extends Component {
             large,
             medium,
             small,
-            tiny
+            tiny, 
+            mini
         } = this.props;
 
         const Tag = this.props.as ? this.props.as : "div";
 
-        const className = `shoebuckle header${ icon ? " icon" : "" }${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || "" }`;
+        const className = `shoebuckle header${ icon ? " icon" : "" }${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || (mini && " mini") || "" }`;
         
         return (
             <Tag className={ className }>

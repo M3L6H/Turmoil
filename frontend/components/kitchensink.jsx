@@ -357,6 +357,12 @@ export default class Kitchensink extends Component {
                         </Header.Subheader>
                     </Header>
                 </div>
+                <div className="test-row">
+                    <Header huge>
+                        <Icon name="plug" />
+                        Uptime Guarantee
+                    </Header>
+                </div>
             </div>
         );
     }
