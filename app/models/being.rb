@@ -19,4 +19,70 @@
 #  index_beings_on_username       (username) UNIQUE
 #
 class Being < ApplicationRecord
+    validates :username, :email, :password_digest, :session_token, :status, presence: true
+    validates :username, :email, :session_token, uniqueness: true
+    
+    validates :username, length: { in: 5..32 }
+
+    validates :status, inclusion: { in: %w(online idle do_not_disturb invisible) }
+    validates :custom_status, length: { maximum: 128, allow_nil: true }
+
+    validates :password, length: { minimum: 6, allow_nil: true }
+
+    validate :username_cannot_include_restricted_chars,
+        :status_cannot_include_restricted_chars,
+        :email_should_be_in_valid_format
+
+    attr_reader :password
+    
+    after_initialize :ensure_session_token
+
+    class << self
+        def find_by_credentials(username, password)
+            user = User.find_by(username: username)
+
+            user if user && user.is_password?(password)
+        end
+
+        def generate_session_token
+            SecureRandom::urlsafe_base64
+        end
+    end
+
+    def password=(password)
+        @password = password
+        self.password_digest = BCrypt::Password.create(password)
+    end
+
+    def is_password?(password)
+        BCrypt::Password.new(self.password_digest).is_password?(password)
+    end
+
+    def reset_session_token!
+        self.update!(session_token: Being.generate_session_token)
+        self.session_token
+    end
+
+    def ensure_session_token
+        self.session_token ||= Being.generate_session_token
+    end
+
+    # Custom validators
+    def username_cannot_include_restricted_chars
+        if cannot_contain_restricted_chars(self.username)
+            errors[:username] << "cannot contain restricted characters"
+        end
+    end
+
+    def status_cannot_include_restricted_chars
+        if cannot_contain_restricted_chars(self.status)
+            errors[:status] << "cannot contain restricted characters"
+        end
+    end
+
+    def email_should_be_in_valid_format
+        unless URI::MailTo::EMAIL_REGEXP === self.email
+            errors[:email] << "should be in a valid format"
+        end
+    end
 end
