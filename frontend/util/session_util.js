@@ -1,16 +1,16 @@
-export const createSession = (session) => (
+export const createSession = (being) => (
     $.ajax({
         method: "POST",
         url: "/api/session",
-        data: { session },
+        data: { being },
         dataType: "json"
     })
 );
 
-export const deleteSession = (sessionId) => (
+export const deleteSession = () => (
     $.ajax({
         method: "DELETE",
-        url: `/api/session/${ sessionId }`,
+        url: `/api/session`,
         dataType: "json"
     })
 );
