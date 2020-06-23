@@ -1,10 +1,10 @@
 class Api::BeingsController < ApplicationController
     def index
-        @beings = Beings.all
+        @beings = Being.all
     end
 
     def show
-        @being = Beings.find_by(id: params[:id])
+        @being = Being.find_by(id: params[:id])
 
         if @being
             render :show
