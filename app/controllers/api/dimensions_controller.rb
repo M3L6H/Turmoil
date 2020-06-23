@@ -23,6 +23,7 @@ class Api::DimensionsController < ApplicationController
         @dimension.being_id = current_being.id
 
         if @dimension.save
+            Role.create!(dimension_id: @dimension.id, can_be_deleted: false, name: "everyone")
             render :create
         else
             render json: @dimension.errors.full_messages, status: 422
