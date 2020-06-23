@@ -18,5 +18,21 @@
 #  index_dimension_beings_on_role_id                    (role_id)
 #
 class DimensionBeing < ApplicationRecord
-    
+    validates :nickname, presence: true, length: { in: 5..32 }
+    validates :temporary, :banned, inclusion: { in: [true, false] }
+    validates :being_id, uniqueness: { scope: :dimension_id }
+
+    validate :nickname_cannot_include_restricted_chars
+
+    # Associations
+    belongs_to :dimension
+    belongs_to :being
+    belongs_to :role, optional: true
+
+    # Custom validators
+    def nickname_cannot_include_restricted_chars
+        if cannot_contain_restricted_chars(self.nickname)
+            errors[:nickname] << "cannot contain restricted characters"
+        end
+    end
 end
