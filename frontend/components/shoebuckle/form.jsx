@@ -38,12 +38,14 @@ export default class Form extends Component {
 Form.Field = (props) => {
     const { 
         children,
-        error,
-        required
+        error
     } = props;
 
     const className = `shoebuckle form-field`;
-    const childProps = { error, required };
+    const childProps = { error };
+
+    // React doesn't like a boolean for error when cloning the component
+    childProps.error = childProps.error === true ? 1 : childProps.error;
 
     const childrenWithProps = Children.map(children, child => {
         if (isValidElement(child)) {
