@@ -4,18 +4,38 @@ class Api::SessionsController < ApplicationController
 
         if @being
             login(@being)
-            render :create
+
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json 
+            end
         else
-            render json: ["Invalid credentials"], status: 422
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: ["Invalid credentials"], status: 422
+                end
+            end
         end
     end
 
     def destroy
         if logged_in?
             logout
-            render json: {}, status: 200
+
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: {}, status: 200
+                end
+            end
         else
-            render json: ["Not logged in"], status: 403
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: ["Not logged in"], status: 403
+                end
+            end
         end
     end
 end

@@ -1,15 +1,28 @@
 class Api::BeingsController < ApplicationController
     def index
         @beings = Being.all
+
+        respond_to do |format|
+            format.html { redirect_back fallback_location: "/" }
+            format.json 
+        end
     end
 
     def show
         @being = Being.find_by(id: params[:id])
 
         if @being
-            render :show
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json 
+            end
         else
-            render json: ["Could not find being with id #{ params[:id] }"], status: 404
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: ["Could not find being with id #{ params[:id] }"], status: 404
+                end
+            end
         end
     end
 
@@ -18,9 +31,18 @@ class Api::BeingsController < ApplicationController
 
         if @being.save
             login(@being)
-            render :create
+
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json 
+            end
         else
-            render json: @being.errors.full_messages, status: 422
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: @being.errors.full_messages, status: 422
+                end
+            end
         end
     end
 
@@ -29,9 +51,18 @@ class Api::BeingsController < ApplicationController
 
         if @being
             @being.destroy
-            render :destroy
+            
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json 
+            end
         else
-            render json: ["Could not find being with id #{ params[:id] }"], status: 404
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: ["Could not find being with id #{ params[:id] }"], status: 404
+                end
+            end
         end
     end
 
@@ -40,12 +71,25 @@ class Api::BeingsController < ApplicationController
 
         if @being
             if @being.update(being_params)
-                render :update
+                respond_to do |format|
+                    format.html { redirect_back fallback_location: "/" }
+                    format.json 
+                end
             else
-                render json: @being.errors.full_messages, status: 422
+                respond_to do |format|
+                    format.html { redirect_back fallback_location: "/" }
+                    format.json do
+                        render json: @being.errors.full_messages, status: 422
+                    end
+                end
             end
         else
-            render json: ["Could not find being with id #{ params[:id] }"], status: 404
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: ["Could not find being with id #{ params[:id] }"], status: 404
+                end
+            end
         end
     end
 end
