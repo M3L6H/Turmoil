@@ -31,6 +31,7 @@ export default class Modal extends Component {
         } = this.props;
 
         const open = this.props.open === undefined ? stateOpen : this.props.open;
+        const handleClose = this.props.handleClose || this._handleClose;
 
         const className = `shoebuckle modal`;
 
@@ -38,8 +39,6 @@ export default class Modal extends Component {
 
         if (isValidElement(trigger)) {
             trigger = cloneElement(trigger, { onClick: this._handleOpen, ...trigger.props });
-        } else {
-            console.error("Trigger is not a valid react element!", trigger);
         }
         
         return (
@@ -50,7 +49,7 @@ export default class Modal extends Component {
                     <div className="modal-wrapper">
                         <div 
                             className="modal-bg"
-                            onClick={ this._handleClose }
+                            onClick={ handleClose }
                         ></div>
                         
                         <div className={ className }>
