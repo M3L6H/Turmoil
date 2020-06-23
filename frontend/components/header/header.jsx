@@ -27,8 +27,8 @@ export default class Header extends Component {
         } else {
             return (
                 <>
-                    <li><Button compact pill onClick={ openSignIn }>Sign In</Button></li>
-                    <li><Button compact pill onClick={ openSignUp }>Sign Up</Button></li>
+                    <li><Button basic compact pill onClick={ openSignIn }>Sign In</Button></li>
+                    <li><Button basic compact pill onClick={ openSignUp }>Sign Up</Button></li>
                 </>
             );
         }

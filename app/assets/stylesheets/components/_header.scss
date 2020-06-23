@@ -5,10 +5,14 @@
     justify-content: space-between;
     align-items: center;
 
-    max-width: $max-content-width;
+    max-width: $content-max-width;
     margin: auto;
 
     .header-nav > ul {
         display: flex;
+
+        li:nth-child(n + 2) {
+            margin-left: 0.25rem;
+        }
     }
 }
