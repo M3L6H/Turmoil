@@ -27,8 +27,8 @@ export default class Header extends Component {
         } else {
             return (
                 <>
-                    <li><Button pill onClick={ openSignIn }>Sign In</Button></li>
-                    <li><Button pill onClick={ openSignUp }>Sign Up</Button></li>
+                    <li><Button compact pill onClick={ openSignIn }>Sign In</Button></li>
+                    <li><Button compact pill onClick={ openSignUp }>Sign Up</Button></li>
                 </>
             );
         }
@@ -39,7 +39,7 @@ export default class Header extends Component {
         return (
             <header className="app-header">
                 <h2>Chaos</h2>
-                <nav>
+                <nav className="header-nav">
                     <ul>
                         { this._renderAuthButtons() }
                     </ul>

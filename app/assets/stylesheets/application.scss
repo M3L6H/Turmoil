@@ -13,5 +13,9 @@
  *= require_self
  */
 
+body {
+    font-size: 100%;
+}
+
 @import "shoebuckle";
 @import "components";

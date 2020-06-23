@@ -2,6 +2,8 @@
     background: $lightest;
     color: $light;
 
+    font-size: $body-font-size;
+
     padding: $btn-vertical-padding $btn-horizontal-padding;
     margin: $btn-vertical-margin $btn-horizontal-margin;
 
@@ -14,6 +16,10 @@
     &:hover {
         background: $lighter;
         color: $dark;
+    }
+
+    &.compact {
+        padding: $btn-cmpct-vertical-padding $btn-cmpct-horizontal-padding;
     }
 
     &.primary {
