@@ -37,7 +37,7 @@ export default class Header extends Component {
     render() {
         
         return (
-            <header>
+            <header className="app-header">
                 <h2>Chaos</h2>
                 <nav>
                     <ul>
