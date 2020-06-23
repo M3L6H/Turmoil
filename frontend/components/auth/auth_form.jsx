@@ -35,6 +35,8 @@ export default class AuthForm extends Component {
 
     _handleSubmit(e) {
         e.preventDefault();
+        const being = Object.assign({}, this.state);
+        console.log(being);
     }
 
     _renderForm(title) {
