@@ -63,6 +63,7 @@ export default class AuthForm extends Component {
         return (
             <Form onSubmit={ this._handleSubmit } errors={ errors }>
                 <Form.Input 
+                    required={ formType === "signUp" }
                     placeholder={ placeholder } 
                     label={ label } 
                     data-type="username"
@@ -71,6 +72,7 @@ export default class AuthForm extends Component {
                 />
                 { formType === "signUp" && (
                     <Form.Input 
+                        required
                         placeholder="Email" 
                         label="How may we contact you?" 
                         data-type="email"
@@ -79,6 +81,8 @@ export default class AuthForm extends Component {
                     />
                 )}
                 <Form.Input 
+                    required={ formType === "signUp" }
+                    placeholder="Password"
                     type="password" 
                     label="What is the password?" 
                     data-type="password"
