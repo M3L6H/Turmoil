@@ -25,8 +25,7 @@ export default class Modal extends Component {
         
         const {
             children,
-            content,
-            onClose
+            content
         } = this.props;
 
         const open = this.props.open === undefined ? stateOpen : this.props.open;
@@ -49,7 +48,7 @@ export default class Modal extends Component {
                     <div className={ className }>
                         <div 
                             className="modal-bg"
-                            onClose={ onClose || this._handleClose }
+                            onClick={ this._handleClose }
                         ></div>
                         { children || content }
                     </div>
