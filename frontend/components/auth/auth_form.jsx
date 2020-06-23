@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Button, Form, Modal } from '../shoebuckle';
+import { Button, Form, Icon, Modal } from '../shoebuckle';
 
 export default class AuthForm extends Component {
     constructor(props) {
@@ -89,7 +89,12 @@ export default class AuthForm extends Component {
                     onChange={ this._handleChange }
                     value={ password }
                 />
-                <Button fluid green type="submit" content={ title } />
+                <Button animated fluid green type="submit">
+                    <Button.Content visible>{ title }</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name="arrow-right" />
+                    </Button.Content>
+                </Button>
             </Form>
         );
     }

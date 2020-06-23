@@ -70,9 +70,6 @@
         }
 
         &:hover {
-            background: darken($lightest, $darken-amt);
-            color: $light;
-            
             .btn-content.hidden {
                 left: 0;
             }
