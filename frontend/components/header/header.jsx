@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import { Button } from '../shoebuckle';
+import { Button, Header } from '../shoebuckle';
 
 import AuthForm from '../auth/auth_form';
 
-export default class Header extends Component {
+export default class AppHeader extends Component {
     constructor(props) {
         super(props)
     
@@ -44,7 +44,7 @@ export default class Header extends Component {
         
         return (
             <header className="app-header">
-                <h2>Chaos</h2>
+                <Header as="h2">Chaos</Header>
                 <nav className="header-nav">
                     <ul>
                         { this._renderAuthButtons() }
