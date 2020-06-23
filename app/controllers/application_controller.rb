@@ -31,9 +31,7 @@ class ApplicationController < ActionController::Base
     end
 
     def require_json
-        respond_to do |format|
-            format.html { redirect_back fallback_location: "/" }
-        end
+        redirect_back fallback_location: "/" if request.format.html?
     end
     
     # Params
