@@ -22,6 +22,10 @@
     }
     
     .shoebuckle.modal {
+        max-height: 90vh;
+        max-width: 85vw;
+        overflow-y: scroll;
+
         background: $white;
         z-index: 2;
 

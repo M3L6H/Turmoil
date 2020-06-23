@@ -32,6 +32,7 @@ export default class AuthForm extends Component {
     
     _handleClose() {
         this.props.closeForm();
+        this.setState({ username: "", email: "", password: "", errors: [] });
     }
 
     _handleSubmit(e) {

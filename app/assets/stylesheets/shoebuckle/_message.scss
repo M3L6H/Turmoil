@@ -4,6 +4,7 @@
     font-size: $body-font-size;
     width: 100%;
     padding: $message-vertical-padding $message-horizontal-padding;
+    margin: $message-vertical-margin 0;
 
     color: $dark;
     background: $lightest;

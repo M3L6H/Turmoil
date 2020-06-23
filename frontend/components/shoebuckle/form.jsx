@@ -1,6 +1,7 @@
 import React, { Component, Children, isValidElement, cloneElement } from 'react';
 
 import Label from './label';
+import Message from './message';
 
 export default class Form extends Component {
     constructor(props) {
@@ -15,7 +16,12 @@ export default class Form extends Component {
         return (
             <form onSubmit={ onSubmit } className={ className }>
                 { children }
-                { errors }
+                <Message 
+                    header="Errors"
+                    list={ errors }
+                    visible={ errors.length > 0 }
+                    error
+                />
             </form>
         );
     }
