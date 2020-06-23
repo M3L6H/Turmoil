@@ -47,6 +47,16 @@ class Api::BeingsController < ApplicationController
     end
 
     def destroy
+        if !logged_in? || current_being.id != params[:id] 
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: ["Cannot delete another user!"], status: 403
+                end
+            end
+            return
+        end
+
         @being = Being.find_by(id: params[:id])
 
         if @being
@@ -67,6 +77,16 @@ class Api::BeingsController < ApplicationController
     end
 
     def update
+        if !logged_in? || current_being.id != params[:id] 
+            respond_to do |format|
+                format.html { redirect_back fallback_location: "/" }
+                format.json do
+                    render json: ["Cannot update another user!"], status: 403
+                end
+            end
+            return
+        end
+        
         @being = Being.find_by(id: params[:id])
 
         if @being
