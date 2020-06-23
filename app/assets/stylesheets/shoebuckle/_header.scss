@@ -21,3 +21,27 @@ h5 {
 h6 {
     font-size: $h6-font-size;
 }
+
+.shoebuckle.header {
+    font-family: "Staatliches", cursive;
+    
+    &.tiny {
+        font-size: $tiny-header-font-size;
+    }
+
+    &.small {
+        font-size: $small-header-font-size;
+    }
+
+    &.medium {
+        font-size: $medium-header-font-size;
+    }
+
+    &.large {
+        font-size: $large-header-font-size;
+    }
+
+    &.huge {
+        font-size: $huge-header-font-size;
+    }
+}

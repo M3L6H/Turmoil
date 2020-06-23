@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { 
     Button, 
     Form,
+    Header,
     Icon, 
     Label,
     Message,
@@ -339,6 +340,13 @@ export default class Kitchensink extends Component {
                             <Button red>Never Mind</Button>
                         </Modal.Actions>
                     </Modal>
+                </div>
+                <div className="test-row">
+                    <Header huge>Huge</Header>
+                    <Header large>Large</Header>
+                    <Header medium>Medium</Header>
+                    <Header small>Small</Header>
+                    <Header tiny>Tiny</Header>
                 </div>
             </div>
         );
