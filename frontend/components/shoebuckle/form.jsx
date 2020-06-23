@@ -12,14 +12,14 @@ export default class Form extends Component {
         const { children, errors, onSubmit } = this.props;
 
         const className = `shoebuckle form`;
-        
+
         return (
             <form onSubmit={ onSubmit } className={ className }>
                 { children }
                 <Message 
                     header="Errors"
                     list={ errors }
-                    visible={ errors.length > 0 }
+                    visible={ Boolean(errors) && errors.length > 0 }
                     error
                 />
             </form>
