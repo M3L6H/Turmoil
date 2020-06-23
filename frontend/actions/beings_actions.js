@@ -25,32 +25,32 @@ const receiveBeingsErrors = (errors) => ({
     beings: errors
 });
 
-export const fetchBeings = () => (
+export const fetchBeings = () => dispatch => (
     BeingsUtil.fetchBeings()
-        .then(res => receiveBeings(res))
+        .then(res => dispatch(receiveBeings(res)))
         .fail(jqXHR => receiveBeingsErrors(jqXHR.responseJSON))
 );
 
-export const fetchBeing = (beingId) => (
+export const fetchBeing = (beingId) => dispatch => (
     BeingsUtil.fetchBeing(beingId)
-        .then(res => receiveBeing(res))
+        .then(res => dispatch(receiveBeing(res)))
         .fail(jqXHR => receiveBeingsErrors(jqXHR.responseJSON))
 );
 
-export const createBeing = (being) => (
+export const createBeing = (being) => dispatch => (
     BeingsUtil.createBeing(being)
-        .then(res => receiveBeing(res))
+        .then(res => dispatch(receiveBeing(res)))
         .fail(jqXHR => receiveBeingsErrors(jqXHR.responseJSON))
 );
 
-export const deleteBeing = (beingId) => (
+export const deleteBeing = (beingId) => dispatch => (
     BeingsUtil.deleteBeing(beingId)
-        .then(res => removeBeing(res))
+        .then(res => dispatch(removeBeing(res)))
         .fail(jqXHR => receiveBeingsErrors(jqXHR.responseJSON))
 );
 
-export const updateBeing = (being) => (
+export const updateBeing = (being) => dispatch => (
     BeingsUtil.updateBeing(being)
-        .then(res => receiveBeing(res))
+        .then(res => dispatch(receiveBeing(res)))
         .fail(jqXHR => receiveBeingsErrors(jqXHR.responseJSON))
 );
