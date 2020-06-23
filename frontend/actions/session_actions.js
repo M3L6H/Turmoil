@@ -4,7 +4,7 @@ export const RECEIVE_SESSION = "RECEIVE_SESSION";
 export const REMOVE_SESSION = "REMOVE_SESSION";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
-const receiveSession = (beingId) => ({
+export const receiveSession = (beingId) => ({
     type: RECEIVE_SESSION,
     beingId
 });

@@ -21,7 +21,7 @@ export default class Header extends Component {
 
         if (currentBeingId) {
             return (
-                <li><Button pill onClick={ signOut }>Sign Out</Button></li>
+                <li><Button basic compact pill onClick={ signOut }>Sign Out</Button></li>
             );
         } else {
             return (

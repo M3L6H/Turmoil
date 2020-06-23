@@ -1,5 +1,7 @@
 import * as BeingsUtil from "../util/beings_util";
 
+import { receiveSession } from './session_actions';
+
 export const RECEIVE_BEINGS = "RECEIVE_BEINGS";
 export const RECEIVE_BEING = "RECEIVE_BEING";
 export const REMOVE_BEING = "REMOVE_BEING";
@@ -39,7 +41,10 @@ export const fetchBeing = (beingId) => dispatch => (
 
 export const createBeing = (being) => dispatch => (
     BeingsUtil.createBeing(being)
-        .then(res => dispatch(receiveBeing(res)))
+        .then(res => {
+            dispatch(receiveBeing(res));
+            dispatch(receiveSession(res.id));
+        })
         .fail(jqXHR => receiveBeingsErrors(jqXHR.responseJSON))
 );
 

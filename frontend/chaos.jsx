@@ -11,7 +11,7 @@ import { fetchBeings } from './actions/beings_actions';
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
-    if (window.currentUser) {
+    if (window.currentBeing) {
         const preloadedState = {
             entities: {
                 beings: { [window.currentBeing.id]: window.currentBeing }
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         store = configureStore(preloadedState);
-        delete window.currentUser;
+        delete window.currentBeing;
     } else {
         store = configureStore();
     }

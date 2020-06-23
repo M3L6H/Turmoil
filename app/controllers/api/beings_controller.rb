@@ -17,6 +17,7 @@ class Api::BeingsController < ApplicationController
         @being = Being.new(being_params)
 
         if @being.save
+            login(@being)
             render :create
         else
             render json: @being.errors.full_messages, status: 422
