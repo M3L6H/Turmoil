@@ -1,7 +1,9 @@
 export const RECEIVE_AUTH_MODAL = "RECEIVE_AUTH_MODAL";
 
-export const receiveAuthModal = (open, formType) => ({
+export const receiveAuthModal = (open, formType="signIn") => ({
     type: RECEIVE_AUTH_MODAL,
-    open, 
-    formType
+    modal: {
+        open, 
+        formType
+    }
 });
