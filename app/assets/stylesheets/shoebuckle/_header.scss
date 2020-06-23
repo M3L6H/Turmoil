@@ -23,7 +23,11 @@ h6 {
 }
 
 .shoebuckle.header {
-    font-family: "Staatliches", cursive;
+    font-family: $header-font;
+    
+    &.mini {
+        font-size: $mini-header-font-size;
+    }
     
     &.tiny {
         font-size: $tiny-header-font-size;
@@ -53,5 +57,11 @@ h6 {
         >.icon-wrapper .icon {
             font-size: $massive;
         }
+    }
+
+    .header-subheader {
+        font-family: $body-font;
+        font-weight: 400;
+        font-size: $mini-header-font-size;
     }
 }

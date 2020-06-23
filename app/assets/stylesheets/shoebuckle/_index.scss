@@ -81,6 +81,10 @@ $modal-padding: 1.125rem !default;
 
 $modal-header-bottom-margin: 1.125rem !default;
 
+/* Font family*/
+$header-font: "Staatliches", cursive;
+$body-font: "Open Sans", sans-serif;
+
 /* Font size */
 $h1-font-size: 2.4rem !default;
 $h2-font-size: 1.8rem !default;
@@ -94,6 +98,7 @@ $large-header-font-size: 1.8em !default;
 $medium-header-font-size: 1.4em !default;
 $small-header-font-size: 1em !default;
 $tiny-header-font-size: 0.75em !default;
+$mini-header-font-size: 0.6em !default;
 
 $body-font-size: 0.875rem !default;
 

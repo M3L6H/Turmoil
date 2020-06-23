@@ -24,3 +24,18 @@ export default class Header extends Component {
         );
     }
 }
+
+Header.Subheader = (props) => {
+    const {
+        children,
+        content
+    } = props;
+
+    const className = `header-subheader`;
+
+    return (
+        <div className={ className } >
+            { children || content }
+        </div>
+    );
+};

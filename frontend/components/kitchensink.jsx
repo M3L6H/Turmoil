@@ -352,6 +352,9 @@ export default class Kitchensink extends Component {
                     <Header as="h2" icon>
                         <Icon name="cogs" />
                         Account Settings
+                        <Header.Subheader>
+                            Manage your account settings and set email preferences.
+                        </Header.Subheader>
                     </Header>
                 </div>
             </div>
