@@ -5,7 +5,6 @@
     font-size: $body-font-size;
 
     padding: $btn-vertical-padding $btn-horizontal-padding;
-    margin: $btn-vertical-margin $btn-horizontal-margin;
 
     font-weight: 600;
 
@@ -20,6 +19,10 @@
 
     &.compact {
         padding: $btn-cmpct-vertical-padding $btn-cmpct-horizontal-padding;
+    }
+
+    &.pill {
+        border-radius: calc(#{ 2 * $btn-vertical-padding + $body-font-size } / 2);
     }
 
     &.primary {

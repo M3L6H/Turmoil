@@ -29,6 +29,7 @@ class Button extends Component {
             children, 
             content, 
             compact,
+            pill,
             fluid,
             primary, 
             secondary, 
@@ -38,7 +39,7 @@ class Button extends Component {
             type
         } = this.props;
     
-        const className = `shoebuckle btn${ compact ? " compact" : ""}${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ fluid ? " fluid" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
+        const className = `shoebuckle btn${ compact ? " compact" : "" }${ pill ? " pill" : "" }${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ fluid ? " fluid" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
         
         return (
             <button
