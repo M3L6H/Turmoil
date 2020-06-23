@@ -9,7 +9,7 @@
 Being.destroy_all
 
 catlover = Being.create!(username: "catlover", password: "catlover123", email: "catlover23@cats.co")
-l33t = Being.create!(username: "l33t", password: "c0rndog$$", email: "jill_hamilton@people.net")
+elite = Being.create!(username: "3l1t3", password: "c0rndog$$", email: "jill_hamilton@people.net")
 cerberus = Being.create!(username: "cerberus", password: "!demondogpuppies!", email: "cerb@hell.com")
 gandalf111 = Being.create!(username: "gandalf111", password: "YOUSHAlL N0T P@SS", email: "gandalf111@wizards.io")
 rocket = Being.create!(username: "rocket", password: "cefG-hyxg-fWWv", email: "rocket_is@raccoon.gov")
@@ -18,3 +18,5 @@ spiderman = Being.create!(username: "Spiderman", password: "itsy bitsy spidy cra
 justin_y = Being.create!(username: "JustinY", password: "i'm 3verywh3re youl00k", email: "TheJustinY@anonymous.io")
 akali1987 = Being.create!(username: "Akali1987", password: "jhRs-OXzi-aMlp", email: "akali@league.com")
 erza_scarlet = Being.create!(username: "Erza_Scarlet", password: "jellal is overrated", email: "scarlet123@fairytail.com")
+
+demo_user = Being.create!(username: "DemoUser", password: "passw0rd123", email: "demo@example.com")
