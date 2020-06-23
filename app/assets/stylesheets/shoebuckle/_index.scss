@@ -122,6 +122,11 @@ $small-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 @import "success";
 @import "warning";
 
+.no-scroll {
+    overflow-y: hidden;
+    height: 100%;
+}
+
 .test-row {
     display: flex;
     align-items: center;

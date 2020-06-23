@@ -13,10 +13,12 @@ export default class Modal extends Component {
     }
     
     _handleClose() {
+        document.body.classList.remove("no-scroll");
         this.setState({ stateOpen: false });
     }
 
     _handleOpen() {
+        document.body.classList.add("no-scroll");
         this.setState({ stateOpen: true });
     }
     
@@ -56,4 +58,43 @@ export default class Modal extends Component {
             </>
         );
     }
+}
+
+Modal.Header = props => {
+    const {
+        children,
+        content
+    } = props;
+    
+    return (
+        <div className="modal-header">
+            { children || content }
+        </div>
+    );
+};
+
+Modal.Content = props => {
+    const {
+        children,
+        content 
+    } = props;
+
+    return (
+        <div className="modal-content">
+            { children || content }
+        </div>
+    );
+};
+
+Modal.Actions = props => {
+    const {
+        children, 
+        content
+    } = props;
+
+    return (
+        <div className="modal-actions">
+            { children || content }
+        </div>
+    );
 }
