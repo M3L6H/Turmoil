@@ -40,6 +40,7 @@ class Being < ApplicationRecord
     # Associations
     has_many :dimensions, dependent: :restrict_with_exception
 
+    # Auth methods
     class << self
         def find_by_credentials(username, password)
             user = self.find_by(username: username) || self.find_by(email: username)
@@ -68,6 +69,11 @@ class Being < ApplicationRecord
 
     def ensure_session_token
         self.session_token ||= Being.generate_session_token
+    end
+
+    # Returns whether the passed object belongs to the being
+    def owns(obj)
+        obj.being_id == self.id
     end
 
     # Custom validators

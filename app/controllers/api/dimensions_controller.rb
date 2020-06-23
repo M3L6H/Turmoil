@@ -1,6 +1,6 @@
 class Api::DimensionsController < ApplicationController
     before_action :require_json
-    before_action :require_logged_in, only: [:create]
+    before_action :require_logged_in, except: [:index, :show]
     
     def index
         # TODO: Update with query parameters
@@ -30,9 +30,36 @@ class Api::DimensionsController < ApplicationController
     end
 
     def destroy
+        @dimension = Dimension.find_by(id: params[:id])
+        
+        if @dimension
+            if current_being.owns @dimension
+                @dimension.destroy
+                render :destroy
+            else
+                render json: ["Cannot delete a dimension you don't own"], status: 403
+            end
+        else
+            render json: ["Could not find dimension with id #{params[:id]}"], status: 404
+        end
     end
 
     def update
+        @dimension = Dimension.find_by(id: params[:id])
+        
+        if @dimension
+            if current_being.owns @dimension
+                if @dimension.update(dimension_params)
+                    render :update
+                else
+                    render json: @dimension.errors.full_messages, status: 422
+                end
+            else
+                render json: ["Cannot update a dimension you don't own"], status: 403
+            end
+        else
+            render json: ["Could not find dimension with id #{params[:id]}"], status: 404
+        end
     end
 
 private
