@@ -1,21 +1,23 @@
 class ApplicationController < ActionController::Base
-    def current_user
-        @current_user ||= User.find_by(session_token: session[:session_token])
+    helper_method :current_being, :logged_in?
+    
+    def current_being
+        @current_being ||= Being.find_by(session_token: session[:session_token])
     end
 
-    def login(user)
-        session[:session_token] = user.reset_session_token!
-        @current_user = user
+    def login(being)
+        session[:session_token] = being.reset_session_token!
+        @current_being = being
     end
 
     def logout
-        current_user.reset_session_token!
+        current_being.reset_session_token!
         session[:session_token] = nil
-        @current_user = nil
+        @current_being = nil
     end
 
     def logged_in?
-        !!current_user
+        !!current_being
     end
 
     def being_params
