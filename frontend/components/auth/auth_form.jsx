@@ -9,7 +9,8 @@ export default class AuthForm extends Component {
         this.state = {
             username: "",
             email: "",
-            password: ""
+            password: "",
+            errors: []
         };
     
         this._handleChange = this._handleChange.bind(this);
@@ -35,19 +36,31 @@ export default class AuthForm extends Component {
 
     _handleSubmit(e) {
         e.preventDefault();
-        const being = Object.assign({}, this.state);
-        console.log(being);
+        
+        const { formType, signIn, signUp, closeForm } = this.props;
+        const { username, email, password } = this.state;
+        const being = {
+            username,
+            email,
+            password
+        };
+
+        const authAction = formType === "signIn" ? signIn : signUp;
+        
+        authAction(being)
+            .then(() => closeForm())
+            .fail(jqXHR => this.setState({ errors: jqXHR.responseJSON }));
     }
 
     _renderForm(title) {
-        const { username, email, password } = this.state;
+        const { username, email, password, errors } = this.state;
         const { formType } = this.props;
         
         const placeholder = formType === "signIn" ? "Username or Email" : "Username";
         const label = formType === "signIn" ? "Who goes there?" : "State your name, mortal";
 
         return (
-            <Form onSubmit={ this._handleSubmit }>
+            <Form onSubmit={ this._handleSubmit } errors={ errors }>
                 <Form.Input 
                     placeholder={ placeholder } 
                     label={ label } 

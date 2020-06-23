@@ -19,8 +19,8 @@ const receiveSessionErrors = (errors) => ({
 });
 
 export const createSession = (being) => dispatch => (
-    SessionUtil.createBeing(being)
-        .then(res => dispatch(receiveSession(res)))
+    SessionUtil.createSession(being)
+        .then(res => dispatch(receiveSession(res.currentBeingId)))
         .fail(jqXHR => receiveSessionErrors(jqXHR.responseJSON))
 );
 

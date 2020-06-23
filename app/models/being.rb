@@ -39,7 +39,7 @@ class Being < ApplicationRecord
 
     class << self
         def find_by_credentials(username, password)
-            user = User.find_by(username: username)
+            user = self.find_by(username: username)
 
             user if user && user.is_password?(password)
         end

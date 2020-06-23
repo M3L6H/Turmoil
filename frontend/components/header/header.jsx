@@ -37,7 +37,9 @@ export default class Header extends Component {
         const { 
             open, 
             formType,
-            closeForm
+            closeForm,
+            signIn,
+            signUp
         } = this.props;
         
         return (
@@ -53,6 +55,8 @@ export default class Header extends Component {
                     open={ open }
                     formType={ formType }
                     closeForm={ closeForm }
+                    signIn={ signIn }
+                    signUp={ signUp }
                 />
             </header>
         );
