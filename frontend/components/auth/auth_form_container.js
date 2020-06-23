@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 
 import AuthForm from './auth_form';
 
-const mapStateToProps = (state) => ({
-    
+const mapStateToProps = ({ ui: { modals } }) => ({
+    ...modals.auth
 });
 
 const mapDispatchToProps = (dispatch) => ({

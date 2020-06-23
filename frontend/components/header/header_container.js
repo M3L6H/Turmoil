@@ -5,18 +5,16 @@ import { deleteSession } from '../../actions/session_actions';
 
 import Header from './header';
 
-const mapStateToProps = ({ session, ui }) => ({
+const mapStateToProps = ({ session, ui: { modals } }) => ({
     currentBeingId: session.currentBeingId,
-    formType: ui.modals.auth.formType,
-    formOpen: ui.modals.auth.open
+    ...modals.auth
 });
 
 const mapDispatchToProps = (dispatch) => ({
     openSignUp: () => dispatch(receiveAuthModal(true, "signUp")),
-    closeSignUp: () => dispatch(receiveAuthModal(false, "signUp")),
     openSignIn: () => dispatch(receiveAuthModal(true, "signIn")),
-    closeSignIn: () => dispatch(receiveAuthModal(false, "signIn")),
-    signOut: () => dispatch(deleteSession())
+    signOut: () => dispatch(deleteSession()),
+    closeForm: () => dispatch(receiveAuthModal(false))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

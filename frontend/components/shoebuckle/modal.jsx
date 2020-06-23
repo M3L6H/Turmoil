@@ -40,6 +40,11 @@ export default class Modal extends Component {
         if (isValidElement(trigger)) {
             trigger = cloneElement(trigger, { onClick: this._handleOpen, ...trigger.props });
         }
+
+        // Render nothing if we have nothing to render
+        if (!trigger && !open) {
+            return  null;
+        }
         
         return (
             <>

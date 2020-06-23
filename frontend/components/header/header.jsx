@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Button } from '../shoebuckle';
 
+import AuthForm from '../auth/auth_form';
+
 export default class Header extends Component {
     constructor(props) {
         super(props)
@@ -9,15 +11,12 @@ export default class Header extends Component {
         this._renderAuthButtons = this._renderAuthButtons.bind(this);
     }
     
-    
     _renderAuthButtons() {
         const {
             currentBeingId,
             openSignIn,
-            closeSignIn,
             openSignUp,
-            closeSignUp,
-            logout
+            signOut
         } = this.props;
 
         if (currentBeingId) {
@@ -35,6 +34,11 @@ export default class Header extends Component {
     }
     
     render() {
+        const { 
+            open, 
+            formType,
+            closeForm
+        } = this.props;
         
         return (
             <header className="app-header">
@@ -44,6 +48,12 @@ export default class Header extends Component {
                         { this._renderAuthButtons() }
                     </ul>
                 </nav>
+
+                <AuthForm 
+                    open={ open }
+                    formType={ formType }
+                    closeForm={ closeForm }
+                />
             </header>
         );
     }
