@@ -44,4 +44,14 @@ h6 {
     &.huge {
         font-size: $huge-header-font-size;
     }
+
+    &.icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        >.icon-wrapper .icon {
+            font-size: $massive;
+        }
+    }
 }

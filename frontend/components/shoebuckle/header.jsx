@@ -5,6 +5,7 @@ export default class Header extends Component {
         const {
             children,
             content,
+            icon,
             huge,
             large,
             medium,
@@ -14,7 +15,7 @@ export default class Header extends Component {
 
         const Tag = this.props.as ? this.props.as : "div";
 
-        const className = `shoebuckle header${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || "" }`;
+        const className = `shoebuckle header${ icon ? " icon" : "" }${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || "" }`;
         
         return (
             <Tag className={ className }>

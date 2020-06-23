@@ -348,6 +348,12 @@ export default class Kitchensink extends Component {
                     <Header small>Small</Header>
                     <Header tiny>Tiny</Header>
                 </div>
+                <div className="test-row">
+                    <Header as="h2" icon>
+                        <Icon name="cogs" />
+                        Account Settings
+                    </Header>
+                </div>
             </div>
         );
     }
