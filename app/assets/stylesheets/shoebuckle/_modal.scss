@@ -23,8 +23,13 @@
     
     .shoebuckle.modal {
         max-height: 90vh;
-        max-width: 85vw;
+        max-width: 85%;
+
         overflow-y: scroll;
+
+        @media screen and (min-width: $breakpoint) {
+            overflow-y: hidden;
+        }
 
         background: $white;
         z-index: 2;
