@@ -21,7 +21,13 @@ class Dimension < ApplicationRecord
 
     # Associations
     belongs_to :being
+    has_many :roles, dependent: :destroy
     has_many :dimension_beings, dependent: :destroy
+
+    # A dimension's default role is one that cannot be deleted
+    def default_role
+        self.roles.find_by(can_be_deleted: false)
+    end
 
     # Custom validators
     def name_cannot_include_restricted_chars
