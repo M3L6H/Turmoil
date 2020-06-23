@@ -178,6 +178,7 @@ Form.Input = class extends Component {
             placeholder={ placeholder }
             type={ type || "text" }
             value={ value === undefined ? stateValue : value }
+            data-type={ this.props["data-type"] }
         />;
 
         if (label) {
