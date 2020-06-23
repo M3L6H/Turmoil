@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_183758) do
+ActiveRecord::Schema.define(version: 2020_06_23_184656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,37 @@ ActiveRecord::Schema.define(version: 2020_06_23_183758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["being_id"], name: "index_dimensions_on_being_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.bigint "dimension_id", null: false
+    t.string "name", limit: 128, null: false
+    t.boolean "administrator", default: false, null: false
+    t.boolean "manage_dimension", default: false, null: false
+    t.boolean "manage_roles", default: false, null: false
+    t.boolean "manage_realms", default: false, null: false
+    t.boolean "kick_members", default: false, null: false
+    t.boolean "ban_members", default: false, null: false
+    t.boolean "create_summons", default: true, null: false
+    t.boolean "change_nickname", default: true, null: false
+    t.boolean "manage_nickname", default: false, null: false
+    t.boolean "read_see_text_voice", default: true, null: false
+    t.boolean "send_messages", default: true, null: false
+    t.boolean "manage_messages", default: false, null: false
+    t.boolean "embed_links", default: true, null: false
+    t.boolean "attach_files", default: true, null: false
+    t.boolean "all_mentions", default: true, null: false
+    t.boolean "voice_connect", default: true, null: false
+    t.boolean "speak", default: true, null: false
+    t.boolean "video", default: true, null: false
+    t.boolean "mute_members", default: false, null: false
+    t.boolean "deafen_members", default: false, null: false
+    t.boolean "move_members", default: false, null: false
+    t.boolean "priority_speaker", default: false, null: false
+    t.boolean "can_be_deleted", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dimension_id"], name: "index_roles_on_dimension_id"
   end
 
 end
