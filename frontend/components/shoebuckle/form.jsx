@@ -5,31 +5,17 @@ import Label from './label';
 export default class Form extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            stateError: props.error || false
-        };
-
-        this._handleSubmit = this._handleSubmit.bind(this);
     }
 
-    _handleSubmit(e) {
-        const { onSubmit } = this.props;
-
-        if (onSubmit) {
-            const error = onSubmit(e, Object.assign({}, this.state ));
-            this.setState({ error });
-        }
-    } 
-
     render() {
-        const { children } = this.props;
+        const { children, errors, onSubmit } = this.props;
 
         const className = `shoebuckle form`;
         
         return (
-            <form onSubmit={ this._handleSubmit } className={ className }>
+            <form onSubmit={ onSubmit } className={ className }>
                 { children }
+                { errors }
             </form>
         );
     }
