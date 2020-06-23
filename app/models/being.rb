@@ -37,6 +37,9 @@ class Being < ApplicationRecord
     
     after_initialize :ensure_session_token
 
+    # Associations
+    has_many :dimensions, dependent: :restrict_with_exception
+
     class << self
         def find_by_credentials(username, password)
             user = self.find_by(username: username) || self.find_by(email: username)

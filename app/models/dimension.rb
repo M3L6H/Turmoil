@@ -14,4 +14,18 @@
 #  index_dimensions_on_being_id  (being_id)
 #
 class Dimension < ApplicationRecord
+    validates :name, presence: true, length: { maximum: 128 }
+    validates :public, inclusion: { in: [true, false] }
+
+    validate :name_cannot_include_restricted_chars
+
+    # Associations
+    belongs_to :being
+
+    # Custom validators
+    def name_cannot_include_restricted_chars
+        if cannot_contain_restricted_chars(self.name)
+            errors[:name] << "cannot contain restricted characters"
+        end
+    end
 end
