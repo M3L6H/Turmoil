@@ -5,7 +5,8 @@ import {
     Form,
     Icon, 
     Label,
-    Message
+    Message,
+    Modal
 } from './shoebuckle';
 
 export default class Kitchensink extends Component {
@@ -322,6 +323,13 @@ export default class Kitchensink extends Component {
                         />
                         <Button green fluid type="submit">Submit</Button>
                     </Form>
+                </div>
+                <div className="test-row">
+                    <Modal
+                        trigger={ <Button>Show Modal</Button> }
+                    >
+                        
+                    </Modal>
                 </div>
             </div>
         );
