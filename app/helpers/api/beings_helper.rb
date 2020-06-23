@@ -1,0 +1,2 @@
+module Api::BeingsHelper
+end
