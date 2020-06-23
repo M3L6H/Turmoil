@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
     end
 
     def being_params
-        params.require(:user).permit(:username, :email, :password)
+        params.require(:being).permit(:username, :email, :password)
     end
 end
