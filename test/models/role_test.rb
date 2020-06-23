@@ -14,7 +14,7 @@
 #  embed_links         :boolean          default(TRUE), not null
 #  kick_members        :boolean          default(FALSE), not null
 #  manage_dimension    :boolean          default(FALSE), not null
-#  manage_messages     :boolean          default(FALSE), not null
+#  manage_missives     :boolean          default(FALSE), not null
 #  manage_nickname     :boolean          default(FALSE), not null
 #  manage_realms       :boolean          default(FALSE), not null
 #  manage_roles        :boolean          default(FALSE), not null
@@ -23,7 +23,7 @@
 #  name                :string(128)      not null
 #  priority_speaker    :boolean          default(FALSE), not null
 #  read_see_text_voice :boolean          default(TRUE), not null
-#  send_messages       :boolean          default(TRUE), not null
+#  send_missives       :boolean          default(TRUE), not null
 #  speak               :boolean          default(TRUE), not null
 #  video               :boolean          default(TRUE), not null
 #  voice_connect       :boolean          default(TRUE), not null
