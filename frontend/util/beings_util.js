@@ -38,4 +38,4 @@ export const updateBeing = (being) => (
         data: { being },
         dataType: "json"
     })
-)
+);
