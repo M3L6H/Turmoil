@@ -1,1 +1,1 @@
-json.extract! dimension, :name, :public, :being_id
+json.extract! dimension, :name, :public, :being_id, :id
