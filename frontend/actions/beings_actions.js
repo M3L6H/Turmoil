@@ -22,7 +22,7 @@ const removeBeing = (beingId) => ({
 
 const receiveBeingsErrors = (errors) => ({
     type: RECEIVE_BEINGS_ERRORS,
-    errors
+    beings: errors
 });
 
 export const fetchBeings = () => (
