@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_172753) do
+ActiveRecord::Schema.define(version: 2020_06_23_183758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 2020_06_23_172753) do
     t.index ["email"], name: "index_beings_on_email", unique: true
     t.index ["session_token"], name: "index_beings_on_session_token", unique: true
     t.index ["username"], name: "index_beings_on_username", unique: true
+  end
+
+  create_table "dimension_beings", force: :cascade do |t|
+    t.bigint "dimension_id", null: false
+    t.bigint "being_id", null: false
+    t.bigint "role_id"
+    t.string "nickname", limit: 32, null: false
+    t.boolean "banned", default: false, null: false
+    t.boolean "temporary", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["being_id", "dimension_id"], name: "index_dimension_beings_on_being_id_and_dimension_id", unique: true
+    t.index ["role_id"], name: "index_dimension_beings_on_role_id"
   end
 
   create_table "dimensions", force: :cascade do |t|
