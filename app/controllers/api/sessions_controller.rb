@@ -1,4 +1,7 @@
 class Api::SessionsController < ApplicationController
+    before_action :require_logged_in, only: [:destroy]
+    before_action :require_logged_out, only: [:create]
+    
     def create
         @being = Being.find_by_credentials(being_params[:username], being_params[:password])
 

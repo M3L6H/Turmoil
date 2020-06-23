@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
         @current_being ||= Being.find_by(session_token: session[:session_token])
     end
 
+    def require_logged_in
+        redirect_to "/", status: 403 unless logged_in?
+    end
+
+    def require_logged_out
+        redirect_to "/", status: 403 if logged_in?
+    end
+
     def login(being)
         session[:session_token] = being.reset_session_token!
         @current_being = being

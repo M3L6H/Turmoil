@@ -1,4 +1,6 @@
 class Api::BeingsController < ApplicationController
+    before_action :require_logged_out, only: [:create]
+    
     def index
         @beings = Being.all
 
