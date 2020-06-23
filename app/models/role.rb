@@ -14,7 +14,7 @@
 #  embed_links         :boolean          default(TRUE), not null
 #  kick_members        :boolean          default(FALSE), not null
 #  manage_dimension    :boolean          default(FALSE), not null
-#  manage_messages     :boolean          default(FALSE), not null
+#  manage_missives     :boolean          default(FALSE), not null
 #  manage_nickname     :boolean          default(FALSE), not null
 #  manage_realms       :boolean          default(FALSE), not null
 #  manage_roles        :boolean          default(FALSE), not null
@@ -23,7 +23,7 @@
 #  name                :string(128)      not null
 #  priority_speaker    :boolean          default(FALSE), not null
 #  read_see_text_voice :boolean          default(TRUE), not null
-#  send_messages       :boolean          default(TRUE), not null
+#  send_missives       :boolean          default(TRUE), not null
 #  speak               :boolean          default(TRUE), not null
 #  video               :boolean          default(TRUE), not null
 #  voice_connect       :boolean          default(TRUE), not null
@@ -36,4 +36,25 @@
 #  index_roles_on_dimension_id  (dimension_id)
 #
 class Role < ApplicationRecord
+    validates :name, presence: true, length: { maximum: 128 }
+
+    validates :administrator, :manage_dimension, :manage_roles, :manage_realms,
+        :kick_members, :ban_members, :create_summons, :change_nickname,
+        :manage_nickname, :read_see_text_voice, :send_missives, :manage_missives,
+        :embed_links, :attach_files, :all_mentions, :voice_connect, :speak,
+        :mute_members, :deafen_members, :move_members, :priority_speaker,
+        :can_be_deleted, inclusion: { in: [true, false] }
+
+    validate :name_cannot_include_restricted_chars
+
+    # Associations
+    belongs_to :dimension
+    has_many :dimension_beings, dependent: :restrict_with_exception
+
+    # Custom validators
+    def name_cannot_include_restricted_chars
+        if cannot_contain_restricted_chars(self.name)
+            errors[:name] << "cannot contain restricted characters"
+        end
+    end
 end
