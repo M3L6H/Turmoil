@@ -4,7 +4,8 @@ import {
 
 const _defaultState = {
     auth: {
-        open: false
+        open: false,
+        formType: "signIn"
     }
 };
 
