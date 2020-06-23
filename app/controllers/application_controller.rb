@@ -1,16 +1,9 @@
 class ApplicationController < ActionController::Base
     helper_method :current_being, :logged_in?
     
+    # Auth methods
     def current_being
         @current_being ||= Being.find_by(session_token: session[:session_token])
-    end
-
-    def require_logged_in
-        redirect_to "/", status: 403 unless logged_in?
-    end
-
-    def require_logged_out
-        redirect_to "/", status: 403 if logged_in?
     end
 
     def login(being)
@@ -28,6 +21,22 @@ class ApplicationController < ActionController::Base
         !!current_being
     end
 
+    # Filters
+    def require_logged_in
+        redirect_to "/", status: 403 unless logged_in?
+    end
+
+    def require_logged_out
+        redirect_to "/", status: 403 if logged_in?
+    end
+
+    def require_json
+        respond_to do |format|
+            format.html { redirect_back fallback_location: "/" }
+        end
+    end
+    
+    # Params
     def being_params
         params.require(:being).permit(:username, :email, :password)
     end
