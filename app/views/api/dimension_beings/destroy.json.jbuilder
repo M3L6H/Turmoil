@@ -1,0 +1,1 @@
+json.extract! @dimension_being, :id
