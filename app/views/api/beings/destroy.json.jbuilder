@@ -1,0 +1,1 @@
+json.extract! @being, :id
