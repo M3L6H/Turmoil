@@ -3,6 +3,7 @@ class Api::BeingsController < ApplicationController
     before_action :require_json
     
     def index
+        # TODO: Use query params
         @beings = Being.all
     end
 
