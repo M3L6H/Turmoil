@@ -8,7 +8,8 @@ import {
     Label,
     Menu,
     Message,
-    Modal
+    Modal,
+    Sidebar
 } from './shoebuckle';
 
 export default class Kitchensink extends Component {
@@ -17,18 +18,24 @@ export default class Kitchensink extends Component {
     
         this.state = {
             messageVisible: true,
-            activeItem: ""
+            activeItem: "",
+            sidebarVisible: false
         };
 
         this._handleItemClick = this._handleItemClick.bind(this);
+        this._handleButtonClick = this._handleButtonClick.bind(this);
     }
 
     _handleItemClick(_, { name }) { 
         this.setState({ activeItem: name });
     }
+
+    _handleButtonClick() {
+        this.setState({ sidebarVisible: !this.state.sidebarVisible });
+    }
     
     render() {
-        const { messageVisible, activeItem } = this.state;
+        const { messageVisible, activeItem, sidebarVisible } = this.state;
         
         return (
             <div className="test">
@@ -622,6 +629,43 @@ export default class Kitchensink extends Component {
                             <Icon name="play-circle" />
                         </Menu.Item>
                     </Menu>
+                </div>
+                <div className="test-row left">
+                    <Sidebar.Pushable>
+                        <Sidebar
+                            as={ Menu }
+                            thin
+                            visible={ sidebarVisible }
+                            vertical
+                        >
+                            <Menu.Item
+                                name="sidebarHome"
+                                active={ activeItem === "sidebarHome" }
+                                onClick={ this._handleItemClick }
+                            >
+                                Home
+                            </Menu.Item>
+                            <Menu.Item
+                                name="sidebarGames"
+                                active={ activeItem === "sidebarGames" }
+                                onClick={ this._handleItemClick }
+                            >
+                                Games
+                            </Menu.Item>
+                            <Menu.Item
+                                name="sidebarSettings"
+                                active={ activeItem === "sidebarSettings" }
+                                onClick={ this._handleItemClick }
+                            >
+                                Settings
+                            </Menu.Item>
+                        </Sidebar>
+                        <Sidebar.Pusher>
+                            <Header huge>Content</Header>
+                            <Button onClick={ this._handleButtonClick }>Toggle Sidebar</Button>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit mollitia, ea iste quaerat a aperiam nulla adipisci nihil eius delectus error sit, labore cupiditate dolores aliquid voluptas officia possimus! Maxime.</p>
+                        </Sidebar.Pusher>
+                    </Sidebar.Pushable>
                 </div>
             </div>
         );

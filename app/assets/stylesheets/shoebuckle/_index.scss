@@ -89,6 +89,8 @@ $modal-padding: 1.125rem !default;
 
 $modal-header-bottom-margin: 1.125rem !default;
 
+$sidebar-left-margin: 1rem !default;
+
 /* Font family*/
 $header-font: "Staatliches", cursive;
 $body-font: "Open Sans", sans-serif;
@@ -123,6 +125,8 @@ $massive: 4.5rem !default;
 /* Dimensions */
 $menu-item-min-width: 40px;
 
+$sidebar-width: 250px;
+
 /* Border */
 $small-round: 4px !default;
 
@@ -135,6 +139,8 @@ $bold: 2px !default;
 /* Timings */
 $btn-move-speed: 0.25s !default;
 $btn-fade-speed: 0.5s !default;
+
+$sidebar-move-speed: 0.5s !default;
 
 /* Shadows */
 $small-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -183,5 +189,9 @@ $vertical-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 
     &.column {
         flex-direction: column;
+    }
+
+    &.left {
+        justify-content: flex-start;
     }
 }

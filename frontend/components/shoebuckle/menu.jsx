@@ -4,7 +4,6 @@ export default class Menu extends Component {
     render() {
         const {
             children,
-            content,
             items,
             compact,
             even,
@@ -16,11 +15,11 @@ export default class Menu extends Component {
             vertical
         } = this.props;
 
-        const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }`;
+        const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>
-                { children || content }
+                { children }
                 { items && items.map(({ name, active, value }) => (
                     <Menu.Item key={ name } name={ name } active={ active }>
                         { value }

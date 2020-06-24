@@ -1,0 +1,21 @@
+.shoebuckle.sidebar-pushable {
+    display: flex;
+
+    .sidebar {
+        border-radius: 0;
+        box-shadow: none;
+        height: 100%;
+        width: 0;
+        overflow-x: hidden;
+
+        transition: width $sidebar-move-speed;
+
+        &.visible {
+            width: $sidebar-width;
+
+            &.thin {
+                width: #{ $sidebar-width / 2 };
+            }
+        }
+    }
+}

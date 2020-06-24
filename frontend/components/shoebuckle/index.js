@@ -6,3 +6,4 @@ export { default as Label } from './label';
 export { default as Menu } from './menu';
 export { default as Message } from './message';
 export { default as Modal } from './modal';
+export { default as Sidebar } from './sidebar';
