@@ -1,4 +1,6 @@
-import React, { Component, Children, isValidElement, cloneElement } from 'react';
+import React, { Component } from 'react';
+
+import { childrenWithProps } from './util';
 
 import Label from './label';
 import Message from './message';
@@ -39,14 +41,6 @@ Form.Field = (props) => {
     // React doesn't like a boolean for error when cloning the component
     childProps.error = childProps.error === true ? 1 : childProps.error;
 
-    const childrenWithProps = Children.map(children, child => {
-        if (isValidElement(child)) {
-            return cloneElement(child, { ...childProps, ...child.props });
-        }
-
-        return child;
-    });
-
     const { content, pointing } = error || {};
 
     return (
@@ -54,7 +48,7 @@ Form.Field = (props) => {
             { content && (!pointing || pointing === "below" || pointing === "right") && (
                 <Label error pointing={ pointing } content={ content } floating/>
             ) }
-            { childrenWithProps }
+            { childrenWithProps(children, childProps) }
             { content && (!pointing || pointing === "above" || pointing === "left") && (
                 <Label error pointing={ pointing } content={ content }/>
             ) }

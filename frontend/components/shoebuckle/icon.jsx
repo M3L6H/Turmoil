@@ -1,5 +1,7 @@
-import React, { Component, Children, isValidElement, cloneElement } from 'react';
+import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
+
+import { childrenWithProps } from './util';
 
 import { parseColor, parseSize, selectColor, selectSize } from './util';
 
@@ -10,17 +12,9 @@ class Icon extends Component {
 
         const className = `shoebuckle icon-group fa-layers fa-fw${ parseSize(props) }${ props.className ? " " + props.className : "" }`;
 
-        const childrenWithProps = Children.map(children, child => {
-            if (isValidElement(child)) {
-                return cloneElement(child, { ...childProps, ...child.props });
-            }
-
-            return child;
-        });
-
         return (
             <span className={ className }>
-                { childrenWithProps }
+                { childrenWithProps(children, childProps) }
             </span>
         );
     }

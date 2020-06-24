@@ -1,3 +1,5 @@
+import { Children, isValidElement, cloneElement } from 'react';
+
 export const selectColor = ({ inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }) => (
     { inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }
 );
@@ -50,3 +52,13 @@ export const parseSize = (props) => {
     (massive && " massive") ||
     " normal";
 };
+
+export const childrenWithProps = (children, childProps) => (
+    Children.map(children, child => {
+        if (isValidElement(child)) {
+            return cloneElement(child, { ...childProps, ...child.props });
+        }
+
+        return child;
+    })
+);

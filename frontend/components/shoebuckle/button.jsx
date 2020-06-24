@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { parseColor, parseSize } from './util'
+import { childrenWithProps, parseColor, parseSize } from './util'
 
 class Button extends Component {
     static Content(props) {
@@ -29,6 +29,7 @@ class Button extends Component {
             children, 
             content, 
             compact,
+            inverted,
             pill,
             fluid,
             primary, 
@@ -39,6 +40,7 @@ class Button extends Component {
             type
         } = this.props;
     
+        const childProps = { inverted };
         const className = `shoebuckle btn${ compact ? " compact" : "" }${ pill ? " pill" : "" }${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ fluid ? " fluid" : "" }${ parseColor(this.props) }${ parseSize(this.props) }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
@@ -47,7 +49,7 @@ class Button extends Component {
                 onClick={ onClick }
                 type={ type }
             >
-                { children || content }
+                { childrenWithProps(children, childProps) || content }
             </button>
         );
     }
