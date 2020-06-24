@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 
+import withWindowDimensions from '../hocs/with_window_dimensions';
+import { BREAKPOINT } from '../../util/constants';
+
 import { Icon, Menu, Section, Sidebar } from '../shoebuckle';
 
-export default class AppContainer extends Component {
+class AppContainer extends Component {
     constructor(props) {
         super(props);
     
@@ -17,13 +20,15 @@ export default class AppContainer extends Component {
         const {
             children,
             inverted,
-            open
+            open,
+            windowWidth
         } = this.props;
         
         return (
             <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
                 <Sidebar
                     as={ Section }
+                    alwaysOpen={ windowWidth > BREAKPOINT }
                     horizontal
                     push
                     visible={ open }
@@ -64,3 +69,5 @@ export default class AppContainer extends Component {
         );
     }
 }
+
+export default withWindowDimensions(AppContainer);
