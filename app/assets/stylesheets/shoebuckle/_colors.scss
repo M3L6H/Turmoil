@@ -3,7 +3,7 @@
         color: $primary;
 
         &.inverted {
-            color: lighten($primary, $lighten-amt);
+            color: $primary;
         }
     }
 

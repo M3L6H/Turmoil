@@ -43,6 +43,15 @@
         }
     }
 
+    &.accent {
+        background: $accent;
+        color: $white;
+
+        &:hover {
+            background: darken($accent, $darken-amt);
+        }
+    }
+
     &.animated {
         position: relative;
         overflow: hidden;
@@ -263,6 +272,51 @@
             &:hover {
                 background: lighten($lightest, $lighten-amt);
                 color: $white;
+            }
+        }
+
+        &.primary, &.primary:hover {
+            color: $primary;
+            border-color: $primary;
+    
+            &.inverted {
+                color: lighten($primary, $lighten-amt);
+                border-color: lighten($primary, $lighten-amt);
+    
+                &:hover {
+                    background: lighten($primary, $lighten-amt);
+                    color: $white;
+                }
+            }
+        }
+
+        &.secondary, &.secondary:hover {
+            color: $secondary;
+            border-color: $secondary;
+    
+            &.inverted {
+                color: lighten($secondary, $lighten-amt);
+                border-color: lighten($secondary, $lighten-amt);
+    
+                &:hover {
+                    background: lighten($secondary, $lighten-amt);
+                    color: $white;
+                }
+            }
+        }
+
+        &.accent, &.accent:hover {
+            color: $accent;
+            border-color: $accent;
+    
+            &.inverted {
+                color: lighten($accent, $lighten-amt);
+                border-color: lighten($accent, $lighten-amt);
+    
+                &:hover {
+                    background: lighten($accent, $lighten-amt);
+                    color: $white;
+                }
             }
         }
 

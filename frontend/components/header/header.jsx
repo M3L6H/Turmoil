@@ -21,13 +21,13 @@ export default class AppHeader extends Component {
 
         if (currentBeingId) {
             return (
-                <li><Button basic compact pill onClick={ signOut }>Sign Out</Button></li>
+                <li><Button basic accent compact pill onClick={ signOut }>Sign Out</Button></li>
             );
         } else {
             return (
                 <>
-                    <li><Button basic compact pill onClick={ openSignIn }>Sign In</Button></li>
-                    <li><Button basic compact pill onClick={ openSignUp }>Sign Up</Button></li>
+                    <li><Button basic accent compact pill onClick={ openSignIn }>Sign In</Button></li>
+                    <li><Button basic accent compact pill onClick={ openSignUp }>Sign Up</Button></li>
                 </>
             );
         }
@@ -44,7 +44,7 @@ export default class AppHeader extends Component {
         
         return (
             <header className="app-header">
-                <Header as="h2">Chaos</Header>
+                <Header as="h2" primary>Chaos</Header>
                 <nav className="header-nav">
                     <ul>
                         { this._renderAuthButtons() }

@@ -26,8 +26,9 @@ export default class Kitchensink extends Component {
             <div className="test">
                 <div className="test-row">
                     <Button>Hello World</Button>
-                    <Button primary>Hello World</Button>
-                    <Button secondary>Hello World</Button>
+                    <Button primary>Primary</Button>
+                    <Button secondary>Secondary</Button>
+                    <Button accent>Accent</Button>
                     <Button content="Shorthand" primary />
                 </div>
                 <div className="test-row">
