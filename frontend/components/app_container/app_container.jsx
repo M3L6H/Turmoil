@@ -21,17 +21,18 @@ class AppContainer extends Component {
             desktop,
             inverted,
             open,
-            openDimensionModal
+            openDimensionModal,
+            signedIn
         } = this.props;
 
         return (
             <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
                 <Sidebar
                     as={ Section }
-                    alwaysOpen={ desktop }
+                    alwaysOpen={ desktop && signedIn }
                     horizontal
                     push
-                    visible={ open }
+                    visible={ open && signedIn }
                 >
                     <Menu
                         center
