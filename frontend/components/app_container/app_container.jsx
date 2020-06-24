@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import withWindowDimensions from '../hocs/with_window_dimensions';
-import { BREAKPOINT } from '../../util/constants';
 
 import { Icon, Menu, Section, Sidebar } from '../shoebuckle';
 
@@ -19,13 +18,11 @@ class AppContainer extends Component {
     render() {
         const {
             children,
+            desktop,
             inverted,
-            open,
-            windowWidth
+            open
         } = this.props;
 
-        const desktop = windowWidth > BREAKPOINT;
-        
         return (
             <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
                 <Sidebar

@@ -25,6 +25,8 @@
         overflow-x: hidden;
         overflow-y: scroll;
 
+        transform: translate3d(-$sidebar-width, 0, 0);
+
         transition: transform $sidebar-move-speed;
 
         z-index: 1;
@@ -49,8 +51,6 @@
         &.visible, &.always-open {
             transform: translate3d(0, 0, 0);
         }
-
-        transform: translate3d(-$sidebar-width, 0, 0);
     }
 
     .sidebar.visible, .sidebar.always-open {

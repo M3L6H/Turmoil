@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import withWindowDimensions from '../hocs/with_window_dimensions';
+
 import { Button, Header, Icon } from '../shoebuckle';
 
 import AuthForm from '../auth/auth_form';
 
-export default class AppHeader extends Component {
+class AppHeader extends Component {
     constructor(props) {
         super(props)
     
@@ -13,7 +15,6 @@ export default class AppHeader extends Component {
     }
 
     _handleClick() {
-        console.log("called");
         this.props.openSidebar();
     }
     
@@ -43,6 +44,7 @@ export default class AppHeader extends Component {
     render() {
         const { 
             currentBeingId,
+            desktop,
             inverted,
             open, 
             formType,
@@ -53,7 +55,7 @@ export default class AppHeader extends Component {
         
         return (
             <header className="app-header">
-                { currentBeingId ? (
+                { currentBeingId && !desktop ? (
                     <Icon name="bars" primary large onClick={ this._handleClick } />
                 ) : (
                     <Header as="h2" primary link to="/">Chaos</Header>
@@ -76,3 +78,6 @@ export default class AppHeader extends Component {
         );
     }
 }
+
+
+export default withWindowDimensions(AppHeader);
