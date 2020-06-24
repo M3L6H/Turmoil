@@ -119,7 +119,6 @@
         .menu-item {
             width: 100%;
             border: none;
-            display: flex;
             align-items: center;
             justify-content: space-between;
 
@@ -135,10 +134,13 @@
 
     .menu-item {
         position: relative;
-        display: inline-block;
         padding: $menu-item-padding;
         border-right: $thin solid $lightest;
         cursor: pointer;
+
+        min-width: $menu-item-min-width;
+        display: flex;
+        justify-content: center;
 
         &:hover {
             background: $lightest;
