@@ -3,6 +3,19 @@ import React, { Component } from 'react';
 import { Button, Icon, Menu, Section, Sidebar } from '../shoebuckle';
 
 export default class DimensionsSidebar extends Component {
+    _renderDimensions() {
+        const { dimensions } = this.props;
+
+        return dimensions.map(({ id }) => (
+            <Menu.Item key={ id }>
+                <Icon.Group big>
+                    <Icon name="circle" black />
+                    <Icon name="fire" primary transform="shrink-6" />
+                </Icon.Group>
+            </Menu.Item>
+        ));
+    }
+    
     render() {
         const {
             desktop,
@@ -33,6 +46,7 @@ export default class DimensionsSidebar extends Component {
                             <Icon name="comment-alt" primary transform="shrink-8 down-0.8 right-0.3" />
                         </Icon.Group>
                     </Menu.Item>
+                    { this._renderDimensions() }
                     <Menu.Item>
                         <Button icon onClick={ openDimensionModal }>
                             <Icon.Group big>

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import DimensionsSidebar from './dimensions_sidebar';
 
 import { receiveDimensionModal } from '../../actions/modals_actions';
-import { receiveSidebar } from '../../actions/sidebar_actions';
 import { selectDimensions } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => ({

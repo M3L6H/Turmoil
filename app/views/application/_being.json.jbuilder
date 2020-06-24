@@ -4,6 +4,8 @@ end
 
 json.dimensions do
     being.joined_dimensions.each do |dimension|
-        json.extract! dimension, :name, :id
+        json.set! dimension.id do
+            json.extract! dimension, :name, :id
+        end
     end
 end
