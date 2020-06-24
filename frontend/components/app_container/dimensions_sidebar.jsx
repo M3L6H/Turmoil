@@ -8,7 +8,8 @@ export default class DimensionsSidebar extends Component {
             desktop,
             open,
             openDimensionModal,
-            signedIn
+            signedIn,
+            inverted
         } = this.props;
 
         return (
@@ -16,6 +17,7 @@ export default class DimensionsSidebar extends Component {
                 as={ Section }
                 alwaysOpen={ desktop && signedIn }
                 horizontal
+                inverted={ inverted }
                 push
                 visible={ open && signedIn }
             >
