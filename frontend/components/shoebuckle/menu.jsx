@@ -4,14 +4,21 @@ export default class Menu extends Component {
     render() {
         const {
             children,
-            content
+            content,
+            items,
+            secondary
         } = this.props;
 
-        const className = `shoebuckle menu`;
+        const className = `shoebuckle menu${ secondary ? " secondary" : "" }`;
         
         return (
             <div className={ className }>
                 { children || content }
+                { items && items.map(({ name, active, value }) => (
+                    <Menu.Item key={ name } name={ name } active={ active }>
+                        { value }
+                    </Menu.Item>
+                )) }
             </div>
         );
     }

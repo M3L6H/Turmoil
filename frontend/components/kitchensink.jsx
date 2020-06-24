@@ -416,6 +416,25 @@ export default class Kitchensink extends Component {
                         </Menu.Item>
                     </Menu>
                 </div>
+                <div className="test-row">
+                    <Menu 
+                        items={[
+                            { name: "editorial", value: "Editorials", active: true },
+                            { name: "reviews", value: "Reviews" },
+                            { name: "upcomingEvents", value: "Upcoming Events" }
+                        ]} 
+                    />
+                </div>
+                <div className="test-row">
+                    <Menu
+                        secondary 
+                        items={[
+                            { name: "home", value: "Home", active: true },
+                            { name: "messages", value: "Messages" },
+                            { name: "friends", value: "Friends" }
+                        ]} 
+                    />
+                </div>
             </div>
         );
     }

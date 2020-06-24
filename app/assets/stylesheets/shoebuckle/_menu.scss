@@ -5,6 +5,17 @@
     box-shadow: $vertical-shadow;
     background: $white;
 
+    &.secondary {
+        border: none;
+        box-shadow: none;
+
+        .menu-item {
+            padding: $menu-item-padding-secondary #{ 2 * $menu-item-padding-secondary };
+            margin: $menu-item-margin-secondary;
+            border-radius: $small-round;
+        }
+    }
+
     .menu-item {
         display: inline-block;
         padding: $menu-item-padding;

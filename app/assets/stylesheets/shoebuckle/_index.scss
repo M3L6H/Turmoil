@@ -73,6 +73,8 @@ $label-horizontal-margin: 0.125rem !default;
 $label-vertical-margin: 0.125rem !default;
 
 $menu-item-padding: 0.5rem !default;
+$menu-item-padding-secondary: 0.25rem !default;
+$menu-item-margin-secondary: #{ $menu-item-padding - $menu-item-padding-secondary };
 
 $message-horizontal-padding: 1rem !default;
 $message-vertical-padding: 0.875rem !default;
