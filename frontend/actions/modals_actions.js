@@ -7,3 +7,12 @@ export const receiveAuthModal = (open, formType="signIn") => ({
         formType
     }
 });
+
+export const RECEIVE_DIMENSION_MODAL = "RECEIVE_DIMENSION_MODAL";
+
+export const receiveDimensionModal = (open) => ({
+    type: RECEIVE_DIMENSION_MODAL,
+    modal: {
+        open
+    } 
+});
