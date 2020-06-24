@@ -1,10 +1,12 @@
-export const selectColor = ({ inverted, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }) => (
-    { inverted, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }
+export const selectColor = ({ inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }) => (
+    { inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }
 );
 
 export const parseColor = (props) => {
     const {
         inverted,
+        primary,
+        accent,
         red,
         orange,
         yellow,
@@ -19,7 +21,7 @@ export const parseColor = (props) => {
         black
     } = props;
 
-    return `${ inverted ? " inverted" : "" }${ red ? " red" : "" }${ orange ? " orange" : "" }${ yellow ? " yellow" : "" }${ olive ? " olive" : "" }${ green ? " green" : "" }${ teal ? " teal" : "" }${ blue ? " blue" : "" }${ violet ? " violet" : "" }${ purple ? " purple" : "" }${ pink ? " pink" : "" }${ grey ? " grey" : "" }${ black ? " black" : "" }`;
+    return `${ inverted ? " inverted" : "" }${ primary ? " primary" : "" }${ accent ? " accent" : "" }${ red ? " red" : "" }${ orange ? " orange" : "" }${ yellow ? " yellow" : "" }${ olive ? " olive" : "" }${ green ? " green" : "" }${ teal ? " teal" : "" }${ blue ? " blue" : "" }${ violet ? " violet" : "" }${ purple ? " purple" : "" }${ pink ? " pink" : "" }${ grey ? " grey" : "" }${ black ? " black" : "" }`;
 };
 
 export const selectSize = ({ mini, tiny, small, normal, large, big, huge, massive })  => (

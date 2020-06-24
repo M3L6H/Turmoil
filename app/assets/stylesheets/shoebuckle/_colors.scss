@@ -1,4 +1,20 @@
 .shoebuckle {
+    &.primary {
+        color: $primary;
+
+        &.inverted {
+            color: lighten($primary, $lighten-amt);
+        }
+    }
+
+    &.accent {
+        color: $accent;
+
+        &.inverted {
+            color: lighten($accent, $lighten-amt);
+        }
+    }
+    
     &.red {
         color: $red;
     

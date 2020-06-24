@@ -366,6 +366,22 @@ export default class Kitchensink extends Component {
                 <div className="test-row">
                     <Header as="h2" fluid blue dividing content="Headers Can Divide" />
                 </div>
+                <div className="test-row inverted">
+                    <Header as="h3" content="P" inverted primary />
+                    <Header as="h3" content="A" inverted accent />
+                    <Header as="h3" content="R" inverted red />
+                    <Header as="h3" content="O" inverted orange />
+                    <Header as="h3" content="Y" inverted yellow />
+                    <Header as="h3" content="O" inverted olive />
+                    <Header as="h3" content="G" inverted green />
+                    <Header as="h3" content="T" inverted teal />
+                    <Header as="h3" content="B" inverted blue />
+                    <Header as="h3" content="V" inverted violet />
+                    <Header as="h3" content="P" inverted purple />
+                    <Header as="h3" content="P" inverted pink />
+                    <Header as="h3" content="G" inverted grey />
+                    <Header as="h3" content="B" inverted black />
+                </div>
             </div>
         );
     }
