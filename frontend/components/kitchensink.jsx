@@ -364,7 +364,7 @@ export default class Kitchensink extends Component {
                     </Header>
                 </div>
                 <div className="test-row">
-                    <Header as="h2" fluid dividing content="Headers Can Divide" />
+                    <Header as="h2" fluid blue dividing content="Headers Can Divide" />
                 </div>
             </div>
         );
