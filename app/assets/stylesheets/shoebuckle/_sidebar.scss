@@ -25,8 +25,6 @@
         overflow-x: hidden;
         overflow-y: scroll;
 
-        transform: translate3d(-$sidebar-width, 0, 0);
-
         transition: transform $sidebar-move-speed;
 
         z-index: 1;
@@ -39,6 +37,10 @@
             display: none;
         }
 
+        &.always-open {
+            transition: none;
+        }
+        
         &.thin {
             transform: translate3d(-#{ $sidebar-width / 2 }, 0, 0);
             width: #{ $sidebar-width / 2 };
@@ -47,6 +49,8 @@
         &.visible, &.always-open {
             transform: translate3d(0, 0, 0);
         }
+
+        transform: translate3d(-$sidebar-width, 0, 0);
     }
 
     .sidebar.visible, .sidebar.always-open {
@@ -79,9 +83,15 @@
         transition: visibility 0s, opacity $sidebar-move-speed;
     }
 
-    .sidebar.always-open + .sidebar-pusher:after {
-        visibility: hidden;
-        opacity: 0;
+    .sidebar.always-open  {
+        +.sidebar-pusher {
+            transition: none;
+
+            &:after {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
     }
 
     .sidebar-pusher {

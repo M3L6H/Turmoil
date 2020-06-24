@@ -23,12 +23,14 @@ class AppContainer extends Component {
             open,
             windowWidth
         } = this.props;
+
+        const desktop = windowWidth > BREAKPOINT;
         
         return (
             <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
                 <Sidebar
                     as={ Section }
-                    alwaysOpen={ windowWidth > BREAKPOINT }
+                    alwaysOpen={ desktop }
                     horizontal
                     push
                     visible={ open }

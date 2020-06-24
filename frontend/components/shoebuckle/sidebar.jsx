@@ -13,7 +13,7 @@ export default class Sidebar extends Component {
             visible
         } = this.props;
 
-        const className = `sidebar${ alwaysOpen ? " always-open" : "" }${ push && !alwaysOpen ? " push" : "" }${ scale || alwaysOpen ? " scale" : "" }${ thin ? " thin" : "" }${ visible ? " visible" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `sidebar${ alwaysOpen ? " always-open" : "" }${ push && !alwaysOpen ? " push" : "" }${ scale || alwaysOpen ? " scale" : "" }${ thin ? " thin" : "" }${ visible || alwaysOpen ? " visible" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         const Tag = this.props.as ? this.props.as : "div";
         
         return (
