@@ -4,6 +4,10 @@
     border-radius: $small-round;
     box-shadow: $vertical-shadow;
     background: $white;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
 
     &.pointing .menu-item.active:after {
         content: " ";
@@ -86,10 +90,11 @@
 
     &.vertical {
         width: auto;
-        display: flex;
         flex-direction: column;
+        align-items: flex-start;
 
         .menu-item {
+            width: 100%;
             border: none;
             display: flex;
             align-items: center;
