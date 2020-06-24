@@ -12,16 +12,19 @@ import { fetchDimension } from './actions/dimensions_actions';
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
-    if (window.currentBeing) {
+    if (window.currentDetails) {
+        const { being, dimensions } = window.currentDetails;
+        
         const preloadedState = {
             entities: {
-                beings: { [window.currentBeing.id]: window.currentBeing }
+                beings: { [being.id]: being },
+                dimensions
             },
-            session: { currentBeingId: window.currentBeing.id }
+            session: { currentBeingId: being.id }
         };
-        console.log(preloadedState);
+        
         store = configureStore(preloadedState);
-        delete window.currentBeing;
+        delete window.currentDetails;
     } else {
         store = configureStore();
     }
