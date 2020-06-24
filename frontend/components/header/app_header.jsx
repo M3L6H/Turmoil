@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Button, Header } from '../shoebuckle';
+import { Button, Header, Icon } from '../shoebuckle';
 
 import AuthForm from '../auth/auth_form';
 
@@ -35,6 +35,7 @@ export default class AppHeader extends Component {
     
     render() {
         const { 
+            currentBeingId,
             open, 
             formType,
             closeForm,
@@ -44,7 +45,11 @@ export default class AppHeader extends Component {
         
         return (
             <header className="app-header">
-                <Header as="h2" primary link to="/">Chaos</Header>
+                { currentBeingId ? (
+                    <Icon name="bars" large />
+                ) : (
+                    <Header as="h2" primary link to="/">Chaos</Header>
+                ) }
                 <nav className="header-nav">
                     <ul>
                         { this._renderAuthButtons() }
