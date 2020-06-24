@@ -61,6 +61,9 @@ $form-checkbox-right-margin: 0.25rem !default;
 $form-input-horizontal-padding: 0.625rem !default;
 $form-input-vertical-padding: 0.375rem !default;
 
+$header-bottom-padding: 0.125rem !default;
+$header-bottom-margin: 1rem !default;
+
 $icon-horizontal-padding: 0.125rem !default;
 $icon-vertical-padding: 0rem !default;
 
@@ -113,16 +116,16 @@ $huge: 3rem !default;
 $massive: 4.5rem !default;
 
 /* Border */
-$small-round: 4px;
+$small-round: 4px !default;
 
-$label-arrow: 5px;
+$label-arrow: 5px !default;
 
-$thin: 1px;
-$bold: 2px;
+$thin: 1px !default;
+$bold: 2px !default;
 
 /* Timings */
-$btn-move-speed: 0.25s;
-$btn-fade-speed: 0.5s;
+$btn-move-speed: 0.25s !default;
+$btn-fade-speed: 0.5s !default;
 
 /* Shadows */
 $small-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);

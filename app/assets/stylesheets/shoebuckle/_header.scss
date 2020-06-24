@@ -24,6 +24,7 @@ h6 {
 
 .shoebuckle.header {
     font-family: $header-font;
+    margin-bottom: $header-bottom-margin;
     
     &.mini {
         font-size: $mini-header-font-size;
@@ -47,6 +48,18 @@ h6 {
 
     &.huge {
         font-size: $huge-header-font-size;
+    }
+
+    &.dividing:after {
+        content: " ";
+        display: block;
+        width: 100%;
+        border-bottom: $thin solid $lightest;
+        padding-bottom: $header-bottom-padding;
+    }
+
+    &.fluid {
+        width: 100%;
     }
 
     &.icon {

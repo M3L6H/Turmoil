@@ -363,6 +363,9 @@ export default class Kitchensink extends Component {
                         Uptime Guarantee
                     </Header>
                 </div>
+                <div className="test-row">
+                    <Header as="h2" fluid dividing content="Headers Can Divide" />
+                </div>
             </div>
         );
     }
