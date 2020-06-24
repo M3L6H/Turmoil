@@ -18,7 +18,7 @@ $violet: #856084 !default;
 $purple: #9D8DF1 !default;
 $pink: #EA526F !default;
 
-$lightest: #BAC2C9 !default;
+$lightest: #dbe1e7 !default;
 $lighter: #98A3AE !default;
 $light: #6F7D8C !default;
 $dark: #2C363F !default;
@@ -71,6 +71,8 @@ $label-horizontal-padding: 0.5rem !default;
 $label-vertical-padding: 0.1875rem !default;
 $label-horizontal-margin: 0.125rem !default;
 $label-vertical-margin: 0.125rem !default;
+
+$menu-item-padding: 0.5rem !default;
 
 $message-horizontal-padding: 1rem !default;
 $message-vertical-padding: 0.875rem !default;
@@ -129,6 +131,7 @@ $btn-fade-speed: 0.5s !default;
 
 /* Shadows */
 $small-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+$vertical-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 
 @import "reset";
 

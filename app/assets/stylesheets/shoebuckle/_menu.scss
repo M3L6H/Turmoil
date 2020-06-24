@@ -1,0 +1,22 @@
+.shoebuckle.menu {
+    width: 100%;
+    border: $thin solid $lightest;
+    border-radius: $small-round;
+    box-shadow: $vertical-shadow;
+    background: $white;
+
+    .menu-item {
+        display: inline-block;
+        padding: $menu-item-padding;
+        border-right: inherit;
+        cursor: pointer;
+
+        &:hover {
+            background: $lightest;
+        }
+
+        &.active {
+            background: $lightest;
+        }
+    }
+}

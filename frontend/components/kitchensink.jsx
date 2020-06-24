@@ -6,6 +6,7 @@ import {
     Header,
     Icon, 
     Label,
+    Menu,
     Message,
     Modal
 } from './shoebuckle';
@@ -15,12 +16,19 @@ export default class Kitchensink extends Component {
         super(props);
     
         this.state = {
-            messageVisible: true
+            messageVisible: true,
+            activeItem: ""
         };
+
+        this._handleItemClick = this._handleItemClick.bind(this);
+    }
+
+    _handleItemClick(_, { name }) { 
+        this.setState({ activeItem: name });
     }
     
     render() {
-        const { messageVisible } = this.state;
+        const { messageVisible, activeItem } = this.state;
         
         return (
             <div className="test">
@@ -382,6 +390,31 @@ export default class Kitchensink extends Component {
                     <Header as="h3" content="P" inverted pink />
                     <Header as="h3" content="G" inverted grey />
                     <Header as="h3" content="B" inverted black />
+                </div>
+                <div className="test-row">
+                    <Menu>
+                        <Menu.Item
+                            name="editorials"
+                            active={ activeItem === "editorials" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Editorials
+                        </Menu.Item>
+                        <Menu.Item
+                            name="reviews"
+                            active={ activeItem === "reviews" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Reviews
+                        </Menu.Item>
+                        <Menu.Item
+                            name="upcomingEvents"
+                            active={ activeItem === "upcomingEvents" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Upcoming Events
+                        </Menu.Item>
+                    </Menu>
                 </div>
             </div>
         );
