@@ -25,7 +25,7 @@ export default class AppContainer extends Component {
                 <Sidebar
                     as={ Section }
                     horizontal
-                    overlay
+                    push
                     visible={ open }
                 >
                     <Menu
@@ -38,6 +38,7 @@ export default class AppContainer extends Component {
                         </Menu.Item>
                     </Menu>
                     <Menu
+                        fluid
                         stretch
                         vertical
                     >

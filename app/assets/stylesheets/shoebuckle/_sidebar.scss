@@ -17,13 +17,16 @@
     }
 
     .sidebar {
+        position: absolute;
         border-radius: 0;
         box-shadow: none;
-        width: 0;
+        width: $sidebar-width;
         overflow-x: hidden;
         overflow-y: scroll;
 
-        transition: width $sidebar-move-speed;
+        transform: translate3d(-$sidebar-width, 0, 0);
+
+        transition: transform $sidebar-move-speed;
 
         z-index: 1;
 
@@ -35,30 +38,60 @@
             display: none;
         }
 
-        &.overlay {
-            position: absolute;
+        &.thin {
+            transform: translate3d(-#{ $sidebar-width / 2 }, 0, 0);
+            width: #{ $sidebar-width / 2 };
         }
 
         &.visible {
-            width: $sidebar-width;
-
-            &.thin {
-                width: #{ $sidebar-width / 2 };
-            }
+            transform: translate3d(0, 0, 0);
         }
     }
 
-    .sidebar.visible + .sidebar-pusher:after {
-        content: " ";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: $dimmer;
+    .sidebar.visible {
+        &.push {
+            +.sidebar-pusher {
+                transform: translate3d($sidebar-width, 0, 0);
+            }
+
+            &.thin + .sidebar-pusher {
+                transform: translate3d(#{ $sidebar-width / 2 }, 0, 0);
+            }
+        }
+
+        &.scale {
+            +.sidebar-pusher {
+                width: calc(100vw - #{ $sidebar-width });
+            }
+
+            &.thin + .sidebar-pusher {
+                width: calc(100vw - #{ $sidebar-width / 2 });
+            }
+        }
+
+        +.sidebar-pusher:after {
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0s, opacity $sidebar-move-speed;
+        }
     }
 
     .sidebar-pusher {
         width: 100vw;
+
+        transition: all $sidebar-move-speed;
+
+        &:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: $dimmer;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s ease $sidebar-move-speed, opacity $sidebar-move-speed;
+        }
     }
 }
