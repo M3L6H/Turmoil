@@ -268,7 +268,6 @@ export default class Kitchensink extends Component {
                         visible={ messageVisible }
                         onDismiss={
                             () => {
-                                console.log("Hiding");
                                 this.setState({ messageVisible: false });
                                 setTimeout(() => this.setState({ messageVisible: true }), 3000);
                             } 
