@@ -10,7 +10,7 @@ class DimensionsSidebar extends Component {
 
         return dimensions.map(({ id }) => (
             <Menu.Item key={ id }>
-                <Icon.Group big>
+                <Icon.Group huge>
                     <Icon name="circle" black />
                     <Icon name="fire" primary transform="shrink-6" />
                 </Icon.Group>
@@ -43,7 +43,7 @@ class DimensionsSidebar extends Component {
                     vertical
                 >
                     <Menu.Item>
-                        <Icon.Group big>
+                        <Icon.Group huge>
                             <Icon name="circle" black />
                             <Icon name="comment-alt" primary transform="shrink-8 down-0.8 right-0.3" />
                         </Icon.Group>
@@ -51,7 +51,7 @@ class DimensionsSidebar extends Component {
                     { this._renderDimensions() }
                     <Menu.Item>
                         <Button icon onClick={ openDimensionModal }>
-                            <Icon.Group big>
+                            <Icon.Group huge>
                                 <Icon name="circle" green />
                                 <Icon name="plus" transform="shrink-8" />
                             </Icon.Group>
