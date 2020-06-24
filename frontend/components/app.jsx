@@ -1,12 +1,24 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 
-import Header from './header';
+import { Section, Sidebar } from './shoebuckle';
+
+import AppHeader from './header';
 import Kitchensink from './kitchensink';
 
 const App = () => (
     <main>
-        <Header />
+        <Sidebar.Pushable>
+            <Sidebar
+                as={ Section }
+                horizontal
+            >
+                Test
+            </Sidebar>
+            <Sidebar.Pusher>
+                <AppHeader />
+            </Sidebar.Pusher>
+        </Sidebar.Pushable>
         <Route path="/kitchensink" component={ Kitchensink } />
     </main>
 );
