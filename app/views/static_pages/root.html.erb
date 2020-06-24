@@ -1,6 +1,6 @@
 <% if logged_in? %>
     <script type="text/javascript">
-        window.currentBeing = <%= render("being.json.jbuilder", being: current_being).html_safe %>;
+        window.currentBeing = <%= render("being.json.jbuilder", being: current_being).html_safe %>.being;
     </script>
 <% end %>
 

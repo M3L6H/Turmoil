@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 import withWindowDimensions from '../hocs/with_window_dimensions';
 
-import { Button, Icon, Menu, Section, Sidebar } from '../shoebuckle';
+import { Sidebar } from '../shoebuckle';
+
+import DimensionsSidebar from './dimensions_sidebar';
 
 class AppContainer extends Component {
     constructor(props) {
@@ -27,44 +29,12 @@ class AppContainer extends Component {
 
         return (
             <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
-                <Sidebar
-                    as={ Section }
-                    alwaysOpen={ desktop && signedIn }
-                    horizontal
-                    push
-                    visible={ open && signedIn }
-                >
-                    <Menu
-                        center
-                        secondary
-                        stretch
-                        vertical
-                    >
-                        <Menu.Item>
-                            <Icon.Group big>
-                                <Icon name="circle" black />
-                                <Icon name="comment-alt" primary transform="shrink-8 down-0.8 right-0.3" />
-                            </Icon.Group>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <Button icon onClick={ openDimensionModal }>
-                                <Icon.Group big>
-                                    <Icon name="circle" green />
-                                    <Icon name="plus" transform="shrink-8" />
-                                </Icon.Group>
-                            </Button>
-                        </Menu.Item>
-                    </Menu>
-                    <Menu
-                        fluid
-                        stretch
-                        vertical
-                    >
-                        <Menu.Item>
-                            Direct messages
-                        </Menu.Item>
-                    </Menu>
-                </Sidebar>
+                <DimensionsSidebar
+                    desktop={ desktop }
+                    open={ open }
+                    openDimensionModal={ openDimensionModal }
+                    signedIn={ signedIn }
+                />
                 <Sidebar.Pusher onClick={ open ? this._handleClick : undefined }>
                     { children }
                 </Sidebar.Pusher>

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             session: { currentBeingId: window.currentBeing.id }
         };
-
+        console.log(preloadedState);
         store = configureStore(preloadedState);
         delete window.currentBeing;
     } else {
