@@ -9,6 +9,29 @@
     justify-content: flex-start;
     align-items: flex-end;
 
+    &.inverted {
+        background: $black;
+        color: $white;
+        box-shadow: none;
+        border: none;
+
+        .menu-item {
+            border-right: $thin solid $darker;
+    
+            &:hover {
+                background: $darker;
+            }
+    
+            &.active {
+                background: $darker;
+            }
+    
+            &.position-right {
+                border-left: $thin solid $darker;
+            }
+        }
+    }
+
     &.pointing .menu-item.active:after {
         content: " ";
         position: absolute;
@@ -114,7 +137,7 @@
         position: relative;
         display: inline-block;
         padding: $menu-item-padding;
-        border-right: inherit;
+        border-right: $thin solid $lightest;
         cursor: pointer;
 
         &:hover {
@@ -126,7 +149,7 @@
         }
 
         &.position-right {
-            border-left: inherit;
+            border-left: $thin solid $lightest;
             border-right: none;
             margin-left: auto;
 

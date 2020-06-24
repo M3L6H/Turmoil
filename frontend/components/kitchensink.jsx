@@ -439,6 +439,7 @@ export default class Kitchensink extends Component {
                             { name: "reviews", value: "Reviews" },
                             { name: "upcomingEvents", value: "Upcoming Events" }
                         ]} 
+                        inverted
                     />
                 </div>
                 <div className="test-row">
