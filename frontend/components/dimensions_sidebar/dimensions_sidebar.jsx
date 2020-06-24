@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
+import withWindowDimensions from "../hocs/with_window_dimensions";
+
 import { Button, Icon, Menu, Section, Sidebar } from '../shoebuckle';
 
-export default class DimensionsSidebar extends Component {
+class DimensionsSidebar extends Component {
     _renderDimensions() {
         const { dimensions } = this.props;
 
@@ -69,3 +71,5 @@ export default class DimensionsSidebar extends Component {
         );
     }
 }
+
+export default withWindowDimensions(DimensionsSidebar);
