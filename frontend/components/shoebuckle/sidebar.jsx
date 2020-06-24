@@ -51,7 +51,7 @@ Sidebar.Pusher = class extends Component {
         } = this.props;
         const childProps = { inverted };
 
-        const className = `sidebar-pusher${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `sidebar-pusher${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         return (
             <div className={ className } onClick={ onClick }>

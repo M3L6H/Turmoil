@@ -1,5 +1,7 @@
 import React, { Component, isValidElement, cloneElement } from 'react';
 
+import { childrenWithProps } from './util';
+
 export default class Modal extends Component {
     constructor(props) {
         super(props);
@@ -27,13 +29,15 @@ export default class Modal extends Component {
         
         const {
             children,
-            content
+            content,
+            inverted
         } = this.props;
+        const childProps = { inverted };
 
         const open = this.props.open === undefined ? stateOpen : this.props.open;
         const handleClose = this.props.handleClose || this._handleClose;
 
-        const className = `shoebuckle modal${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle modal${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         let trigger = this.props.trigger;
 
@@ -58,7 +62,7 @@ export default class Modal extends Component {
                         ></div>
                         
                         <div className={ className }>
-                            { children || content }
+                            { childrenWithProps(children, childProps) || content }
                         </div>
                     </div>
                 )}
@@ -70,11 +74,14 @@ export default class Modal extends Component {
 Modal.Header = props => {
     const {
         children,
-        content
+        content,
+        inverted
     } = props;
     
+    const className = `modal-header${ inverted ? " inverted" : "" }`;
+    
     return (
-        <div className="modal-header">
+        <div className={ className }>
             { children || content }
         </div>
     );
@@ -83,12 +90,16 @@ Modal.Header = props => {
 Modal.Content = props => {
     const {
         children,
-        content 
+        content,
+        inverted
     } = props;
+    const childProps = { inverted };
+    
+    const className = `modal-content${ inverted ? " inverted" : "" }`;
 
     return (
-        <div className="modal-content">
-            { children || content }
+        <div className={ className }>
+            { childrenWithProps(children, childProps) || content }
         </div>
     );
 };
@@ -96,12 +107,16 @@ Modal.Content = props => {
 Modal.Actions = props => {
     const {
         children, 
-        content
+        content,
+        inverted
     } = props;
+    const childProps = { inverted };
+    
+    const className = `modal-actions${ inverted ? " inverted" : "" }`;
 
     return (
-        <div className="modal-actions">
-            { children || content }
+        <div className={ className }>
+            { childrenWithProps(children, childProps) || content }
         </div>
     );
 }

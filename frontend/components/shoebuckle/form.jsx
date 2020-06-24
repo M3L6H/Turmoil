@@ -6,18 +6,15 @@ import Label from './label';
 import Message from './message';
 
 export default class Form extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        const { children, errors, onSubmit } = this.props;
+        const { children, errors, inverted, onSubmit } = this.props;
+        const childProps = { inverted };
 
         const className = `shoebuckle form${ this.props.className ? " " + this.props.className : "" }`;
 
         return (
             <form onSubmit={ onSubmit } className={ className }>
-                { children }
+                { childrenWithProps(children, childProps) }
                 <Message 
                     header="Errors"
                     list={ errors }
@@ -32,11 +29,12 @@ export default class Form extends Component {
 Form.Field = (props) => {
     const { 
         children,
-        error
+        error,
+        inverted
     } = props;
 
     const className = `shoebuckle form-field${ props.className ? " " + props.className : "" }`;
-    const childProps = { error };
+    const childProps = { error, inverted };
 
     // React doesn't like a boolean for error when cloning the component
     childProps.error = childProps.error === true ? 1 : childProps.error;
@@ -61,11 +59,12 @@ Form.Label = (props) => {
         children,
         content,
         error,
+        inverted,
         onClick,
         required
     } = props;
 
-    const className = `shoebuckle form-label${ error ? " error" : "" }${ required ? " required" : "" }${ props.className ? " " + props.className : "" }`;
+    const className = `shoebuckle form-label${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ required ? " required" : "" }${ props.className ? " " + props.className : "" }`;
     
     return (
         <label className={ className } onClick={ onClick }>
@@ -96,11 +95,12 @@ Form.Checkbox = class extends Component {
             checked,
             error,
             label,
+            inverted,
             onChange,
             required
         } = this.props;
 
-        const className = `shoebuckle form-checkbox${ error ? " error" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle form-checkbox${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         const checkbox = <input
             checked={ checked === undefined ? stateChecked : checked }
@@ -111,7 +111,7 @@ Form.Checkbox = class extends Component {
         
         if (label) {
             return (
-                <Form.Field error={ error }>
+                <Form.Field error={ error } inverted={ inverted }>
                     { checkbox }
                     <Form.Label 
                         content={ label } 
@@ -147,6 +147,7 @@ Form.Input = class extends Component {
         const { 
             error,
             label,
+            inverted,
             name,
             onChange,
             placeholder,
@@ -155,7 +156,7 @@ Form.Input = class extends Component {
             value
         } = this.props;
 
-        const className = `shoebuckle form-input ${ type || "text" }-input${ error ? " error" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle form-input ${ type || "text" }-input${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         const input = <input 
             className={ className }
@@ -169,7 +170,7 @@ Form.Input = class extends Component {
 
         if (label) {
             return (
-                <Form.Field error={ error }>
+                <Form.Field error={ error } inverted={ inverted }>
                     <Form.Label content={ label } required={ required } />
                     { input }
                 </Form.Field>

@@ -20,6 +20,7 @@ export default class AppHeader extends Component {
     _renderAuthButtons() {
         const {
             currentBeingId,
+            inverted,
             openSignIn,
             openSignUp,
             signOut
@@ -27,13 +28,13 @@ export default class AppHeader extends Component {
 
         if (currentBeingId) {
             return (
-                <li><Button basic accent compact pill onClick={ signOut }>Sign Out</Button></li>
+                <li><Button basic accent compact pill inverted={ inverted } onClick={ signOut }>Sign Out</Button></li>
             );
         } else {
             return (
                 <>
-                    <li><Button basic accent compact pill onClick={ openSignIn }>Sign In</Button></li>
-                    <li><Button basic accent compact pill onClick={ openSignUp }>Sign Up</Button></li>
+                    <li><Button basic accent compact pill inverted={ inverted } onClick={ openSignIn }>Sign In</Button></li>
+                    <li><Button basic accent compact pill inverted={ inverted } onClick={ openSignUp }>Sign Up</Button></li>
                 </>
             );
         }
@@ -42,6 +43,7 @@ export default class AppHeader extends Component {
     render() {
         const { 
             currentBeingId,
+            inverted,
             open, 
             formType,
             closeForm,
@@ -68,6 +70,7 @@ export default class AppHeader extends Component {
                     closeForm={ closeForm }
                     signIn={ signIn }
                     signUp={ signUp }
+                    inverted={ inverted }
                 />
             </header>
         );

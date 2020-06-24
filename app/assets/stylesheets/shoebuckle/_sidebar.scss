@@ -81,6 +81,10 @@
 
         transition: all $sidebar-move-speed;
 
+        &.inverted {
+            background: $darker;
+        }
+
         &:after {
             content: " ";
             position: absolute;

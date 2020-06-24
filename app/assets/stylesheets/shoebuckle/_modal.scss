@@ -38,6 +38,10 @@
 
         font-size: $body-font-size;
 
+        &.inverted {
+            background: $darker;
+        }
+
         >*:first-child {
             padding: $modal-padding;
         }
@@ -54,6 +58,12 @@
             border-bottom: $thin solid $lightest;
 
             margin-bottom: $modal-padding;
+
+            &.inverted {
+                color: $lightest;
+
+                border-color: $light;
+            }
         }
 
         .modal-actions {

@@ -100,12 +100,12 @@ export default class AuthForm extends Component {
     }
     
     render() {
-        const { open, formType } = this.props;
+        const { open, formType, inverted } = this.props;
 
         const title = formType === "signIn" ? "Sign In" : "Sign Up";
 
         return (
-            <Modal handleClose={ this._handleClose } open={ open }>
+            <Modal handleClose={ this._handleClose } open={ open } inverted={ inverted }>
                 <Modal.Header>{ title }</Modal.Header>
                 <Modal.Content>
                     { this._renderForm(title) }

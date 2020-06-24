@@ -16,6 +16,10 @@
             text-decoration: underline;
         }
 
+        &.inverted {
+            color: $lightest;
+        }
+
         &.required:after {
             content: "*";
             color: $red;
@@ -53,6 +57,12 @@
         &:focus {
             outline: none;
             border-color: $accent;
+        }
+
+        &.inverted {
+            background: $darkest;
+            border-color: $darkest;
+            color: $lightest;
         }
     }
 }
