@@ -9,6 +9,12 @@ export default class AppHeader extends Component {
         super(props)
     
         this._renderAuthButtons = this._renderAuthButtons.bind(this);
+        this._handleClick = this._handleClick.bind(this);
+    }
+
+    _handleClick() {
+        console.log("called");
+        this.props.openSidebar();
     }
     
     _renderAuthButtons() {
@@ -46,7 +52,7 @@ export default class AppHeader extends Component {
         return (
             <header className="app-header">
                 { currentBeingId ? (
-                    <Icon name="bars" large />
+                    <Icon name="bars" primary large onClick={ this._handleClick } />
                 ) : (
                     <Header as="h2" primary link to="/">Chaos</Header>
                 ) }

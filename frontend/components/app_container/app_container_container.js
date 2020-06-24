@@ -9,7 +9,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    openSidebar: () => dispatch(receiveSidebar({ open: true })),
     closeSidebar: () => dispatch(receiveSidebar({ open: false }))
 });
 
