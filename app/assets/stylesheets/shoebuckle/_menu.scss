@@ -136,6 +136,10 @@
             width: 100%;
         }
 
+        &.secondary .menu-item:nth-child(n + 2) {
+            border: none;
+        }
+
         .menu-item {
             width: 100%;
             border: none;

@@ -40,6 +40,12 @@ export default class AppContainer extends Component {
                                 <Icon name="comment-alt" primary transform="shrink-8 down-0.8 right-0.3" />
                             </Icon.Group>
                         </Menu.Item>
+                        <Menu.Item>
+                            <Icon.Group big>
+                                <Icon name="circle" green />
+                                <Icon name="plus" transform="shrink-8" />
+                            </Icon.Group>
+                        </Menu.Item>
                     </Menu>
                     <Menu
                         fluid
