@@ -22,10 +22,14 @@
     }
     
     &.inverted {
-        background: $black;
+        background: $dark;
         color: $white;
         box-shadow: none;
         border: none;
+
+        &.secondary {
+            background: transparent;
+        }
 
         .menu-item {
             border-right: $thin solid $darker;

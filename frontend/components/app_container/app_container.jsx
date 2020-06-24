@@ -20,7 +20,7 @@ export default class AppContainer extends Component {
         } = this.props;
         
         return (
-            <Sidebar.Pushable className="app-container" fullHeight>
+            <Sidebar.Pushable className="app-container" fullHeight inverted>
                 <Sidebar
                     as={ Section }
                     horizontal

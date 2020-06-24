@@ -2,4 +2,8 @@
     &.horizontal {
         display: flex;
     }
+
+    &.inverted {
+        background: $darker;
+    }
 }

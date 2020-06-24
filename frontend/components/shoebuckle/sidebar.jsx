@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { childrenWithProps } from './util';
+
 export default class Sidebar extends Component {
     render() {
         const {
@@ -25,14 +27,16 @@ Sidebar.Pushable = class extends Component {
     render() {
         const {
             children,
-            fullHeight
+            fullHeight,
+            inverted
         } = this.props;
+        const childProps = { inverted };
 
         const className = `shoebuckle sidebar-pushable${ fullHeight ? " full-height" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>
-                { children }
+                { childrenWithProps(children, childProps) }
             </div>
         );
     }
@@ -42,14 +46,16 @@ Sidebar.Pusher = class extends Component {
     render() {
         const {
             children,
+            inverted,
             onClick
         } = this.props;
+        const childProps = { inverted };
 
         const className = `sidebar-pusher${ this.props.className ? " " + this.props.className : "" }`;
 
         return (
             <div className={ className } onClick={ onClick }>
-                { children }
+                { childrenWithProps(children, childProps) }
             </div>
         );
     }

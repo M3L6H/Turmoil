@@ -18,7 +18,7 @@ export default class Menu extends Component {
             tabular,
             vertical
         } = this.props;
-        const childProps = { center };
+        const childProps = { center, inverted };
 
         const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ stretch ? " stretch" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
@@ -26,7 +26,7 @@ export default class Menu extends Component {
             <div className={ className }>
                 { childrenWithProps(children, childProps) }
                 { items && items.map(({ name, active, value }) => (
-                    <Menu.Item key={ name } name={ name } active={ active } center={ center }>
+                    <Menu.Item key={ name } name={ name } active={ active } { ...childProps }>
                         { value }
                     </Menu.Item>
                 )) }
