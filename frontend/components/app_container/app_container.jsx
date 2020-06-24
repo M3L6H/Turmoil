@@ -30,6 +30,7 @@ export default class AppContainer extends Component {
                 >
                     <Menu
                         center
+                        secondary
                         stretch
                         vertical
                     >
