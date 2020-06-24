@@ -124,6 +124,10 @@
         flex-direction: column;
         align-items: flex-start;
 
+        &.fluid {
+            width: 100%;
+        }
+
         .menu-item {
             width: 100%;
             border: none;
