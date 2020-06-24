@@ -7,7 +7,7 @@ import Kitchensink from './kitchensink';
 
 const App = () => (
     <main>
-        <AppContainer>
+        <AppContainer inverted>
             <AppHeader />
         </AppContainer>
         <Route path="/kitchensink" component={ Kitchensink } />

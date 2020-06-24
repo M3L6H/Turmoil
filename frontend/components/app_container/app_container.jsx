@@ -16,11 +16,12 @@ export default class AppContainer extends Component {
     render() {
         const {
             children,
+            inverted,
             open
         } = this.props;
         
         return (
-            <Sidebar.Pushable className="app-container" fullHeight inverted>
+            <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
                 <Sidebar
                     as={ Section }
                     horizontal
