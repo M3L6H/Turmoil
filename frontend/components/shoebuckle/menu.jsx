@@ -7,6 +7,7 @@ export default class Menu extends Component {
             content,
             items,
             compact,
+            even,
             fluid,
             inverted,
             pointing,
@@ -15,7 +16,7 @@ export default class Menu extends Component {
             vertical
         } = this.props;
 
-        const className = `shoebuckle menu${ compact ? " compact" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }`;
+        const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }`;
         
         return (
             <div className={ className }>
