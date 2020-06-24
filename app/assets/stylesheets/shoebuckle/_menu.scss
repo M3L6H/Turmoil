@@ -88,6 +88,10 @@
         }
     }
 
+    &.stretch {
+        height: 100%;
+    }
+
     &.tabular {
         border: none;
         border-bottom: $thin solid $lightest;

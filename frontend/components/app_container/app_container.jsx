@@ -20,13 +20,14 @@ export default class AppContainer extends Component {
         } = this.props;
         
         return (
-            <Sidebar.Pushable className="app-container">
+            <Sidebar.Pushable className="app-container" fullHeight>
                 <Sidebar
                     as={ Section }
                     horizontal
                     visible={ open }
                 >
                     <Menu
+                        stretch
                         vertical
                     >
                         <Menu.Item>

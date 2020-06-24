@@ -23,10 +23,11 @@ export default class Sidebar extends Component {
 Sidebar.Pushable = class extends Component {
     render() {
         const {
-            children
+            children,
+            fullHeight
         } = this.props;
 
-        const className = `shoebuckle sidebar-pushable${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle sidebar-pushable${ fullHeight ? " full-height" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>

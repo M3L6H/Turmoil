@@ -11,11 +11,12 @@ export default class Menu extends Component {
             inverted,
             pointing,
             secondary,
+            stretch,
             tabular,
             vertical
         } = this.props;
 
-        const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ stretch ? " stretch" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>
