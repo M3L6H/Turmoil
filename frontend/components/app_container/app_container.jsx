@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import withWindowDimensions from '../hocs/with_window_dimensions';
 
-import { Icon, Menu, Section, Sidebar } from '../shoebuckle';
+import { Button, Icon, Menu, Section, Sidebar } from '../shoebuckle';
 
 class AppContainer extends Component {
     constructor(props) {
@@ -45,10 +45,12 @@ class AppContainer extends Component {
                             </Icon.Group>
                         </Menu.Item>
                         <Menu.Item>
-                            <Icon.Group big>
-                                <Icon name="circle" green />
-                                <Icon name="plus" transform="shrink-8" />
-                            </Icon.Group>
+                            <Button>
+                                <Icon.Group big>
+                                    <Icon name="circle" green />
+                                    <Icon name="plus" transform="shrink-8" />
+                                </Icon.Group>
+                            </Button>
                         </Menu.Item>
                     </Menu>
                     <Menu
