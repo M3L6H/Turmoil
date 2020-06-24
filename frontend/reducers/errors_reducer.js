@@ -12,7 +12,7 @@ import {
 } from '../actions/dimension_beings_actions';
 
 import { 
-    RECEIVE_DIMENSION_ERRORS,
+    RECEIVE_DIMENSIONS_ERRORS,
     RECEIVE_DIMENSION,
     RECEIVE_DIMENSIONS,
     REMOVE_DIMENSION
@@ -55,7 +55,7 @@ export default (state=_defaultState, action) => {
         case REMOVE_DIMENSION_BEING:
             return { ...state, dimensionBeings: [] }
 
-        case RECEIVE_DIMENSION_ERRORS:
+        case RECEIVE_DIMENSIONS_ERRORS:
             return { ...state, dimensions: action.dimensions }
         case RECEIVE_DIMENSION:
         case RECEIVE_DIMENSIONS:
