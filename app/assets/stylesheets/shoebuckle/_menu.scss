@@ -84,6 +84,27 @@
         }
     }
 
+    &.vertical {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+
+        .menu-item {
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:nth-child(n + 2) {
+                border-top: $thin solid $lightest;
+            }
+
+            >* {
+                margin-left: $menu-item-vertical-margin-left;
+            }
+        }
+    }
+
     .menu-item {
         position: relative;
         display: inline-block;

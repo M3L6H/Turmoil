@@ -503,6 +503,34 @@ export default class Kitchensink extends Component {
                         </Menu.Item>
                     </Menu>
                 </div>
+                <div className="test-row">
+                    <Menu vertical>
+                        <Menu.Item
+                            name="inbox"
+                            active={ activeItem === "inbox" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Inbox
+                            <Label teal>1</Label>
+                        </Menu.Item>
+                        <Menu.Item
+                            name="spam"
+                            active={ activeItem === "spam" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Spam
+                            <Label>51</Label>
+                        </Menu.Item>
+                        <Menu.Item
+                            name="updates"
+                            active={ activeItem === "updates" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Updates
+                            <Label>1</Label>
+                        </Menu.Item>
+                    </Menu>
+                </div>
             </div>
         );
     }

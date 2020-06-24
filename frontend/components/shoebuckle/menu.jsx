@@ -8,10 +8,11 @@ export default class Menu extends Component {
             items,
             pointing,
             secondary,
-            tabular
+            tabular,
+            vertical
         } = this.props;
 
-        const className = `shoebuckle menu${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }`;
+        const className = `shoebuckle menu${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }`;
         
         return (
             <div className={ className }>
