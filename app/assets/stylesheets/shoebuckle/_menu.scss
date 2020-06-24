@@ -14,9 +14,43 @@
             margin: $menu-item-margin-secondary;
             border-radius: $small-round;
         }
+
+        &.pointing {
+            border-bottom: $bold solid $lightest;
+
+            .menu-item {
+                padding: $menu-item-padding;
+                border-radius: 0;
+                margin: 0;
+
+                &.active {
+                    background: transparent;
+
+                    &:after {
+                        border: none;
+                        border-bottom: $bold solid $primary;
+                        width: 100%;
+                        left: 0;
+                        bottom: -$bold;
+                    }
+                }
+            }
+        }
+    }
+
+    &.pointing .menu-item.active:after {
+        content: " ";
+        position: absolute;
+        left: calc(50% - #{ $menu-arrow });
+        bottom: -$menu-arrow;
+        border-left: $menu-arrow solid transparent;
+        border-right: $menu-arrow solid transparent;
+        border-top: $menu-arrow solid;
+        border-top-color: $lightest;
     }
 
     .menu-item {
+        position: relative;
         display: inline-block;
         padding: $menu-item-padding;
         border-right: inherit;

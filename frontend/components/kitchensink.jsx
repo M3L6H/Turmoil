@@ -435,6 +435,56 @@ export default class Kitchensink extends Component {
                         ]} 
                     />
                 </div>
+                <div className="test-row">
+                    <Menu pointing>
+                        <Menu.Item
+                            name="home"
+                            active={ activeItem === "home" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Home
+                        </Menu.Item>
+                        <Menu.Item
+                            name="messages"
+                            active={ activeItem === "messages" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Messages
+                        </Menu.Item>
+                        <Menu.Item
+                            name="friends"
+                            active={ activeItem === "friends" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Friends
+                        </Menu.Item>
+                    </Menu>
+                </div>
+                <div className="test-row">
+                    <Menu pointing secondary>
+                        <Menu.Item
+                            name="homeSecondary"
+                            active={ activeItem === "homeSecondary" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Home
+                        </Menu.Item>
+                        <Menu.Item
+                            name="messagesSecondary"
+                            active={ activeItem === "messagesSecondary" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Messages
+                        </Menu.Item>
+                        <Menu.Item
+                            name="friendsSecondary"
+                            active={ activeItem === "friendsSecondary" }
+                            onClick={ this._handleItemClick }
+                        >
+                            Friends
+                        </Menu.Item>
+                    </Menu>
+                </div>
             </div>
         );
     }
