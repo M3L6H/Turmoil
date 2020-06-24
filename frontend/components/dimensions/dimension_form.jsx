@@ -13,9 +13,19 @@ export default class DimensionForm extends Component {
         };
     
         this._handleChange = this._handleChange.bind(this);
+        this._handleCheckbox = this._handleCheckbox.bind(this);
         this._handleClose = this._handleClose.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
         this._renderForm = this._renderForm.bind(this);
+    }
+
+    _handleCheckbox(e) {
+        const checkbox = e.currentTarget;
+
+        switch (checkbox.dataset.type) {
+            case "public":
+                this.setState({ [checkbox.dataset.type]: !this.state[checkbox.dataset.type] });
+        }
     }
 
     _handleChange(e) {
@@ -23,7 +33,6 @@ export default class DimensionForm extends Component {
 
         switch (input.dataset.type) {
             case "name":
-            case "public":
                 this.setState({ [input.dataset.type]: input.value });
         }
     }
@@ -37,10 +46,10 @@ export default class DimensionForm extends Component {
         e.preventDefault();
         
         const { createDimension, closeForm } = this.props;
-        const { name, public } = this.state;
+        const { name } = this.state;
         const dimension = {
             name,
-            public
+            public: this.state.public
         };
 
         createDimension(dimension)
@@ -49,7 +58,7 @@ export default class DimensionForm extends Component {
     }
 
     _renderForm() {
-        const { name, public, errors } = this.state;
+        const { name, errors } = this.state;
 
         return (
             <Form onSubmit={ this._handleSubmit } errors={ errors }>
@@ -62,10 +71,10 @@ export default class DimensionForm extends Component {
                     value={ name }
                 />
                 <Form.Checkbox 
-                    label="Make the dimension public? (You can always change this later)" 
+                    label={ `Make the dimension ${ this.state.public ? "private" : "public" }?` }
                     data-type="public"
-                    onChange={ this._handleChange }
-                    checked={ public }
+                    onChange={ this._handleCheckbox }
+                    checked={ this.state.public }
                 />
                 <Button animated fluid green type="submit">
                     <Button.Content visible>Create Dimension!</Button.Content>
@@ -84,7 +93,7 @@ export default class DimensionForm extends Component {
             <Modal handleClose={ this._handleClose } open={ open } inverted={ inverted }>
                 <Modal.Header>You Desire to Create a Dimension?</Modal.Header>
                 <Modal.Content>
-                    { this._renderForm(title) }
+                    { this._renderForm() }
                 </Modal.Content>
             </Modal>
         );

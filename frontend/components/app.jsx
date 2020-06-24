@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 
 import AppHeader from './header';
 import AppContainer from './app_container';
+import DimensionForm from './dimensions';
 import Kitchensink from './kitchensink';
 
 const App = () => (
@@ -10,6 +11,7 @@ const App = () => (
         <AppContainer inverted>
             <AppHeader />
         </AppContainer>
+        <DimensionForm />
         <Route path="/kitchensink" component={ Kitchensink } />
     </>
 );

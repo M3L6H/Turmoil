@@ -67,7 +67,11 @@ Form.Label = (props) => {
     const className = `shoebuckle form-label${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ required ? " required" : "" }${ props.className ? " " + props.className : "" }`;
     
     return (
-        <label className={ className } onClick={ onClick }>
+        <label 
+            className={ className } 
+            onClick={ onClick }
+            data-type={ props["data-type"] }
+        >
             { children || content }
         </label>
     );
@@ -107,6 +111,7 @@ Form.Checkbox = class extends Component {
             className={ className }
             onChange={ onChange || this._handleChange }
             type="checkbox"
+            data-type={ this.props["data-type"] }
         />;
         
         if (label) {
@@ -117,6 +122,7 @@ Form.Checkbox = class extends Component {
                         content={ label } 
                         onClick={ onChange || this._handleChange } 
                         required={ required }
+                        data-type={ this.props["data-type"] }
                     />
                 </Form.Field>
             );

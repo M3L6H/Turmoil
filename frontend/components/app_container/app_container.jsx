@@ -20,7 +20,8 @@ class AppContainer extends Component {
             children,
             desktop,
             inverted,
-            open
+            open,
+            openDimensionModal
         } = this.props;
 
         return (
@@ -45,7 +46,7 @@ class AppContainer extends Component {
                             </Icon.Group>
                         </Menu.Item>
                         <Menu.Item>
-                            <Button icon>
+                            <Button icon onClick={ openDimensionModal }>
                                 <Icon.Group big>
                                     <Icon name="circle" green />
                                     <Icon name="plus" transform="shrink-8" />
