@@ -10,7 +10,6 @@ export default class AppContainer extends Component {
     }
     
     _handleClick() {
-        console.log("called");
         this.props.closeSidebar();
     }
     
@@ -35,13 +34,13 @@ export default class AppContainer extends Component {
                         vertical
                     >
                         <Menu.Item>
-                            <Icon.Group big>
+                            <Icon.Group large>
                                 <Icon name="circle" black />
                                 <Icon name="comment-alt" primary transform="shrink-8 down-0.8 right-0.3" />
                             </Icon.Group>
                         </Menu.Item>
                         <Menu.Item>
-                            <Icon.Group big>
+                            <Icon.Group large>
                                 <Icon name="circle" green />
                                 <Icon name="plus" transform="shrink-8" />
                             </Icon.Group>
