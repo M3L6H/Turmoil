@@ -414,6 +414,22 @@ export default class Kitchensink extends Component {
                         >
                             Upcoming Events
                         </Menu.Item>
+                        <Menu.Item
+                            name="right"
+                            active={ activeItem === "right" }
+                            onClick={ this._handleItemClick }
+                            position="right"
+                        >
+                            Right
+                        </Menu.Item>
+                        <Menu.Item
+                            name="alsoRight"
+                            active={ activeItem === "alsoRight" }
+                            onClick={ this._handleItemClick }
+                            position="right"
+                        >
+                            Also Right
+                        </Menu.Item>
                     </Menu>
                 </div>
                 <div className="test-row">
@@ -519,7 +535,7 @@ export default class Kitchensink extends Component {
                             onClick={ this._handleItemClick }
                         >
                             Spam
-                            <Label>51</Label>
+                            <Label teal>51</Label>
                         </Menu.Item>
                         <Menu.Item
                             name="updates"
@@ -527,7 +543,7 @@ export default class Kitchensink extends Component {
                             onClick={ this._handleItemClick }
                         >
                             Updates
-                            <Label>1</Label>
+                            <Label teal>1</Label>
                         </Menu.Item>
                     </Menu>
                 </div>

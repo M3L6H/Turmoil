@@ -51,10 +51,11 @@ Menu.Item = class extends Component {
             children,
             content,
             name,
-            active
+            active,
+            position
         } = this.props;
         
-        const className = `menu-item${ active ? " active" : "" }`;
+        const className = `menu-item${ active ? " active" : "" }${ position ? ` position-${ position }` : ""}`;
 
         return (
             <span name={ name } className={ className } onClick={ this._handleClick }>

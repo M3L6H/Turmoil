@@ -124,5 +124,15 @@
         &.active {
             background: $lightest;
         }
+
+        &.position-right {
+            border-left: inherit;
+            border-right: none;
+            margin-left: auto;
+
+            +.position-right {
+                margin-left: 0;
+            }
+        }
     }
 }
