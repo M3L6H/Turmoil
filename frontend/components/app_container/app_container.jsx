@@ -45,7 +45,7 @@ class AppContainer extends Component {
                             </Icon.Group>
                         </Menu.Item>
                         <Menu.Item>
-                            <Button>
+                            <Button icon>
                                 <Icon.Group big>
                                     <Icon name="circle" green />
                                     <Icon name="plus" transform="shrink-8" />

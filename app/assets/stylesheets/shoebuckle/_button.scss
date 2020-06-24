@@ -21,6 +21,11 @@
         padding: $btn-cmpct-vertical-padding $btn-cmpct-horizontal-padding;
     }
 
+    &.icon {
+        background: transparent;
+        border-radius: 0;
+    }
+
     &.pill {
         border-radius: calc(#{ 2 * $btn-vertical-padding + $body-font-size } / 2);
     }
