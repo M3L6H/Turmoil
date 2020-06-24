@@ -11,6 +11,8 @@
 
         transition: width $sidebar-move-speed;
 
+        z-index: 1;
+
         // Hide scrollbar
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -30,5 +32,15 @@
                 width: #{ $sidebar-width / 2 };
             }
         }
+    }
+
+    .sidebar.visible + .sidebar-pusher:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $dimmer;
     }
 }

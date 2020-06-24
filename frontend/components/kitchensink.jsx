@@ -30,7 +30,7 @@ export default class Kitchensink extends Component {
         this.setState({ activeItem: name });
     }
 
-    _handleButtonClick() {
+    _handleButtonClick(e) {
         this.setState({ sidebarVisible: !this.state.sidebarVisible });
     }
     
@@ -660,7 +660,7 @@ export default class Kitchensink extends Component {
                                 Settings
                             </Menu.Item>
                         </Sidebar>
-                        <Sidebar.Pusher>
+                        <Sidebar.Pusher onClick={ sidebarVisible ? (() => this.setState({ sidebarVisible: false })) : undefined }>
                             <Header huge>Content</Header>
                             <Button onClick={ this._handleButtonClick }>Toggle Sidebar</Button>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit mollitia, ea iste quaerat a aperiam nulla adipisci nihil eius delectus error sit, labore cupiditate dolores aliquid voluptas officia possimus! Maxime.</p>
