@@ -11,7 +11,7 @@ export default class Form extends Component {
     render() {
         const { children, errors, onSubmit } = this.props;
 
-        const className = `shoebuckle form`;
+        const className = `shoebuckle form${ this.props.className ? " " + this.props.className : "" }`;
 
         return (
             <form onSubmit={ onSubmit } className={ className }>
@@ -33,7 +33,7 @@ Form.Field = (props) => {
         error
     } = props;
 
-    const className = `shoebuckle form-field`;
+    const className = `shoebuckle form-field${ this.props.className ? " " + this.props.className : "" }`;
     const childProps = { error };
 
     // React doesn't like a boolean for error when cloning the component
@@ -71,7 +71,7 @@ Form.Label = (props) => {
         required
     } = props;
 
-    const className = `shoebuckle form-label${ error ? " error" : "" }${ required ? " required" : "" }`;
+    const className = `shoebuckle form-label${ error ? " error" : "" }${ required ? " required" : "" }${ this.props.className ? " " + this.props.className : "" }`;
     
     return (
         <label className={ className } onClick={ onClick }>
@@ -106,7 +106,7 @@ Form.Checkbox = class extends Component {
             required
         } = this.props;
 
-        const className = `shoebuckle form-checkbox${ error ? " error" : "" }`;
+        const className = `shoebuckle form-checkbox${ error ? " error" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         const checkbox = <input
             checked={ checked === undefined ? stateChecked : checked }
@@ -161,7 +161,7 @@ Form.Input = class extends Component {
             value
         } = this.props;
 
-        const className = `shoebuckle form-input ${ type || "text" }-input${ error ? " error" : "" }`;
+        const className = `shoebuckle form-input ${ type || "text" }-input${ error ? " error" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         const input = <input 
             className={ className }

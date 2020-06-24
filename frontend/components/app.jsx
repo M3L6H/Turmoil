@@ -8,17 +8,7 @@ import Kitchensink from './kitchensink';
 
 const App = () => (
     <main>
-        <Sidebar.Pushable>
-            <Sidebar
-                as={ Section }
-                horizontal
-            >
-                Test
-            </Sidebar>
-            <Sidebar.Pusher>
-                <AppHeader />
-            </Sidebar.Pusher>
-        </Sidebar.Pushable>
+        <AppHeader />
         <Route path="/kitchensink" component={ Kitchensink } />
     </main>
 );

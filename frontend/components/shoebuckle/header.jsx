@@ -36,7 +36,7 @@ class Header extends Component {
 
         const Tag = this.props.as ? this.props.as : "div";
 
-        const className = `shoebuckle header${ dividing ? " dividing" : "" }${ fluid ? " fluid" : "" }${ icon ? " icon" : "" }${ link ? " link" : "" }${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || (mini && " mini") || "" }${ parseColor(this.props) }`;
+        const className = `shoebuckle header${ dividing ? " dividing" : "" }${ fluid ? " fluid" : "" }${ icon ? " icon" : "" }${ link ? " link" : "" }${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || (mini && " mini") || "" }${ parseColor(this.props) }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <Tag className={ className } onClick={ this._handleClick }>
@@ -52,7 +52,7 @@ Header.Subheader = (props) => {
         content
     } = props;
 
-    const className = `header-subheader`;
+    const className = `header-subheader${ this.props.className ? " " + this.props.className : "" }`;
 
     return (
         <div className={ className } >

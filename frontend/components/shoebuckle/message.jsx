@@ -34,7 +34,7 @@ export default class Message extends Component {
             warning
         } = this.props;
         
-        const className = `shoebuckle message${ attached ? ` attached-${ attached !== true ? attached : "top" }` : "" }${ compact ? " compact" : ""}${ error ? " error" : "" }${ floating ? " floating" : "" }${ info ? " info" : "" }${ success ? " success" : "" }${ ((visible !== undefined && visible) || (visible === undefined && stateVisible)) ? "" : " hidden" }${ warning ? " warning" : "" }`;
+        const className = `shoebuckle message${ attached ? ` attached-${ attached !== true ? attached : "top" }` : "" }${ compact ? " compact" : ""}${ error ? " error" : "" }${ floating ? " floating" : "" }${ info ? " info" : "" }${ success ? " success" : "" }${ ((visible !== undefined && visible) || (visible === undefined && stateVisible)) ? "" : " hidden" }${ warning ? " warning" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>

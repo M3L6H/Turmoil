@@ -33,7 +33,7 @@ export default class Modal extends Component {
         const open = this.props.open === undefined ? stateOpen : this.props.open;
         const handleClose = this.props.handleClose || this._handleClose;
 
-        const className = `shoebuckle modal`;
+        const className = `shoebuckle modal${ this.props.className ? " " + this.props.className : "" }`;
 
         let trigger = this.props.trigger;
 

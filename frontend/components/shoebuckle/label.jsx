@@ -8,7 +8,7 @@ class Label extends Component {
         const { children } = props;
         const childProps = { ...selectColor(props), ...selectSize(props) };
 
-        const className = `shoebuckle label-group`;
+        const className = `shoebuckle label-group${ this.props.className ? " " + this.props.className : "" }`;
 
         const childrenWithProps = Children.map(children, child => {
             if (isValidElement(child)) {
@@ -53,7 +53,7 @@ class Label extends Component {
 
         const pointingClass = pointing ? `pointing ${ pointing !== true ? "" + pointing : "above" }` : false;
         
-        const className = `shoebuckle label${ circular ? " circular" : "" }${ error ? " error" : "" }${ floating ? " floating" : "" }${ tag ? " tag" : "" }${ link ? " link" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
+        const className = `shoebuckle label${ circular ? " circular" : "" }${ error ? " error" : "" }${ floating ? " floating" : "" }${ tag ? " tag" : "" }${ link ? " link" : "" }${ parseColor(this.props) }${ parseSize(this.props) }${ this.props.className ? " " + this.props.className : "" }`;
 
         const pointer = <div className={ `${ pointingClass }${ error ? " error" : "" }`}></div>;
         

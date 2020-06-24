@@ -11,7 +11,7 @@ class Button extends Component {
             visible
         } = props;
 
-        const className = `shoebuckle btn-content${ hidden ? " hidden" : "" }${ visible ? " visible" : "" }`;
+        const className = `shoebuckle btn-content${ hidden ? " hidden" : "" }${ visible ? " visible" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         return (
             <div className={ className }>
@@ -39,7 +39,7 @@ class Button extends Component {
             type
         } = this.props;
     
-        const className = `shoebuckle btn${ compact ? " compact" : "" }${ pill ? " pill" : "" }${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ fluid ? " fluid" : "" }${ parseColor(this.props) }${ parseSize(this.props) }`;
+        const className = `shoebuckle btn${ compact ? " compact" : "" }${ pill ? " pill" : "" }${ primary ? " primary" : "" }${ secondary ? " secondary" : "" }${ basic ? " basic" : "" }${ animated ? ` animated${ animated !== true ? " " + animated : "" }` : "" }${ fluid ? " fluid" : "" }${ parseColor(this.props) }${ parseSize(this.props) }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <button
