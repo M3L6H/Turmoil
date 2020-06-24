@@ -9,6 +9,14 @@
     justify-content: flex-start;
     align-items: flex-end;
 
+    &.compact {
+        width: auto;
+
+        .menu-item:last-child {
+            border-right: none;
+        }
+    }
+    
     &.inverted {
         background: $black;
         color: $white;

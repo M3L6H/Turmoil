@@ -573,6 +573,31 @@ export default class Kitchensink extends Component {
                         </Menu.Item>
                     </Menu>
                 </div>
+                <div className="test-row">
+                    <Menu compact>
+                        <Menu.Item
+                            name="compactGamepad"
+                            active={ activeItem === "compactGamepad" }
+                            onClick={ this._handleItemClick }
+                        >
+                            <Icon name="gamepad" />
+                        </Menu.Item>
+                        <Menu.Item
+                            name="compactVideo"
+                            active={ activeItem === "compactVideo" }
+                            onClick={ this._handleItemClick }
+                        >
+                            <Icon name="video" />
+                        </Menu.Item>
+                        <Menu.Item
+                            name="compactPlayCircle"
+                            active={ activeItem === "compactPlayCircle" }
+                            onClick={ this._handleItemClick }
+                        >
+                            <Icon name="play-circle" />
+                        </Menu.Item>
+                    </Menu>
+                </div>
             </div>
         );
     }

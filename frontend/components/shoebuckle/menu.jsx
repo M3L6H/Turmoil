@@ -6,6 +6,7 @@ export default class Menu extends Component {
             children,
             content,
             items,
+            compact,
             inverted,
             pointing,
             secondary,
@@ -13,7 +14,7 @@ export default class Menu extends Component {
             vertical
         } = this.props;
 
-        const className = `shoebuckle menu${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }`;
+        const className = `shoebuckle menu${ compact ? " compact" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }`;
         
         return (
             <div className={ className }>
