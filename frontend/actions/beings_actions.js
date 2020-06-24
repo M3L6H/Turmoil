@@ -12,9 +12,10 @@ const receiveBeings = (beings) => ({
     beings 
 });
 
-const receiveBeing = (being) => ({
+const receiveBeing = ({ being, dimensions }) => ({
     type: RECEIVE_BEING,
-    being 
+    being,
+    dimensions
 });
 
 const removeBeing = (beingId) => ({

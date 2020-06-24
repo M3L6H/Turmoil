@@ -4,9 +4,11 @@ export const RECEIVE_SESSION = "RECEIVE_SESSION";
 export const REMOVE_SESSION = "REMOVE_SESSION";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
-export const receiveSession = (beingId) => ({
+export const receiveSession = ({ being, dimensions }) => ({
     type: RECEIVE_SESSION,
-    beingId
+    beingId: being.id,
+    being,
+    dimensions
 });
 
 const removeSession = () => ({
@@ -20,7 +22,7 @@ const receiveSessionErrors = (errors) => ({
 
 export const createSession = (being) => dispatch => (
     SessionUtil.createSession(being)
-        .then(res => dispatch(receiveSession(res.currentBeingId)))
+        .then(res => dispatch(receiveSession(res)))
         .fail(jqXHR => receiveSessionErrors(jqXHR.responseJSON))
 );
 

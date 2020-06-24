@@ -11,7 +11,7 @@ const App = () => (
         <AppContainer inverted>
             <AppHeader />
         </AppContainer>
-        <DimensionForm inverted={ 1 } />
+        <DimensionForm inverted />
         <Route path="/kitchensink" component={ Kitchensink } />
     </>
 );
