@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { parseColor } from './util';
 
-export default class Header extends Component {
+class Header extends Component {
+    constructor(props) {
+        super(props);
+        
+        this._handleClick = this._handleClick.bind(this);
+    }
+    
+    _handleClick() {
+        const { link, to, history } = this.props;
+
+        if (link && to) {
+            history.push(to);
+        }
+    }
+    
     render() {
         const {
             children,
@@ -10,6 +25,7 @@ export default class Header extends Component {
             dividing,
             fluid,
             icon,
+            link,
             huge,
             large,
             medium,
@@ -20,10 +36,10 @@ export default class Header extends Component {
 
         const Tag = this.props.as ? this.props.as : "div";
 
-        const className = `shoebuckle header${ dividing ? " dividing" : "" }${ fluid ? " fluid" : "" }${ icon ? " icon" : "" }${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || (mini && " mini") || "" }${ parseColor(this.props) }`;
+        const className = `shoebuckle header${ dividing ? " dividing" : "" }${ fluid ? " fluid" : "" }${ icon ? " icon" : "" }${ link ? " link" : "" }${ (huge && " huge") || (large && " large") || (medium && " medium") || (small && " small") || (tiny && " tiny") || (mini && " mini") || "" }${ parseColor(this.props) }`;
         
         return (
-            <Tag className={ className }>
+            <Tag className={ className } onClick={ this._handleClick }>
                 { children || content }
             </Tag>
         );
@@ -44,3 +60,5 @@ Header.Subheader = (props) => {
         </div>
     );
 };
+
+export default withRouter(Header);

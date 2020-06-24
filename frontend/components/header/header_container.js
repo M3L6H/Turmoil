@@ -4,7 +4,7 @@ import { createBeing } from '../../actions/beings_actions';
 import { receiveAuthModal } from '../../actions/modals_actions';
 import { createSession, deleteSession } from '../../actions/session_actions';
 
-import Header from './header';
+import AppHeader from './app_header';
 
 const mapStateToProps = ({ session, ui: { modals } }) => ({
     currentBeingId: session.currentBeingId,
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => ({
     closeForm: () => dispatch(receiveAuthModal(false))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
