@@ -4,7 +4,7 @@ import withWindowDimensions from '../hocs/with_window_dimensions';
 
 import { Sidebar } from '../shoebuckle';
 
-import DimensionsSidebar from './dimensions_sidebar';
+import DimensionsSidebar from '../dimensions_sidebar';
 
 class AppContainer extends Component {
     constructor(props) {
@@ -20,21 +20,13 @@ class AppContainer extends Component {
     render() {
         const {
             children,
-            desktop,
             inverted,
-            open,
-            openDimensionModal,
-            signedIn
+            open
         } = this.props;
 
         return (
             <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
-                <DimensionsSidebar
-                    desktop={ desktop }
-                    open={ open }
-                    openDimensionModal={ openDimensionModal }
-                    signedIn={ signedIn }
-                />
+                <DimensionsSidebar />
                 <Sidebar.Pusher onClick={ open ? this._handleClick : undefined }>
                     { children }
                 </Sidebar.Pusher>
