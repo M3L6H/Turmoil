@@ -71,7 +71,7 @@ export default class DimensionForm extends Component {
                     value={ name }
                 />
                 <Form.Checkbox 
-                    label={ `Make the dimension ${ this.state.public ? "private" : "public" }?` }
+                    label="Public"
                     data-type="public"
                     onChange={ this._handleCheckbox }
                     checked={ this.state.public }
