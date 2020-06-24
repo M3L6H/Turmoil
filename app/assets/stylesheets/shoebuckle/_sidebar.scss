@@ -1,5 +1,6 @@
 .shoebuckle.sidebar-pushable {
     display: flex;
+    position: relative;
 
     .sidebar {
         border-radius: 0;
@@ -9,6 +10,18 @@
         overflow-x: hidden;
 
         transition: width $sidebar-move-speed;
+
+        // Hide scrollbar
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &.overlay {
+            position: absolute;
+        }
 
         &.visible {
             width: $sidebar-width;

@@ -4,11 +4,12 @@ export default class Sidebar extends Component {
     render() {
         const {
             children,
+            overlay,
             thin,
             visible
         } = this.props;
 
-        const className = `sidebar${ thin ? " thin" : "" }${ visible ? " visible" : "" }`;
+        const className = `sidebar${ overlay ? " overlay" : "" }${ thin ? " thin" : "" }${ visible ? " visible" : "" }`;
         const Tag = this.props.as ? this.props.as : "div";
         
         return (
