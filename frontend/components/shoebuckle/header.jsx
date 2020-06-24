@@ -52,7 +52,7 @@ Header.Subheader = (props) => {
         content
     } = props;
 
-    const className = `header-subheader${ this.props.className ? " " + this.props.className : "" }`;
+    const className = `header-subheader${ props.className ? " " + props.className : "" }`;
 
     return (
         <div className={ className } >

@@ -8,7 +8,7 @@ class Label extends Component {
         const { children } = props;
         const childProps = { ...selectColor(props), ...selectSize(props) };
 
-        const className = `shoebuckle label-group${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle label-group${ props.className ? " " + props.className : "" }`;
 
         const childrenWithProps = Children.map(children, child => {
             if (isValidElement(child)) {

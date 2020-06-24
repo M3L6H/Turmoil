@@ -26,7 +26,7 @@ Sidebar.Pushable = class extends Component {
             children
         } = this.props;
 
-        const className = `shoebuckle sidebar-pushable`;
+        const className = `shoebuckle sidebar-pushable${ props.className ? " " + props.className : "" }`;
         
         return (
             <div className={ className }>
@@ -43,7 +43,7 @@ Sidebar.Pusher = class extends Component {
             onClick
         } = this.props;
 
-        const className = `sidebar-pusher`;
+        const className = `sidebar-pusher${ props.className ? " " + props.className : "" }`;
 
         return (
             <div className={ className } onClick={ onClick }>

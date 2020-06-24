@@ -11,7 +11,7 @@ class Button extends Component {
             visible
         } = props;
 
-        const className = `shoebuckle btn-content${ hidden ? " hidden" : "" }${ visible ? " visible" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle btn-content${ hidden ? " hidden" : "" }${ visible ? " visible" : "" }${ props.className ? " " + props.className : "" }`;
 
         return (
             <div className={ className }>

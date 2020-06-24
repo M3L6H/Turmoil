@@ -33,7 +33,7 @@ Form.Field = (props) => {
         error
     } = props;
 
-    const className = `shoebuckle form-field${ this.props.className ? " " + this.props.className : "" }`;
+    const className = `shoebuckle form-field${ props.className ? " " + props.className : "" }`;
     const childProps = { error };
 
     // React doesn't like a boolean for error when cloning the component
@@ -71,7 +71,7 @@ Form.Label = (props) => {
         required
     } = props;
 
-    const className = `shoebuckle form-label${ error ? " error" : "" }${ required ? " required" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+    const className = `shoebuckle form-label${ error ? " error" : "" }${ required ? " required" : "" }${ props.className ? " " + props.className : "" }`;
     
     return (
         <label className={ className } onClick={ onClick }>

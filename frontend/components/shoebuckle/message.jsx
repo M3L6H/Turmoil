@@ -61,7 +61,7 @@ Message.Header = props => {
         content
     } = props;
 
-    const className = `shoebuckle message-header`;
+    const className = `shoebuckle message-header${ props.className ? " " + props.className : "" }`;
     
     return (
         <div className={ className }>
@@ -76,7 +76,7 @@ Message.List = props => {
         content
     } = props;
 
-    const className = `shoebuckle message-list`;
+    const className = `shoebuckle message-list${ props.className ? " " + props.className : "" }`;
 
     return (
         <ul className={ className }>
@@ -91,7 +91,7 @@ Message.Item = props => {
         content
     } = props;
 
-    const className = `shoebuckle message-item`;
+    const className = `shoebuckle message-item${ props.className ? " " + props.className : "" }`;
 
     return (
         <li className={ className }>
