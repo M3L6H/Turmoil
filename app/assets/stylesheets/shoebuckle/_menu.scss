@@ -142,11 +142,15 @@
             align-items: center;
             justify-content: space-between;
 
+            &.center {
+                justify-content: center;
+            }
+
             &:nth-child(n + 2) {
                 border-top: $thin solid $lightest;
             }
 
-            >* {
+            >*:nth-child(n + 2) {
                 margin-left: $menu-item-vertical-margin-left;
             }
         }

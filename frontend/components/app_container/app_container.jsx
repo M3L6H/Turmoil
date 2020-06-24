@@ -10,6 +10,7 @@ export default class AppContainer extends Component {
     }
     
     _handleClick() {
+        console.log("called");
         this.props.closeSidebar();
     }
     
@@ -24,14 +25,24 @@ export default class AppContainer extends Component {
                 <Sidebar
                     as={ Section }
                     horizontal
+                    overlay
                     visible={ open }
                 >
                     <Menu
+                        center
                         stretch
                         vertical
                     >
                         <Menu.Item>
                             <Icon name="comment-alt" />
+                        </Menu.Item>
+                    </Menu>
+                    <Menu
+                        stretch
+                        vertical
+                    >
+                        <Menu.Item>
+                            Direct messages
                         </Menu.Item>
                     </Menu>
                 </Sidebar>

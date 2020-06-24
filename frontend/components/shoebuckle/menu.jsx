@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, cloneElement, isValidElement, Children } from 'react';
 
 export default class Menu extends Component {
     render() {
         const {
             children,
             items,
+            center,
             compact,
             even,
             fluid,
@@ -17,12 +18,21 @@ export default class Menu extends Component {
         } = this.props;
 
         const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ stretch ? " stretch" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const childProps = { center };
+
+        const childrenWithProps = Children.map(children, child => {
+            if (isValidElement(child)) {
+                return cloneElement(child, { ...childProps, ...child.props });
+            }
+
+            return child;
+        });
         
         return (
             <div className={ className }>
-                { children }
+                { childrenWithProps }
                 { items && items.map(({ name, active, value }) => (
-                    <Menu.Item key={ name } name={ name } active={ active }>
+                    <Menu.Item key={ name } name={ name } active={ active } center={ center }>
                         { value }
                     </Menu.Item>
                 )) }
@@ -56,10 +66,11 @@ Menu.Item = class extends Component {
             content,
             name,
             active,
+            center,
             position
         } = this.props;
         
-        const className = `menu-item${ active ? " active" : "" }${ position ? ` position-${ position }` : ""}`;
+        const className = `menu-item${ active ? " active" : "" }${ center ? " center" : "" }${ position ? ` position-${ position }` : ""}`;
 
         return (
             <span name={ name } className={ className } onClick={ this._handleClick }>

@@ -1,3 +1,5 @@
 .shoebuckle.section {
-    
+    &.horizontal {
+        display: flex;
+    }
 }
