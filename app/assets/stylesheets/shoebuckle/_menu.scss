@@ -5,15 +5,20 @@
     box-shadow: $vertical-shadow;
     background: $white;
 
+    &.pointing .menu-item.active:after {
+        content: " ";
+        position: absolute;
+        left: calc(50% - #{ $menu-arrow });
+        bottom: -$menu-arrow;
+        border-left: $menu-arrow solid transparent;
+        border-right: $menu-arrow solid transparent;
+        border-top: $menu-arrow solid;
+        border-top-color: $lightest;
+    }
+
     &.secondary {
         border: none;
         box-shadow: none;
-
-        .menu-item {
-            padding: $menu-item-padding-secondary #{ 2 * $menu-item-padding-secondary };
-            margin: $menu-item-margin-secondary;
-            border-radius: $small-round;
-        }
 
         &.pointing {
             border-bottom: $bold solid $lightest;
@@ -23,7 +28,7 @@
                 border-radius: 0;
                 margin: 0;
 
-                &.active {
+                &.active, &:hover {
                     background: transparent;
 
                     &:after {
@@ -36,17 +41,47 @@
                 }
             }
         }
+
+        .menu-item {
+            padding: $menu-item-padding-secondary #{ 2 * $menu-item-padding-secondary };
+            margin: $menu-item-margin-secondary;
+            border-radius: $small-round;
+        }
     }
 
-    &.pointing .menu-item.active:after {
-        content: " ";
-        position: absolute;
-        left: calc(50% - #{ $menu-arrow });
-        bottom: -$menu-arrow;
-        border-left: $menu-arrow solid transparent;
-        border-right: $menu-arrow solid transparent;
-        border-top: $menu-arrow solid;
-        border-top-color: $lightest;
+    &.tabular {
+        border: none;
+        border-bottom: $thin solid $lightest;
+        box-shadow: none;
+
+        .menu-item {
+            border-right: $thin solid transparent;
+            border-top: $thin solid transparent;
+            border-left: $thin solid transparent;
+
+            &:hover {
+                background: inherit;
+            }
+
+            &.active {
+                background: inherit;
+                border-top-left-radius: $small-round;
+                border-top-right-radius: $small-round;
+                border-right: $thin solid $lightest;
+                border-top: $thin solid $lightest;
+                border-left: $thin solid $lightest;
+
+                &:after {
+                    content: " ";
+                    width: calc(100% - #{ 2 * $thin });
+                    height: $thin;
+                    background: $white;
+                    position: absolute;
+                    bottom: -$thin;
+                    left: $thin;
+                }
+            }
+        }
     }
 
     .menu-item {

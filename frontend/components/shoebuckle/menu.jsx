@@ -7,10 +7,11 @@ export default class Menu extends Component {
             content,
             items,
             pointing,
-            secondary
+            secondary,
+            tabular
         } = this.props;
 
-        const className = `shoebuckle menu${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }`;
+        const className = `shoebuckle menu${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ tabular ? " tabular" : "" }`;
         
         return (
             <div className={ className }>
