@@ -117,9 +117,11 @@ export default class AuthForm extends Component {
                 <Modal.Content>
                     { this._renderForm(title) }
                 </Modal.Content>
-                <Modal.Actions>
-                    <Button green fluid onClick={ this._handleDemoUser }>Demo User</Button>
-                </Modal.Actions>
+                { formType === "signIn" && 
+                    <Modal.Actions>
+                        <Button green fluid onClick={ this._handleDemoUser }>Demo User</Button>
+                    </Modal.Actions>
+                }
             </Modal>
         );
     }
