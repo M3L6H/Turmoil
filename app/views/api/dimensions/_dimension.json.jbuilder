@@ -21,7 +21,7 @@ end
 json.realms do
     dimension.realms.each do |realm|
         json.set! realm.id do
-            json.extract! realm, :id, :name
+            json.extract! realm, :id, :name, :cluster_id
         end
     end
 end
