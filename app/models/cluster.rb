@@ -30,8 +30,8 @@ class Cluster < ApplicationRecord
 
     # Associations
     belongs_to :dimension
-    belongs_to :next_orderable, polymorphic: true
-    belongs_to :prev_orderable, polymorphic: true
+    belongs_to :next_orderable, polymorphic: true, optional: true
+    belongs_to :prev_orderable, polymorphic: true, optional: true
     has_many :realms, dependent: :destroy
 
     # Custom validations

@@ -39,8 +39,8 @@ class Realm < ApplicationRecord
     # Associations
     belongs_to :cluster, optional: true
     belongs_to :dimension
-    belongs_to :next_orderable, polymorphic: true
-    belongs_to :prev_orderable, polymorphic: true
+    belongs_to :next_orderable, polymorphic: true, optional: true
+    belongs_to :prev_orderable, polymorphic: true, optional: true
 
     # Custom validations
     def name_cannot_include_restricted_chars
