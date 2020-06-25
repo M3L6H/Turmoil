@@ -9,7 +9,7 @@ class DimensionsSidebar extends Component {
         const { dimensions } = this.props;
 
         return dimensions.map(({ id }) => (
-            <Menu.Item key={ id }>
+            <Menu.Item key={ id } name={ `dimension-${ id }` }>
                 <Icon.Group huge>
                     <Icon name="circle" black />
                     <Icon name="fire" primary transform="shrink-6" />
@@ -42,7 +42,9 @@ class DimensionsSidebar extends Component {
                     stretch
                     vertical
                 >
-                    <Menu.Item>
+                    <Menu.Item
+                        name="direct-messages"
+                    >
                         <Icon.Group huge>
                             <Icon name="circle" black />
                             <Icon name="comment-alt" primary transform="shrink-8 down-0.8 right-0.3" />
