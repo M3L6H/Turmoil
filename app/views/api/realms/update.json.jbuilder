@@ -1,0 +1,1 @@
+json.partial! "realm", realm: @realm
