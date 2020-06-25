@@ -23,8 +23,13 @@ class Api::DimensionsController < ApplicationController
         @dimension.being_id = current_being.id
 
         if @dimension.save
+            # Initialize the details of a dimension
             Role.create!(dimension_id: @dimension.id, can_be_deleted: false, name: "everyone")
             DimensionBeing.create!(nickname: current_being.username, being_id: current_being.id, dimension_id: @dimension.id)
+            text_cluster = Cluster.create!(name: "Text Realms", dimension_id: @dimension.id)
+            voice_cluster = Cluster.create!(name: "Voice Realms", dimension_id: @dimension.id)
+            Realm.create!(name: "general", cluster_id: text_cluster.id, dimension_id: @dimension.id)
+            Realm.create!(name: "general", cluster_id: voice_cluster.id, dimension_id: @dimension.id, type: "voice")
             render :create
         else
             render json: @dimension.errors.full_messages, status: 422
