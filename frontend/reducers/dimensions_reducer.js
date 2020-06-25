@@ -9,7 +9,7 @@ export default (state={}, action) => {
         case RECEIVE_BEING:
         case RECEIVE_SESSION:    
         case RECEIVE_DIMENSIONS:
-            return action.dimensions;
+            return action.dimensions || {};
         case RECEIVE_DIMENSION:
             return { ...state, [action.dimension.id]: action.dimension };
         case REMOVE_DIMENSION:

@@ -23,6 +23,7 @@ const receiveSessionErrors = (errors) => ({
 export const createSession = (being) => dispatch => (
     SessionUtil.createSession(being)
         .then(res => dispatch(receiveSession(res)))
+        .then(res => console.log(res))
         .fail(jqXHR => receiveSessionErrors(jqXHR.responseJSON))
 );
 
