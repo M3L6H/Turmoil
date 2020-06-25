@@ -64,6 +64,8 @@ $form-checkbox-right-margin: 0.25rem !default;
 $form-input-horizontal-padding: 0.625rem !default;
 $form-input-vertical-padding: 0.375rem !default;
 
+$form-note-top-margin: 0.625rem !default;
+
 $header-bottom-padding: 0.125rem !default;
 $header-bottom-margin: 1rem !default;
 
@@ -126,6 +128,8 @@ $huge: 3rem !default;
 $massive: 4.5rem !default;
 
 /* Dimensions */
+$form-min-width: 350px;
+
 $menu-item-min-width: 40px;
 
 $sidebar-width: 275px;

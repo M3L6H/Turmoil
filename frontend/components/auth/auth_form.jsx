@@ -75,6 +75,20 @@ export default class AuthForm extends Component {
         signIn({ username: "DemoUser", password: "passw0rd123" })
             .then(() => closeForm());
     }
+    
+    _renderRedirect() {
+        const { formType, openSignIn, openSignUp } = this.props;
+
+        if (formType === "signIn") {
+            return (
+                <Form.Note>Don't have an account? <a onClick={ this._openSignUp }>Sign Up</a></Form.Note>
+            );
+        } else {
+            return (
+                <Form.Note>Already registered? <a onClick={ this._openSignIn }>Sign In</a></Form.Note>
+            );
+        }
+    }
 
     _renderForm(title) {
         const { username, email, password, errors } = this.state;
@@ -118,22 +132,9 @@ export default class AuthForm extends Component {
                         <Icon name="arrow-right" />
                     </Button.Content>
                 </Button>
+                { this._renderRedirect() }
             </Form>
         );
-    }
-    
-    _renderRedirect() {
-        const { formType, openSignIn, openSignUp } = this.props;
-
-        if (formType === "signIn") {
-            return (
-                <p>Don't have an account? <a onClick={ this._openSignUp }>Sign Up</a></p>
-            );
-        } else {
-            return (
-                <p>Already registered? <a onClick={ this._openSignIn }>Sign In</a></p>
-            );
-        }
     }
     
     render() {
@@ -146,7 +147,6 @@ export default class AuthForm extends Component {
                 <Modal.Header>{ title }</Modal.Header>
                 <Modal.Content>
                     { this._renderForm(title) }
-                    { this._renderRedirect() }
                 </Modal.Content>
                 { formType === "signIn" && 
                     <Modal.Actions>

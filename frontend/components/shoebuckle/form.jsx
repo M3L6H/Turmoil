@@ -184,3 +184,19 @@ Form.Input = class extends Component {
 
     }
 };
+
+Form.Note = (props) => {
+    const {
+        children,
+        content,
+        inverted
+    } = props;
+
+    const className = `shoebuckle form-note${ inverted ? " inverted" : "" }`;
+
+    return (
+        <div className={ className }>
+            { children || content }
+        </div>
+    );
+};

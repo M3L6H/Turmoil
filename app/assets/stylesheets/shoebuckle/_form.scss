@@ -2,7 +2,10 @@
     &.form {
         width: 100%;
         font-size: $body-font-size;
-        margin-bottom: $form-bottom-margin;
+
+        @media screen and (min-width: $breakpoint) {
+            min-width: $form-min-width;
+        }
     }
 
     .form-field {
@@ -65,5 +68,10 @@
             border-color: $darkest;
             color: $lightest;
         }
+    }
+
+    .form-note {
+        margin-top: $form-note-top-margin;
+        font-size: 0.8em;
     }
 }

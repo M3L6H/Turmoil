@@ -24,4 +24,9 @@ ul {
 
 a {
     text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(90%);
+    }
 }
