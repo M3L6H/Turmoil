@@ -29,7 +29,7 @@ class Api::DimensionsController < ApplicationController
             text_cluster = Cluster.create!(name: "Text Realms", dimension_id: @dimension.id)
             voice_cluster = Cluster.create!(name: "Voice Realms", dimension_id: @dimension.id)
             Realm.create!(name: "general", cluster_id: text_cluster.id, dimension_id: @dimension.id)
-            Realm.create!(name: "general", cluster_id: voice_cluster.id, dimension_id: @dimension.id, type: "voice")
+            Realm.create!(name: "general", cluster_id: voice_cluster.id, dimension_id: @dimension.id, realm_type: "voice")
             render :create
         else
             render json: @dimension.errors.full_messages, status: 422
