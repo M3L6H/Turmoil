@@ -10,10 +10,9 @@ const receiveDimensions = (dimensions) => ({
     dimensions 
 });
 
-const receiveDimension = ({ dimension, dimensionBeings }) => ({
+const receiveDimension = (data) => ({
     type: RECEIVE_DIMENSION,
-    dimension,
-    dimensionBeings
+    ...data
 });
 
 const removeDimension = (dimensionId) => ({
