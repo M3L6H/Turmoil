@@ -53,7 +53,7 @@ class Role < ApplicationRecord
 
     # Custom validators
     def name_cannot_include_restricted_chars
-        if cannot_contain_restricted_chars(self.name)
+        if /[^\w_- ]/ === self.name
             errors[:name] << "cannot contain restricted characters"
         end
     end

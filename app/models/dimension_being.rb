@@ -31,7 +31,7 @@ class DimensionBeing < ApplicationRecord
 
     # Custom validators
     def nickname_cannot_include_restricted_chars
-        if cannot_contain_restricted_chars(self.nickname)
+        if /[^\w_]/ === self.nickname
             errors[:nickname] << "cannot contain restricted characters"
         end
     end

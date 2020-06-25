@@ -80,13 +80,13 @@ class Being < ApplicationRecord
 
     # Custom validators
     def username_cannot_include_restricted_chars
-        if cannot_contain_restricted_chars(self.username)
+        if /[^\w_]/ === self.username
             errors[:username] << "cannot contain restricted characters"
         end
     end
 
     def status_cannot_include_restricted_chars
-        if cannot_contain_restricted_chars(self.status)
+        if /[^\w.,-_:\(\); ]/ === self.status
             errors[:status] << "cannot contain restricted characters"
         end
     end
