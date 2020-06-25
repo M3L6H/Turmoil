@@ -10,4 +10,18 @@ json.dimension_beings do
     end
 end
 
-# TODO: Add realms once we have the association set up
+json.clusters do
+    dimension.clusters.each do |cluster|
+        json.set! cluster.id do
+            json.partial! "cluster", cluster: cluster
+        end
+    end
+end
+
+json.realms do
+    dimension.realms.each do |realm|
+        json.set! realm.id do
+            json.extract! realm, :id, :name
+        end
+    end
+end
