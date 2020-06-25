@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import AppHeader from './app_header';
 import AppContainer from './app_container';
@@ -12,7 +12,10 @@ const App = () => (
             <AppHeader />
         </AppContainer>
         <DimensionForm inverted />
-        <Route path="/kitchensink" component={ Kitchensink } />
+        <Switch>
+            <Route path="/kitchensink" component={ Kitchensink } />
+            <Route render={ () => <Redirect to="/" /> } />
+        </Switch>
     </>
 );
 
