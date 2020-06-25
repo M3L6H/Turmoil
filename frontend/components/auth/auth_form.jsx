@@ -15,6 +15,7 @@ export default class AuthForm extends Component {
     
         this._handleChange = this._handleChange.bind(this);
         this._handleClose = this._handleClose.bind(this);
+        this._handleDemoUser = this._handleDemoUser.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
         this._renderForm = this._renderForm.bind(this);
     }
@@ -51,6 +52,12 @@ export default class AuthForm extends Component {
         authAction(being)
             .then(() => closeForm())
             .fail(jqXHR => this.setState({ errors: jqXHR.responseJSON }));
+    }
+
+    _handleDemoUser() {
+        const {  signIn, closeForm } = this.props;
+        signIn({ username: "DemoUser", password: "passw0rd123" })
+            .then(() => closeForm());
     }
 
     _renderForm(title) {
@@ -110,6 +117,9 @@ export default class AuthForm extends Component {
                 <Modal.Content>
                     { this._renderForm(title) }
                 </Modal.Content>
+                <Modal.Actions>
+                    <Button green fluid onClick={ this._handleDemoUser }>Demo User</Button>
+                </Modal.Actions>
             </Modal>
         );
     }
