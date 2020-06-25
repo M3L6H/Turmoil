@@ -58,7 +58,7 @@ class AppHeader extends Component {
                 { currentBeingId && !desktop ? (
                     <Icon name="bars" primary large onClick={ this._handleClick } />
                 ) : (
-                    <Header as="h2" primary link to="/">Chaos</Header>
+                    <Header as="h2" primary link to="/">Turmoil</Header>
                 ) }
                 <nav className="header-nav">
                     <ul>
