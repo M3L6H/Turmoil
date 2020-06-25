@@ -20,9 +20,9 @@
 #  index_realms_on_dimension_id  (dimension_id)
 #
 class Realm < ApplicationRecord
-    validates :name, :topic, :slowmode, :realm_type, presence: true
+    validates :name, :slowmode, :realm_type, presence: true
     validates :name, length: { maximum: 128 }
-    validates :topic, length: { maximum: 1024 }
+    validates :topic, exclusion: { in: [nil] }, length: { maximum: 1024 }
     validates :being_limit, numericality: { allow_nil: true, less_than: 100, greater_than: 0, only_integer: true }
     validates :nsfw, inclusion: { in: [true, false] }
     validates :realm_type, inclusion: { in: %w(text voice) }
