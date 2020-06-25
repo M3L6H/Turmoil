@@ -35,7 +35,7 @@ class Realm < ApplicationRecord
 
     # Custom validations
     def name_cannot_include_restricted_chars
-        if /[^\w-]/ === self.name
+        if /[^\w\-]/ === self.name
             errors[:name] << "cannot contain restricted characters"
         end
     end

@@ -27,7 +27,7 @@ class Cluster < ApplicationRecord
 
     # Custom validations
     def name_cannot_include_restricted_chars
-        if /[^\w_- ]/ === self.name
+        if /[^\w_\- ]/ === self.name
             errors[:name] << "cannot contain restricted characters"
         end
     end

@@ -86,7 +86,7 @@ class Being < ApplicationRecord
     end
 
     def status_cannot_include_restricted_chars
-        if /[^\w.,-_:\(\); ]/ === self.status
+        if /[^\w.,\-_:\(\); ]/ === self.status
             errors[:status] << "cannot contain restricted characters"
         end
     end
