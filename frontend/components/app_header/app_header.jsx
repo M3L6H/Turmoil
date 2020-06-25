@@ -47,6 +47,8 @@ class AppHeader extends Component {
             desktop,
             inverted,
             open, 
+            openSignIn,
+            openSignUp,
             formType,
             closeForm,
             signIn,
@@ -70,6 +72,8 @@ class AppHeader extends Component {
                     open={ open }
                     formType={ formType }
                     closeForm={ closeForm }
+                    openSignIn={ openSignIn }
+                    openSignUp={ openSignUp }
                     signIn={ signIn }
                     signUp={ signUp }
                     inverted={ inverted }

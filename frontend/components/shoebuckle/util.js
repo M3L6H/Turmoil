@@ -1,4 +1,4 @@
-import { Children, isValidElement, cloneElement } from 'react';
+import { Component, Children, isValidElement, cloneElement } from 'react';
 
 export const selectColor = ({ inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }) => (
     { inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }
@@ -55,7 +55,7 @@ export const parseSize = (props) => {
 
 export const childrenWithProps = (children, childProps) => (
     Children.map(children, child => {
-        if (isValidElement(child)) {
+        if (isValidElement(child) && typeof child.type !== "string") {
             return cloneElement(child, { ...childProps, ...child.props });
         }
 

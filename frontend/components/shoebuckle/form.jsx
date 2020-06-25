@@ -36,10 +36,6 @@ Form.Field = (props) => {
     const className = `shoebuckle form-field${ props.className ? " " + props.className : "" }`;
     const childProps = { error, inverted };
 
-    // React doesn't like a boolean for error when cloning the component
-    childProps.inverted = childProps.inverted === true ? 1 : childProps.inverted;
-    childProps.error = childProps.error === true ? 1 : childProps.error;
-
     const { content, pointing } = error || {};
 
     return (
