@@ -32,12 +32,15 @@ class Realm < ApplicationRecord
     validates :being_limit, numericality: { allow_nil: true, less_than: 100, greater_than: 0, only_integer: true }
     validates :nsfw, inclusion: { in: [true, false] }
     validates :realm_type, inclusion: { in: %w(text voice) }
+    validates :next_orderable_type, :prev_orderable_type, inclusion: { in: %w(Realm Cluster), allow_blank: true }
     
     validate :name_cannot_include_restricted_chars
 
     # Associations
     belongs_to :cluster, optional: true
     belongs_to :dimension
+    belongs_to :next_orderable, polymorphic: true
+    belongs_to :prev_orderable, polymorphic: true
 
     # Custom validations
     def name_cannot_include_restricted_chars

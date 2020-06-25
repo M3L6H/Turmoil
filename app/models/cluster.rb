@@ -24,11 +24,14 @@ class Cluster < ApplicationRecord
     validates :name, presence: true
     validates :name, length: { maximum: 128 }
     validates :private, inclusion: { in: [true, false] }
+    validates :next_orderable_type, :prev_orderable_type, inclusion: { in: %w(Realm Cluster), allow_blank: true }
 
     validate :name_cannot_include_restricted_chars
 
     # Associations
     belongs_to :dimension
+    belongs_to :next_orderable, polymorphic: true
+    belongs_to :prev_orderable, polymorphic: true
     has_many :realms, dependent: :destroy
 
     # Custom validations
