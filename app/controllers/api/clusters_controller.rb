@@ -27,7 +27,7 @@ class Api::ClustersController < ApplicationController
 
         if @cluster
             # TODO: Only beings with the right permissions should be able to update clusters
-            if @cluster.update(cluster_params)]
+            if @cluster.update(cluster_params)
                 render :update
             else
                 render json: @cluster.errors.full_messages, status: 422
