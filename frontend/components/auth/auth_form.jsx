@@ -17,7 +17,23 @@ export default class AuthForm extends Component {
         this._handleClose = this._handleClose.bind(this);
         this._handleDemoUser = this._handleDemoUser.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
+        this._openSignIn = this._openSignIn.bind(this);
+        this._openSignUp = this._openSignUp.bind(this);
         this._renderForm = this._renderForm.bind(this);
+    }
+
+    _resetState() {
+        this.setState({ username: "", email: "", password: "", errors: [] });
+    }
+
+    _openSignUp() {
+        this.props.openSignUp();
+        this._resetState();
+    }
+
+    _openSignIn() {
+        this.props.openSignIn();
+        this._resetState();
     }
 
     _handleChange(e) {
@@ -33,7 +49,7 @@ export default class AuthForm extends Component {
     
     _handleClose() {
         this.props.closeForm();
-        this.setState({ username: "", email: "", password: "", errors: [] });
+        this._resetState();
     }
 
     _handleSubmit(e) {
@@ -111,11 +127,11 @@ export default class AuthForm extends Component {
 
         if (formType === "signIn") {
             return (
-                <p>Don't have an account? <a onClick={ openSignUp }>Sign Up</a></p>
+                <p>Don't have an account? <a onClick={ this._openSignUp }>Sign Up</a></p>
             );
         } else {
             return (
-                <p>Already registered? <a onClick={ openSignIn }>Sign In</a></p>
+                <p>Already registered? <a onClick={ this._openSignIn }>Sign In</a></p>
             );
         }
     }

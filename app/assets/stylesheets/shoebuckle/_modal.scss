@@ -42,6 +42,7 @@
 
         &.inverted {
             background: $darker;
+            color: $lightest;
         }
 
         >*:first-child {
