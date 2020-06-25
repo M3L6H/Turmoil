@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_194213) do
+ActiveRecord::Schema.define(version: 2020_06_25_214721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,11 +67,13 @@ ActiveRecord::Schema.define(version: 2020_06_25_194213) do
     t.integer "slowmode", default: 0, null: false
     t.integer "being_limit"
     t.boolean "nsfw", default: false, null: false
-    t.bigint "cluster_id", null: false
+    t.bigint "cluster_id"
     t.string "type", default: "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dimension_id", null: false
     t.index ["cluster_id"], name: "index_realms_on_cluster_id"
+    t.index ["dimension_id"], name: "index_realms_on_dimension_id"
   end
 
   create_table "roles", force: :cascade do |t|
