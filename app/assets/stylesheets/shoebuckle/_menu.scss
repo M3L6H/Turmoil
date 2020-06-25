@@ -144,12 +144,12 @@
             .menu-item {
                 &.active:before {
                     position: absolute;
-                    top: 0;
+                    top: $menu-trapezoid-height;
                     left: 0;
 
                     content: " ";
                     width: 0;
-                    height: 100%;
+                    height: calc(100% - #{ 3 * $menu-trapezoid-height });
                     border-left: $menu-trapezoid-height solid $lightest;
                     border-top: #{ $menu-trapezoid-height / 2} solid transparent;
                     border-bottom: #{ $menu-trapezoid-height / 2} solid transparent;
@@ -158,6 +158,10 @@
                 &:nth-child(n + 2) {
                     border: none;
                 }
+            }
+
+            &.inverted .menu-item.active:before {
+                border-left-color: $light;
             }
         }
 

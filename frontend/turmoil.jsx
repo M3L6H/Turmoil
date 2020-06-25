@@ -12,7 +12,7 @@ import { fetchDimension } from './actions/dimensions_actions';
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
-    if (window.currentDetails) {
+    if (window.currentDetails) { // if (window.currentUser)
         const { being, dimensions } = window.currentDetails;
         
         const preloadedState = {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         
         store = configureStore(preloadedState);
-        delete window.currentDetails;
+        delete window.currentDetails; // delete window.currentUser
     } else {
         store = configureStore();
     }
