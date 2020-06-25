@@ -15,7 +15,7 @@
 #  index_clusters_on_dimension_id  (dimension_id)
 #
 class Cluster < ApplicationRecord
-    validates :name, :permitted_roles, presence: true
+    validates :name, presence: true
     validates :name, length: { maximum: 128 }
     validates :private, inclusion: { in: [true, false] }
 
