@@ -1,3 +1,5 @@
-# TODO: Should include permissions
+# TODO: Should include permissions and missives
 
-json.extract! realm, :id, :name, :topic, :slowmode, :being_limit, :nsfw, :cluster_id, :type
+json.realm do
+    json.extract! realm, :id, :name, :topic, :slowmode, :being_limit, :nsfw, :cluster_id, :type
+end
