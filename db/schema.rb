@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_222126) do
+ActiveRecord::Schema.define(version: 2020_06_25_223616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,13 @@ ActiveRecord::Schema.define(version: 2020_06_25_222126) do
     t.bigint "dimension_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "next_orderable_id"
+    t.string "next_orderable_type"
+    t.bigint "prev_orderable_id"
+    t.string "prev_orderable_type"
     t.index ["dimension_id"], name: "index_clusters_on_dimension_id"
+    t.index ["next_orderable_id", "next_orderable_type"], name: "index_clusters_on_next_orderable_id_and_next_orderable_type"
+    t.index ["prev_orderable_id", "prev_orderable_type"], name: "index_clusters_on_prev_orderable_id_and_prev_orderable_type"
   end
 
   create_table "dimension_beings", force: :cascade do |t|
@@ -72,8 +78,14 @@ ActiveRecord::Schema.define(version: 2020_06_25_222126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "dimension_id", null: false
+    t.bigint "next_orderable_id"
+    t.string "next_orderable_type"
+    t.bigint "prev_orderable_id"
+    t.string "prev_orderable_type"
     t.index ["cluster_id"], name: "index_realms_on_cluster_id"
     t.index ["dimension_id"], name: "index_realms_on_dimension_id"
+    t.index ["next_orderable_id", "next_orderable_type"], name: "index_realms_on_next_orderable_id_and_next_orderable_type"
+    t.index ["prev_orderable_id", "prev_orderable_type"], name: "index_realms_on_prev_orderable_id_and_prev_orderable_type"
   end
 
   create_table "roles", force: :cascade do |t|
