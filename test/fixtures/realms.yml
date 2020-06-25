@@ -6,9 +6,9 @@
 #  being_limit  :integer
 #  name         :string(128)      not null
 #  nsfw         :boolean          default(FALSE), not null
+#  realm_type   :string           default("text"), not null
 #  slowmode     :integer          default(0), not null
 #  topic        :text             default(""), not null
-#  type         :string           default("text"), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  cluster_id   :bigint

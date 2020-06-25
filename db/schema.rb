@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_214721) do
+ActiveRecord::Schema.define(version: 2020_06_25_222126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_214721) do
     t.integer "being_limit"
     t.boolean "nsfw", default: false, null: false
     t.bigint "cluster_id"
-    t.string "type", default: "text", null: false
+    t.string "realm_type", default: "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "dimension_id", null: false
