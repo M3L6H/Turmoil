@@ -1,0 +1,1 @@
+json.extract! cluster, :id, :name, :private, :permitted_roles, :dimension_id
