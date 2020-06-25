@@ -30,7 +30,8 @@ class Realm < ApplicationRecord
     validate :name_cannot_include_restricted_chars
 
     # Associations
-    belongs_to :cluster
+    belongs_to :cluster, optional: true
+    belongs_to :dimension
 
     # Custom validations
     def name_cannot_include_restricted_chars
