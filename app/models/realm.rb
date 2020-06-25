@@ -27,6 +27,9 @@ class Realm < ApplicationRecord
     
     validate :name_cannot_include_restricted_chars
 
+    # Associations
+    belongs_to :cluster
+
     # Custom validations
     def name_cannot_include_restricted_chars
         if cannot_contain_restricted_chars(self.name)

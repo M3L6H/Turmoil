@@ -23,6 +23,7 @@ class Dimension < ApplicationRecord
     belongs_to :being
     has_many :roles, dependent: :destroy
     has_many :dimension_beings, dependent: :destroy
+    has_many :clusters, dependent: :destroy
 
     # A dimension's default role is one that cannot be deleted
     def default_role
