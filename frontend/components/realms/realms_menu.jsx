@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Menu } from '../shoebuckle';
+import { Header, Menu } from '../shoebuckle';
 
 export default class RealmsMenu extends Component {
     render() {
@@ -17,7 +17,9 @@ export default class RealmsMenu extends Component {
                 vertical
             >
                 <Menu.Item>
-                    { dimension ? dimension.name : "Direct Messages" }
+                    <Header>
+                        { dimension ? dimension.name : "Direct Messages" }
+                    </Header>
                 </Menu.Item>
             </Menu>
         );
