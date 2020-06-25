@@ -4,7 +4,7 @@ import withWindowDimensions from "../hocs/with_window_dimensions";
 
 import { Button, Icon, Menu, Section, Sidebar } from '../shoebuckle';
 
-import RealmsMenu from '../realms/realms_menu';
+import RealmsMenu from '../realms';
 
 class DimensionsSidebar extends Component {
     constructor(props) {
@@ -80,7 +80,7 @@ class DimensionsSidebar extends Component {
                         </Button>
                     </Menu.Item>
                 </Menu>
-                <RealmsMenu inverted={ inverted } />
+                <RealmsMenu inverted={ inverted } selected={ selected } />
             </Sidebar>
         );
     }

@@ -4,7 +4,10 @@ import { Menu } from '../shoebuckle';
 
 export default class RealmsMenu extends Component {
     render() {
-        const { inverted } = this.props;
+        const { 
+            dimension,
+            inverted
+        } = this.props;
         
         return (
             <Menu
@@ -14,7 +17,7 @@ export default class RealmsMenu extends Component {
                 vertical
             >
                 <Menu.Item>
-                    Direct messages
+                    { dimension ? dimension.name : "Direct Messages" }
                 </Menu.Item>
             </Menu>
         );
