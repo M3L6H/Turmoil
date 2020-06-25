@@ -1,7 +1,7 @@
-import RECEIVE_SELECTED_DIMENSION from '../actions/dimension_menu_actions';
+import { RECEIVE_SELECTED_DIMENSION } from '../actions/dimension_menu_actions';
 
 const _defaultState = {
-    selected: null
+    selected: "dms"
 };
 
 export default (state=_defaultState, action) => {

@@ -5,11 +5,26 @@ import withWindowDimensions from "../hocs/with_window_dimensions";
 import { Button, Icon, Menu, Section, Sidebar } from '../shoebuckle';
 
 class DimensionsSidebar extends Component {
+    constructor(props) {
+        super(props);
+    
+        this._handleItemClick = this._handleItemClick.bind(this);
+    }
+    
+    _handleItemClick(_, { name }) {
+        this.props.select(name);
+    }
+    
     _renderDimensions() {
-        const { dimensions } = this.props;
+        const { dimensions, selected } = this.props;
 
         return dimensions.map(({ id }) => (
-            <Menu.Item key={ id } name={ `dimension-${ id }` }>
+            <Menu.Item 
+                key={ id } 
+                name={ id } 
+                active={ selected === id }
+                onClick={ this._handleItemClick }
+            >
                 <Icon.Group huge>
                     <Icon name="circle" black />
                     <Icon name="fire" primary transform="shrink-6" />
@@ -23,6 +38,7 @@ class DimensionsSidebar extends Component {
             desktop,
             open,
             openDimensionModal,
+            selected,
             signedIn,
             inverted
         } = this.props;
@@ -43,7 +59,9 @@ class DimensionsSidebar extends Component {
                     vertical
                 >
                     <Menu.Item
-                        name="direct-messages"
+                        name="dms"
+                        active={ selected === "dms" }
+                        onClick={ this._handleItemClick }
                     >
                         <Icon.Group huge>
                             <Icon name="circle" black />
