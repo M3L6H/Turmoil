@@ -9,7 +9,6 @@ export default class RealmMenu extends Component {
         super(props);
     
         this._selectRealm = this._selectRealm.bind(this);
-        this._updateOrderables = this._updateOrderables.bind(this);
         this._moveBefore = this._moveBefore.bind(this);
         this.lookupTable = {};
     }
@@ -88,12 +87,6 @@ export default class RealmMenu extends Component {
         const item = fromList.removeItem(itemId);
         toList.insertItemBefore(beforeId, item);
     }
-
-    _updateOrderables(orderables) {
-        this.props.updateOrderables(orderables.map(orderable => (
-            { ...orderable, type: orderable.type === "folder" ? "Cluster" : "Realm" }
-        )));
-    }
     
     render() {
         const { 
@@ -115,7 +108,7 @@ export default class RealmMenu extends Component {
                     </Header>
                 </Menu.Item>
                 <Menu.Item>
-                    <DragNDrop list={ this._constructList() } moveBefore={ this._moveBefore } update={ this._updateOrderables } />
+                    <DragNDrop list={ this._constructList() } moveBefore={ this._moveBefore } />
                 </Menu.Item>
             </Menu>
         );
