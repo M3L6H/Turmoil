@@ -42,12 +42,18 @@ export default class DragNDrop extends Component {
         super(props);
     
         this.state = {
+            dragging: null,
             over: null
         };
         
         this._handleDragOver = this._handleDragOver.bind(this);
         this._handleDrop = this._handleDrop.bind(this);
+        this._startDrag = this._startDrag.bind(this);
         this._updateOver = this._updateOver.bind(this);
+    }
+
+    _startDrag(dragging) {
+        this.setState({ dragging });
     }
 
     _updateOver(over) {
@@ -60,7 +66,43 @@ export default class DragNDrop extends Component {
 
     _handleDrop(e) {
         e.stopPropagation();
-        console.log(this.state.over);
+        const { data } = this.props;
+        
+        // Get the involved items
+        const dragging = Object.assign({}, data[this.state.dragging]);
+        const dropping = this.state.over ? Object.assign({}, data[this.state.over.id]) : { id: null, next: null, prev: data };
+        // console.log(dragging, dropping);
+        if (dragging.next === dropping.id) return;
+
+        const orderables = [dragging];
+
+        if (dropping.id) orderables.push(dropping);
+
+        // Update references
+        const dragPrev = Object.assign({}, data[dragging.prev]);
+        if (dragPrev.id) { 
+            dragPrev.next = dragging.next;
+            orderables.push(dragPrev);
+        }
+
+        const dragNext = Object.assign({}, data[dragging.next]);
+        if (dragNext.id) {
+            dragNext.prev = dragging.prev;
+            orderables.push(dragNext);
+        }
+
+        const dropPrev = Object.assign({}, data[dropping.prev]);
+        dragging.prev = dropping.prev;
+        if (dropPrev.id) {
+            dropPrev.next = dragging.id;
+            orderables.push(dropPrev);
+        }
+
+        dropping.prev = dragging.id;
+        dragging.next = dropping.id;
+
+        console.log(orderables);
+        // this.props.update()
     }
 
     _insertItem(item, tree) {
@@ -114,13 +156,24 @@ export default class DragNDrop extends Component {
             const { id, content, next, onClick, prev, parent, type, ...children } = head;
             if (type === "folder") {
                 list.push(
-                    <DragNDrop.Folder name={ content } key={ id } id={ id }>
+                    <DragNDrop.Folder 
+                        name={ content } 
+                        key={ id } 
+                        id={ id }
+                        startDrag={ this._startDrag }
+                    >
                         { this._renderList(children, id) }
                     </DragNDrop.Folder>
                 );
             } else {
                 list.push(
-                    <DragNDrop.Item key={ id } onClick={ onClick } id={ id } data-parent={ parent }>
+                    <DragNDrop.Item 
+                        key={ id } 
+                        onClick={ onClick } 
+                        id={ id } 
+                        data-parent={ parent }
+                        startDrag={ this._startDrag }
+                    >
                         { content }
                     </DragNDrop.Item>
                 );
@@ -172,6 +225,9 @@ class Draggable extends Component {
 
     _handleDragStart(e) {
         this.setState({ dragging: true });
+        if (this.props.startDrag) {
+            this.props.startDrag(this.props.id);
+        }
     }
     
     _handleDrag(e) {
@@ -273,6 +329,7 @@ DragNDrop.Item = class extends Component {
                 draggable
                 className={ className } 
                 data-type="dragndrop-item" 
+                data-parent={ this.props["data-parent"] }
                 onClick={ onClick } 
                 id={ id }
             >
