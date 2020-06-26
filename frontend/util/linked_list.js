@@ -15,8 +15,8 @@ export default class LinkedList {
         });
     }
 
-    appendItem({ content, id }) {
-        const item = { content, next: null, prev: null, id };
+    appendItem(insertItem) {
+        const item = { ...insertItem, next: null, prev: null };
         this.items[id] = item;
 
         const prevItem = this.items[this.tail.prev];

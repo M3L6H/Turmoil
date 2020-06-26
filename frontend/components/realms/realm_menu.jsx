@@ -28,22 +28,30 @@ export default class RealmMenu extends Component {
                 type: "folder",
                 next: cluster.nextOrderableId ? `${ cluster.nextOrderableType }-${ cluster.nextOrderableId }` : null,
                 prev: cluster.prevOrderableId ? `${ cluster.prevOrderableType }-${ cluster.prevOrderableId }` : null,
-                parent: null
+                parent: null,
+                children: {}
             };
         }
 
         for (const id in realms) {
             const realm = realms[id];
             const icon = realm.realmType === "text" ? "hashtag" : "microphone";
-            data[`Realm-${ id }`] = {
+            const parent = realm.clusterId ? `Cluster-${ realm.clusterId }` : null;
+            const datum = {
                 id: `Realm-${ id }`,
                 content: <Menu.Item justifyStart><Icon name={ icon } /> { realm.name }</Menu.Item>,
                 onClick: this._selectRealm,
                 type: "item",
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
                 prev: realm.prevOrderableId ? `${ realm.prevOrderableType }-${ realm.prevOrderableId }` : null,
-                parent: realm.clusterId ? `Cluster-${ realm.clusterId }` : null
+                parent
             };
+
+            if (parent) {
+                data[parent].children[`Realm-${ id }`] = datum;
+            } else {
+                data[`Realm-${ id }`] = datum;
+            }
         }
 
         return data;

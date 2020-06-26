@@ -2,40 +2,7 @@ import React, { Component } from 'react';
 import Icon from './icon';
 
 import { childrenWithProps } from './util';
-import debouncer from '../../util/debouncer_util';
-
-/* Example data format
-{
-    1: {
-        type: "folder",
-        content: "Text Realms",
-        next: "3",
-        prev: null,
-        parent: null
-    },
-    2: {
-        type: "item",
-        content: "general",
-        next: null,
-        prev: null,
-        parent: 1
-    },
-    3: {
-        type: "folder",
-        content: "Voice Realms",
-        next: null,
-        prev: 1,
-        parent: null
-    },
-    4: {
-        type: "item",
-        content: "general",
-        next: null,
-        prev: null,
-        parent: 3
-    }
-}
-*/
+import LinkedList from '../../util/linked_list';
 
 export default class DragNDrop extends Component {
     constructor(props) {
@@ -105,35 +72,7 @@ export default class DragNDrop extends Component {
         // this.props.update()
     }
 
-    _insertItem(item, tree) {
-        if (item.parent) {
-            const subTree = this._insertItem(tree[item.parent], tree);
-            if (!subTree[item.id]) {
-                subTree[item.id] = item;
-            }
-
-            return subTree[item.id];
-        } else {
-            if (!tree[item.id]) {
-                tree[item.id] = item;
-            }
-
-            return tree[item.id];
-        }
-    }
-
-    _generateTree() {
-        const tree = {};
-        const { data } = this.props;
-
-        for (const id in data) {
-            this._insertItem(data[id], tree);
-        }
-
-        return tree;
-    }
-
-     _findHead(tree) {
+    _findHead(tree) {
         let head = Object.values(tree)[0];
 
         if (!head) return null;
@@ -145,7 +84,7 @@ export default class DragNDrop extends Component {
         return head;
     }
 
-    _renderList(tree, parent=null) {
+    _renderList(tree) {
         let head = this._findHead(tree);
 
         if (!head) return null;
@@ -153,7 +92,7 @@ export default class DragNDrop extends Component {
         const list = [];
 
         do {
-            const { id, content, next, onClick, prev, parent, type, ...children } = head;
+            const { id, content, next, onClick, parent, type, children } = head;
             if (type === "folder") {
                 list.push(
                     <DragNDrop.Folder 
@@ -162,7 +101,7 @@ export default class DragNDrop extends Component {
                         id={ id }
                         startDrag={ this._startDrag }
                     >
-                        { this._renderList(children, id) }
+                        { this._renderList(children) }
                     </DragNDrop.Folder>
                 );
             } else {
@@ -189,8 +128,7 @@ export default class DragNDrop extends Component {
         
         const className = `shoebuckle dragndrop`;
 
-        const tree = this._generateTree();
-        const list = this._renderList(tree);
+        const list = this._renderList(this.props.data);
         
         return (
             <div 
