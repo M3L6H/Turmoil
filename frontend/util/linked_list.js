@@ -84,7 +84,8 @@ export default class LinkedList {
         const item = Object.assign({}, insertItem);
         this.items[item.id] = item;
 
-        const nextItem = id ? this.items[id] : this.tail;
+        let nextItem = id ? this.items[id] : this.tail;
+        nextItem = nextItem || this.items[this.head.next];
         const prevItem = this.items[nextItem.prev];
 
         prevItem.next = item.id;

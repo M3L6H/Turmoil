@@ -213,6 +213,10 @@
         display: flex;
         justify-content: center;
 
+        &.compact {
+            padding: 0; 
+        }
+
         &:hover {
             background: $lightest;
         }

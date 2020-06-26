@@ -55,7 +55,7 @@ export default class RealmMenu extends Component {
             const parent = realm.clusterId ? `Cluster-${ realm.clusterId }` : "root";
             converted.push({
                 id: `Realm-${ id }`,
-                content: <Menu.Item justifyStart><Icon name={ icon } /> { realm.name }</Menu.Item>,
+                content: <Menu.Item justifyStart compact><Icon name={ icon } /> { realm.name }</Menu.Item>,
                 onClick: this._selectRealm,
                 type: "item",
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
@@ -111,11 +111,7 @@ export default class RealmMenu extends Component {
         const toList = this.lookupTable[toListId];
         const item = fromList.removeItem(itemId);
 
-        // if (toListId === "root" && itemId.includes("Realm")) {
-        //     toList.insertItemBefore(toList.start().value.id, { ...item, parent: null });
-        // } else {
-            toList.insertItemBefore(beforeId, { ...item, parent: toListId !== "root" ? toListId : null });
-        // }
+        toList.insertItemBefore(beforeId, { ...item, parent: toListId !== "root" ? toListId : null });
     }
     
     render() {

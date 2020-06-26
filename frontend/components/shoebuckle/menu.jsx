@@ -62,12 +62,13 @@ Menu.Item = class extends Component {
             name,
             active,
             center,
+            compact,
             justifyStart,
             noHover,
             position
         } = this.props;
         
-        const className = `menu-item${ active ? " active" : "" }${ center ? " center" : "" }${ justifyStart ? " justify-start" : "" }${ noHover ? " no-hover" : "" }${ position ? ` position-${ position }` : ""}`;
+        const className = `menu-item${ active ? " active" : "" }${ center ? " center" : "" }${ compact ? " compact" : "" }${ justifyStart ? " justify-start" : "" }${ noHover ? " no-hover" : "" }${ position ? ` position-${ position }` : ""}`;
 
         return (
             <div name={ name } className={ className } onClick={ this._handleClick }>
