@@ -7,7 +7,7 @@ class Api::RealmsController < ApplicationController
         if @realm
             render :show
         else
-            render json: ["Could not find realm with id: #{ id }"], status: 404
+            render json: ["Could not find realm with id: #{ params[:id] }"], status: 404
         end
     end
 
@@ -30,7 +30,7 @@ class Api::RealmsController < ApplicationController
             @realm.destroy
             render :destroy
         else
-            render json: ["Could not find realm with id: #{ id }"], status: 404
+            render json: ["Could not find realm with id: #{ params[:id] }"], status: 404
         end
     end
 
@@ -45,7 +45,7 @@ class Api::RealmsController < ApplicationController
                 render json: @realm.errors.full_messages, status: 422
             end
         else
-            render json: ["Could not find realm with id: #{ id }"], status: 404
+            render json: ["Could not find realm with id: #{ params[:id] }"], status: 404
         end
     end
 

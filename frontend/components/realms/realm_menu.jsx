@@ -3,6 +3,18 @@ import React, { Component } from 'react';
 import { DragNDrop, Header, Icon, Menu } from '../shoebuckle';
 
 export default class RealmMenu extends Component {
+    constructor(props) {
+        super(props);
+    
+        this._selectRealm = this._selectRealm.bind(this);
+    }
+    
+    _selectRealm(e) {
+        e.stopPropagation();
+        const dragNDropItem = e.currentTarget;
+        this.props.select(dragNDropItem.id.split("-")[1]);
+    }
+    
     _constructData() {
         const { clusters, realms } = this.props;
         const data = {};
@@ -25,6 +37,7 @@ export default class RealmMenu extends Component {
             data[`Realm-${ id }`] = {
                 id: `Realm-${ id }`,
                 content: <Menu.Item justifyStart><Icon name={ icon } /> { realm.name }</Menu.Item>,
+                onClick: this._selectRealm,
                 type: "item",
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
                 prev: realm.prevOrderableId ? `${ realm.prevOrderableType }-${ realm.prevOrderableId }` : null,
