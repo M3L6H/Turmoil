@@ -119,24 +119,54 @@ export default class DragNDrop extends Component {
     }
 }
 
-DragNDrop.Folder = class extends Component {
+class Draggable extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dragging: false
+        };
+
+        this._handleDragStart = this._handleDragStart.bind(this);
+        this._handleDrag = this._handleDrag.bind(this);
+        this._handleDragEnd = this._handleDragEnd.bind(this);
+        this._handleDrop = this._handleDrop.bind(this);
+    }
+
+    _handleDragStart(e) {
+        this.setState({ dragging: true });
+    }
+    
+    _handleDrag(e) {
+    }
+
+    _handleDragEnd(e) {
+        this.setState({ dragging: false });
+    }
+
+    _handleDrop(e) {
+    }
+}
+
+DragNDrop.Folder = class extends Draggable {
     constructor(props) {
         super(props);
     
         this.state = {
+            dragging: false,
             expanded: true
         };
 
         this._toggleExpanded = this._toggleExpanded.bind(this);
     }
-    
+
     _toggleExpanded(e) {
         e.stopPropagation();
         this.setState({ expanded: !this.state.expanded });
     }
     
     render() {
-        const { expanded } = this.state;
+        const { dragging, expanded } = this.state;
         
         const {
             children,
@@ -149,10 +179,15 @@ DragNDrop.Folder = class extends Component {
 
         return (
             <div 
+                draggable
                 className={ className } 
                 data-type="dragndrop-folder" 
                 id={ id } 
                 onClick={ this._toggleExpanded }
+                onDragStart={ this._handleDragStart }
+                onDrag={ this._handleDrag }
+                onDragEnd={ this._handleDragEnd }
+                onDrop={ this._handleDrop }
             >
                 { icon } { name }
                 { expanded && (
@@ -177,7 +212,13 @@ DragNDrop.Item = class extends Component {
         const className = `dragndrop-item`;
         
         return (
-            <div className={ className } data-type="dragndrop-item" onClick={ onClick } id={ id }>
+            <div 
+                draggable
+                className={ className } 
+                data-type="dragndrop-item" 
+                onClick={ onClick } 
+                id={ id }
+            >
                 { children || content }
             </div>
         );
