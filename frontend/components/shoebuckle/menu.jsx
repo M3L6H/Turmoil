@@ -12,13 +12,14 @@ export default class Menu extends Component {
             even,
             fluid,
             inverted,
+            noHover,
             pointing,
             secondary,
             stretch,
             tabular,
             vertical
         } = this.props;
-        const childProps = { center, inverted };
+        const childProps = { center, inverted, noHover };
 
         const className = `shoebuckle menu${ compact ? " compact" : "" }${ even ? " even" : "" }${ fluid ? " fluid" : "" }${ inverted ? " inverted" : "" }${ pointing ? " pointing" : "" }${ secondary ? " secondary" : "" }${ stretch ? " stretch" : "" }${ tabular ? " tabular" : "" }${ vertical ? " vertical" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
@@ -61,10 +62,11 @@ Menu.Item = class extends Component {
             name,
             active,
             center,
+            noHover,
             position
         } = this.props;
         
-        const className = `menu-item${ active ? " active" : "" }${ center ? " center" : "" }${ position ? ` position-${ position }` : ""}`;
+        const className = `menu-item${ active ? " active" : "" }${ center ? " center" : "" }${ noHover ? " no-hover" : "" }${ position ? ` position-${ position }` : ""}`;
 
         return (
             <span name={ name } className={ className } onClick={ this._handleClick }>

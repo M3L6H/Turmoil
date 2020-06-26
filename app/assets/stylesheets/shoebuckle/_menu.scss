@@ -37,6 +37,10 @@
             &:hover {
                 background: $darker;
             }
+
+            &.no-hover:hover {
+                background: $dark;
+            }
     
             &.active {
                 background: $darker;
@@ -195,6 +199,7 @@
 
     .menu-item {
         position: relative;
+        background: transparent;
         padding: $menu-item-padding;
         border-right: $thin solid $lightest;
         cursor: pointer;
@@ -205,6 +210,10 @@
 
         &:hover {
             background: $lightest;
+        }
+
+        &.no-hover:hover {
+            background: transparent;
         }
 
         &.active {
