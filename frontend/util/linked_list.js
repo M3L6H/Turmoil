@@ -1,5 +1,5 @@
 export default class LinkedList {
-    constructor(items=[]) {
+    constructor() {
         this.size = 0;
         this.items = { 
             head: { content: null, next: "tail", prev: null, id: "head" }, 
@@ -8,11 +8,6 @@ export default class LinkedList {
 
         this.head = this.items["head"];
         this.tail = this.items["tail"];
-
-        items.forEach(item => {
-            this.items[item.id] = item;
-            ++this.size;
-        });
     }
 
     appendItem(insertItem) {
