@@ -8,7 +8,7 @@ import configureStore from './store/store';
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
-    if (window.currentDetails) { // if (window.currentUser)
+    if (window.currentDetails) { 
         const { being, dimensions } = window.currentDetails;
         
         const preloadedState = {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         
         store = configureStore(preloadedState);
-        delete window.currentDetails; // delete window.currentUser
+        delete window.currentDetails; 
     } else {
         store = configureStore();
     }
