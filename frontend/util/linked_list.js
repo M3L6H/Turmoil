@@ -1,13 +1,28 @@
 export default class LinkedList {
-    constructor() {
+    constructor(items=[]) {
         this.size = 0;
         this.items = { 
-            head: { content: null, next: "tail", prev: null, id: "head" }, 
-            tail: { content: null, next: null, prev: "head", id: "tail" } 
+            __head__: { content: null, next: "__tail__", prev: null, id: "__head__" }, 
+            __tail__: { content: null, next: null, prev: "__head__", id: "__tail__" } 
         };
 
-        this.head = this.items["head"];
-        this.tail = this.items["tail"];
+        this.head = this.items["__head__"];
+        this.tail = this.items["__tail__"];
+
+        items.forEach(item => {
+            if (!item.next) {
+                item.next = "__tail__";
+                this.tail.prev = item.id;
+            }
+
+            if (!item.prev) {
+                item.prev = "__head__";
+                this.head.next = item.id;
+            }
+            
+            this.items[item.id] = item;
+            ++this.size;
+        });
     }
 
     start() {
@@ -26,13 +41,17 @@ export default class LinkedList {
     getItem(id) {
         const item = this.items[id];
 
-        if (item.next === "tail") {
+        if (item.next === "__tail__") {
             return { ...item, next: null };
-        } else if (item.prev === "head") {
+        } else if (item.prev === "__head__") {
             return { ...item, prev: null };
         }
 
         return item;
+    }
+
+    updateItem(id, values) {
+        this.items[id] = { ...this.items[id], ...values };
     }
 
     appendItem(insertItem) {

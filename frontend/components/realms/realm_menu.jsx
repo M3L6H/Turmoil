@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import LinkedList from '../../util/linked_list';
+
 import { DragNDrop, Header, Icon, Menu } from '../shoebuckle';
 
 export default class RealmMenu extends Component {
@@ -15,29 +17,35 @@ export default class RealmMenu extends Component {
         const dragNDropItem = e.currentTarget;
         this.props.select(dragNDropItem.id.split("-")[1]);
     }
-    
-    _constructData() {
-        const { clusters, realms } = this.props;
-        const data = {};
-        
+
+    _convertClusters() {
+        const { clusters } = this.props;
+        const converted = [];
+
         for (const id in clusters) {
             const cluster = clusters[id];
-            data[`Cluster-${ id }`] = {
+            converted.push({
                 id: `Cluster-${ id }`,
                 content: cluster.name,
                 type: "folder",
                 next: cluster.nextOrderableId ? `${ cluster.nextOrderableType }-${ cluster.nextOrderableId }` : null,
                 prev: cluster.prevOrderableId ? `${ cluster.prevOrderableType }-${ cluster.prevOrderableId }` : null,
-                parent: null,
-                children: {}
-            };
+                parent: null
+            });
         }
+
+        return converted;
+    }
+
+    _convertRealms() {
+        const { realms } = this.props;
+        const converted = [];
 
         for (const id in realms) {
             const realm = realms[id];
             const icon = realm.realmType === "text" ? "hashtag" : "microphone";
             const parent = realm.clusterId ? `Cluster-${ realm.clusterId }` : null;
-            const datum = {
+            converted.push({
                 id: `Realm-${ id }`,
                 content: <Menu.Item justifyStart><Icon name={ icon } /> { realm.name }</Menu.Item>,
                 onClick: this._selectRealm,
@@ -45,16 +53,24 @@ export default class RealmMenu extends Component {
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
                 prev: realm.prevOrderableId ? `${ realm.prevOrderableType }-${ realm.prevOrderableId }` : null,
                 parent
-            };
-
-            if (parent) {
-                data[parent].children[`Realm-${ id }`] = datum;
-            } else {
-                data[`Realm-${ id }`] = datum;
-            }
+            });
         }
 
-        return data;
+        return converted;
+    }
+
+    _constructList() {
+        const clusters = this._convertClusters();
+        const realms = this._convertRealms();
+        const rootRealms = realms.filter(({ parent }) => !parent);
+        const ll = new LinkedList(clusters.concat(rootRealms));
+
+        clusters.forEach(cluster => {
+            const clusterRealms = realms.filter(({ parent }) => parent === cluster.id);
+            ll.updateItem(cluster.id, { children: new LinkedList(clusterRealms) });
+        });
+
+        return ll;
     }
 
     _updateOrderables(orderables) {
@@ -83,7 +99,7 @@ export default class RealmMenu extends Component {
                     </Header>
                 </Menu.Item>
                 <Menu.Item>
-                    <DragNDrop data={ this._constructData() } update={ this._updateOrderables } />
+                    <DragNDrop list={ this._constructList() } update={ this._updateOrderables } />
                 </Menu.Item>
             </Menu>
         );

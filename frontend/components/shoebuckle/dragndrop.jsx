@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Icon from './icon';
 
 import { childrenWithProps } from './util';
-import LinkedList from '../../util/linked_list';
 
 export default class DragNDrop extends Component {
     constructor(props) {
@@ -72,27 +71,13 @@ export default class DragNDrop extends Component {
         // this.props.update()
     }
 
-    _findHead(tree) {
-        let head = Object.values(tree)[0];
+    _renderList(listData) {
+        const it = listData.start();
 
-        if (!head) return null;
-
-        while (head.prev) {
-            head = head.prev;
-        }
-
-        return head;
-    }
-
-    _renderList(tree) {
-        let head = this._findHead(tree);
-
-        if (!head) return null;
-        
         const list = [];
-
-        do {
-            const { id, content, next, onClick, parent, type, children } = head;
+        
+        while (it.value) {
+            const { id, content, onClick, parent, type, children } = it.value;
             if (type === "folder") {
                 list.push(
                     <DragNDrop.Folder 
@@ -117,8 +102,8 @@ export default class DragNDrop extends Component {
                     </DragNDrop.Item>
                 );
             }
-            head = tree[next];
-        } while (head);
+            it.next();
+        }
 
         return list;
     }
@@ -128,7 +113,7 @@ export default class DragNDrop extends Component {
         
         const className = `shoebuckle dragndrop`;
 
-        const list = this._renderList(this.props.data);
+        const list = this._renderList(this.props.list);
         
         return (
             <div 
