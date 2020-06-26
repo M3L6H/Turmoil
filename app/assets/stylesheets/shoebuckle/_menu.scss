@@ -182,9 +182,14 @@
             align-items: center;
             justify-content: space-between;
             margin: 0;
+            border-radius: $small-round;
 
             &.center {
                 justify-content: center;
+            }
+
+            &.justify-start {
+                justify-content: flex-start;
             }
 
             &:nth-child(n + 2) {

@@ -24,7 +24,7 @@ export default class RealmsMenu extends Component {
             const icon = realm.realmType === "text" ? "hashtag" : "microphone";
             data[`Realm-${ id }`] = {
                 id: `Realm-${ id }`,
-                content: <Menu.Item><Icon name={ icon } /> { realm.name }</Menu.Item>,
+                content: <Menu.Item justifyStart><Icon name={ icon } /> { realm.name }</Menu.Item>,
                 type: "item",
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
                 prev: realm.prevOrderableId ? `${ realm.prevOrderableType }-${ realm.prevOrderableId }` : null,
