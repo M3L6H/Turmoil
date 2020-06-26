@@ -1,3 +1,5 @@
+import { fetchDimension } from './dimensions_actions';
+
 export const RECEIVE_SELECTED_DIMENSION = "RECEIVE_SELECTED_DIMENSION";
 
 export const receiveSelectedDimension = (selected) => ({
@@ -5,3 +7,7 @@ export const receiveSelectedDimension = (selected) => ({
    selected 
 });
 
+export const selectDimension = selected => dispatch => {
+    dispatch(fetchDimension(selected))
+        .then(dispatch(receiveSelectedDimension(selected)));
+};

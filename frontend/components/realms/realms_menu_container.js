@@ -4,7 +4,9 @@ import RealmsMenu from './realms_menu';
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
-    dimension: state.entities.dimensions[state.ui.menus.dimensionMenu.selected]
+    dimension: state.entities.dimensions[state.ui.menus.dimensionMenu.selected],
+    clusters: state.entities.clusters,
+    realms: state.entities.realms
 });
 
 const mapDispatchToProps = (dispatch) => ({
