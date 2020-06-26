@@ -104,18 +104,15 @@ class Draggable extends Component {
         this.query = ".draggable:not(.dragging)";
         
         this.state = {
-            dragging: false,
-            x: 0,
-            y: 0
+            dragging: false
         };
 
         this._handleDragStart = this._handleDragStart.bind(this);
         this._handleDrag = this._handleDrag.bind(this);
         this._handleDragEnd = this._handleDragEnd.bind(this);
-        this._handleMouseMove = this._handleMouseMove.bind(this);
     }
 
-    _handleDragStart(e) {
+    _handleDragStart() {
         this.setState({ dragging: true });
         if (this.props.startDrag) {
             this.props.startDrag(this.props.id);
@@ -143,12 +140,8 @@ class Draggable extends Component {
         }
     }
 
-    _handleDragEnd(e) {
+    _handleDragEnd() {
         this.setState({ dragging: false });
-    }
-
-    _handleMouseMove(e) {
-        this.setState({ x: e.clientX, y: e.clientY });
     }
 }
 
@@ -163,7 +156,12 @@ DragNDrop.Folder = class extends Draggable {
             expanded: true
         };
 
+        this._handleDragOver = this._handleDragOver.bind(this);
         this._toggleExpanded = this._toggleExpanded.bind(this);
+    }
+    
+    _handleDragOver(e) {
+        e.preventDefault();
     }
 
     _toggleExpanded(e) {
@@ -191,6 +189,7 @@ DragNDrop.Folder = class extends Draggable {
                 id={ id } 
                 onClick={ this._toggleExpanded }
                 onDragStart={ this._handleDragStart }
+                onDragOver={ this._handleDragOver }
                 onDrag={ this._handleDrag }
                 onDragEnd={ this._handleDragEnd }
             >
