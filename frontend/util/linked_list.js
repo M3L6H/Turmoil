@@ -10,9 +10,34 @@ export default class LinkedList {
         this.tail = this.items["tail"];
     }
 
+    start() {
+        const value = this.size > 0 ? this.getItem(this.head.next) : null;
+        
+        const it = {
+            value,
+            next: () => {
+                it.value = value && this.items[it.value.next] ? this.getItem(it.value.next) : null;
+            }
+        };
+
+        return it;
+    }
+
+    getItem(id) {
+        const item = this.items[id];
+
+        if (item.next === "tail") {
+            return { ...item, next: null };
+        } else if (item.prev === "head") {
+            return { ...item, prev: null };
+        }
+
+        return item;
+    }
+
     appendItem(insertItem) {
         const item = { ...insertItem, next: null, prev: null };
-        this.items[id] = item;
+        this.items[item.id] = item;
 
         const prevItem = this.items[this.tail.prev];
         prevItem.next = item.id;
