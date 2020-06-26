@@ -90,7 +90,8 @@ export default class DragNDrop extends Component {
     }
     
     render() {
-        const className = `shoebuckle dragndrop`;
+        const { dragging, over } = this.state;
+        const className = `shoebuckle dragndrop${ dragging && !over ? " dragging-after" : "" }`;
 
         const list = this._renderList(this.props.list);
         

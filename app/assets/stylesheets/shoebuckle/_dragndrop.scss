@@ -1,6 +1,14 @@
 .shoebuckle.dragndrop {
     padding: $dragndrop-vertical-padding 0;
     width: 100%;
+
+    &.dragging-after:after {
+        content: " ";
+        width: 100%;
+        height: 2px;
+        background: $lighter;
+        display: block;
+    }
     
     .dragndrop-folder {
         font-size: $small-font-size;
