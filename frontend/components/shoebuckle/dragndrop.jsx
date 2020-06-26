@@ -32,43 +32,12 @@ export default class DragNDrop extends Component {
 
     _handleDrop(e) {
         e.stopPropagation();
-        const { data } = this.props;
-        
-        // Get the involved items
-        const dragging = Object.assign({}, data[this.state.dragging]);
-        const dropping = this.state.over ? Object.assign({}, data[this.state.over.id]) : { id: null, next: null, prev: data };
-        // console.log(dragging, dropping);
-        if (dragging.next === dropping.id) return;
 
-        const orderables = [dragging];
+        const dragging = this.state.dragging;
+        const dropping = this.state.over;
 
-        if (dropping.id) orderables.push(dropping);
-
-        // Update references
-        const dragPrev = Object.assign({}, data[dragging.prev]);
-        if (dragPrev.id) { 
-            dragPrev.next = dragging.next;
-            orderables.push(dragPrev);
-        }
-
-        const dragNext = Object.assign({}, data[dragging.next]);
-        if (dragNext.id) {
-            dragNext.prev = dragging.prev;
-            orderables.push(dragNext);
-        }
-
-        const dropPrev = Object.assign({}, data[dropping.prev]);
-        dragging.prev = dropping.prev;
-        if (dropPrev.id) {
-            dropPrev.next = dragging.id;
-            orderables.push(dropPrev);
-        }
-
-        dropping.prev = dragging.id;
-        dragging.next = dropping.id;
-
-        console.log(orderables);
-        // this.props.update()
+        this.props.moveBefore(dropping, dragging);
+        this.forceUpdate();
     }
 
     _renderList(listData) {
@@ -170,7 +139,7 @@ class Draggable extends Component {
         }, { offset: Number.NEGATIVE_INFINITY });
 
         if (this.props.updateOver) {
-            this.props.updateOver(element || null);
+            this.props.updateOver(element ? element.id : null);
         }
     }
 
