@@ -90,7 +90,7 @@ export default class RealmMenu extends Component {
             const clusterRealms = realmsArray.filter(({ parent }) => parent === cluster.id);
             const subLl = new LinkedList(clusterRealms);
             // Again we save the linked list to our lookupTable
-            this.lookupTable[clusterRealms.id] = subLl;
+            this.lookupTable[cluster.id] = subLl;
             // We also update the original linked list item
             ll.updateItem(cluster.id, { children: subLl });
         });
@@ -103,7 +103,9 @@ export default class RealmMenu extends Component {
     // beforeId. If beforeId is null, it appends to the list instead.
     // fromListId and toListId optionally specify which lists to find and place
     // the item in.
-    _moveBefore(beforeId, itemId, fromListId="root", toListId="root") {
+    _moveBefore(beforeId, itemId, fromListId, toListId) {
+        fromListId = fromListId || "root";
+        toListId = toListId || "root";
         const fromList = this.lookupTable[fromListId];
         const toList = this.lookupTable[toListId];
         const item = fromList.removeItem(itemId);

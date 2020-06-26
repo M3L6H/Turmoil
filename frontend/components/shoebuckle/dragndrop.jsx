@@ -9,7 +9,8 @@ export default class DragNDrop extends Component {
     
         this.state = {
             dragging: null,
-            over: null
+            over: null,
+            fromList: null
         };
         
         this._handleDragOver = this._handleDragOver.bind(this);
@@ -18,8 +19,8 @@ export default class DragNDrop extends Component {
         this._updateOver = this._updateOver.bind(this);
     }
 
-    _startDrag(dragging) {
-        this.setState({ dragging });
+    _startDrag(dragging, fromList=null) {
+        this.setState({ dragging, fromList });
     }
 
     _updateOver(over) {
@@ -30,13 +31,14 @@ export default class DragNDrop extends Component {
         e.preventDefault();
     }
 
-    _handleDrop(e) {
+    _handleDrop(e, toList=null) {
         e.stopPropagation();
 
         const dragging = this.state.dragging;
         const dropping = this.state.over;
+        const { fromList } = this.state;
 
-        this.props.moveBefore(dropping, dragging);
+        this.props.moveBefore(dropping, dragging, fromList, toList);
         this.forceUpdate();
     }
 
@@ -54,6 +56,7 @@ export default class DragNDrop extends Component {
                         key={ id } 
                         id={ id }
                         startDrag={ this._startDrag }
+                        handleDrop={ this._handleDrop }
                     >
                         { this._renderList(children) }
                     </DragNDrop.Folder>
@@ -102,6 +105,7 @@ class Draggable extends Component {
         super(props);
 
         this.query = ".draggable:not(.dragging)";
+        this.topLevel = false;
         
         this.state = {
             dragging: false
@@ -112,7 +116,8 @@ class Draggable extends Component {
         this._handleDragEnd = this._handleDragEnd.bind(this);
     }
 
-    _handleDragStart() {
+    _handleDragStart(e) {
+        e.dataTransfer.setData("top-level", this.topLevel);
         this.setState({ dragging: true });
         if (this.props.startDrag) {
             this.props.startDrag(this.props.id);
@@ -150,14 +155,20 @@ DragNDrop.Folder = class extends Draggable {
         super(props);
     
         this.query = ".top-level:not(.dragging)";
+        this.topLevel = true;
         
         this.state = {
             dragging: false,
             expanded: true
         };
 
+        this._handleDrop = this._handleDrop.bind(this);
         this._handleDragOver = this._handleDragOver.bind(this);
         this._toggleExpanded = this._toggleExpanded.bind(this);
+    }
+
+    _handleDrop(e) {
+        this.props.handleDrop(e, e.dataTransfer.getData("top-level") ? null : this.props.id);
     }
     
     _handleDragOver(e) {
@@ -187,11 +198,12 @@ DragNDrop.Folder = class extends Draggable {
                 className={ className } 
                 data-type="dragndrop-folder" 
                 id={ id } 
-                onClick={ this._toggleExpanded }
                 onDragStart={ this._handleDragStart }
-                onDragOver={ this._handleDragOver }
                 onDrag={ this._handleDrag }
                 onDragEnd={ this._handleDragEnd }
+                onDrop={ this._handleDrop }
+                onDragOver={ this._handleDragOver }
+                onClick={ this._toggleExpanded }
             >
                 { icon } { name }
                 { expanded && (
