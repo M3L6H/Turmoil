@@ -103,7 +103,7 @@ export default class DragNDrop extends Component {
         return head;
     }
 
-    _renderList(tree) {
+    _renderList(tree, parent=null) {
         let head = this._findHead(tree);
 
         if (!head) return null;
@@ -115,12 +115,12 @@ export default class DragNDrop extends Component {
             if (type === "folder") {
                 list.push(
                     <DragNDrop.Folder name={ content } key={ id } id={ id }>
-                        { this._renderList(children) }
+                        { this._renderList(children, id) }
                     </DragNDrop.Folder>
                 );
             } else {
                 list.push(
-                    <DragNDrop.Item key={ id } onClick={ onClick } id={ id }>
+                    <DragNDrop.Item key={ id } onClick={ onClick } id={ id } data-parent={ parent }>
                         { content }
                     </DragNDrop.Item>
                 );
@@ -156,6 +156,8 @@ class Draggable extends Component {
     constructor(props) {
         super(props);
 
+        this.query = ".draggable:not(.dragging)";
+        
         this.state = {
             dragging: false,
             x: 0,
@@ -173,7 +175,7 @@ class Draggable extends Component {
     }
     
     _handleDrag(e) {
-        const draggableElements = [...document.querySelectorAll(".draggable:not(.dragging)")];
+        const draggableElements = [...document.querySelectorAll(this.query)];
 
         const y = e.clientY;
         
@@ -206,6 +208,8 @@ DragNDrop.Folder = class extends Draggable {
     constructor(props) {
         super(props);
     
+        this.query = ".top-level:not(.dragging)";
+        
         this.state = {
             dragging: false,
             expanded: true
@@ -228,7 +232,7 @@ DragNDrop.Folder = class extends Draggable {
             name
         } = this.props;
 
-        const className = `dragndrop-folder draggable${ dragging ? " dragging" : "" }`;
+        const className = `dragndrop-folder draggable top-level${ dragging ? " dragging" : "" }`;
         const icon = expanded ? <Icon name="angle-down" key={ Math.random() } /> : <Icon name="angle-right" key={ Math.random() } />;
 
         return (
@@ -262,7 +266,7 @@ DragNDrop.Item = class extends Component {
             onClick
         } = this.props;
 
-        const className = `dragndrop-item draggable`;
+        const className = `dragndrop-item draggable${ this.props["data-parent"] ? "" : " top-level"}`;
         
         return (
             <div 

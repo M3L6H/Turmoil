@@ -7,6 +7,7 @@ export default class RealmMenu extends Component {
         super(props);
     
         this._selectRealm = this._selectRealm.bind(this);
+        this._updateOrderables = this._updateOrderables.bind(this);
     }
     
     _selectRealm(e) {
@@ -47,6 +48,12 @@ export default class RealmMenu extends Component {
 
         return data;
     }
+
+    _updateOrderables(orderables) {
+        this.props.updateOrderables(orderables.map(orderable => (
+            { ...orderable, type: orderable.type === "folder" ? "Cluster" : "Realm" }
+        )));
+    }
     
     render() {
         const { 
@@ -68,7 +75,7 @@ export default class RealmMenu extends Component {
                     </Header>
                 </Menu.Item>
                 <Menu.Item>
-                    <DragNDrop data={ this._constructData() } />
+                    <DragNDrop data={ this._constructData() } update={ this._updateOrderables } />
                 </Menu.Item>
             </Menu>
         );
