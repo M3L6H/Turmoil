@@ -104,12 +104,18 @@ export default class RealmMenu extends Component {
     // fromListId and toListId optionally specify which lists to find and place
     // the item in.
     _moveBefore(beforeId, itemId, fromListId, toListId) {
+        console.log(beforeId, itemId, fromListId, toListId);
         fromListId = fromListId || "root";
         toListId = toListId || "root";
         const fromList = this.lookupTable[fromListId];
         const toList = this.lookupTable[toListId];
         const item = fromList.removeItem(itemId);
-        toList.insertItemBefore(beforeId, { ...item, parent: toListId });
+
+        // if (toListId === "root" && itemId.includes("Realm")) {
+        //     toList.insertItemBefore(toList.start().value.id, { ...item, parent: null });
+        // } else {
+            toList.insertItemBefore(beforeId, { ...item, parent: toListId !== "root" ? toListId : null });
+        // }
     }
     
     render() {

@@ -117,14 +117,16 @@ class Draggable extends Component {
     }
 
     _handleDragStart(e) {
+        e.stopPropagation();
         e.dataTransfer.setData("top-level", this.topLevel);
         this.setState({ dragging: true });
         if (this.props.startDrag) {
-            this.props.startDrag(this.props.id);
+            this.props.startDrag(this.props.id, this.props["data-parent"]);
         }
     }
     
     _handleDrag(e) {
+        e.stopPropagation();
         const draggableElements = [...document.querySelectorAll(this.query)];
 
         const y = e.clientY;
@@ -168,7 +170,7 @@ DragNDrop.Folder = class extends Draggable {
     }
 
     _handleDrop(e) {
-        this.props.handleDrop(e, e.dataTransfer.getData("top-level") ? null : this.props.id);
+        this.props.handleDrop(e, e.dataTransfer.getData("top-level") === "true" ? null : this.props.id);
     }
     
     _handleDragOver(e) {
@@ -216,7 +218,7 @@ DragNDrop.Folder = class extends Draggable {
     }
 }
 
-DragNDrop.Item = class extends Component {
+DragNDrop.Item = class extends Draggable {
     render() {
         const {
             children,
@@ -235,6 +237,9 @@ DragNDrop.Item = class extends Component {
                 data-parent={ this.props["data-parent"] }
                 onClick={ onClick } 
                 id={ id }
+                onDragStart={ this._handleDragStart }
+                onDrag={ this._handleDrag }
+                onDragEnd={ this._handleDragEnd }
             >
                 { children || content }
             </div>
