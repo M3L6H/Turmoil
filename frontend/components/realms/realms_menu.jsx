@@ -45,6 +45,7 @@ export default class RealmsMenu extends Component {
             <Menu
                 fluid
                 inverted={ inverted }
+                noActiveBackground
                 stretch
                 vertical
             >

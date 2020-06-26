@@ -23,7 +23,7 @@
     
     &.inverted {
         background: $dark;
-        color: $white;
+        color: $lightest;
         box-shadow: none;
         border: none;
 
@@ -40,6 +40,7 @@
     
             &.active {
                 background: $darker;
+                color: $white;
             }
     
             &.position-right {
@@ -138,6 +139,12 @@
 
         &.fluid {
             width: 100%;
+        }
+
+        &.inverted {
+            .menu-item:nth-child(n + 2) {
+                border-top-color: $darkest;
+            }
         }
 
         &.secondary {

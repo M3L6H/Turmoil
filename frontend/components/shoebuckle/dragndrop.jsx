@@ -83,16 +83,16 @@ export default class DragNDrop extends Component {
         const list = [];
 
         do {
-            const { id, content, next, prev, parent, type, ...children } = head;
+            const { id, content, next, onClick, prev, parent, type, ...children } = head;
             if (type === "folder") {
                 list.push(
-                    <DragNDrop.Folder name={ content } key={ id }>
+                    <DragNDrop.Folder name={ content } key={ id } id={ id }>
                         { this._renderList(children) }
                     </DragNDrop.Folder>
                 );
             } else {
                 list.push(
-                    <DragNDrop.Item key={ id }>
+                    <DragNDrop.Item key={ id } onClick={ onClick } id={ id }>
                         { content }
                     </DragNDrop.Item>
                 );
@@ -119,38 +119,41 @@ export default class DragNDrop extends Component {
     }
 }
 
-DragNDrop.Item = class extends Component {
-    render() {
-        const {
-            children,
-            content
-        } = this.props;
-
-        const className = `dragndrop-item`;
-        
-        return (
-            <div className={ className } data-type="dragndrop-item">
-                { children || content }
-            </div>
-        );
-    }
-}
-
 DragNDrop.Folder = class extends Component {
     render() {
         const {
             children,
+            id,
             name
         } = this.props;
 
         const className = `dragndrop-folder`;
 
         return (
-            <div className={ className } data-type="dragndrop-folder">
+            <div className={ className } data-type="dragndrop-folder" id={ id }>
                 { name }
                 <div className="dragndrop-folder-children">
                     { children }
                 </div>
+            </div>
+        );
+    }
+}
+
+DragNDrop.Item = class extends Component {
+    render() {
+        const {
+            children,
+            id,
+            content,
+            onClick
+        } = this.props;
+
+        const className = `dragndrop-item`;
+        
+        return (
+            <div className={ className } data-type="dragndrop-item" onClick={ onClick } id={ id }>
+                { children || content }
             </div>
         );
     }
