@@ -104,6 +104,7 @@ export default class RealmMenu extends Component {
     // fromListId and toListId optionally specify which lists to find and place
     // the item in.
     _moveBefore(beforeId, itemId, fromListId, toListId) {
+        if (beforeId === itemId) return;
         console.log(beforeId, itemId, fromListId, toListId);
         fromListId = fromListId || "root";
         toListId = toListId || "root";

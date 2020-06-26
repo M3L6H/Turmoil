@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Icon from './icon';
 
-import { childrenWithProps } from './util';
-
 export default class DragNDrop extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +14,7 @@ export default class DragNDrop extends Component {
         this._handleDragOver = this._handleDragOver.bind(this);
         this._handleDrop = this._handleDrop.bind(this);
         this._startDrag = this._startDrag.bind(this);
+        this._stopDrag = this._stopDrag.bind(this);
         this._updateOver = this._updateOver.bind(this);
     }
 
@@ -39,12 +38,16 @@ export default class DragNDrop extends Component {
         const { fromList } = this.state;
 
         this.props.moveBefore(dropping, dragging, fromList, toList);
-        this.forceUpdate();
+        this.setState({ dragging: null, over: null, fromList: null });
+    }
+
+    _stopDrag() {
+        this.setState({ dragging: null, over: null, fromList: null });
     }
 
     _renderList(listData) {
         const it = listData.start();
-
+        const { dragging, over } = this.state;
         const list = [];
         
         while (it.value) {
@@ -56,7 +59,10 @@ export default class DragNDrop extends Component {
                         key={ id } 
                         id={ id }
                         startDrag={ this._startDrag }
+                        stopDrag={ this._stopDrag }
                         handleDrop={ this._handleDrop }
+                        draggingBefore={ dragging && over === id }
+                        updateOver={ this._updateOver }
                     >
                         { this._renderList(children) }
                     </DragNDrop.Folder>
@@ -69,6 +75,9 @@ export default class DragNDrop extends Component {
                         id={ id } 
                         data-parent={ parent }
                         startDrag={ this._startDrag }
+                        stopDrag={ this._stopDrag }
+                        draggingBefore={ dragging && over === id }
+                        updateOver={ this._updateOver }
                     >
                         { content }
                     </DragNDrop.Item>
@@ -81,8 +90,6 @@ export default class DragNDrop extends Component {
     }
     
     render() {
-        const childProps = { updateOver: this._updateOver };
-        
         const className = `shoebuckle dragndrop`;
 
         const list = this._renderList(this.props.list);
@@ -94,7 +101,7 @@ export default class DragNDrop extends Component {
                 onDragOver={ this._handleDragOver }
                 onDrop={ this._handleDrop }
             >
-                { childrenWithProps(list, childProps) }
+                { list }
             </div>
         );
     }
@@ -133,7 +140,7 @@ class Draggable extends Component {
         
         const { element } = draggableElements.reduce((closest, child) => {
             const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
+            const offset = y - box.top;
 
             if (offset < 0 && offset > closest.offset) {
                 return { offset, element: child };
@@ -149,6 +156,9 @@ class Draggable extends Component {
 
     _handleDragEnd() {
         this.setState({ dragging: false });
+        if (this.props.stopDrag) {
+            this.props.stopDrag();
+        }
     }
 }
 
@@ -188,10 +198,11 @@ DragNDrop.Folder = class extends Draggable {
         const {
             children,
             id,
+            draggingBefore,
             name
         } = this.props;
 
-        const className = `dragndrop-folder draggable top-level${ dragging ? " dragging" : "" }`;
+        const className = `dragndrop-folder draggable top-level${ dragging ? " dragging" : "" }${ draggingBefore ? " dragging-before" : "" }`;
         const icon = expanded ? <Icon name="angle-down" key={ Math.random() } /> : <Icon name="angle-right" key={ Math.random() } />;
 
         return (
@@ -224,10 +235,11 @@ DragNDrop.Item = class extends Draggable {
             children,
             id,
             content,
+            draggingBefore,
             onClick
         } = this.props;
 
-        const className = `dragndrop-item draggable${ this.props["data-parent"] ? "" : " top-level"}`;
+        const className = `dragndrop-item draggable${ this.props["data-parent"] ? "" : " top-level"}${ draggingBefore ? " dragging-before" : "" }`;
         
         return (
             <div 
