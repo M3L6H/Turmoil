@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { DragNDrop, Header, Icon, Menu } from '../shoebuckle';
 
-export default class RealmsMenu extends Component {
+export default class RealmMenu extends Component {
     _constructData() {
         const { clusters, realms } = this.props;
         const data = {};

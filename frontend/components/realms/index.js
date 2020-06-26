@@ -1,1 +1,1 @@
-export { default } from './realms_menu_container';
+export { default } from './realm_menu_container';
