@@ -12,6 +12,28 @@ export default class RealmMenu extends Component {
         this._moveBefore = this._moveBefore.bind(this);
         this.lookupTable = {};
     }
+
+    componentWillUpdate() {
+        const data = {};
+        const ll = this.lookupTable["root"];
+        const it = ll.start();
+
+        while (it.value) {
+            const { id, type, parent, next, prev, children } = it.value;
+            data[id] = { id, type, parent, next, prev };
+            const subIt = children.start();
+
+            while (subIt.value) {
+                const { id, type, parent, next, prev } = subIt.value;
+                data[id] = { id, type, parent, next, prev };
+                subIt.next();
+            }
+            
+            it.next();
+        }
+
+        console.log(data);
+    }
     
     _selectRealm(e) {
         e.stopPropagation();
