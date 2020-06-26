@@ -1,4 +1,5 @@
 .shoebuckle.dragndrop {
+    padding: $dragndrop-vertical-padding 0;
     width: 100%;
     
     .dragndrop-folder {
@@ -11,5 +12,9 @@
 
     .dragndrop-item {
         font-size: $body-font-size;
+    }
+
+    .dragging {
+        opacity: 0.5;
     }
 }

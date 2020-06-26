@@ -1,4 +1,4 @@
-import { Component, Children, isValidElement, cloneElement } from 'react';
+import { Children, isValidElement, cloneElement } from 'react';
 
 export const selectColor = ({ inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }) => (
     { inverted, primary, accent, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, grey, black }

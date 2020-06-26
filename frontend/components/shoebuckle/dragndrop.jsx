@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Icon from './icon';
 
+import { childrenWithProps } from './util';
+import debouncer from '../../util/debouncer_util';
+
 /* Example data format
 {
     1: {
@@ -35,6 +38,31 @@ import Icon from './icon';
 */
 
 export default class DragNDrop extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            over: null
+        };
+        
+        this._handleDragOver = this._handleDragOver.bind(this);
+        this._handleDrop = this._handleDrop.bind(this);
+        this._updateOver = this._updateOver.bind(this);
+    }
+
+    _updateOver(over) {
+        this.setState({ over });
+    }
+    
+    _handleDragOver(e) {
+        e.preventDefault();
+    }
+
+    _handleDrop(e) {
+        e.stopPropagation();
+        console.log(this.state.over);
+    }
+
     _insertItem(item, tree) {
         if (item.parent) {
             const subTree = this._insertItem(tree[item.parent], tree);
@@ -104,16 +132,21 @@ export default class DragNDrop extends Component {
     }
     
     render() {
+        const childProps = { updateOver: this._updateOver };
+        
         const className = `shoebuckle dragndrop`;
 
         const tree = this._generateTree();
-        // console.log("tree", tree);
         const list = this._renderList(tree);
-        // console.log("list", list);
         
         return (
-            <div className={ className } data-type="dragndrop">
-                { list }
+            <div 
+                className={ className } 
+                data-type="dragndrop" 
+                onDragOver={ this._handleDragOver }
+                onDrop={ this._handleDrop }
+            >
+                { childrenWithProps(list, childProps) }
             </div>
         );
     }
@@ -124,13 +157,15 @@ class Draggable extends Component {
         super(props);
 
         this.state = {
-            dragging: false
+            dragging: false,
+            x: 0,
+            y: 0
         };
 
         this._handleDragStart = this._handleDragStart.bind(this);
         this._handleDrag = this._handleDrag.bind(this);
         this._handleDragEnd = this._handleDragEnd.bind(this);
-        this._handleDrop = this._handleDrop.bind(this);
+        this._handleMouseMove = this._handleMouseMove.bind(this);
     }
 
     _handleDragStart(e) {
@@ -138,13 +173,32 @@ class Draggable extends Component {
     }
     
     _handleDrag(e) {
+        const draggableElements = [...document.querySelectorAll(".draggable:not(.dragging)")];
+
+        const y = e.clientY;
+        
+        const { element } = draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+
+            if (offset < 0 && offset > closest.offset) {
+                return { offset, element: child };
+            }
+            
+            return closest;
+        }, { offset: Number.NEGATIVE_INFINITY });
+
+        if (this.props.updateOver) {
+            this.props.updateOver(element || null);
+        }
     }
 
     _handleDragEnd(e) {
         this.setState({ dragging: false });
     }
 
-    _handleDrop(e) {
+    _handleMouseMove(e) {
+        this.setState({ x: e.clientX, y: e.clientY });
     }
 }
 
@@ -174,7 +228,7 @@ DragNDrop.Folder = class extends Draggable {
             name
         } = this.props;
 
-        const className = `dragndrop-folder`;
+        const className = `dragndrop-folder draggable${ dragging ? " dragging" : "" }`;
         const icon = expanded ? <Icon name="angle-down" key={ Math.random() } /> : <Icon name="angle-right" key={ Math.random() } />;
 
         return (
@@ -187,7 +241,6 @@ DragNDrop.Folder = class extends Draggable {
                 onDragStart={ this._handleDragStart }
                 onDrag={ this._handleDrag }
                 onDragEnd={ this._handleDragEnd }
-                onDrop={ this._handleDrop }
             >
                 { icon } { name }
                 { expanded && (
@@ -209,7 +262,7 @@ DragNDrop.Item = class extends Component {
             onClick
         } = this.props;
 
-        const className = `dragndrop-item`;
+        const className = `dragndrop-item draggable`;
         
         return (
             <div 
