@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu } from ".";
+import Icon from './icon';
 
 /* Example data format
 {
@@ -120,7 +120,24 @@ export default class DragNDrop extends Component {
 }
 
 DragNDrop.Folder = class extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            expanded: true
+        };
+
+        this._toggleExpanded = this._toggleExpanded.bind(this);
+    }
+    
+    _toggleExpanded(e) {
+        e.stopPropagation();
+        this.setState({ expanded: !this.state.expanded });
+    }
+    
     render() {
+        const { expanded } = this.state;
+        
         const {
             children,
             id,
@@ -128,13 +145,21 @@ DragNDrop.Folder = class extends Component {
         } = this.props;
 
         const className = `dragndrop-folder`;
+        const icon = expanded ? <Icon name="angle-down" key={ Math.random() } /> : <Icon name="angle-right" key={ Math.random() } />;
 
         return (
-            <div className={ className } data-type="dragndrop-folder" id={ id }>
-                { name }
-                <div className="dragndrop-folder-children">
-                    { children }
-                </div>
+            <div 
+                className={ className } 
+                data-type="dragndrop-folder" 
+                id={ id } 
+                onClick={ this._toggleExpanded }
+            >
+                { icon } { name }
+                { expanded && (
+                    <div className="dragndrop-folder-children">
+                        { children }
+                    </div> 
+                )}
             </div>
         );
     }

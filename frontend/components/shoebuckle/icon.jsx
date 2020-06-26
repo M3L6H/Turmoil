@@ -50,7 +50,7 @@ class Icon extends Component {
             fitted,
             onClick
         } = this.props;
-    
+
         const className = `shoebuckle icon ${ name ? "fas" : "" } fa-${ name || (counter && "layers-counter") || "layers-text" }${ border ? " fa-border" : "" }${ loading ? " fa-spin" : "" }${ flipped ? ` fa-flip-${ flipped }` : "" }${ rotated ? ` fa-rotate-${ rotated }` : "" }${ inverted ? " fa-inverse" : "" }${ link || onClick ? " link" : "" }${ disabled ? " disabled" : "" }${ fitted ? " fitted" : "" }${ parseColor(this.props) }${ parseSize(this.props) }${ this.props.className ? " " + this.props.className : "" }`;
 
         return (
