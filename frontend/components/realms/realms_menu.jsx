@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { DragNDrop, Header, Menu } from '../shoebuckle';
+import { DragNDrop, Header, Icon, Menu } from '../shoebuckle';
 
 export default class RealmsMenu extends Component {
     _constructData() {
@@ -21,9 +21,10 @@ export default class RealmsMenu extends Component {
 
         for (const id in realms) {
             const realm = realms[id];
+            const icon = realm.realmType === "text" ? "hashtag" : "microphone";
             data[`Realm-${ id }`] = {
                 id: `Realm-${ id }`,
-                content: realm.name,
+                content: <Menu.Item><Icon name={ icon } /> { realm.name }</Menu.Item>,
                 type: "item",
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
                 prev: realm.prevOrderableId ? `${ realm.prevOrderableType }-${ realm.prevOrderableId }` : null,

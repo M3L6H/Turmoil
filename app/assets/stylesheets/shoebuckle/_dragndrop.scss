@@ -1,0 +1,13 @@
+.shoebuckle.dragndrop {
+    .dragndrop-folder {
+        font-size: $small-font-size;
+        
+        .dragndrop-folder-children {
+            padding-left: $dragndrop-folder-children-left-padding;
+        }
+    }
+
+    .dragndrop-item {
+        font-size: $body-font-size;
+    }
+}
