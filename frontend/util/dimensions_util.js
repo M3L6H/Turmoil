@@ -39,3 +39,12 @@ export const updateDimension = (dimension) => (
         dataType: "json"
     })
 );
+
+export const updateOrder = (dimensionId, data) => (
+    $.ajax({
+        method: "PATCH",
+        url: `/api/dimensions/${ dimensionId }/update_order`,
+        data: { data },
+        dataType: "json"
+    })
+);

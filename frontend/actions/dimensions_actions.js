@@ -4,6 +4,7 @@ export const RECEIVE_DIMENSIONS = "RECEIVE_DIMENSIONS";
 export const RECEIVE_DIMENSION = "RECEIVE_DIMENSION";
 export const REMOVE_DIMENSION = "REMOVE_DIMENSION";
 export const RECEIVE_DIMENSIONS_ERRORS = "RECEIVE_DIMENSIONS_ERRORS";
+export const UPDATE_ORDER = "UPDATE_ORDER";
 
 const receiveDimensions = (dimensions) => ({
     type: RECEIVE_DIMENSIONS,
@@ -53,4 +54,8 @@ export const updateDimension = dimension => dispatch => (
     DimensionsUtil.updateDimension(dimension)
         .then(res => dispatch(receiveDimension(res)))
         .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
+);
+
+export const updateOrder = (dimensionId, data) => dispatch => (
+    DimensionsUtil.updateOrder(dimensionId, data)
 );

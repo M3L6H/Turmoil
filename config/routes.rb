@@ -12,6 +12,9 @@ Rails.application.routes.draw do
         resources :realms, except: [:index, :new, :edit]
         resources :roles, only: [:show, :destroy, :update]
         resource :session, only: [:create, :destroy]
+
+        patch "/dimensions/:id/update_order", to: "dimensions#update_order"
+        put "/dimensions/:id/update_order", to: "dimensions#update_order"
     end
 
     root to: "static_pages#root"

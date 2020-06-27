@@ -72,6 +72,10 @@ class Api::DimensionsController < ApplicationController
         end
     end
 
+    def update_order
+        render json: "Updated order!", status: 200
+    end
+
 private
     def dimension_params
         params.require(:dimension).permit(:name, :public)

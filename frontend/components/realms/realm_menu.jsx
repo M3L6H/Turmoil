@@ -13,7 +13,7 @@ export default class RealmMenu extends Component {
         this.lookupTable = {};
     }
 
-    componentWillUpdate() {
+    componentDidUpdate() {
         const data = {};
         const ll = this.lookupTable["root"];
         const it = ll.start();
@@ -32,7 +32,9 @@ export default class RealmMenu extends Component {
             it.next();
         }
 
-        console.log(data);
+        const { updateOrder, dimension } = this.props;
+        
+        updateOrder(dimension, data);
     }
     
     _selectRealm(e) {
@@ -127,9 +129,10 @@ export default class RealmMenu extends Component {
     // the item in.
     _moveBefore(beforeId, itemId, fromListId, toListId) {
         if (beforeId === itemId) return;
-        console.log(beforeId, itemId, fromListId, toListId);
+
         fromListId = fromListId || "root";
         toListId = toListId || "root";
+
         const fromList = this.lookupTable[fromListId];
         const toList = this.lookupTable[toListId];
         const item = fromList.removeItem(itemId);
