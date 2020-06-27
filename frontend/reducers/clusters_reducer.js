@@ -1,10 +1,12 @@
-import { RECEIVE_CLUSTER, REMOVE_CLUSTER } from '../actions/clusters_actions';
+import { CLEAR_CLUSTERS, RECEIVE_CLUSTER, REMOVE_CLUSTER } from '../actions/clusters_actions';
 import { RECEIVE_DIMENSION } from '../actions/dimensions_actions';
 
 export default (state={}, action) => {
     Object.freeze(state);
 
     switch (action.type) {
+        case CLEAR_CLUSTERS:
+            return {};
         case RECEIVE_DIMENSION:
             return action.clusters;
         case RECEIVE_CLUSTER:

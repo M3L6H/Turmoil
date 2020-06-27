@@ -1,8 +1,13 @@
 import * as RealmsUtil from "../util/realms_util";
 
+export const CLEAR_REALMS = "CLEAR_REALMS";
 export const RECEIVE_REALM = "RECEIVE_REALM";
 export const REMOVE_REALM = "REMOVE_REALM";
 export const RECEIVE_REALMS_ERRORS = "RECEIVE_REALMS_ERRORS";
+
+export const clearRealms = () => ({
+    type: CLEAR_REALMS 
+});
 
 const receiveRealm = ({ realm }) => ({
     type: RECEIVE_REALM,

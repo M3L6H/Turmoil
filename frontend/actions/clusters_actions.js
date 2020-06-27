@@ -1,8 +1,13 @@
 import * as ClustersUtil from "../util/clusters_util";
 
+export const CLEAR_CLUSTERS = "CLEAR_CLUSTERS";
 export const RECEIVE_CLUSTER = "RECEIVE_CLUSTER";
 export const REMOVE_CLUSTER = "REMOVE_CLUSTER";
 export const RECEIVE_CLUSTERS_ERRORS = "RECEIVE_CLUSTERS_ERRORS";
+
+export const clearClusters = () => ({
+    type: CLEAR_CLUSTERS 
+});
 
 const receiveCluster = ({ cluster }) => ({
     type: RECEIVE_CLUSTER,
