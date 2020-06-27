@@ -73,7 +73,61 @@ class Api::DimensionsController < ApplicationController
     end
 
     def update_order
-        render json: "Updated order!", status: 200
+        unless params[:data]
+            render json: "No data received", status: 200 
+            return
+        end
+
+        dimension = Dimension.find_by(id: params[:id])
+
+        if dimension
+            clusters = dimension.clusters
+            realms = dimension.realms
+            Dimension.transaction do
+                params[:data].each do |jid, model|
+                    className, id = jid.split("-")
+                    next_orderable_type, next_orderable_id = model[:next].split("-")
+                    prev_orderable_type, prev_orderable_id = model[:prev].split("-")
+                    parent_type, parent_id = model[:parent].split("-")
+
+                    id = id.to_i unless id.nil?
+                    next_orderable_id = next_orderable_id.to_i unless next_orderable_id.nil?
+                    prev_orderable_id = prev_orderable_id.to_i unless prev_orderable_id.nil?
+                    parent_id = parent_id.to_i unless parent_id.nil?
+                    
+                    if className == "Cluster"
+                        cluster = clusters.find { |c| c.id == id }
+                        if cluster.next_orderable_id != next_orderable_id ||
+                            cluster.next_orderable_type != next_orderable_type ||
+                            cluster.prev_orderable_id != prev_orderable_id ||
+                            cluster.prev_orderable_type != prev_orderable_type
+                            cluster.update!(next_orderable_id: next_orderable_id,
+                                next_orderable_type: next_orderable_type,
+                                prev_orderable_id: prev_orderable_id,
+                                prev_orderable_type: prev_orderable_type)
+                        end
+                    else
+                        realm = realms.find { |r| r.id == id }
+                        if realm.next_orderable_id != next_orderable_id ||
+                            realm.next_orderable_type != next_orderable_type ||
+                            realm.prev_orderable_id != prev_orderable_id ||
+                            realm.prev_orderable_type != prev_orderable_type ||
+                            realm.cluster_id.nil? != parent_id.nil?
+                            realm.update!(next_orderable_id: next_orderable_id,
+                                next_orderable_type: next_orderable_type,
+                                prev_orderable_id: prev_orderable_id,
+                                prev_orderable_type: prev_orderable_type,
+                                cluster_id: parent_id)
+                        end
+                    end
+                end
+            end
+            render json: {}, status: 204
+        else
+            render json: ["Could not find dimension with id #{params[:id]}"], status: 404
+        end
+    rescue ActiveRecord::ActiveRecordError => e
+        render json: ["Could not update order!"], status: 422
     end
 
 private

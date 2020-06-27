@@ -39,12 +39,14 @@ export default class LinkedList {
     }
 
     getItem(id) {
-        const item = this.items[id];
+        const item = Object.assign({}, this.items[id]);
 
         if (item.next === "__tail__") {
-            return { ...item, next: null };
-        } else if (item.prev === "__head__") {
-            return { ...item, prev: null };
+            item.next = null;
+        } 
+        
+        if (item.prev === "__head__") {
+            item.prev = null;
         }
 
         return item;

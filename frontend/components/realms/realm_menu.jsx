@@ -13,7 +13,9 @@ export default class RealmMenu extends Component {
         this.lookupTable = {};
     }
 
-    componentDidUpdate() {
+    _updateOrder() {
+        if (!this.props.dimension) return;
+        
         const data = {};
         const ll = this.lookupTable["root"];
         const it = ll.start();
@@ -34,7 +36,7 @@ export default class RealmMenu extends Component {
 
         const { updateOrder, dimension } = this.props;
         
-        updateOrder(dimension, data);
+        updateOrder(dimension.id, data);
     }
     
     _selectRealm(e) {
@@ -120,6 +122,7 @@ export default class RealmMenu extends Component {
         });
 
         // Finally we return the root list we generated
+        console.log(ll);
         return ll;
     }
 
@@ -138,6 +141,7 @@ export default class RealmMenu extends Component {
         const item = fromList.removeItem(itemId);
 
         toList.insertItemBefore(beforeId, { ...item, parent: toListId !== "root" ? toListId : null });
+        this._updateOrder();
     }
     
     render() {
