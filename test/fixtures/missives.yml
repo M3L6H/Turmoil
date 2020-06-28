@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: missives
+#
+#  id               :bigint           not null, primary key
+#  body             :text             not null
+#  messageable_type :string           not null
+#  pinned           :boolean          default(FALSE), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  being_id         :bigint           not null
+#  messageable_id   :bigint           not null
+#
+# Indexes
+#
+#  index_missives_on_being_id                             (being_id)
+#  index_missives_on_messageable_id_and_messageable_type  (messageable_id,messageable_type)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

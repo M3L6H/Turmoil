@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_223616) do
+ActiveRecord::Schema.define(version: 2020_06_28_205752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,18 @@ ActiveRecord::Schema.define(version: 2020_06_25_223616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["being_id"], name: "index_dimensions_on_being_id"
+  end
+
+  create_table "missives", force: :cascade do |t|
+    t.bigint "being_id", null: false
+    t.bigint "messageable_id", null: false
+    t.string "messageable_type", null: false
+    t.text "body", null: false
+    t.boolean "pinned", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["being_id"], name: "index_missives_on_being_id"
+    t.index ["messageable_id", "messageable_type"], name: "index_missives_on_messageable_id_and_messageable_type"
   end
 
   create_table "realms", force: :cascade do |t|
