@@ -6,6 +6,7 @@
 #  body             :text             not null
 #  messageable_type :string           not null
 #  pinned           :boolean          default(FALSE), not null
+#  username         :string           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  being_id         :bigint           not null

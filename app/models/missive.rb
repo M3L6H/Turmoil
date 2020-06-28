@@ -6,6 +6,7 @@
 #  body             :text             not null
 #  messageable_type :string           not null
 #  pinned           :boolean          default(FALSE), not null
+#  username         :string           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  being_id         :bigint           not null
@@ -17,7 +18,7 @@
 #  index_missives_on_messageable_id_and_messageable_type  (messageable_id,messageable_type)
 #
 class Missive < ApplicationRecord
-    validates :messageable_type, :body, presence: true
+    validates :messageable_type, :body, :username, presence: true
     validates :messageable_type, inclusion: { in: %w(Realm Conversation) }
     validates :pinned, inclusion: { in: [true, false] }
 
