@@ -1,0 +1,1 @@
+json.partial! "missive", missive: @missive
