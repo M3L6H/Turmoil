@@ -19,6 +19,11 @@ import {
 } from '../actions/dimensions_actions';
 
 import { 
+    RECEIVE_MISSIVES_ERRORS,
+    RECEIVE_MISSIVE
+} from '../actions/missives_actions';
+
+import { 
     RECEIVE_REALMS_ERRORS,
     RECEIVE_REALM,
     REMOVE_REALM
@@ -40,6 +45,7 @@ const _defaultState = {
     beings: [],
     dimensionBeings: [],
     dimensions: [],
+    missives: [],
     roles: [],
     session: []
 }
@@ -67,6 +73,11 @@ export default (state=_defaultState, action) => {
         case RECEIVE_DIMENSIONS:
         case REMOVE_DIMENSION:
             return { ...state, dimensions: [] }
+
+        case RECEIVE_MISSIVES_ERRORS:
+            return { ...state, missives: action.missives }
+        case RECEIVE_MISSIVE:
+            return { ...state, missives: [] }
 
         case RECEIVE_REALMS_ERRORS:
             return { ...state, realms: action.realms }
