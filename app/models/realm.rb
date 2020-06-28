@@ -41,6 +41,7 @@ class Realm < ApplicationRecord
     belongs_to :dimension
     belongs_to :next_orderable, polymorphic: true, optional: true
     belongs_to :prev_orderable, polymorphic: true, optional: true
+    has_many :missives, dependent: :destroy, as: :messageable
 
     # Custom validations
     def name_cannot_include_restricted_chars

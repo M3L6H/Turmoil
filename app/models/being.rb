@@ -41,6 +41,7 @@ class Being < ApplicationRecord
     has_many :dimensions, dependent: :restrict_with_exception
     has_many :dimension_beings, dependent: :destroy
     has_many :joined_dimensions, through: :dimension_beings, source: :dimension
+    has_many :missives, as: :messageable
 
     # Auth methods
     class << self
