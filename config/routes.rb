@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         end
 
         resources :dimension_beings, only: [:show, :destroy, :update]
+        resources :missives, only: [:create, :update]
         resources :realms, except: [:index, :new, :edit]
         resources :roles, only: [:show, :destroy, :update]
         resource :session, only: [:create, :destroy]
