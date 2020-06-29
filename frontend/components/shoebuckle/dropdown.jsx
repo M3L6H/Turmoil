@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import withWindowDimensions from '../hocs/with_window_dimensions';
+
 import Icon from './icon';
 
 export default class Dropdown extends Component {
@@ -75,14 +77,17 @@ Dropdown.Item = class extends Component {
     }
 };
 
-Dropdown.Trigger = props => {
-    const {
-        onClick
-    } = props;
+Dropdown.Trigger = withWindowDimensions(
+    props => {
+        const {
+            onClick
+        } = props;
 
-    const className = `dropdown-trigge`;
-    
-    return (
-        <Icon name="ellipsis-h" onClick={ onClick } className={ className } />
-    );
-};
+        const className = `dropdown-trigger`;
+        const icon = desktop ? "angle-down" : "ellipsis-h";
+        
+        return (
+            <Icon name={ icon } onClick={ onClick } className={ className } />
+        );
+    }
+);
