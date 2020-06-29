@@ -141,9 +141,11 @@ $form-min-width: 350px;
 
 $dropdown-top: 10vh;
 $dropdown-top: calc(var(--vh, 1vh) * 10);
+$dropdown-desktop-top: 2rem;
+
+$dropdown-width: 250px;
 
 $menu-item-min-width: 40px;
-
 $sidebar-width: 275px;
 
 $window-height: 100vh;

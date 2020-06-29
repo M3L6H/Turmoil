@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
+import withWindowDimensions from '../hocs/with_window_dimensions';
 import LinkedList from '../../util/linked_list';
 
 import { Button, DragNDrop, Dropdown, Header, Icon, Menu } from '../shoebuckle';
 
-export default class RealmMenu extends Component {
+class RealmMenu extends Component {
     constructor(props) {
         super(props);
     
@@ -143,11 +144,11 @@ export default class RealmMenu extends Component {
         this._updateOrder();
     }
 
-    _renderDropdown() {
-        const { dimension } = this.props;
+    _renderMobileDropdown() {
+        const { dimension, inverted } = this.props;
         
         return (
-            <Dropdown inverted>
+            <Dropdown inverted={ inverted }>
                 <Dropdown.Header>
                     <Header as="h3">{ dimension.name }</Header>
                     <Dropdown.Item horizontal>
@@ -179,6 +180,57 @@ export default class RealmMenu extends Component {
                 </Dropdown.Group>
             </Dropdown>
         );
+    }
+
+    _renderDesktopDropdown() {
+        const { inverted } = this.props;
+        
+        return (
+            <Dropdown inverted={ inverted }>
+                <Dropdown.Group>
+                    <Dropdown.Item blue>
+                        Invite People
+                        <Icon name="user-plus" />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        Server Settings
+                        <Icon name="cog" />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        Create Realm
+                        <Icon name="plus-circle" />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        Create Group
+                        <Icon name="folder-plus" />
+                    </Dropdown.Item>
+                </Dropdown.Group>
+                <Dropdown.Group>
+                    <Dropdown.Item>
+                        Notification Settings
+                        <Icon name="bell" />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        Privacy Settings
+                        <Icon name="shield-alt" />
+                    </Dropdown.Item>
+                </Dropdown.Group>
+                <Dropdown.Group>
+                    <Dropdown.Item>
+                        Change Nickname
+                        <Icon name="user-edit" />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        Hide Muted Realms
+                    </Dropdown.Item>
+                </Dropdown.Group>
+            </Dropdown>
+        );
+    }
+
+    _renderDropdown() {
+        const { desktop } = this.props;
+        return desktop ? this._renderDesktopDropdown() : this._renderMobileDropdown();
     }
 
     _renderHeader() {
@@ -221,3 +273,5 @@ export default class RealmMenu extends Component {
         );
     }
 }
+
+export default withWindowDimensions(RealmMenu);

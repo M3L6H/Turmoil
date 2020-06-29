@@ -1,5 +1,8 @@
 .shoebuckle.dropdown {
+    position: relative;
+    
     .dropdown-bg {
+        cursor: default;
         position: fixed;
         top: 0;
         left: 0;
@@ -17,6 +20,10 @@
             opacity: 0;
             transition: visibility 0s ease $dropdown-move-speed, opacity $dropdown-move-speed;
         }
+
+        @media screen and (min-width: $breakpoint) {
+            background: transparent;
+        }
     }
     
     .dropdown-content {
@@ -32,12 +39,31 @@
         transform: none;
         transition: transform $dropdown-move-speed;
 
+        @media screen and (min-width: $breakpoint) {
+            position: absolute;
+            top: $dropdown-desktop-top;
+            right: 0;
+            left: auto;
+            bottom: auto;
+            width: $dropdown-width;
+            border-radius: $small-round;
+            display: block;
+        }
+
         &.hidden {
             transform: translate3d(0, $window-height, 0);
+
+            @media screen and (min-width: $breakpoint) {
+                display: none;
+            }
         }
 
         &.inverted {
             background: $dark;
+
+            @media screen and (min-width: $breakpoint) {
+                background: $darkest;
+            }
         }
 
         >* {
@@ -59,8 +85,26 @@
         }
 
         .dropdown-group {
+            @media screen and (min-width: $breakpoint) {
+                margin: 0;
+                padding-top: #{ $dropdown-content-padding / 2 };
+                padding-bottom: #{ $dropdown-content-padding / 2 };
+                
+                &:nth-child(n + 2) {
+                    border-top: $thin solid $light;
+
+                    &.inverted {
+                        border-color: $darker;
+                    }
+                }
+            }
+
             .dropdown-item {
                 border-radius: 0;
+
+                @media screen and (min-width: $breakpoint) {
+                    border-radius: $small-round;
+                }
             }
             
             .dropdown-item:first-child {
@@ -76,6 +120,10 @@
             .dropdown-item:nth-child(n + 2) {
                 border-top: $thin solid $light;
 
+                @media screen and (min-width: $breakpoint) {
+                    border: none;
+                }
+
                 &.inverted {
                     border-color: $darker;
                 }
@@ -87,8 +135,36 @@
             background: $light;
             border-radius: $small-round;
 
+            @media screen and (min-width: $breakpoint) {
+                display: flex;
+                justify-content: space-between;
+                background: transparent;
+            }
+
+            &:hover {
+                background: $blue;
+                color: $white;
+
+                * {
+                    color: $white;
+                }
+            }
+
             &.inverted {
                 background: $darkest;
+
+                &:hover {
+                    background: $blue;
+                    color: $white;
+
+                    * {
+                        color: $white;
+                    }
+                }
+            }
+
+            &.blue {
+                color: $blue;   
             }
             
             &.horizontal {

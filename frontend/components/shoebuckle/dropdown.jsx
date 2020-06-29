@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { childrenWithProps } from './util';
+import { childrenWithProps, parseColor, selectColor } from './util';
 import withWindowDimensions from '../hocs/with_window_dimensions';
 
 import Icon from './icon';
@@ -78,7 +78,7 @@ Dropdown.Group = class extends Component {
         } = this.props;
         const childProps = { inverted };
 
-        const className = `dropdown-group`;
+        const className = `dropdown-group${ inverted ? " inverted" : "" }`;
 
         return (
             <div className={ className }>
@@ -111,15 +111,15 @@ Dropdown.Item = class extends Component {
         const {
             children,
             content,
-            horizontal,
-            inverted
+            horizontal
         } = this.props;
+        const childProps = { ...selectColor(this.props) };
 
-        const className = `dropdown-item${ horizontal ? " horizontal" : "" }${ inverted ? " inverted" : "" }`;
+        const className = `dropdown-item${ horizontal ? " horizontal" : "" }${ parseColor(this.props) }`;
         
         return (
             <div className={ className }>
-                { children || content }
+                { childrenWithProps(children, childProps) || content }
             </div>
         );
     }
