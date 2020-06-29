@@ -4,7 +4,7 @@ import withWindowDimensions from '../hocs/with_window_dimensions';
 
 import Icon from './icon';
 
-export default class Dropdown extends Component {
+class Dropdown extends Component {
     constructor(props) {
         super(props);
     
@@ -26,16 +26,20 @@ export default class Dropdown extends Component {
         
         const {
             children,
+            desktop,
             onClick
         } = this.props;
 
         const open = this.props.open === undefined ? stateOpen : this.props.open;
         
-        const className = `shoebuckle dropdown`;
+        const className = `shoebuckle dropdown${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>
-                <Dropdown.Trigger onClick={ onClick || this._handleClick } />
+                <Dropdown.Trigger 
+                    desktop={ desktop }
+                    onClick={ onClick || this._handleClick } 
+                />
                 { open && (
                     <Dropdown.Content>
                         { children }         
@@ -77,17 +81,18 @@ Dropdown.Item = class extends Component {
     }
 };
 
-Dropdown.Trigger = withWindowDimensions(
-    props => {
-        const {
-            onClick
-        } = props;
+Dropdown.Trigger = props => {
+    const {
+        desktop,
+        onClick
+    } = props;
 
-        const className = `dropdown-trigger`;
-        const icon = desktop ? "angle-down" : "ellipsis-h";
-        
-        return (
-            <Icon name={ icon } onClick={ onClick } className={ className } />
-        );
-    }
-);
+    const className = `dropdown-trigger`;
+    const icon = desktop ? "angle-down" : "ellipsis-h";
+    
+    return (
+        <Icon name={ icon } onClick={ onClick } className={ className } key={ Math.random() } />
+    );
+};
+
+export default withWindowDimensions(Dropdown);

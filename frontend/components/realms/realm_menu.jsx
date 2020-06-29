@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import LinkedList from '../../util/linked_list';
 
-import { DragNDrop, Header, Icon, Menu } from '../shoebuckle';
+import { DragNDrop, Dropdown, Header, Icon, Menu } from '../shoebuckle';
 
 export default class RealmMenu extends Component {
     constructor(props) {
@@ -142,10 +142,26 @@ export default class RealmMenu extends Component {
         toList.insertItemBefore(beforeId, { ...item, parent: toListId !== "root" ? toListId : null });
         this._updateOrder();
     }
+
+    _renderHeader() {
+        const { dimension } = this.props;
+        
+        if (dimension) {
+            return (
+                <>
+                    <Header>
+                        { dimension.name }
+                    </Header>
+                    <Dropdown />
+                </>
+            );
+        } else {
+            return <Header>Direct Messages</Header>;
+        }
+    }
     
     render() {
         const { 
-            dimension,
             inverted
         } = this.props;
         
@@ -158,9 +174,7 @@ export default class RealmMenu extends Component {
                 vertical
             >
                 <Menu.Item>
-                    <Header>
-                        { dimension ? dimension.name : "Direct Messages" }
-                    </Header>
+                    { this._renderHeader() }
                 </Menu.Item>
                 <Menu.Item>
                     <DragNDrop list={ this._constructList() } moveBefore={ this._moveBefore } />
