@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import actionCable from 'actioncable';
 
 import Root from './components/root';
 
 import configureStore from './store/store';
+import { receiveCable } from './actions/cable_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
@@ -24,6 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         store = configureStore();
     }
+
+    // Set up action cable
+    const cable = actionCable.createConsumer(`ws://${ window.location.host }/cable`);
+    store.dispatch(receiveCable(cable));
 
     // Set up viewport height and width for mobile
     const vh = window.innerHeight * 0.01;

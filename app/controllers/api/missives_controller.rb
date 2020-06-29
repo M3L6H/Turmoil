@@ -9,6 +9,10 @@ class Api::MissivesController < ApplicationController
         
         if @missive.save
             render :create
+            if @missive.messageable_type == "Realm"
+                RealmChannel.broadcast_to Realm.find(@missive.messageable_id), { missive: @missive, being: current_being }
+            else
+            end
         else
             render json: @missive.errors.full_messages, status: 422
         end

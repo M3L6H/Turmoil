@@ -18,6 +18,9 @@ Rails.application.routes.draw do
         put "/dimensions/:id/update_order", to: "dimensions#update_order"
     end
 
+    mount ActionCable.server => "/cable"
+
     root to: "static_pages#root"
+    
     get "*path" => redirect("/")
 end

@@ -8,9 +8,9 @@ export const clearMissives = () => ({
     type: CLEAR_MISSIVES 
 });
 
-const receiveMissive = (missive) => ({
+export const receiveMissive = (data) => ({
     type: RECEIVE_MISSIVE,
-    missive
+    ...data
 });
 
 const receiveMissivesErrors = (errors) => ({

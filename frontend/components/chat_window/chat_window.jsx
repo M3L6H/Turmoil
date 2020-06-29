@@ -15,6 +15,21 @@ export default class ChatWindow extends Component {
         this._handleChange = this._handleChange.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { cable, receiveMissive, selectedRealm } = this.props;
+
+        if (prevProps.selectedRealm !== selectedRealm) {
+            cable.subscriptions.create({
+                channel: "RealmChannel",
+                realm: selectedRealm.id
+            },
+            {
+                received: receiveMissive
+            })
+        }
+    }
+    
     
     _handleChange(e) {
         const input = e.currentTarget;
@@ -46,6 +61,7 @@ export default class ChatWindow extends Component {
     _renderMissives() {
         const { missives, inverted } = this.props;
 
+
         return missives.map(missive => (
             <Missive key={ missive.id } missive={ missive } inverted={ inverted } />
         ));
@@ -64,7 +80,10 @@ export default class ChatWindow extends Component {
         if (!selectedRealm) return null;
         
         return (
-            <Section className="chat-window" inverted={ inverted }>
+            <Section 
+                className="chat-window" 
+                inverted={ inverted } 
+            >
                 <div className="missives">
                     { this._renderMissives() }
                 </div>

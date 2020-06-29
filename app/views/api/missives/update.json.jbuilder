@@ -1,1 +1,3 @@
-json.partial! "missive", missive: @missive
+json.missive do
+    json.partial! "missive", missive: @missive
+end
