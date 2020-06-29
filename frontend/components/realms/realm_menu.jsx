@@ -122,7 +122,6 @@ export default class RealmMenu extends Component {
         });
 
         // Finally we return the root list we generated
-        console.log(ll);
         return ll;
     }
 

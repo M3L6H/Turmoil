@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Button, Form, Icon, Section } from '../shoebuckle';
 
+import Missive from '../missive';
+
 export default class ChatWindow extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +25,9 @@ export default class ChatWindow extends Component {
         }
     }
 
-    _handleSubmit() {
+    _handleSubmit(e) {
+        e.preventDefault();
+        
         const { body } = this.state;
         const { selectedRealm } = this.props;
         
@@ -37,6 +41,14 @@ export default class ChatWindow extends Component {
             this.props.createMissive(missive);
             this.setState({ body: "" });
         }
+    }
+
+    _renderMissives() {
+        const { missives, inverted } = this.props;
+
+        return missives.map(missive => (
+            <Missive key={ missive.id } missive={ missive } inverted={ inverted } />
+        ));
     }
     
     render() {
@@ -53,9 +65,12 @@ export default class ChatWindow extends Component {
         
         return (
             <Section className="chat-window" inverted={ inverted }>
+                <div className="missives">
+                    { this._renderMissives() }
+                </div>
                 <Form className="chat-bar" onSubmit={ this._handleSubmit }>
                     <Form.Input 
-                        dataset-type="body" 
+                        data-type="body" 
                         placeholder={ `message #${ selectedRealm.name }` }
                         value={ body }
                         onChange={ this._handleChange } 

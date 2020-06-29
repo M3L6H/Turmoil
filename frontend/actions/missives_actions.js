@@ -8,7 +8,7 @@ export const clearMissives = () => ({
     type: CLEAR_MISSIVES 
 });
 
-const receiveMissive = ({ missive }) => ({
+const receiveMissive = (missive) => ({
     type: RECEIVE_MISSIVE,
     missive
 });

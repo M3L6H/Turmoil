@@ -4,6 +4,7 @@ class Api::MissivesController < ApplicationController
     
     def create
         @missive = Missive.new(missive_params)
+        @missive.being_id = current_being.id
         @missive.username = current_being.username
         
         if @missive.save

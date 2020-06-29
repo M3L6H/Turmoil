@@ -1,0 +1,18 @@
+.missive {
+    padding: 0 $missive-horizontal-padding;
+
+    &.inverted {
+        color: $lightest;
+    }
+
+    .missive-body {
+        padding: $missive-body-vertical-padding 0;
+    }
+
+    .missive-header {
+        .missive-date {
+            padding-left: $missive-date-left-padding;
+            font-size: $small-font-size;
+        }
+    }
+}

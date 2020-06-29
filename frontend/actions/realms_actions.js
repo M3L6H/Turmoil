@@ -9,9 +9,9 @@ export const clearRealms = () => ({
     type: CLEAR_REALMS 
 });
 
-const receiveRealm = ({ realm }) => ({
+const receiveRealm = (data) => ({
     type: RECEIVE_REALM,
-    realm
+    ...data
 });
 
 const removeRealm = (realmId) => ({

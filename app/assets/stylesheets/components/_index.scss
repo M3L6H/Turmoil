@@ -2,6 +2,11 @@ $content-max-width: 100vh;
 
 $chat-bar-padding: 1rem;
 
+$missive-horizontal-padding: 1rem;
+$missive-body-vertical-padding: 0.25rem;
+$missive-date-left-padding: 0.5rem;
+
 @import "app_container";
-@import "header";
 @import "chat_window";
+@import "missive";
+@import "header";

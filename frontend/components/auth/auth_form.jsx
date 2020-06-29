@@ -77,7 +77,7 @@ export default class AuthForm extends Component {
     }
     
     _renderRedirect() {
-        const { formType, openSignIn, openSignUp } = this.props;
+        const { formType } = this.props;
 
         if (formType === "signIn") {
             return (

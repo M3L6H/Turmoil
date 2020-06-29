@@ -9,7 +9,7 @@ export default (state={}, action) => {
         case CLEAR_MISSIVES:
             return {};
         case RECEIVE_REALM:
-            return action.missives;
+            return action.missives || {};
         case RECEIVE_MISSIVE:
             return { ...state, [action.missive.id]: action.missive };
         default:
