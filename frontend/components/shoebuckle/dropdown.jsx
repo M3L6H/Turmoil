@@ -73,14 +73,16 @@ Dropdown.Content = props => {
 Dropdown.Group = class extends Component {
     render() {
         const {
-            children
+            children,
+            inverted
         } = this.props;
+        const childProps = { inverted };
 
         const className = `dropdown-group`;
 
         return (
             <div className={ className }>
-                { children }
+                { childrenWithProps(children, childProps) }
             </div>
         );
     }
@@ -90,10 +92,11 @@ Dropdown.Header = class extends Component {
     render() {
         const {
             children,
-            content
+            content,
+            inverted
         } = this.props;
 
-        const className = `dropdown-header`;
+        const className = `dropdown-header${ inverted ? " inverted" : "" }`;
 
         return (
             <div className={ className }>
@@ -107,10 +110,12 @@ Dropdown.Item = class extends Component {
     render() {
         const {
             children,
-            content
+            content,
+            horizontal,
+            inverted
         } = this.props;
 
-        const className = `dropdown-item`;
+        const className = `dropdown-item${ horizontal ? " horizontal" : "" }${ inverted ? " inverted" : "" }`;
         
         return (
             <div className={ className }>
@@ -124,14 +129,21 @@ Dropdown.Trigger = withWindowDimensions(
     props => {
         const {
             desktop,
-            onClick
+            onClick,
+            inverted
         } = props;
 
         const className = `dropdown-trigger`;
         const icon = desktop ? "angle-down" : "ellipsis-h";
         
         return (
-            <Icon name={ icon } onClick={ onClick } className={ className } key={ Math.random() } />
+            <Icon 
+                name={ icon } 
+                onClick={ onClick } 
+                inverted={ inverted } 
+                className={ className } 
+                key={ Math.random() } 
+            />
         );
     }
 );

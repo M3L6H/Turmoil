@@ -147,15 +147,15 @@ export default class RealmMenu extends Component {
         const { dimension } = this.props;
         
         return (
-            <Dropdown>
+            <Dropdown inverted>
                 <Dropdown.Header>
-                    <Header>{ dimension.name }</Header>
+                    <Header as="h3">{ dimension.name }</Header>
+                    <Dropdown.Item horizontal>
+                        <Button icon><Icon name="user-plus" /></Button>
+                        <Button icon><Icon name="bell" /></Button>
+                        <Button icon><Icon name="cog" /></Button>
+                    </Dropdown.Item>
                 </Dropdown.Header>
-                <Dropdown.Item>
-                    <Button icon><Icon name="user-plus" /></Button>
-                    <Button icon><Icon name="bell" /></Button>
-                    <Button icon><Icon name="cog" /></Button>
-                </Dropdown.Item>
                 <Dropdown.Group>
                     <Dropdown.Item
                         content="Create Realm"
