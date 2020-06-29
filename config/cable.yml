@@ -8,5 +8,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  url: redis://redistogo:0f5e5e317bb8d3e0832a4befe6b5e221@hammerjaw.redistogo.com:11076/
   channel_prefix: rails-turmoil_production
