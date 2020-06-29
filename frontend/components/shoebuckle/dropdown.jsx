@@ -111,14 +111,15 @@ Dropdown.Item = class extends Component {
         const {
             children,
             content,
-            horizontal
+            horizontal,
+            onClick
         } = this.props;
         const childProps = { ...selectColor(this.props) };
 
         const className = `dropdown-item${ horizontal ? " horizontal" : "" }${ parseColor(this.props) }`;
         
         return (
-            <div className={ className }>
+            <div className={ className } onClick={ onClick }>
                 { childrenWithProps(children, childProps) || content }
             </div>
         );
