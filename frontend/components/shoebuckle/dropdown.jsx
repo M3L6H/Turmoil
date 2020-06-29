@@ -26,18 +26,16 @@ class Dropdown extends Component {
         
         const {
             children,
-            desktop,
             onClick
         } = this.props;
 
         const open = this.props.open === undefined ? stateOpen : this.props.open;
-        
+
         const className = `shoebuckle dropdown${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>
                 <Dropdown.Trigger 
-                    desktop={ desktop }
                     onClick={ onClick || this._handleClick } 
                 />
                 { open && (
@@ -64,6 +62,39 @@ Dropdown.Content = props => {
     );
 };
 
+Dropdown.Group = class extends Component {
+    render() {
+        const {
+            children
+        } = this.props;
+
+        const className = `dropdown-group`;
+
+        return (
+            <div className={ className }>
+                { children }
+            </div>
+        );
+    }
+};
+
+Dropdown.Header = class extends Component {
+    render() {
+        const {
+            children,
+            content
+        } = this.props;
+
+        const className = `dropdown-header`;
+
+        return (
+            <div className={ className }>
+                { children || content }
+            </div>
+        );
+    }
+};
+
 Dropdown.Item = class extends Component {
     render() {
         const {
@@ -81,18 +112,20 @@ Dropdown.Item = class extends Component {
     }
 };
 
-Dropdown.Trigger = props => {
-    const {
-        desktop,
-        onClick
-    } = props;
+Dropdown.Trigger = withWindowDimensions(
+    props => {
+        const {
+            desktop,
+            onClick
+        } = props;
 
-    const className = `dropdown-trigger`;
-    const icon = desktop ? "angle-down" : "ellipsis-h";
-    
-    return (
-        <Icon name={ icon } onClick={ onClick } className={ className } key={ Math.random() } />
-    );
-};
+        const className = `dropdown-trigger`;
+        const icon = desktop ? "angle-down" : "ellipsis-h";
+        
+        return (
+            <Icon name={ icon } onClick={ onClick } className={ className } key={ Math.random() } />
+        );
+    }
+);
 
-export default withWindowDimensions(Dropdown);
+export default Dropdown;

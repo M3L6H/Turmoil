@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import LinkedList from '../../util/linked_list';
 
-import { DragNDrop, Dropdown, Header, Icon, Menu } from '../shoebuckle';
+import { Button, DragNDrop, Dropdown, Header, Icon, Menu } from '../shoebuckle';
 
 export default class RealmMenu extends Component {
     constructor(props) {
@@ -143,6 +143,44 @@ export default class RealmMenu extends Component {
         this._updateOrder();
     }
 
+    _renderDropdown() {
+        const { dimension } = this.props;
+        
+        return (
+            <Dropdown>
+                <Dropdown.Header>
+                    <Header>{ dimension.name }</Header>
+                </Dropdown.Header>
+                <Dropdown.Item>
+                    <Button icon><Icon name="user-plus" /></Button>
+                    <Button icon><Icon name="bell" /></Button>
+                    <Button icon><Icon name="cog" /></Button>
+                </Dropdown.Item>
+                <Dropdown.Group>
+                    <Dropdown.Item
+                        content="Create Realm"
+                    />
+                    <Dropdown.Item
+                        content="Create Category"
+                    />
+                </Dropdown.Group>
+                <Dropdown.Group>
+                    <Dropdown.Item
+                        content="Change Nickname"
+                    />
+                    <Dropdown.Item>
+                        Hide Muted Realms
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                        description="Anyone in the dimension can message you"
+                    >
+                        Allow Direct Messages
+                    </Dropdown.Item>
+                </Dropdown.Group>
+            </Dropdown>
+        );
+    }
+
     _renderHeader() {
         const { dimension } = this.props;
         
@@ -152,7 +190,7 @@ export default class RealmMenu extends Component {
                     <Header>
                         { dimension.name }
                     </Header>
-                    <Dropdown />
+                    { this._renderDropdown() }
                 </>
             );
         } else {
