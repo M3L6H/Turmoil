@@ -10,7 +10,7 @@ export default class Form extends Component {
         const { children, errors, inverted, onSubmit } = this.props;
         const childProps = { inverted };
 
-        const className = `shoebuckle form${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle form${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         return (
             <form onSubmit={ onSubmit } className={ className }>

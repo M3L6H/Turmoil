@@ -1,0 +1,24 @@
+.chat-window {
+    position: relative;
+    flex: 1 1 auto;
+
+    .chat-bar {
+        padding: $chat-bar-padding;
+        
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        border-top: $thin dashed $black;
+
+        &.inverted {
+            border-color: $dark;
+        }
+        
+        .shoebuckle.btn {
+            position: absolute;
+            top: calc(50% - #{ $large / 2 });
+            right: $chat-bar-padding;
+        }
+    }
+}

@@ -6,7 +6,8 @@ import { selectMissives } from '../../reducers/selectors';
 import ChatWindow from './chat_window';
 
 const mapStateToProps = (state) => ({
-    missives: selectMissives(state)
+    missives: selectMissives(state),
+    selectedRealm: state.entities.realms[state.ui.menus.realmMenu.selected]
 });
 
 const mapDispatchToProps = (dispatch) => ({

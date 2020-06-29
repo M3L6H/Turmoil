@@ -27,7 +27,10 @@ class AppContainer extends Component {
         return (
             <Sidebar.Pushable className="app-container" fullHeight inverted={ inverted }>
                 <DimensionsSidebar />
-                <Sidebar.Pusher onClick={ open ? this._handleClick : undefined }>
+                <Sidebar.Pusher 
+                    className="app-container"
+                    onClick={ open ? this._handleClick : undefined }
+                >
                     { children }
                 </Sidebar.Pusher>
             </Sidebar.Pushable>
