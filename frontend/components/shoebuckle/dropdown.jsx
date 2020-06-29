@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { childrenWithProps } from './util';
 import withWindowDimensions from '../hocs/with_window_dimensions';
 
 import Icon from './icon';
@@ -26,23 +27,28 @@ class Dropdown extends Component {
         
         const {
             children,
+            inverted,
             onClick
         } = this.props;
+        const childProps = { inverted };
 
         const open = this.props.open === undefined ? stateOpen : this.props.open;
 
-        const className = `shoebuckle dropdown${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle dropdown${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <div className={ className }>
                 <Dropdown.Trigger 
+                    inverted={ inverted }
                     onClick={ onClick || this._handleClick } 
                 />
-                { open && (
-                    <Dropdown.Content>
-                        { children }         
-                    </Dropdown.Content>
-                ) }
+                <div 
+                    className={ `dropdown-bg ${ open ? "" : " hidden" }` }
+                    onClick={ this._handleClick }
+                ></div>
+                <Dropdown.Content inverted={ inverted } open={ open }>
+                    { childrenWithProps(children, childProps) }         
+                </Dropdown.Content>
             </div>
         );
     }
@@ -50,10 +56,12 @@ class Dropdown extends Component {
 
 Dropdown.Content = props => {
     const {
-        children
+        children,
+        inverted,
+        open
     } = props;
 
-    const className = `dropdown-content`;
+    const className = `dropdown-content${ inverted ? " inverted" : "" }${ open ? "" : " hidden" }`;
     
     return (
         <div className={ className }>

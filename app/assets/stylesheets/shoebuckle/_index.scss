@@ -135,9 +135,15 @@ $massive: 4.5rem !default;
 /* Dimensions */
 $form-min-width: 350px;
 
+$dropdown-top: 10vh;
+$dropdown-top: calc(var(--vh, 1vh) * 10);
+
 $menu-item-min-width: 40px;
 
 $sidebar-width: 275px;
+
+$window-height: 100vh;
+$window-height: calc(var(--vh, 1vh) * 100);
 
 /* Border */
 $small-round: 4px !default;
@@ -152,6 +158,8 @@ $bold: 2px !default;
 /* Timings */
 $btn-move-speed: 0.25s !default;
 $btn-fade-speed: 0.5s !default;
+
+$dropdown-move-speed: 0.5s !default;
 
 $sidebar-move-speed: 0.5s !default;
 
@@ -169,6 +177,7 @@ $vertical-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 /* Components */
 @import "button";
 @import "dragndrop";
+@import "dropdown";
 @import "form";
 @import "header";
 @import "icon";

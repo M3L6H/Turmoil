@@ -1,0 +1,39 @@
+.shoebuckle.dropdown {
+    .dropdown-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        background: $dimmer;
+
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s, opacity $dropdown-move-speed;
+
+        &.hidden {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s ease $dropdown-move-speed, opacity $dropdown-move-speed;
+        }
+    }
+    
+    .dropdown-content {
+        z-index: 1;
+        width: 100vw;
+
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        top: $dropdown-top;
+
+        background: $white;
+        transform: none;
+        transition: transform $dropdown-move-speed;
+
+        &.hidden {
+            transform: translate3d(0, $window-height, 0);
+        }
+    }
+}
