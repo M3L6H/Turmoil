@@ -11,6 +11,76 @@
     .form-field {
         margin-bottom: $form-field-bottom-margin;
     }
+
+    .form-radio-group {
+        .radio-field {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            
+            border-radius: $small-round;
+            border: $thin solid $black;
+            padding: $form-radio-vertical-padding $form-radio-horizontal-padding;
+            margin: $form-radio-vertical-margin 0;
+            cursor: pointer;
+
+            &.inverted {
+                background: $darkest;
+                border-color: $darkest;
+            }
+
+            * {
+                font-size: $body-font-size;
+                cursor: pointer;
+            }
+
+            .form-radio {
+                position: absolute;
+                left: -9999px;
+
+                &:checked + .form-label:after {
+                    content: " ";
+                    position: absolute;
+                    left: #{ $form-radio-diameter * 0.2 };
+                    top: calc(50% - #{ $form-radio-diameter * 0.3 });
+
+                    width: #{ $form-radio-diameter * 0.8 };
+                    height: #{ $form-radio-diameter * 0.8 };
+
+                    border-radius: 100%;
+                    background: $primary;
+                }
+            }
+
+            .form-label {
+                display: flex;
+                justify-content: flex-start;
+                
+                position: relative;
+                padding-left: calc(#{ $form-radio-horizontal-padding } + #{ $form-radio-diameter });
+                line-height: $form-radio-diameter;
+
+                >* {
+                    padding-right: $form-radio-label-right-padding;
+                }
+
+                &:before {
+                    content: " ";
+
+                    position: absolute;
+                    left: 0;
+                    top: calc(50% - #{ $form-radio-diameter / 2 });
+                    
+                    width: $form-radio-diameter;
+                    height: $form-radio-diameter;
+
+                    border: $thin solid $black;
+                    border-radius: 100%;
+                    background: $white;                    
+                }
+            }
+        }
+    }
             
     .form-label {
         font-size: 0.8em;

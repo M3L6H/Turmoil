@@ -24,6 +24,7 @@
 
     .draggable {
         padding-bottom: $dragndrop-item-bottom-padding;
+        cursor: grab;
 
         &.dragging-before:before {
             content: " ";
@@ -36,5 +37,6 @@
 
     .dragging {
         opacity: 0.5;
+        cursor: grabbing;
     }
 }

@@ -67,6 +67,7 @@ Form.Label = (props) => {
         <label 
             className={ className } 
             onClick={ onClick }
+            data-value={ props["data-value"] }
             data-type={ props["data-type"] }
         >
             { children || content }
@@ -101,7 +102,7 @@ Form.Checkbox = class extends Component {
             required
         } = this.props;
 
-        const className = `shoebuckle form-checkbox${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `form-checkbox${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         const checkbox = <input
             checked={ checked === undefined ? stateChecked : checked }
@@ -125,6 +126,84 @@ Form.Checkbox = class extends Component {
             );
         } else {
             return checkbox;
+        }
+    }
+};
+
+Form.RadioGroup = class extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            stateSelected: props.selected || ""
+        };
+
+        this._handleChange = this._handleChange.bind(this);
+    }
+
+    _handleChange(e) {
+        const input = e.currentTarget;
+
+        this.setState({ stateSelected: input.value });
+    }
+
+    render() {
+        const { stateSelected } = this.state;
+
+        const {
+            options,
+            error,
+            inverted,
+            label,
+            required,
+            name
+        } = this.props;
+
+        const className = `form-radio-group${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+
+        const selected = this.props.selected === undefined ? stateSelected : this.props.selected;
+        const onChange = this.props.onChange === undefined ? this._handleChange : this.props.onChange;
+
+        const inputs = options.map(({ value, label }, idx) => (
+            <div 
+                className={ `radio-field${ inverted ? " inverted" : "" }` }
+                key={ idx }
+            >
+                <input
+                    className="form-radio"
+                    type="radio"
+                    checked={ value === selected }
+                    value={ value }
+                    name={ name }
+                    onChange={ onChange }
+                    data-type={ this.props["data-type"] }
+                />
+                <Form.Label
+                    onClick={ onChange }
+                    data-value={ value }
+                    data-type={ this.props["data-type"] }
+                >
+                    { label }
+                </Form.Label>
+            </div>
+        ));
+
+        if (label) {
+            return (
+                <Form.Field
+                    error={ error }
+                    inverted={ inverted }
+                    className={ className }
+                >
+                    <Form.Label 
+                        content={ label } 
+                        required={ required }
+                    />
+                    { inputs } 
+                </Form.Field>
+            );
+        } else {
+            return inputs;
         }
     }
 };

@@ -27,7 +27,8 @@ export default class RealmForm extends Component {
 
         switch (input.dataset.type) {
             case "name":
-                this.setState({ [input.dataset.type]: input.value });
+            case "realmType":
+                this.setState({ [input.dataset.type]: input.value || input.dataset.value });
         }
     }
 
@@ -54,6 +55,16 @@ export default class RealmForm extends Component {
 
         return (
             <Form onSubmit={ this._handleSubmit } errors={ errors }>
+                <Form.RadioGroup 
+                    label="Realm Type"
+                    data-type="realmType"
+                    onChange={ this._handleChange }
+                    selected={ realmType }
+                    options={[
+                        { value: "text", label: <><Icon name="hashtag" />Text Realm</> },
+                        { value: "voice", label: <><Icon name="microphone" />Voice Realm</> }
+                    ]}
+                />
                 <Form.Input 
                     label="Realm Name" 
                     data-type="name"

@@ -134,6 +134,7 @@
             padding: $dropdown-item-vertical-padding $dropdown-item-horizontal-padding;
             background: $light;
             border-radius: $small-round;
+            cursor: pointer;
 
             @media screen and (min-width: $breakpoint) {
                 display: flex;
