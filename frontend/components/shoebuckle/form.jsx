@@ -233,7 +233,7 @@ Form.Input = class extends Component {
             name,
             onChange,
             placeholder,
-            readonly,
+            readOnly,
             required,
             type,
             value
@@ -246,7 +246,7 @@ Form.Input = class extends Component {
             name={ name }
             onChange={ onChange || this._handleChange }
             placeholder={ placeholder }
-            readonly={ readonly }
+            readOnly={ readOnly }
             type={ type || "text" }
             value={ value === undefined ? stateValue : value }
             data-type={ this.props["data-type"] }
@@ -292,12 +292,36 @@ Form.Select = class extends Component {
         };
 
         this._handleChange = this._handleChange.bind(this);
+        this._handleOpen = this._handleOpen.bind(this);
+        this._close = this._close.bind(this);
+    }
+
+    componentDidMount() {
+        document.body.addEventListener("click", this._close);
+    }
+    
+    componentWillUnmount() {
+        document.body.removeEventListener("click", this._close);
+    }
+
+    _close() {
+        this.setState({ stateOpen: false });
     }
 
     _handleChange(e) {
+        e.stopPropagation();
         const option = e.currentTarget;
 
-        this.setState({ stateSelected: option.value });
+        if (this.props.onChange) {
+            this.props.onChange(e);
+        } else {
+            this.setState({ stateSelected: option.value });
+        }
+    }
+
+    _handleOpen(e) {
+        e.stopPropagation();
+        this.setState({ stateOpen: !this.state.stateOpen });
     }
 
     render() {
@@ -314,20 +338,24 @@ Form.Select = class extends Component {
         const className = `form-select${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
 
         const selected = this.props.selected === undefined ? stateSelected : this.props.selected;
-        const onChange = this.props.onChange === undefined ? this._handleChange : this.props.onChange;
+
         const open = this.props.open === undefined ? stateOpen : this.props.open;
+        const onClick = this.props.onClick === undefined ? this._handleOpen : this.props.onClick;
 
         const options = {};
 
+        console.log(open);
+        
         this.props.options.forEach(({ value, label }, idx) => {
             options[value] = <div 
                 key={ idx }
                 className={ `select-option${ inverted ? " inverted" : "" }${ value === selected ? " selected" : "" }` }
             >
                 <input 
-                    type="hidden"
+                    readOnly
                     value={ value }
-                    onClick={ onChange }
+                    onClick={ this._handleChange }
+                    data-type={ this.props["data-type"] }
                 />
 
                 <span>{ label }</span>
@@ -335,7 +363,10 @@ Form.Select = class extends Component {
         });
 
         const select = <div className={ className }>
-            <div className="selected">
+            <div 
+                className={ `selected${ open ? " open" : ""}` }
+                onClick={ onClick }
+            >
                 { options[selected] || placeholder }
             </div>
 

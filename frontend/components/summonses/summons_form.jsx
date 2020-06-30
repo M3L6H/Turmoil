@@ -11,7 +11,7 @@ class SummonsForm extends Component {
 
         this.state = {
             url: this._generateUrl(),
-            expireAfter: 1440,
+            expireAfter: "1440",
             maxUses: "",
             errors: []
         };
@@ -22,7 +22,7 @@ class SummonsForm extends Component {
     }
 
     _generateUrl() {
-        return base64url.encode(`dimension-${ this.props.dimensionId }-${ Math.random() }`);
+        return base64url.encode(`${ this.props.dimensionId }-${ Math.random() }`);
     }
 
     _resetForm() {
@@ -65,7 +65,7 @@ class SummonsForm extends Component {
     }
 
     _pluralize(num, word) {
-        if (num == 0) {
+        if (num == 1) {
             return `${ num } ${ word }`;
         } else {
             return `${ num } ${ word }s`;
@@ -99,15 +99,16 @@ class SummonsForm extends Component {
                     placeholder="Select..."
                     selected={ expireAfter }
                     onChange={ this._handleChange }
+                    data-type="expireAfter"
                     options={ [
-                        { value: 30, label: desktop ? "30 minutes" : "30 mins" },
-                        { value: 60, label: "1 hour" },
-                        { value: 360, label: "6 hours" },
-                        { value: 720, label: "12 hours" },
-                        { value: 1440, label: "1 day" },
-                        { value: 1080, label: "1 week" },
-                        { value: 43200, label: "1 month" },
-                        { value: 525600, label: "1 year" },
+                        { value: "30", label: desktop ? "30 minutes" : "30 mins" },
+                        { value: "60", label: "1 hour" },
+                        { value: "360", label: "6 hours" },
+                        { value: "720", label: "12 hours" },
+                        { value: "1440", label: "1 day" },
+                        { value: "1080", label: "1 week" },
+                        { value: "43200", label: "1 month" },
+                        { value: "525600", label: "1 year" },
                         { value: "never", label: "Never" }
                     ] }
                 />
@@ -116,14 +117,15 @@ class SummonsForm extends Component {
                     placeholder="Select..."
                     selected={ maxUses }
                     onChange={ this._handleChange }
+                    data-type="maxUses"
                     options={ [
                         { value: "noLimit", label: desktop ? "No limit" : "∞" },
-                        { value: 1, label: desktop ? "1 use" : "1" },
-                        { value: 5, label: desktop ? "5 uses" : "5" },
-                        { value: 10, label: desktop ? "10 uses" : "10" },
-                        { value: 25, label: desktop ? "25 uses" : "25" },
-                        { value: 50, label: desktop ? "50 uses" : "50" },
-                        { value: 100, label: desktop ? "100 uses" : "100" }
+                        { value: "1", label: desktop ? "1 use" : "1" },
+                        { value: "5", label: desktop ? "5 uses" : "5" },
+                        { value: "10", label: desktop ? "10 uses" : "10" },
+                        { value: "25", label: desktop ? "25 uses" : "25" },
+                        { value: "50", label: desktop ? "50 uses" : "50" },
+                        { value: "100", label: desktop ? "100 uses" : "100" }
                     ] }
                 />
                 <Button animated fluid green type="submit">
@@ -145,9 +147,9 @@ class SummonsForm extends Component {
                 <Form.Input 
                     label="Summons Link" 
                     data-type="url"
-                    readonly
+                    readOnly
                     onChange={ this._handleChange }
-                    value={ `${ window.protocol }//${ window.location.host }/join/${ url }` }
+                    value={ `${ window.location.protocol }//${ window.location.host }/join/${ url }` }
                 />
                 <Form.Note>
                     Your summons link { this._parseExpiry() }. <a onClick={ openEditForm }>Edit summons link</a>

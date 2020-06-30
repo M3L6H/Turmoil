@@ -157,21 +157,62 @@
         height: calc(#{ 1.3 * $body-font-size } + #{ 2 * $form-select-option-vertical-padding });
         overflow-y: hidden;
 
+        @media screen and (min-width: $breakpoint) {
+            height: auto;
+            overflow-y: initial;
+        }
+
         >.selected {
+            cursor: pointer;
+
+            background: $darkest;
+            border: $thin solid $darkest;
+            border-radius: $small-round;
+            padding: $form-select-selected-vertical-padding $form-select-selected-horizontal-padding;
+
             display: none;
+
+            @media screen and (min-width: $breakpoint) {
+                display: block;
+            }
+
+            &:hover {
+                border-color: $dark;
+            }
+
+            input {
+                display: none;
+            }
         }
 
         .select-options {
             display: flex;
             justify-content: space-between;
-            overflow-x: scroll;
+            overflow-x: auto;
 
             box-sizing: content-box;
             
             height: calc(#{ 1.3 * $body-font-size } + #{ 2 * $form-select-option-vertical-padding });
             padding-bottom: $form-select-options-bottom-padding;
 
+            @media screen and (min-width: $breakpoint) {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 100%;
+                height: auto;
+                width: 100%;
+                z-index: 1;
+                border-radius: $small-round;
+
+                &.open {
+                    display: block;
+                }
+            }
+
             .select-option {
+                position: relative;
+
                 white-space: nowrap;
                 background: $white;
                 border-radius: $small-round;
@@ -180,6 +221,11 @@
                 padding: $form-select-option-vertical-padding 0;
                 min-width: $form-select-option-width;
                 text-align: center;
+
+                @media screen and (min-width: $breakpoint) {
+                    margin: 0;
+                    border-radius: 0;
+                }
 
                 &:first-child {
                     margin-left: 0;
@@ -191,12 +237,27 @@
 
                 &.inverted {
                     background: $darkest;
+
+                    &:hover {
+                        background: $dark;
+                    }
                 }
 
                 &.selected {
                     background: $primary;
                 }
             }
+        }
+
+        .select-option input {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            opacity: 0;
         }
     }
 }

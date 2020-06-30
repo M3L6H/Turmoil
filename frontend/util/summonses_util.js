@@ -18,7 +18,7 @@ export const deleteSummons = (summonsId) => (
 export const updateSummons = (summons) => (
     $.ajax({
         method: "PATCH",
-        url: `/api/summonses/${ summons.id }`,
+        url: `/api/summonses/${ summons.url }`,
         data: { summons },
         dataType: "json"
     })

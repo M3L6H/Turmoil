@@ -26,7 +26,7 @@ class Api::SummonsesController < ApplicationController
     end
 
     def update
-        @summons = Summons.find_by(id: params[:id])
+        @summons = Summons.find_by(url: params[:id])
 
         if @summons
             # TODO: Only beings with the right permissions should be able to update summonses
