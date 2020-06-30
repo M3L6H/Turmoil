@@ -287,7 +287,8 @@ Form.Select = class extends Component {
         super(props);
 
         this.state = {
-            stateSelected: props.selected || ""
+            stateSelected: props.selected || "",
+            stateOpen: props.open || false
         };
 
         this._handleChange = this._handleChange.bind(this);
@@ -300,10 +301,9 @@ Form.Select = class extends Component {
     }
 
     render() {
-        const { stateSelected } = this.state;
+        const { stateSelected, stateOpen } = this.state;
 
         const {
-            options,
             error,
             inverted,
             label,
@@ -315,50 +315,50 @@ Form.Select = class extends Component {
 
         const selected = this.props.selected === undefined ? stateSelected : this.props.selected;
         const onChange = this.props.onChange === undefined ? this._handleChange : this.props.onChange;
+        const open = this.props.open === undefined ? stateOpen : this.props.open;
 
-        const inputs = options.map(({ value, label }, idx) => (
-            <option 
-                className={ `select-option${ inverted ? " inverted" : "" }` }
-                value={ value }
-                selected={ value === selected }
+        const options = {};
+
+        this.props.options.forEach(({ value, label }, idx) => {
+            options[value] = <div 
                 key={ idx }
-                onClick={ onChange }
+                className={ `select-option${ inverted ? " inverted" : "" }${ value === selected ? " selected" : "" }` }
             >
-                { label }
-            </option>
-        ));
+                <input 
+                    type="hidden"
+                    value={ value }
+                    onClick={ onChange }
+                />
 
-        if (placeholder) {
-            inputs.push(
-                <option
-                    className={ `select-option${ inverted ? " inverted" : "" }` }
-                    value=""
-                    selected={ "" === selected }
-                    key="placeholder"
-                    disabled
-                    hidden
-                >
-                    { placeholder }
-                </option>
-            );
-        }
+                <span>{ label }</span>
+            </div>;
+        });
+
+        const select = <div className={ className }>
+            <div className="selected">
+                { options[selected] || placeholder }
+            </div>
+
+            <div className={ `select-options${ open ? " open" : ""}` }>
+                { Object.values(options) }
+            </div>
+        </div>
 
         if (label) {
             return (
                 <Form.Field
                     error={ error }
                     inverted={ inverted }
-                    className={ className }
                 >
                     <Form.Label 
                         content={ label } 
                         required={ required }
                     />
-                    { inputs } 
+                    { select }
                 </Form.Field>
             );
         } else {
-            return inputs;
+            return select;
         }
     }
 };

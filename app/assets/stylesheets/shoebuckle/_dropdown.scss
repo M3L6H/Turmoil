@@ -164,8 +164,28 @@
                 }
             }
 
+            &.primary {
+                color: $primary;   
+
+                &.inverted {
+                    color: lighten($primary, $lighten-amt);
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+
             &.blue {
                 color: $blue;   
+
+                &.inverted {
+                    color: lighten($blue, $lighten-amt);
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
             }
             
             &.horizontal {

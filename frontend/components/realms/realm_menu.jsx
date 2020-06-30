@@ -194,9 +194,8 @@ class RealmMenu extends Component {
                         <Button 
                             icon
                             onClick={ this._openSummonsForm }
-                            primary
                         >
-                            <Icon name="user-plus" />
+                            <Icon primary name="user-plus" />
                         </Button>
                         <Button icon><Icon name="bell" /></Button>
                         <Button icon><Icon name="cog" /></Button>

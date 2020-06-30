@@ -144,4 +144,56 @@
         margin-top: $form-note-top-margin;
         font-size: 0.8em;
     }
+
+    .form-select {
+        box-sizing: content-box;
+        font-size: $body-font-size;
+        
+        width: 100%;
+        overflow-x: scroll;
+
+        // Hide scrollbar
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        >.selected {
+            display: none;
+        }
+
+        .select-options {
+            display: flex;
+            justify-content: space-between;
+
+            .select-option {
+                white-space: nowrap;
+                background: $white;
+                border-radius: $small-round;
+
+                margin: 0 $form-select-option-horizontal-margin;
+                padding: $form-select-option-vertical-padding 0;
+                min-width: $form-select-option-width;
+                text-align: center;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &.inverted {
+                    background: $darkest;
+                }
+
+                &.selected {
+                    background: $primary;
+                }
+            }
+        }
+    }
 }

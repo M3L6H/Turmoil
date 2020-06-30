@@ -80,6 +80,9 @@ $form-radio-vertical-margin: 0.375rem !default;
 
 $form-radio-label-right-padding: 0.375rem !default;
 
+$form-select-option-vertical-padding: 0.375rem !default;
+$form-select-option-horizontal-margin: 0.25rem !default;
+
 $header-bottom-padding: 0.125rem !default;
 $header-bottom-margin: 1rem !default;
 
@@ -146,6 +149,8 @@ $massive: 4.5rem !default;
 $form-min-width: 350px !default;
 
 $form-radio-diameter: 1rem !default;
+
+$form-select-option-width: 80px !default;
 
 $dropdown-top: 10vh;
 $dropdown-top: calc(var(--vh, 1vh) * 10);
