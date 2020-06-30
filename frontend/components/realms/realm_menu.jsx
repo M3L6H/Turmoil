@@ -10,10 +10,25 @@ import { ClusterForm } from '../clusters';
 class RealmMenu extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            dropdownOpen: false
+        };
     
+        this._handleDropdownClick = this._handleDropdownClick.bind(this);
+        this._openClusterForm = this._openClusterForm.bind(this);
         this._selectRealm = this._selectRealm.bind(this);
         this._moveBefore = this._moveBefore.bind(this);
         this.lookupTable = {};
+    }
+
+    _handleDropdownClick() {
+        this.setState({ dropdownOpen: !this.state.dropdownOpen });
+    }
+
+    _openClusterForm() {
+        this.setState({ dropdownOpen: false });
+        this.props.openClusterForm();
     }
 
     _updateOrder() {
@@ -147,10 +162,15 @@ class RealmMenu extends Component {
     }
 
     _renderMobileDropdown() {
-        const { dimension, inverted, openClusterForm } = this.props;
+        const { dropdownOpen } = this.state;
+        const { dimension, inverted } = this.props;
         
         return (
-            <Dropdown inverted={ inverted }>
+            <Dropdown 
+                inverted={ inverted } 
+                open={ dropdownOpen } 
+                onClick={ this._handleDropdownClick }
+            >
                 <Dropdown.Header>
                     <Header as="h3">{ dimension.name }</Header>
                     <Dropdown.Item horizontal>
@@ -164,7 +184,7 @@ class RealmMenu extends Component {
                         content="Create Realm"
                     />
                     <Dropdown.Item
-                        onClick={ openClusterForm }
+                        onClick={ this._openClusterForm }
                         content="Create Category"
                     />
                 </Dropdown.Group>
@@ -186,10 +206,15 @@ class RealmMenu extends Component {
     }
 
     _renderDesktopDropdown() {
-        const { inverted, openClusterForm } = this.props;
+        const { dropdownOpen } = this.state;
+        const { inverted } = this.props;
         
         return (
-            <Dropdown inverted={ inverted }>
+            <Dropdown 
+                inverted={ inverted }
+                open={ dropdownOpen } 
+                onClick={ this._handleDropdownClick }
+            >
                 <Dropdown.Group>
                     <Dropdown.Item blue>
                         Invite People
@@ -204,7 +229,7 @@ class RealmMenu extends Component {
                         <Icon name="plus-circle" />
                     </Dropdown.Item>
                     <Dropdown.Item
-                        onClick={ openClusterForm }
+                        onClick={ this._openClusterForm }
                     >
                         Create Cluster
                         <Icon name="folder-plus" />
@@ -268,7 +293,6 @@ class RealmMenu extends Component {
             lastOrderable.type = type;
             lastOrderable.id = id;
         }
-        console.log(lastOrderable);
         
         return (
             <Menu

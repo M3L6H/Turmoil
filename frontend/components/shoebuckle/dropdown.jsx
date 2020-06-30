@@ -27,24 +27,25 @@ class Dropdown extends Component {
         
         const {
             children,
-            inverted,
-            onClick
+            inverted
         } = this.props;
         const childProps = { inverted };
 
         const open = this.props.open === undefined ? stateOpen : this.props.open;
 
         const className = `shoebuckle dropdown${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+
+        const onClick = this.props.onClick || this._handleClick;
         
         return (
             <div className={ className }>
                 <Dropdown.Trigger 
                     inverted={ inverted }
-                    onClick={ onClick || this._handleClick } 
+                    onClick={ onClick } 
                 />
                 <div 
                     className={ `dropdown-bg ${ open ? "" : " hidden" }` }
-                    onClick={ this._handleClick }
+                    onClick={ onClick }
                 ></div>
                 <Dropdown.Content inverted={ inverted } open={ open }>
                     { childrenWithProps(children, childProps) }         
