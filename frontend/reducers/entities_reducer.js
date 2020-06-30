@@ -7,6 +7,7 @@ import dimensionBeingsReducer from './dimension_beings_reducer';
 import missivesReducer from './missives_reducer';
 import realmsReducer from './realms_reducer';
 import rolesReducer from './roles_reducer';
+import summonsesReducer from './summonses_reducer';
 
 export default combineReducers({
     beings: beingsReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
     dimensionBeings: dimensionBeingsReducer,
     missives: missivesReducer,
     realms: realmsReducer,
-    roles: rolesReducer
+    roles: rolesReducer,
+    summonses: summonsesReducer
 });
