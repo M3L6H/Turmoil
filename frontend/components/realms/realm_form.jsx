@@ -38,7 +38,7 @@ export default class RealmForm extends Component {
     _handleSubmit(e) {
         e.preventDefault();
         
-        const { closeForm, dimensionId, firstOrderable, createRealm } = this.props;
+        const { dimensionId, firstOrderable, createRealm } = this.props;
         const { name, realmType } = this.state;
         const realm = {
             name,
@@ -48,10 +48,8 @@ export default class RealmForm extends Component {
             next_orderable_type: firstOrderable.type
         };
 
-        console.log(realm);
-
         createRealm(realm)
-            .then(() => closeForm())
+            .then(this._handleClose)
             .fail(jqXHR => this.setState({ errors: jqXHR.responseJSON }));
     }
 
