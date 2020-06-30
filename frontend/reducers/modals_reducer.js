@@ -22,7 +22,7 @@ const _defaultState = {
     },
     summonses: {
         open: false,
-        formType: "edit"
+        formType: "new"
     }
 };
 

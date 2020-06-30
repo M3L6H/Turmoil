@@ -37,7 +37,7 @@ export const receiveRealmModal = (open) => ({
 
 export const RECEIVE_SUMMONS_MODAL = "RECEIVE_SUMMONS_MODAL";
 
-export const receiveSummonsModal = (open, formType="edit") => ({
+export const receiveSummonsModal = (open, formType="new") => ({
     type: RECEIVE_SUMMONS_MODAL,
     modal: {
         open, 

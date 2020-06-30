@@ -46,7 +46,7 @@ export default class SummonsForm extends Component {
     _handleSubmit(e) {
         e.preventDefault();
         
-        const { dimensionId, createSummons } = this.props;
+        const { dimensionId, createSummons, updateSummons, openUrlForm, formType } = this.props;
         const { url, expireAfter, maxUses } = this.state;
         const summons = {
             url,
@@ -55,8 +55,10 @@ export default class SummonsForm extends Component {
             max_uses: maxUses
         };
 
-        createSummons(summons)
-            .then(this._handleClose)
+        const action = formType === "new" ? createSummons : updateSummons;
+        
+        action(summons)
+            .then(openUrlForm)
             .fail(jqXHR => this.setState({ errors: jqXHR.responseJSON }));
     }
 
@@ -88,7 +90,7 @@ export default class SummonsForm extends Component {
         const { expireAfter, maxUses, errors } = this.state;
 
         return (
-            <Form errors={ errors }>
+            <Form errors={ errors } onSubmit={ this._handleSubmit }>
                 <Form.Select 
                     label="Expire after"
                     placeholder="Select..."
@@ -132,6 +134,7 @@ export default class SummonsForm extends Component {
     }
 
     _renderUrlForm() {
+        const { openEditForm } = this.props;
         const { url, errors } = this.state;
 
         return (
@@ -144,7 +147,7 @@ export default class SummonsForm extends Component {
                     value={ `${ window.protocol }//${ window.location.host }/join/${ url }` }
                 />
                 <Form.Note>
-                    Your summons link { this._parseExpiry() }. <a onClick={ this._openEdit }>Edit summons link</a>
+                    Your summons link { this._parseExpiry() }. <a onClick={ openEditForm }>Edit summons link</a>
                 </Form.Note>
             </Form>
         );
@@ -152,7 +155,7 @@ export default class SummonsForm extends Component {
 
     _renderForm() {
         const { formType } = this.props;
-        return formType === "url" ? this._renderUrlForm() : null;
+        return formType === "url" ? this._renderUrlForm() : this._renderEditForm();
     }
     
     render() {
