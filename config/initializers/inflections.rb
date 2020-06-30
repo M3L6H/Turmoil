@@ -17,4 +17,5 @@
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
     inflect.irregular "summons", "summonses"
+    inflect.irregular "missive", "missives"
 end
