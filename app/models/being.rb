@@ -43,6 +43,8 @@ class Being < ApplicationRecord
     has_many :joined_dimensions, through: :dimension_beings, source: :dimension
     has_many :missives, as: :messageable
 
+    has_one_attached :photo
+
     # Auth methods
     class << self
         def find_by_credentials(username, password)
