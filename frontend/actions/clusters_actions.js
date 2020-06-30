@@ -9,10 +9,10 @@ export const clearClusters = () => ({
     type: CLEAR_CLUSTERS 
 });
 
-const receiveCluster = ({ cluster }) => ({
+const receiveCluster = (cluster) => { debugger; return ({
     type: RECEIVE_CLUSTER,
     cluster
-});
+})};
 
 const removeCluster = (clusterId) => ({
     type: REMOVE_CLUSTER,

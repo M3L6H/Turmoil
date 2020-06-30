@@ -5,6 +5,8 @@ import LinkedList from '../../util/linked_list';
 
 import { Button, DragNDrop, Dropdown, Header, Icon, Menu } from '../shoebuckle';
 
+import { ClusterForm } from '../clusters';
+
 class RealmMenu extends Component {
     constructor(props) {
         super(props);
@@ -145,7 +147,7 @@ class RealmMenu extends Component {
     }
 
     _renderMobileDropdown() {
-        const { dimension, inverted } = this.props;
+        const { dimension, inverted, openClusterForm } = this.props;
         
         return (
             <Dropdown inverted={ inverted }>
@@ -162,6 +164,7 @@ class RealmMenu extends Component {
                         content="Create Realm"
                     />
                     <Dropdown.Item
+                        onClick={ openClusterForm }
                         content="Create Category"
                     />
                 </Dropdown.Group>
@@ -183,7 +186,7 @@ class RealmMenu extends Component {
     }
 
     _renderDesktopDropdown() {
-        const { inverted } = this.props;
+        const { inverted, openClusterForm } = this.props;
         
         return (
             <Dropdown inverted={ inverted }>
@@ -200,8 +203,10 @@ class RealmMenu extends Component {
                         Create Realm
                         <Icon name="plus-circle" />
                     </Dropdown.Item>
-                    <Dropdown.Item>
-                        Create Group
+                    <Dropdown.Item
+                        onClick={ openClusterForm }
+                    >
+                        Create Cluster
                         <Icon name="folder-plus" />
                     </Dropdown.Item>
                 </Dropdown.Group>
@@ -254,6 +259,16 @@ class RealmMenu extends Component {
         const { 
             inverted
         } = this.props;
+
+        const list = this._constructList();
+
+        const lastOrderable = this.lookupTable["root"] && this.lookupTable["root"].last();
+        if (lastOrderable) {
+            const [ type, id ] = lastOrderable.id.split("-");
+            lastOrderable.type = type;
+            lastOrderable.id = id;
+        }
+        console.log(lastOrderable);
         
         return (
             <Menu
@@ -267,8 +282,9 @@ class RealmMenu extends Component {
                     { this._renderHeader() }
                 </Menu.Item>
                 <Menu.Item>
-                    <DragNDrop list={ this._constructList() } moveBefore={ this._moveBefore } />
+                    <DragNDrop list={ list } moveBefore={ this._moveBefore } />
                 </Menu.Item>
+                <ClusterForm lastOrderable={ lastOrderable } />
             </Menu>
         );
     }

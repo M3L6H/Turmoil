@@ -3,6 +3,13 @@ class Api::ClustersController < ApplicationController
         @cluster = Cluster.new(cluster_params)
 
         if @cluster.save
+            if @cluster.prev_orderable_id
+                prev = @cluster.prev_orderable_type.constantize().find_by(id: @cluster.prev_orderable_id)
+                if prev
+                    prev.update!(next_orderable_id: @cluster.id, next_orderable_type: "Cluster")
+                end
+            end
+            
             # TODO: Only beings with the right permissions should be able to create clusters
             render :create
         else
@@ -39,6 +46,6 @@ class Api::ClustersController < ApplicationController
 
 private
     def cluster_params
-        params.require(:cluster).permit(:name, :private, :permitted_roles, :dimension_id)
+        params.require(:cluster).permit(:name, :private, :permitted_roles, :dimension_id, :next_orderable_id, :next_orderable_type, :prev_orderable_id, :prev_orderable_type)
     end
 end
