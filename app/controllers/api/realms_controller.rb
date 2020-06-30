@@ -15,6 +15,13 @@ class Api::RealmsController < ApplicationController
         @realm = Realm.new(realm_params)
 
         if @realm.save
+            if @realm.next_orderable_id
+                next_orderable = @realm.next_orderable_type.constantize().find_by(id: @realm.next_orderable_id)
+                if next_orderable
+                    next_orderable.update!(prev_orderable_id: @realm.id, prev_orderable_type: "Realm")
+                end
+            end
+
             # TODO: Only beings with the right permission should be able to create realms
             render :create
         else

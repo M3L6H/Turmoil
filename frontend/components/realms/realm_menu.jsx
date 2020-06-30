@@ -48,12 +48,15 @@ class RealmMenu extends Component {
         while (it.value) {
             const { id, type, parent, next, prev, children } = it.value;
             data[id] = { id, type, parent, next, prev };
-            const subIt = children.start();
 
-            while (subIt.value) {
-                const { id, type, parent, next, prev } = subIt.value;
-                data[id] = { id, type, parent, next, prev };
-                subIt.next();
+            if (children) {
+                const subIt = children.start();
+    
+                while (subIt.value) {
+                    const { id, type, parent, next, prev } = subIt.value;
+                    data[id] = { id, type, parent, next, prev };
+                    subIt.next();
+                }
             }
             
             it.next();
@@ -129,6 +132,7 @@ class RealmMenu extends Component {
 
         // Then we grab all the realms that are not in a cluster
         const rootRealms = realmsArray.filter(({ parent }) => parent === "root");
+        console.log(realmsArray, rootRealms);
 
         // We turn those along with the clusters into a linked list...
         const ll = new LinkedList(clustersArray.concat(rootRealms));
@@ -146,6 +150,7 @@ class RealmMenu extends Component {
             ll.updateItem(cluster.id, { children: subLl });
         });
 
+        console.log(ll);
         // Finally we return the root list we generated
         return ll;
     }
@@ -303,6 +308,13 @@ class RealmMenu extends Component {
             lastOrderable.type = type;
             lastOrderable.id = id;
         }
+
+        const firstOrderable = this.lookupTable["root"] && this.lookupTable["root"].first();
+        if (firstOrderable) {
+            const [ type, id ] = firstOrderable.id.split("-");
+            firstOrderable.type = type;
+            firstOrderable.id = id;
+        }
         
         return (
             <Menu
@@ -319,7 +331,7 @@ class RealmMenu extends Component {
                     <DragNDrop list={ list } moveBefore={ this._moveBefore } />
                 </Menu.Item>
                 <ClusterForm lastOrderable={ lastOrderable } />
-                <RealmForm lastOrderable={ lastOrderable } />
+                <RealmForm firstOrderable={ firstOrderable } />
             </Menu>
         );
     }

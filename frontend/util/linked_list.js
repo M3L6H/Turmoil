@@ -25,6 +25,11 @@ export default class LinkedList {
         });
     }
 
+    first() {
+        if (this.size === 0) return null;
+        return Object.assign({}, this.items[this.head.next]);
+    }
+
     last() {
         if (this.size === 0) return null;
         return Object.assign({}, this.items[this.tail.prev]);

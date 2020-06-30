@@ -38,14 +38,14 @@ export default class RealmForm extends Component {
     _handleSubmit(e) {
         e.preventDefault();
         
-        const { closeForm, dimensionId, lastOrderable, createRealm } = this.props;
+        const { closeForm, dimensionId, firstOrderable, createRealm } = this.props;
         const { name, realmType } = this.state;
         const realm = {
             name,
             dimension_id: dimensionId,
             realm_type: realmType,
-            prev_orderable_id: lastOrderable.id,
-            prev_orderable_type: lastOrderable.type
+            next_orderable_id: firstOrderable.id,
+            next_orderable_type: firstOrderable.type
         };
 
         console.log(realm);
