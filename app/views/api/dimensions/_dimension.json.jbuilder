@@ -25,3 +25,11 @@ json.realms do
         end
     end
 end
+
+json.summonses do
+    dimension.summonses.each do |summons|
+        json.set! summons.id do
+            json.partial! "summons", summons: summons
+        end
+    end
+end
