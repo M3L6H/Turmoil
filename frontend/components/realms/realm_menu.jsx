@@ -149,7 +149,6 @@ class RealmMenu extends Component {
             ll.updateItem(cluster.id, { children: subLl });
         });
 
-        console.log(ll);
         // Finally we return the root list we generated
         return ll;
     }
@@ -295,7 +294,6 @@ class RealmMenu extends Component {
     }
     
     render() {
-        console.log("Rendered menu");
         const { 
             inverted
         } = this.props;
