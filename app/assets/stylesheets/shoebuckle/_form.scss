@@ -9,6 +9,7 @@
     }
 
     .form-field {
+        position: relative;
         margin-bottom: $form-field-bottom-margin;
     }
 
@@ -137,6 +138,13 @@
             background: $darkest;
             border-color: $darkest;
             color: $lightest;
+        }
+
+        +.btn {
+            position: absolute;
+            padding: calc(#{ $thin } + #{ $form-input-vertical-padding }) $form-input-horizontal-padding;
+            right: 0;
+            bottom: 0;
         }
     }
 

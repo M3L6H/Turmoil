@@ -12,13 +12,30 @@ class SummonsForm extends Component {
         this.state = {
             url: this._generateUrl(),
             expireAfter: "1440",
-            maxUses: "",
-            errors: []
+            maxUses: "noLimit",
+            errors: [],
+            copied: false
         };
 
+        this._copyUrl = this._copyUrl.bind(this);
         this._handleClose = this._handleClose.bind(this);
         this._handleChange = this._handleChange.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
+    }
+
+    _copyUrl(e) {
+        e.preventDefault();
+
+        const input = document.querySelector("input[data-type='url']");
+
+        input.select();
+        input.setSelectionRange(0, 99999); // For mobile
+
+        document.execCommand("copy");
+
+        this.setState({ copied: true });
+
+        setTimeout(() => this.setState({ copied: false }), 1000);
     }
 
     _generateUrl() {
@@ -139,8 +156,8 @@ class SummonsForm extends Component {
     }
 
     _renderUrlForm() {
-        const { openEditForm } = this.props;
-        const { url, errors } = this.state;
+        const { openEditForm, inverted } = this.props;
+        const { url, errors, copied } = this.state;
 
         return (
             <Form errors={ errors }>
@@ -150,6 +167,15 @@ class SummonsForm extends Component {
                     readOnly
                     onChange={ this._handleChange }
                     value={ `${ window.location.protocol }//${ window.location.host }/join/${ url }` }
+                    button={
+                        <Button
+                            content={ copied ? "Copied" : "Copy" }
+                            primary={ !copied }
+                            green={ copied }
+                            onClick={ this._copyUrl }
+                            inverted={ inverted }
+                        />
+                    }
                 />
                 <Form.Note>
                     Your summons link { this._parseExpiry() }. <a onClick={ openEditForm }>Edit summons link</a>

@@ -228,6 +228,7 @@ Form.Input = class extends Component {
         const { stateValue } = this.state;
         
         const { 
+            button,
             error,
             label,
             inverted,
@@ -258,6 +259,7 @@ Form.Input = class extends Component {
                 <Form.Field error={ error } inverted={ inverted }>
                     <Form.Label content={ label } required={ required } />
                     { input }
+                    { button }
                 </Form.Field>
             );
         } else {

@@ -13,9 +13,9 @@ const App = () => (
             <ChatWindow />
         </AppContainer>
         <DimensionForm inverted />
-        <Switch>
+        {/* <Switch>
             <Route render={ () => <Redirect to="/" /> } />
-        </Switch>
+        </Switch> */}
     </>
 );
 

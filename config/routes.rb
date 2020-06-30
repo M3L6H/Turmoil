@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
     root to: "static_pages#root"
 
-    get "/join/:url", to: redirect("/#/%{ url }")
+    get "/join/:url", to: redirect("/#/join?url=%{url}")
     
     get "*path" => redirect("/")
 end
