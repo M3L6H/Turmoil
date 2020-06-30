@@ -27,7 +27,8 @@ export default class RealmForm extends Component {
 
         switch (input.dataset.type) {
             case "name":
-                this.setState({ [input.dataset.type]: input.value.toLowerCase().replace(" ", "-") });
+                const sanitized = input.value.toLowerCase().replace(" ", "-").replace(/[^\w\-]/, "");
+                this.setState({ [input.dataset.type]: sanitized });
                 break;
             case "realmType":
                 this.setState({ [input.dataset.type]: input.value || input.dataset.value });
@@ -46,6 +47,8 @@ export default class RealmForm extends Component {
             prev_orderable_id: lastOrderable.id,
             prev_orderable_type: lastOrderable.type
         };
+
+        console.log(realm);
 
         createRealm(realm)
             .then(() => closeForm())
