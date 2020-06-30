@@ -27,6 +27,8 @@ export default class RealmForm extends Component {
 
         switch (input.dataset.type) {
             case "name":
+                this.setState({ [input.dataset.type]: input.value.toLowerCase().replace(" ", "-") });
+                break;
             case "realmType":
                 this.setState({ [input.dataset.type]: input.value || input.dataset.value });
         }
