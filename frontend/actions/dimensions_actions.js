@@ -58,4 +58,6 @@ export const updateDimension = dimension => dispatch => (
 
 export const updateOrder = (dimensionId, data) => dispatch => (
     DimensionsUtil.updateOrder(dimensionId, data)
+        .then(() => dispatch(fetchDimension(dimensionId)))
+        .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
 );

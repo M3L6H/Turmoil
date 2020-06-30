@@ -132,7 +132,6 @@ class RealmMenu extends Component {
 
         // Then we grab all the realms that are not in a cluster
         const rootRealms = realmsArray.filter(({ parent }) => parent === "root");
-        console.log(realmsArray, rootRealms);
 
         // We turn those along with the clusters into a linked list...
         const ll = new LinkedList(clustersArray.concat(rootRealms));
@@ -296,6 +295,7 @@ class RealmMenu extends Component {
     }
     
     render() {
+        console.log("Rendered menu");
         const { 
             inverted
         } = this.props;
