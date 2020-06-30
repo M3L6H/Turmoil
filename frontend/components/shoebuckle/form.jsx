@@ -297,14 +297,6 @@ Form.Select = class extends Component {
         this._close = this._close.bind(this);
     }
 
-    componentDidMount() {
-        document.body.addEventListener("click", this._close);
-    }
-    
-    componentWillUnmount() {
-        document.body.removeEventListener("click", this._close);
-    }
-
     _close() {
         this.setState({ stateOpen: false });
     }
@@ -322,8 +314,7 @@ Form.Select = class extends Component {
 
     _handleOpen(e) {
         e.stopPropagation();
-        this.setState({ stateOpen: !this.state.stateOpen });
-        console.log("called", this.state.stateOpen);
+        this.setState({ stateOpen: true });
     }
 
     render() {
@@ -370,7 +361,7 @@ Form.Select = class extends Component {
                 { options[selected] || placeholder }
                 <Icon name="angle-down" />
             </div>
-
+            { open && <div className="bg" onClick={ this._close }></div> }
             <div className={ `select-options${ open ? " open" : ""}` }>
                 { Object.values(options) }
             </div>
