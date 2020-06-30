@@ -71,7 +71,8 @@ export default class RealmForm extends Component {
     }
     
     render() {
-        const { open, inverted, realmType } = this.props;
+        const { realmType } = this.state;
+        const { open, inverted } = this.props;
 
         return (
             <Modal handleClose={ this._handleClose } open={ open } inverted={ inverted }>
