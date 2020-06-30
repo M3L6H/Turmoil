@@ -6,6 +6,12 @@ import {
 } from '../actions/beings_actions';
 
 import { 
+    RECEIVE_CLUSTERS_ERRORS,
+    RECEIVE_CLUSTER,
+    REMOVE_CLUSTER
+} from '../actions/clusters_actions';
+
+import { 
     RECEIVE_DIMENSION_BEINGS_ERRORS,
     RECEIVE_DIMENSION_BEING,
     REMOVE_DIMENSION_BEING
@@ -41,13 +47,21 @@ import {
     REMOVE_SESSION 
 } from '../actions/session_actions';
 
+import { 
+    RECEIVE_SUMMONSES_ERRORS,
+    RECEIVE_SUMMONS,
+    REMOVE_SUMMONS
+} from '../actions/summonses_actions';
+
 const _defaultState = {
     beings: [],
+    clusters: [],
     dimensionBeings: [],
     dimensions: [],
     missives: [],
     roles: [],
-    session: []
+    session: [],
+    summonses: []
 }
 
 export default (state=_defaultState, action) => {
@@ -60,6 +74,12 @@ export default (state=_defaultState, action) => {
         case RECEIVE_BEINGS:
         case REMOVE_BEING:
             return { ...state, beings: [] };
+
+        case RECEIVE_CLUSTERS_ERRORS:
+            return { ...state, clusters: action.clusters }
+        case RECEIVE_CLUSTER:
+        case REMOVE_CLUSTER:
+            return { ...state, clusters: [] }
 
         case RECEIVE_DIMENSION_BEINGS_ERRORS:
             return { ...state, dimensionBeings: action.dimensionBeings }
@@ -96,6 +116,12 @@ export default (state=_defaultState, action) => {
         case RECEIVE_SESSION:
         case REMOVE_SESSION:
             return { ...state, session: [] };
+
+        case RECEIVE_SUMMONSES_ERRORS:
+            return { ...state, summonses: action.summonses }
+        case RECEIVE_SUMMONS:
+        case REMOVE_SUMMONS:
+            return { ...state, summonses: [] }
         default:
             return state;
     }
