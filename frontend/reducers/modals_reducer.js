@@ -1,7 +1,8 @@
 import { 
     RECEIVE_AUTH_MODAL,
     RECEIVE_CLUSTER_MODAL,
-    RECEIVE_DIMENSION_MODAL
+    RECEIVE_DIMENSION_MODAL,
+    RECEIVE_REALM_MODAL
 } from '../actions/modals_actions';
 
 const _defaultState = {
@@ -30,6 +31,8 @@ export default (state=_defaultState, action) => {
             return { ...state, clusters: action.modal };
         case RECEIVE_DIMENSION_MODAL:
             return { ...state, dimensions: action.modal };
+        case RECEIVE_REALM_MODAL:
+            return { ...state, realms: action.modal };
         default:
             return state;
     }

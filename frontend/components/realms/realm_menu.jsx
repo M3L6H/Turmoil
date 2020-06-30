@@ -6,6 +6,7 @@ import LinkedList from '../../util/linked_list';
 import { Button, DragNDrop, Dropdown, Header, Icon, Menu } from '../shoebuckle';
 
 import { ClusterForm } from '../clusters';
+import { RealmForm } from '../realms';
 
 class RealmMenu extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class RealmMenu extends Component {
     
         this._handleDropdownClick = this._handleDropdownClick.bind(this);
         this._openClusterForm = this._openClusterForm.bind(this);
+        this._openRealmForm = this._openRealmForm.bind(this);
         this._selectRealm = this._selectRealm.bind(this);
         this._moveBefore = this._moveBefore.bind(this);
         this.lookupTable = {};
@@ -29,6 +31,11 @@ class RealmMenu extends Component {
     _openClusterForm() {
         this.setState({ dropdownOpen: false });
         this.props.openClusterForm();
+    }
+
+    _openRealmForm() {
+        this.setState({ dropdownOpen: false });
+        this.props.openRealmForm();
     }
 
     _updateOrder() {
@@ -181,6 +188,7 @@ class RealmMenu extends Component {
                 </Dropdown.Header>
                 <Dropdown.Group>
                     <Dropdown.Item
+                        onClick={ this._openRealmForm }
                         content="Create Realm"
                     />
                     <Dropdown.Item
@@ -224,7 +232,9 @@ class RealmMenu extends Component {
                         Server Settings
                         <Icon name="cog" />
                     </Dropdown.Item>
-                    <Dropdown.Item>
+                    <Dropdown.Item
+                        onClick={ this._openRealmForm }
+                    >
                         Create Realm
                         <Icon name="plus-circle" />
                     </Dropdown.Item>
@@ -309,6 +319,7 @@ class RealmMenu extends Component {
                     <DragNDrop list={ list } moveBefore={ this._moveBefore } />
                 </Menu.Item>
                 <ClusterForm lastOrderable={ lastOrderable } />
+                <RealmForm lastOrderable={ lastOrderable } />
             </Menu>
         );
     }

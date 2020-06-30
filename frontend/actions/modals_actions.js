@@ -25,3 +25,12 @@ export const receiveDimensionModal = (open) => ({
         open
     } 
 });
+
+export const RECEIVE_REALM_MODAL = "RECEIVE_REALM_MODAL";
+
+export const receiveRealmModal = (open) => ({
+    type: RECEIVE_REALM_MODAL,
+    modal: {
+        open
+    } 
+});

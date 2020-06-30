@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { createCluster } from "../../actions/clusters_actions";
 
 import { Button, Form, Icon, Modal } from '../shoebuckle';
 

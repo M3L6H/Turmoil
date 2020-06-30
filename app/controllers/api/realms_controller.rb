@@ -51,6 +51,6 @@ class Api::RealmsController < ApplicationController
 
 private
     def realm_params
-        params.require(:realm).permit(:name, :topic, :slowmode, :being_limit, :nsfw, :cluster_id, :realm_type)
+        params.require(:realm).permit(:name, :topic, :slowmode, :being_limit, :nsfw, :cluster_id, :realm_type, :prev_orderable_type, :prev_orderable_id, :next_orderable_type, :next_orderable_id)
     end
 end
