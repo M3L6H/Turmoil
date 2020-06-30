@@ -1,0 +1,1 @@
+json.partial! "summons", summons: @summons

@@ -1,0 +1,1 @@
+json.extract! summons, :id, :dimension_id, :expire_after, :max_uses, :created_at, :url, :temporary
