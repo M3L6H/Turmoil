@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_064700) do
+ActiveRecord::Schema.define(version: 2020_06_30_171259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_064700) do
 
   create_table "summonses", force: :cascade do |t|
     t.bigint "dimension_id", null: false
-    t.bigint "expire_after", default: 86400
+    t.bigint "expire_after", default: 1440
     t.integer "max_uses"
     t.string "url", null: false
     t.boolean "temporary", default: false, null: false

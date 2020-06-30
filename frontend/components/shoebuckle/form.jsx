@@ -233,6 +233,7 @@ Form.Input = class extends Component {
             name,
             onChange,
             placeholder,
+            readonly,
             required,
             type,
             value
@@ -245,6 +246,7 @@ Form.Input = class extends Component {
             name={ name }
             onChange={ onChange || this._handleChange }
             placeholder={ placeholder }
+            readonly={ readonly }
             type={ type || "text" }
             value={ value === undefined ? stateValue : value }
             data-type={ this.props["data-type"] }

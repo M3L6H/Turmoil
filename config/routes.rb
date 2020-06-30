@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     mount ActionCable.server => "/cable"
 
     root to: "static_pages#root"
+
+    get "/join/:url", to: redirect("/#/%{ url }")
     
     get "*path" => redirect("/")
 end

@@ -5,7 +5,6 @@ import AppHeader from './app_header';
 import AppContainer from './app_container';
 import ChatWindow from './chat_window';
 import DimensionForm from './dimensions';
-import Kitchensink from './kitchensink';
 
 const App = () => (
     <>
@@ -15,7 +14,6 @@ const App = () => (
         </AppContainer>
         <DimensionForm inverted />
         <Switch>
-            <Route path="/kitchensink" component={ Kitchensink } />
             <Route render={ () => <Redirect to="/" /> } />
         </Switch>
     </>

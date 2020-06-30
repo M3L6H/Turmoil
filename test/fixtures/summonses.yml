@@ -3,7 +3,7 @@
 # Table name: summonses
 #
 #  id           :bigint           not null, primary key
-#  expire_after :bigint           default(86400)
+#  expire_after :bigint           default(1440)
 #  max_uses     :integer
 #  temporary    :boolean          default(FALSE), not null
 #  url          :string           not null
