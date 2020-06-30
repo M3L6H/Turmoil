@@ -89,7 +89,38 @@ export default class SummonsForm extends Component {
 
         return (
             <Form errors={ errors }>
-                
+                <Form.Select 
+                    label="Expire after"
+                    placeholder="Select..."
+                    selected={ expireAfter }
+                    onChange={ this._handleChange }
+                    options={ [
+                        { value: 30, label: "30 minutes" },
+                        { value: 60, label: "1 hour" },
+                        { value: 360, label: "6 hours" },
+                        { value: 720, label: "12 hours" },
+                        { value: 1440, label: "1 day" },
+                        { value: 1080, label: "1 week" },
+                        { value: 43200, label: "1 month" },
+                        { value: 525600, label: "1 year" },
+                        { value: "never", label: "Never" }
+                    ] }
+                />
+                <Form.Select 
+                    label="Max number of uses"
+                    placeholder="Select..."
+                    selected={ maxUses }
+                    onChange={ this._handleChange }
+                    options={ [
+                        { value: "noLimit", label: "No limit" },
+                        { value: 1, label: "1 use" },
+                        { value: 5, label: "5 uses" },
+                        { value: 10, label: "10 uses" },
+                        { value: 25, label: "25 uses" },
+                        { value: 50, label: "50 uses" },
+                        { value: 100, label: "100 uses" }
+                    ] }
+                />
                 <Button animated fluid green type="submit">
                     <Button.Content visible>Generate Summons!</Button.Content>
                     <Button.Content hidden>
