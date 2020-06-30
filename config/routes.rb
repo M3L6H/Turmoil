@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         resources :missives, only: [:create, :update]
         resources :realms, except: [:index, :new, :edit]
         resources :roles, only: [:show, :destroy, :update]
+        resources :summonses, only: [:create, :destroy, :update]
         resource :session, only: [:create, :destroy]
 
         patch "/dimensions/:id/update_order", to: "dimensions#update_order"
