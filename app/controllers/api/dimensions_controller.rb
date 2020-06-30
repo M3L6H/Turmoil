@@ -132,6 +132,6 @@ class Api::DimensionsController < ApplicationController
 
 private
     def dimension_params
-        params.require(:dimension).permit(:name, :public)
+        params.require(:dimension).permit(:name, :public, :icon)
     end
 end
