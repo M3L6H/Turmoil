@@ -45,7 +45,7 @@ export default class DimensionForm extends Component {
     _handleSubmit(e) {
         e.preventDefault();
         
-        const { createDimension, closeForm } = this.props;
+        const { createDimension, select } = this.props;
         const { name } = this.state;
         const dimension = {
             name,
@@ -53,7 +53,7 @@ export default class DimensionForm extends Component {
         };
 
         createDimension(dimension)
-            .then(() => closeForm())
+            .then(this._handleClose)
             .fail(jqXHR => this.setState({ errors: jqXHR.responseJSON }));
     }
 
