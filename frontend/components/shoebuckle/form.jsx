@@ -281,3 +281,84 @@ Form.Note = (props) => {
         </div>
     );
 };
+
+Form.Select = class extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            stateSelected: props.selected || ""
+        };
+
+        this._handleChange = this._handleChange.bind(this);
+    }
+
+    _handleChange(e) {
+        const option = e.currentTarget;
+
+        this.setState({ stateSelected: option.value });
+    }
+
+    render() {
+        const { stateSelected } = this.state;
+
+        const {
+            options,
+            error,
+            inverted,
+            label,
+            required,
+            placeholder
+        } = this.props;
+
+        const className = `form-select${ error ? " error" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+
+        const selected = this.props.selected === undefined ? stateSelected : this.props.selected;
+        const onChange = this.props.onChange === undefined ? this._handleChange : this.props.onChange;
+
+        const inputs = options.map(({ value, label }, idx) => (
+            <option 
+                className={ `select-option${ inverted ? " inverted" : "" }` }
+                value={ value }
+                selected={ value === selected }
+                key={ idx }
+                onClick={ onChange }
+            >
+                { label }
+            </option>
+        ));
+
+        if (placeholder) {
+            inputs.push(
+                <option
+                    className={ `select-option${ inverted ? " inverted" : "" }` }
+                    value=""
+                    selected={ "" === selected }
+                    key="placeholder"
+                    disabled
+                    hidden
+                >
+                    { placeholder }
+                </option>
+            );
+        }
+
+        if (label) {
+            return (
+                <Form.Field
+                    error={ error }
+                    inverted={ inverted }
+                    className={ className }
+                >
+                    <Form.Label 
+                        content={ label } 
+                        required={ required }
+                    />
+                    { inputs } 
+                </Form.Field>
+            );
+        } else {
+            return inputs;
+        }
+    }
+};
