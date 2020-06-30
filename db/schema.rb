@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_210658) do
+ActiveRecord::Schema.define(version: 2020_06_30_064700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,18 @@ ActiveRecord::Schema.define(version: 2020_06_28_210658) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dimension_id"], name: "index_roles_on_dimension_id"
+  end
+
+  create_table "summonses", force: :cascade do |t|
+    t.bigint "dimension_id", null: false
+    t.bigint "expire_after", default: 86400
+    t.integer "max_uses"
+    t.string "url", null: false
+    t.boolean "temporary", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dimension_id"], name: "index_summonses_on_dimension_id"
+    t.index ["url"], name: "index_summonses_on_url", unique: true
   end
 
 end
