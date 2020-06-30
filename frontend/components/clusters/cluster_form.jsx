@@ -33,7 +33,7 @@ export default class ClusterForm extends Component {
     _handleSubmit(e) {
         e.preventDefault();
         
-        const { closeForm, dimensionId, lastOrderable, createCluster } = this.props;
+        const { dimensionId, lastOrderable, createCluster } = this.props;
         const { name } = this.state;
         const cluster = {
             name,
@@ -43,7 +43,7 @@ export default class ClusterForm extends Component {
         };
 
         createCluster(cluster)
-            .then(() => closeForm())
+            .then(this._handleClose)
             .fail(jqXHR => this.setState({ errors: jqXHR.responseJSON }));
     }
 
