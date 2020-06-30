@@ -110,7 +110,7 @@ class RealmMenu extends Component {
             converted.push({
                 id: `Realm-${ id }`,
                 content: <Menu.Item justifyStart compact><Icon name={ icon } /> { realm.name }</Menu.Item>,
-                onClick: this._selectRealm,
+                onClick: realm.realmType === "text" ? this._selectRealm : null,
                 type: "item",
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
                 prev: realm.prevOrderableId ? `${ realm.prevOrderableType }-${ realm.prevOrderableId }` : null,
