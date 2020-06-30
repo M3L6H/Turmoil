@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { childrenWithProps } from './util';
 
+import Icon from './icon';
 import Label from './label';
 import Message from './message';
 
@@ -322,6 +323,7 @@ Form.Select = class extends Component {
     _handleOpen(e) {
         e.stopPropagation();
         this.setState({ stateOpen: !this.state.stateOpen });
+        console.log("called", this.state.stateOpen);
     }
 
     render() {
@@ -344,8 +346,6 @@ Form.Select = class extends Component {
 
         const options = {};
 
-        console.log(open);
-        
         this.props.options.forEach(({ value, label }, idx) => {
             options[value] = <div 
                 key={ idx }
@@ -368,6 +368,7 @@ Form.Select = class extends Component {
                 onClick={ onClick }
             >
                 { options[selected] || placeholder }
+                <Icon name="angle-down" />
             </div>
 
             <div className={ `select-options${ open ? " open" : ""}` }>

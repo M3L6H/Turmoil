@@ -173,11 +173,20 @@
             display: none;
 
             @media screen and (min-width: $breakpoint) {
-                display: block;
+                display: flex;
+                justify-content: space-between;
+
+                .icon {
+                    transition: transform $form-select-icon-rotate-speed;
+                }
             }
 
             &:hover {
                 border-color: $dark;
+            }
+
+            &.open .icon {
+                transform: rotate(180deg);
             }
 
             input {
