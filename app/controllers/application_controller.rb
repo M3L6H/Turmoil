@@ -9,11 +9,9 @@ class ApplicationController < ActionController::Base
     def login(being)
         session[:session_token] = being.reset_session_token!
         @current_being = being
-        cookies.signed["being.id"] = being.id
     end
 
     def logout
-        cookies.signed["being.id"] = nil
         current_being.reset_session_token!
         session[:session_token] = nil
         @current_being = nil
