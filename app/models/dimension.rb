@@ -27,8 +27,6 @@ class Dimension < ApplicationRecord
     has_many :summonses, dependent: :destroy
     has_many :realms, dependent: :destroy
 
-    has_one_attached :icon
-
     # A dimension's default role is one that cannot be deleted
     def default_role
         self.roles.find_by(can_be_deleted: false)

@@ -1,12 +1,5 @@
 json.dimension do
     json.extract! dimension, :name, :public, :being_id, :id
-    json.icon_url do 
-        if dimension.icon.attached?
-            url_for(dimension.icon)
-        else
-            nil
-        end
-    end
 end
 
 json_loop_or_empty json, arr: dimension.dimension_beings, name: "dimension_beings" do |dimension_being|
