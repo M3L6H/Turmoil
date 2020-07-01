@@ -6,11 +6,18 @@
     }
 
     .missive-body {
-        padding: $missive-body-vertical-padding 0;
+        padding-bottom: $missive-body-vertical-padding;
+
+        pre {
+            padding: $missive-pre-vertical-padding 0;
+        }
     }
 
     .missive-header {
+        color: $primary;
+
         .missive-date {
+            color: $lightest;
             padding-left: $missive-date-left-padding;
             font-size: $small-font-size;
         }

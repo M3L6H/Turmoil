@@ -30,7 +30,6 @@ export default class ChatWindow extends Component {
         }
     }
     
-    
     _handleChange(e) {
         const input = e.currentTarget;
 
@@ -61,9 +60,21 @@ export default class ChatWindow extends Component {
     _renderMissives() {
         const { missives, inverted } = this.props;
 
+        const missiveGroups = missives.reduce((arr, missive) => {
+            if (arr.length > 0 && 
+                arr[arr.length - 1][0].username === missive.username &&
+                (new Date(missive.createdAt) - new Date(arr[arr.length - 1][arr[arr.length - 1].length - 1].createdAt)) / 60000 <= 1
+            ) {
+                arr[arr.length - 1].push(missive);
+            } else {
+                arr.push([missive]);
+            }
 
-        return missives.map(missive => (
-            <Missive key={ missive.id } missive={ missive } inverted={ inverted } />
+            return arr;
+        }, []);
+
+        return missiveGroups.map(missives => (
+            <Missive key={ missives[0].id } missives={ missives } inverted={ inverted } />
         ));
     }
     
