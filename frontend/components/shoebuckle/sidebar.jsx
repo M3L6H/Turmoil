@@ -3,16 +3,6 @@ import React, { Component } from 'react';
 import { childrenWithProps } from './util';
 
 export default class Sidebar extends Component {
-    constructor(props) {
-        super(props);
-        
-        this._handleTransitionEnd = this._handleTransitionEnd.bind(this);
-    }
-
-    _handleTransitionEnd() {
-        console.log("Transition ended");
-    }
-    
     render() {
         const {
             children,
@@ -30,7 +20,6 @@ export default class Sidebar extends Component {
             <Tag 
                 { ...this.props } 
                 className={ className } 
-                onTransitionEnd={ this._handleTransitionEnd }
             >
                 { children }
             </Tag>
