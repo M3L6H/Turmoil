@@ -70,8 +70,8 @@ class SummonsForm extends Component {
         const summons = {
             url,
             dimension_id: dimensionId,
-            expire_after: expireAfter,
-            max_uses: maxUses
+            expire_after: expireAfter === "never" ? null : expireAfter,
+            max_uses: maxUses === "noLimit" ? null : maxUses
         };
 
         const action = formType === "new" ? createSummons : updateSummons;
