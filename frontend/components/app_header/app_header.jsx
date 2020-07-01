@@ -61,7 +61,9 @@ class AppHeader extends Component {
                 { currentBeingId && !desktop && !simple ? (
                     <Icon name="bars" primary large onClick={ this._handleClick } />
                 ) : (
-                    <Header as="h2" primary link={ !simple } to={ simple ? false : "/" }>Turmoil</Header>
+                    <Header as="h2" primary link={ !simple } to={ simple ? false : "/" }>
+                        <Icon name="fire" />Turmoil
+                    </Header>
                 ) }
                 { !simple && (
                     <nav className="header-nav">
