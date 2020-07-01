@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Dimension.destroy_all
 Being.destroy_all
 
 catlover = Being.create!(username: "catlover", password: "catlover123", email: "catlover23@cats.co")
