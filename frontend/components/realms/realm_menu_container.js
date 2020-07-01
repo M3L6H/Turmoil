@@ -9,6 +9,7 @@ import {
 } from '../../actions/modals_actions';
 import { updateOrder } from '../../actions/dimensions_actions';
 import { selectRealm } from '../../actions/realm_menu_actions';
+import { receiveSidebar } from '../../actions/sidebar_actions';
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
@@ -18,6 +19,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    closeSidebar: () => dispatch(receiveSidebar({ open: false })),
     select: selected => dispatch(selectRealm(selected)),
     updateOrder: (dimensionId, data) => dispatch(updateOrder(dimensionId, data)),
     openClusterForm: () => dispatch(receiveClusterModal(true)),

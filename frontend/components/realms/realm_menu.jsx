@@ -78,6 +78,7 @@ class RealmMenu extends Component {
         e.stopPropagation();
         const dragNDropItem = e.currentTarget;
         this.props.select(dragNDropItem.id.split("-")[1]);
+        this.props.closeSidebar();
     }
 
     // Convert clusters takes the clusters we get from the database and turns it
