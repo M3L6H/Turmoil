@@ -3,11 +3,11 @@ import React from 'react';
 export default props => {
     const { missives, inverted } = props;
 
-    const { username, createdAt } = missives[0];
+    const { username, createdAt, created_at } = missives[0];
 
     const className = `missive ${ inverted ? " inverted" : "" }`;
 
-    const date = new Date(createdAt);
+    const date = new Date(createdAt || created_at);
     const now = new Date();
     let dateString = date.toLocaleDateString("en-US");
 
