@@ -312,6 +312,8 @@ Form.Select = class extends Component {
         } else {
             this.setState({ stateSelected: option.value });
         }
+
+        this._close();
     }
 
     _handleOpen(e) {

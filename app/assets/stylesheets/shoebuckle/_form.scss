@@ -194,10 +194,10 @@
                 .icon {
                     transition: transform $form-select-icon-rotate-speed;
                 }
-            }
 
-            &:hover {
-                border-color: $dark;
+                &:hover {
+                    border-color: $dark;
+                }
             }
 
             &.open .icon {
@@ -249,6 +249,10 @@
                 @media screen and (min-width: $breakpoint) {
                     margin: 0;
                     border-radius: 0;
+
+                    &.inverted:hover {
+                        background: $dark;
+                    }
                 }
 
                 &:first-child {
@@ -261,10 +265,6 @@
 
                 &.inverted {
                     background: $darkest;
-
-                    &:hover {
-                        background: $dark;
-                    }
                 }
 
                 &.selected {
