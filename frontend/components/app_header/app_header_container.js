@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
     signIn: being => dispatch(createSession(being)),
     signOut: () => dispatch(deleteSession()),
     closeForm: () => dispatch(receiveAuthModal(false)),
-    openSidebar: () => dispatch(receiveSidebar({ open: true })),
+    openSidebar: () => dispatch(receiveSidebar({ open: true }))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);

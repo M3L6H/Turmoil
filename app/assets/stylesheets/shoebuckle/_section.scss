@@ -5,5 +5,16 @@
 
     &.inverted {
         background: $darker;
+        color: $white;
+    }
+
+    &.text {
+        margin: auto;
+        max-width: $breakpoint;
+        padding: $section-text-horizontal-padding;
+    }
+
+    * {
+        margin-bottom: $section-item-bottom-margin;        
     }
 }

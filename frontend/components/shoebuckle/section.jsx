@@ -7,11 +7,12 @@ export default class Section extends Component {
         const { 
             children,
             horizontal,
-            inverted
+            inverted,
+            text
         } = this.props;
         const childProps = { inverted };
 
-        const className = `shoebuckle section${ horizontal ? " horizontal" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+        const className = `shoebuckle section${ horizontal ? " horizontal" : "" }${ inverted ? " inverted" : "" }${ text ? " text" : "" }${ this.props.className ? " " + this.props.className : "" }`;
         
         return (
             <section className={ className }>
