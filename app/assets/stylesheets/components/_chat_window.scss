@@ -19,6 +19,8 @@
             position: absolute;
             top: calc(50% - #{ $large / 2 });
             right: $chat-bar-padding;
+            padding: 0;
+            bottom: initial;
         }
     }
 }
