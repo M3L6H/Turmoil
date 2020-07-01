@@ -61,9 +61,10 @@ export default class ChatWindow extends Component {
         const { missives, inverted } = this.props;
 
         const missiveGroups = missives.reduce((arr, missive) => {
+            const date = new Date(missive.createdAt || missive.created_at);
             if (arr.length > 0 && 
                 arr[arr.length - 1][0].username === missive.username &&
-                (new Date(missive.createdAt) - new Date(arr[arr.length - 1][arr[arr.length - 1].length - 1].createdAt)) / 60000 <= 1
+                (date - new Date(arr[arr.length - 1][arr[arr.length - 1].length - 1].createdAt || arr[arr.length - 1][arr[arr.length - 1].length - 1].created_at)) / 60000 <= 1
             ) {
                 arr[arr.length - 1].push(missive);
             } else {
