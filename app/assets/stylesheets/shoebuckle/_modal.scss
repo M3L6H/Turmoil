@@ -40,6 +40,10 @@
 
         font-size: $body-font-size;
 
+        &.fluid {
+            width: 85%;
+        }
+
         &.inverted {
             background: $darker;
             color: $lightest;
