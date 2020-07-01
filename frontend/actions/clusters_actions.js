@@ -27,17 +27,17 @@ const receiveClustersErrors = (errors) => ({
 export const createCluster = cluster => dispatch => (
     ClustersUtil.createCluster(cluster)
         .then(res => dispatch(receiveCluster(res)))
-        .fail(jqXHR => receiveClustersErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveClustersErrors(jqXHR.responseJSON)))
 );
 
 export const deleteCluster = clusterId => dispatch => (
     ClustersUtil.deleteCluster(clusterId)
         .then(res => dispatch(removeCluster(res)))
-        .fail(jqXHR => receiveClustersErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveClustersErrors(jqXHR.responseJSON)))
 );
 
 export const updateCluster = cluster => dispatch => (
     ClustersUtil.updateCluster(cluster)
         .then(res => dispatch(receiveCluster(res)))
-        .fail(jqXHR => receiveClustersErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveClustersErrors(jqXHR.responseJSON)))
 );

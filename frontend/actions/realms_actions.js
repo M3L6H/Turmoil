@@ -27,23 +27,23 @@ const receiveRealmsErrors = (errors) => ({
 export const fetchRealm = realmId => dispatch => (
     RealmsUtil.fetchRealm(realmId)
         .then(res => dispatch(receiveRealm(res)))
-        .fail(jqXHR => receiveRealmsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRealmsErrors(jqXHR.responseJSON)))
 );
 
 export const createRealm = realm => dispatch => (
     RealmsUtil.createRealm(realm)
         .then(res => dispatch(receiveRealm(res)))
-        .fail(jqXHR => receiveRealmsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRealmsErrors(jqXHR.responseJSON)))
 );
 
 export const deleteRealm = realmId => dispatch => (
     RealmsUtil.deleteRealm(realmId)
         .then(res => dispatch(removeRealm(res)))
-        .fail(jqXHR => receiveRealmsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRealmsErrors(jqXHR.responseJSON)))
 );
 
 export const updateRealm = realm => dispatch => (
     RealmsUtil.updateRealm(realm)
         .then(res => dispatch(receiveRealm(res)))
-        .fail(jqXHR => receiveRealmsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRealmsErrors(jqXHR.responseJSON)))
 );

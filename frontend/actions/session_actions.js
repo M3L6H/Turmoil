@@ -23,11 +23,11 @@ const receiveSessionErrors = (errors) => ({
 export const createSession = (being) => dispatch => (
     SessionUtil.createSession(being)
         .then(res => dispatch(receiveSession(res)))
-        .fail(jqXHR => receiveSessionErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveSessionErrors(jqXHR.responseJSON)))
 );
 
 export const deleteSession = () => dispatch => (
     SessionUtil.deleteSession()
         .then(() => dispatch(removeSession()))
-        .fail(jqXHR => receiveSessionErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveSessionErrors(jqXHR.responseJSON)))
 );

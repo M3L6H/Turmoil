@@ -22,23 +22,23 @@ const receiveRolesErrors = (errors) => ({
 export const fetchRole = roleId => dispatch => (
     RolesUtil.fetchRole(roleId)
         .then(res => dispatch(receiveRole(res)))
-        .fail(jqXHR => receiveRolesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRolesErrors(jqXHR.responseJSON)))
 );
 
 export const createRole = (role, dimensionId) => dispatch => (
     RolesUtil.createRole(role, dimensionId)
         .then(res => dispatch(receiveRole(res)))
-        .fail(jqXHR => receiveRolesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRolesErrors(jqXHR.responseJSON)))
 );
 
 export const deleteRole = roleId => dispatch => (
     RolesUtil.deleteRole(roleId)
         .then(res => dispatch(removeRole(res)))
-        .fail(jqXHR => receiveRolesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRolesErrors(jqXHR.responseJSON)))
 );
 
 export const updateRole = role => dispatch => (
     RolesUtil.updateRole(role)
         .then(res => dispatch(receiveRole(res)))
-        .fail(jqXHR => receiveRolesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveRolesErrors(jqXHR.responseJSON)))
 );

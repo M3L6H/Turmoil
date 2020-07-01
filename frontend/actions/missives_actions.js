@@ -21,11 +21,11 @@ const receiveMissivesErrors = (errors) => ({
 export const createMissive = missive => dispatch => (
     MissivesUtil.createMissive(missive)
         .then(res => dispatch(receiveMissive(res)))
-        .fail(jqXHR => receiveMissivesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveMissivesErrors(jqXHR.responseJSON)))
 );
 
 export const updateMissive = missive => dispatch => (
     MissivesUtil.updateMissive(missive)
         .then(res => dispatch(receiveMissive(res)))
-        .fail(jqXHR => receiveMissivesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveMissivesErrors(jqXHR.responseJSON)))
 );

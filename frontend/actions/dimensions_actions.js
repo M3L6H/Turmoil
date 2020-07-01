@@ -29,35 +29,35 @@ const receiveDimensionsErrors = (errors) => ({
 export const fetchDimensions = () => dispatch => (
     DimensionsUtil.fetchDimensions()
         .then(res => dispatch(receiveDimensions(res)))
-        .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionsErrors(jqXHR.responseJSON)))
 );
 
 export const fetchDimension = dimensionId => dispatch => (
     DimensionsUtil.fetchDimension(dimensionId)
         .then(res => dispatch(receiveDimension(res)))
-        .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionsErrors(jqXHR.responseJSON)))
 );
 
 export const createDimension = dimension => dispatch => (
     DimensionsUtil.createDimension(dimension)
         .then(res => dispatch(receiveDimension(res)))
-        .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionsErrors(jqXHR.responseJSON)))
 );
 
 export const deleteDimension = dimensionId => dispatch => (
     DimensionsUtil.deleteDimension(dimensionId)
         .then(res => dispatch(removeDimension(res)))
-        .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionsErrors(jqXHR.responseJSON)))
 );
 
 export const updateDimension = dimension => dispatch => (
     DimensionsUtil.updateDimension(dimension)
         .then(res => dispatch(receiveDimension(res)))
-        .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionsErrors(jqXHR.responseJSON)))
 );
 
 export const updateOrder = (dimensionId, data) => dispatch => (
     DimensionsUtil.updateOrder(dimensionId, data)
         .then(() => dispatch(fetchDimension(dimensionId)))
-        .fail(jqXHR => receiveDimensionsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionsErrors(jqXHR.responseJSON)))
 );

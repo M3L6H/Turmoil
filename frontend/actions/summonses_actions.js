@@ -22,17 +22,17 @@ const receiveSummonsesErrors = (errors) => ({
 export const createSummons = summons => dispatch => (
     SummonsesUtil.createSummons(summons)
         .then(res => dispatch(receiveSummons(res)))
-        .fail(jqXHR => receiveSummonsesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveSummonsesErrors(jqXHR.responseJSON)))
 );
 
 export const deleteSummons = summonsId => dispatch => (
     SummonsesUtil.deleteSummons(summonsId)
         .then(res => dispatch(removeSummons(res)))
-        .fail(jqXHR => receiveSummonsesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveSummonsesErrors(jqXHR.responseJSON)))
 );
 
 export const updateSummons = summons => dispatch => (
     SummonsesUtil.updateSummons(summons)
         .then(res => dispatch(receiveSummons(res)))
-        .fail(jqXHR => receiveSummonsesErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveSummonsesErrors(jqXHR.responseJSON)))
 );

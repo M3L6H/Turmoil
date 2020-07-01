@@ -22,23 +22,23 @@ const receiveDimensionBeingsErrors = (errors) => ({
 export const fetchDimensionBeing = dimensionBeingId => dispatch => (
     DimensionBeingsUtil.fetchDimensionBeing(dimensionBeingId)
         .then(res => dispatch(receiveDimensionBeing(res)))
-        .fail(jqXHR => receiveDimensionBeingsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionBeingsErrors(jqXHR.responseJSON)))
 );
 
 export const createDimensionBeing = (dimensionBeing, dimensionId) => dispatch => (
     DimensionBeingsUtil.createDimensionBeing(dimensionBeing, dimensionId)
         .then(res => dispatch(receiveDimensionBeing(res)))
-        .fail(jqXHR => receiveDimensionBeingsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionBeingsErrors(jqXHR.responseJSON)))
 );
 
 export const deleteDimensionBeing = dimensionBeingId => dispatch => (
     DimensionBeingsUtil.deleteDimensionBeing(dimensionBeingId)
         .then(res => dispatch(removeDimensionBeing(res)))
-        .fail(jqXHR => receiveDimensionBeingsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionBeingsErrors(jqXHR.responseJSON)))
 );
 
 export const updateDimensionBeing = dimensionBeing => dispatch => (
     DimensionBeingsUtil.updateDimensionBeing(dimensionBeing)
         .then(res => dispatch(receiveDimensionBeing(res)))
-        .fail(jqXHR => receiveDimensionBeingsErrors(jqXHR.responseJSON))
+        .fail(jqXHR => dispatch(receiveDimensionBeingsErrors(jqXHR.responseJSON)))
 );

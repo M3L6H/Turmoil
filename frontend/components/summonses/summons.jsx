@@ -10,7 +10,7 @@ class Summons extends Component {
     }
 
     _join() {
-        this.props.join()
+        this.props.join(this.props.dimension)
             .then(() => this.props.history.push("/"));
     }
     
@@ -36,19 +36,25 @@ class Summons extends Component {
 
     _renderSummons() {
         const { dimension, inverted } = this.props;
+
+        let content = "Loading...";
+        
+        if (dimension) {
+            content = <>
+                <div className="notice">You have joined { dimension.name }.</div>
+                <a onClick={ this._join }>Click here to continue.</a>
+            </>;
+        }
         
         return (
             <div className={ `summons${ inverted ? " inverted" : "" }`}>
-                <div className="notice">You have joined { dimension.name }.</div>
-                <a onClick={ this._join }>Click here to continue.</a>
+                { content }
             </div>
         );
     }
     
     render() {
         const { currentBeingId } = this.props;
-
-        console.log("Summons", this.props.inverted);
 
         return currentBeingId ? this._renderSummons() : this._renderMessage();
     }
