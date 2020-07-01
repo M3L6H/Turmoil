@@ -7,7 +7,7 @@ export default (WrappedComponent) => {
     return class extends Component {
         constructor(props) {
             super(props)
-            this.state = { windowWidth: 0, windowHeight: 0, desktop: false };
+            this.state = { windowWidth: window.innerWidth, windowHeight: window.innerHeight, desktop: false };
             this.updateWindowDimensions = debounce(this.updateWindowDimensions.bind(this));
         }
 
