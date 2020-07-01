@@ -6,10 +6,10 @@
         @media screen and (min-width: $breakpoint) {
             min-width: $form-min-width;
         }
-    }
 
-    .btn {
-        margin-bottom: $form-field-bottom-margin;
+        .btn {
+            margin-bottom: $form-field-bottom-margin;
+        }
     }
 
     .form-field {
