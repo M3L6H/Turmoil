@@ -1,4 +1,4 @@
-import { RECEIVE_SUMMONS, REMOVE_SUMMONS } from '../actions/clusters_actions';
+import { RECEIVE_SUMMONS, REMOVE_SUMMONS } from '../actions/summonses_actions';
 import { RECEIVE_DIMENSION } from '../actions/dimensions_actions';
 
 export default (state={}, action) => {

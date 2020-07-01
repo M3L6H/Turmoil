@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
     const search = ownProps.location.search;
     const params = new URLSearchParams(search);
 
-    const summons = state.entities.summons[params.get("url")];
+    const summons = state.entities.summonses[params.get("url")];
     
     return {
         currentBeingId: state.session.currentBeingId,
