@@ -7,10 +7,11 @@ import { createSession, deleteSession } from '../../actions/session_actions';
 
 import AppHeader from './app_header';
 
-const mapStateToProps = ({ session, ui: { modals } }, ownProps) => ({
+const mapStateToProps = ({ session, ui: { modals, inverted } }, ownProps) => ({
+    ...ownProps,
     currentBeingId: session.currentBeingId,
-    ...modals.auth,
-    ...ownProps
+    inverted,
+    ...modals.auth
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Link, withRouter } from 'react-router-dom';
 
-import { Header } from '../shoebuckle';
+import AppHeader from '../app_header';
 
 class Summons extends Component {
     constructor(props) {
@@ -74,9 +74,7 @@ class Summons extends Component {
         const { currentBeingId } = this.props;
 
         return <>
-            <header className="app-header">
-                <Header as="h2" primary>Turmoil</Header>
-            </header>
+            <AppHeader simple />
             { currentBeingId ? this._renderSummons() : this._renderMessage() }
         </>;
     }

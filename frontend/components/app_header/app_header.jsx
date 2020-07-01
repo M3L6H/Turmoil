@@ -52,21 +52,24 @@ class AppHeader extends Component {
             formType,
             closeForm,
             signIn,
-            signUp
+            signUp,
+            simple
         } = this.props;
         
         return (
             <header className="app-header">
-                { currentBeingId && !desktop ? (
+                { currentBeingId && !desktop && !simple ? (
                     <Icon name="bars" primary large onClick={ this._handleClick } />
                 ) : (
-                    <Header as="h2" primary link to="/">Turmoil</Header>
+                    <Header as="h2" primary link={ !simple } to={ simple ? false : "/" }>Turmoil</Header>
                 ) }
-                <nav className="header-nav">
-                    <ul>
-                        { this._renderAuthButtons() }
-                    </ul>
-                </nav>
+                { !simple && (
+                    <nav className="header-nav">
+                        <ul>
+                            { this._renderAuthButtons() }
+                        </ul>
+                    </nav>
+                ) }
 
                 <AuthForm 
                     open={ open }
