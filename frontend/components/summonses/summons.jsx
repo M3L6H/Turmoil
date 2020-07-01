@@ -27,8 +27,6 @@ class Summons extends Component {
     _renderMessage() {
         const { openSignIn, openSignUp, inverted } = this.props;
 
-        console.log("Rendering message");
-        
         return (
             <div className={ `summons-message${ inverted ? " inverted" : "" }` }>
                 You need to be <a onClick={ openSignIn }>signed in</a> or <a onClick={ openSignUp }>sign up</a> to join a dimension.
@@ -38,8 +36,6 @@ class Summons extends Component {
 
     _renderSummons() {
         const { dimension, inverted } = this.props;
-        
-        console.log("Rendering summons");
         
         return (
             <div className={ `summons${ inverted ? " inverted" : "" }`}>
@@ -52,8 +48,8 @@ class Summons extends Component {
     render() {
         const { currentBeingId } = this.props;
 
-        console.log("Rendering");
-        
+        console.log("Summons", this.props.inverted);
+
         return currentBeingId ? this._renderSummons() : this._renderMessage();
     }
 }

@@ -1,0 +1,12 @@
+.summons, .summons-message {
+    background: $lightest;
+    margin: $summons-margin;
+    padding: $summons-padding;
+    border-radius: $small-round;
+    box-shadow: $small-shadow;
+
+    &.inverted {
+        color: $lightest;
+        background: $dark;
+    }
+}

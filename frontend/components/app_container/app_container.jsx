@@ -29,6 +29,7 @@ class AppContainer extends Component {
                 <DimensionsSidebar />
                 <Sidebar.Pusher 
                     className="app-container"
+                    inverted={ inverted }
                     onClick={ open ? this._handleClick : undefined }
                 >
                     { children }

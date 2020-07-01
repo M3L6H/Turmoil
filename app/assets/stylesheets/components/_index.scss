@@ -7,7 +7,11 @@ $missive-body-vertical-padding: 0.25rem;
 $missive-pre-vertical-padding: 0.125rem;
 $missive-date-left-padding: 0.5rem;
 
+$summons-margin: 0.75rem;
+$summons-padding: 0.75rem;
+
 @import "app_container";
 @import "chat_window";
-@import "missive";
 @import "header";
+@import "missive";
+@import "summons";

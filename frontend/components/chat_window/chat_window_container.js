@@ -8,6 +8,7 @@ import ChatWindow from './chat_window';
 
 const mapStateToProps = (state) => ({
     cable: state.cable,
+    inverted: state.ui.inverted,
     missives: selectMissives(state),
     selectedRealm: state.entities.realms[state.ui.menus.realmMenu.selected]
 });
