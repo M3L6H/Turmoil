@@ -21,7 +21,7 @@ class Api::SummonsesController < ApplicationController
             @summons.destroy
             render :destroy
         else
-            render json: "Could not find summons with id #{ params[:id] }", status: 404
+            render json: ["Could not find summons with id #{ params[:id] }"], status: 404
         end
     end
 
@@ -30,13 +30,21 @@ class Api::SummonsesController < ApplicationController
 
         if @summons
             # TODO: Only beings with the right permissions should be able to update summonses
-            if @summons.update(summons_params)
+            if params[:summons]
+                if @summons.update(summons_params)
+                    render :update
+                else
+                    render json: @summons.errors.full_messages, status: 422
+                end
+            elsif (@summons.expire_after.nil? || @summons.created_at + @summons.expire_after.minutes >= DateTime.now) && (@summons.max_uses.nil? || @summons.max_uses > 0)
+                @summons.update(max_uses: @summons.max_uses - 1) unless @summons.max_uses.nil?
                 render :update
             else
-                render json: @summons.errors.full_messages, status: 422
+                @summons.destroy
+                render json: ["Summons with url #{ params[:id] } has expired"], status: 404
             end
         else
-            render json: "Could not find summons with id #{ params[:id] }", status: 404
+            render json: ["Could not find summons with url #{ params[:id] }"], status: 404
         end
     end
 
