@@ -2,6 +2,7 @@ import { RECEIVE_DIMENSIONS, RECEIVE_DIMENSION, REMOVE_DIMENSION } from '../acti
 import { RECEIVE_BEING } from '../actions/beings_actions';
 import { RECEIVE_SESSION } from '../actions/session_actions';
 import { RECEIVE_SUMMONS } from '../actions/summonses_actions';
+import { REMOVE_SESSION } from '../actions/session_actions';
 
 export default (state={}, action) => {
     Object.freeze(state);
@@ -14,6 +15,8 @@ export default (state={}, action) => {
         case RECEIVE_SUMMONS:
         case RECEIVE_DIMENSION:
             return { ...state, [action.dimension.id]: action.dimension };
+        case REMOVE_SESSION:
+            return {};
         case REMOVE_DIMENSION:
             const newState = Object.assign({}, state);
             delete newState[action.dimensionId];

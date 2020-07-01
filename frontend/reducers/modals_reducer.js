@@ -6,6 +6,8 @@ import {
     RECEIVE_SUMMONS_MODAL
 } from '../actions/modals_actions';
 
+import { REMOVE_SESSION } from '../actions/session_actions';
+
 const _defaultState = {
     auth: {
         open: false,
@@ -40,6 +42,8 @@ export default (state=_defaultState, action) => {
             return { ...state, realms: action.modal };
         case RECEIVE_SUMMONS_MODAL:
             return { ...state, summonses: action.modal };
+        case REMOVE_SESSION:
+            return _defaultState;
         default:
             return state;
     }

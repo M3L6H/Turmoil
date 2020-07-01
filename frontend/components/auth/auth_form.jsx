@@ -70,7 +70,9 @@ export default class AuthForm extends Component {
             .fail(jqXHR => this.setState({ errors: jqXHR.responseJSON }));
     }
 
-    _handleDemoUser() {
+    _handleDemoUser(e) {
+        e.preventDefault();
+
         const {  signIn, closeForm } = this.props;
         signIn({ username: "DemoUser", password: "passw0rd123" })
             .then(() => closeForm());
@@ -132,6 +134,9 @@ export default class AuthForm extends Component {
                         <Icon name="arrow-right" />
                     </Button.Content>
                 </Button>
+                { formType === "signIn" && 
+                    <Button green fluid onClick={ this._handleDemoUser }>Demo User</Button>
+                }
                 { this._renderRedirect() }
             </Form>
         );
@@ -148,11 +153,6 @@ export default class AuthForm extends Component {
                 <Modal.Content>
                     { this._renderForm(title) }
                 </Modal.Content>
-                { formType === "signIn" && 
-                    <Modal.Actions>
-                        <Button green fluid onClick={ this._handleDemoUser }>Demo User</Button>
-                    </Modal.Actions>
-                }
             </Modal>
         );
     }
