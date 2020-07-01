@@ -41,10 +41,10 @@ class Api::SummonsesController < ApplicationController
                 render :update
             else
                 @summons.destroy
-                render json: ["Summons with url #{ params[:id] } has expired"], status: 404
+                render json: ["Sorry, this summons has expired!"], status: 404
             end
         else
-            render json: ["Could not find summons with url #{ params[:id] }"], status: 404
+            render json: ["Sorry, this summons has expired!"], status: 404
         end
     end
 

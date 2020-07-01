@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+import { Header } from '../shoebuckle';
 
 class Summons extends Component {
     constructor(props) {
@@ -13,15 +15,23 @@ class Summons extends Component {
         this.props.join(this.props.dimension)
             .then(() => this.props.history.push("/"));
     }
-    
-    componentDidUpdate(prevProps, prevState) {
-        const { currentBeingId, dimension } = this.props;
 
-        if (currentBeingId && !dimension) {
+    _loadSummons() {
+        const { currentBeingId, dimension, errors } = this.props;
+
+        if (currentBeingId && !dimension && errors.length === 0) {
             const search = this.props.location.search;
             const params = new URLSearchParams(search);
             this.props.loadSummons(params.get("url"));
         }
+    }
+    
+    componentDidMount() {
+        this._loadSummons();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        this._loadSummons();
     }
     
     _renderMessage() {
@@ -35,7 +45,7 @@ class Summons extends Component {
     }
 
     _renderSummons() {
-        const { dimension, inverted } = this.props;
+        const { dimension, inverted, errors } = this.props;
 
         let content = "Loading...";
         
@@ -44,6 +54,13 @@ class Summons extends Component {
                 <div className="notice">You have joined { dimension.name }.</div>
                 <a onClick={ this._join }>Click here to continue.</a>
             </>;
+        } else if (errors) {
+            content = <div className="errors">
+                { errors.map((error, idx) => (
+                    <div className="error" key={ idx }>{ error }</div>
+                )) }
+                <Link to="/">Click here to continue.</Link>
+            </div>;
         }
         
         return (
@@ -56,7 +73,12 @@ class Summons extends Component {
     render() {
         const { currentBeingId } = this.props;
 
-        return currentBeingId ? this._renderSummons() : this._renderMessage();
+        return <>
+            <header className="app-header">
+                <Header as="h2" primary>Turmoil</Header>
+            </header>
+            { currentBeingId ? this._renderSummons() : this._renderMessage() }
+        </>;
     }
 }
 

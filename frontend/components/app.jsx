@@ -9,14 +9,16 @@ import Summons from './summonses';
 
 const App = () => (
     <>
-        <AppContainer inverted>
-            <AppHeader />
-            <Switch>
-                <Route path="/join" component={ Summons } />
-                <Route path="/" component={ ChatWindow } />
-                <Route render={ () => <Redirect to="/" /> } />
-            </Switch>
-        </AppContainer>
+        <Switch>
+            <Route path="/join" component={ Summons } />
+            <Route path="/" render={ () => (
+                <AppContainer inverted>
+                    <AppHeader />
+                    <ChatWindow />
+                </AppContainer>
+            ) } />
+            <Route render={ () => <Redirect to="/" /> } />
+        </Switch>
         <DimensionForm inverted />
     </>
 );

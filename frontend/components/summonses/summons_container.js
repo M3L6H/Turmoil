@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         currentBeingId: state.session.currentBeingId,
         inverted: state.ui.inverted,
+        errors: state.errors.summonses,
         summons,
         dimension: summons && state.entities.dimensions[summons.dimensionId]
     };

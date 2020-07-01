@@ -22,3 +22,7 @@ body {
 /* @import "shoebuckle/index"; */
 @import "shoebuckle";
 @import "components";
+
+body {
+    background: $darker;
+}
