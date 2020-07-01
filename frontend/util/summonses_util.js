@@ -18,8 +18,8 @@ export const deleteSummons = (summonsId) => (
 export const updateSummons = (summons) => (
     $.ajax({
         method: "PATCH",
-        url: `/api/summonses/${ summons.url }`,
-        data: { summons },
+        url: `/api/summonses/${ summons.url || summons }`,
+        data: summons.url ? { summons } : null,
         dataType: "json"
     })
 );

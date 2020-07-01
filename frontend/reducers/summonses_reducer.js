@@ -8,7 +8,7 @@ export default (state={}, action) => {
         case RECEIVE_DIMENSION:
             return action.summonses;
         case RECEIVE_SUMMONS:
-            return { ...state, [action.summons.id]: action.summons };
+            return { ...state, [action.summons.url]: action.summons };
         case REMOVE_SUMMONS:
             const newState = Object.assign({}, state);
             delete newState[action.summonsId];

@@ -4,9 +4,9 @@ export const RECEIVE_SUMMONS = "RECEIVE_SUMMONS";
 export const REMOVE_SUMMONS = "REMOVE_SUMMONS";
 export const RECEIVE_SUMMONSES_ERRORS = "RECEIVE_SUMMONSES_ERRORS";
 
-const receiveSummons = (summons) => ({
+const receiveSummons = (data) => ({
     type: RECEIVE_SUMMONS,
-    summons
+    ...data
 });
 
 const removeSummons = (summonsId) => ({
