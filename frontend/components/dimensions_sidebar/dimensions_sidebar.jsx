@@ -20,7 +20,7 @@ class DimensionsSidebar extends Component {
     _renderDimensions() {
         const { dimensions, selected } = this.props;
 
-        return dimensions.map(({ id }) => (
+        return dimensions.map(({ id, name }) => (
             <Menu.Item 
                 key={ id } 
                 name={ id } 
@@ -29,7 +29,11 @@ class DimensionsSidebar extends Component {
             >
                 <Icon.Group huge>
                     <Icon name="circle" black />
-                    <Icon name="fire" primary transform="shrink-6" />
+                    <Icon 
+                        content={ `${ name.split(" ").map((word, idx) => idx === 0 ? word[0].toUpperCase() : word[0].toLowerCase()).slice(0, 2).join("") }` } 
+                        primary 
+                        transform="shrink-8" 
+                    />
                 </Icon.Group>
             </Menu.Item>
         ));
