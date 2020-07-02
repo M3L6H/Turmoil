@@ -10,7 +10,8 @@ import {
     receiveSummonsModal, 
     receiveEditRealmModal
 } from '../../actions/modals_actions';
-import { updateOrder } from '../../actions/dimensions_actions';
+import { deleteDimension, updateOrder } from '../../actions/dimensions_actions';
+import { selectDimension } from '../../actions/dimension_menu_actions';
 import { deleteRealm } from '../../actions/realms_actions';
 import { selectRealm } from '../../actions/realm_menu_actions';
 import { receiveSidebar } from '../../actions/sidebar_actions';
@@ -25,6 +26,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
     closeSidebar: () => dispatch(receiveSidebar({ open: false })),
     select: selected => dispatch(selectRealm(selected)),
+    selectDimension: selected => dispatch(selectDimension(selected)),
     updateOrder: (dimensionId, data) => dispatch(updateOrder(dimensionId, data)),
     openClusterForm: () => dispatch(receiveClusterModal(true)),
     openRealmForm: () => dispatch(receiveRealmModal(true)),
@@ -32,7 +34,8 @@ const mapDispatchToProps = (dispatch) => ({
     openSummonsForm: () => dispatch(receiveSummonsModal(true)),
     setUpContextMenu: (items, name) => dispatch(receiveContext(items, name)),
     deleteCluster: (id) => dispatch(deleteCluster(id)),
-    deleteRealm: (id) => dispatch(deleteRealm(id))
+    deleteRealm: (id) => dispatch(deleteRealm(id)),
+    deleteDimension: (id) => dispatch(deleteDimension(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RealmMenu);

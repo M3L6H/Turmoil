@@ -187,6 +187,18 @@
                     }
                 }
             }
+
+            &.red {
+                color: $red;   
+
+                &.inverted {
+                    color: lighten($red, $lighten-amt);
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
             
             &.horizontal {
                 display: flex;

@@ -26,6 +26,7 @@ class RealmMenu extends Component {
         };
     
         this._handleCtxMenuItemClick = this._handleCtxMenuItemClick.bind(this);
+        this._handleDeleteDimension = this._handleDeleteDimension.bind(this);
         this._handleDropdownClick = this._handleDropdownClick.bind(this);
         this._openClusterForm = this._openClusterForm.bind(this);
         this._openRealmForm = this._openRealmForm.bind(this);
@@ -80,6 +81,14 @@ class RealmMenu extends Component {
                     .then(() => this.forceUpdate());
                 break;
         }
+    }
+
+    _handleDeleteDimension() {
+        const { deleteDimension, dimension, selectDimension } = this.props;
+
+        this.setState({ dropdownOpen: false });
+        deleteDimension(dimension.id)
+            .then(() => selectDimension("dms"));
     }
 
     _handleDropdownClick() {
@@ -283,6 +292,13 @@ class RealmMenu extends Component {
                         Allow Direct Messages
                     </Dropdown.Item>
                 </Dropdown.Group>
+                <Dropdown.Group>
+                    <Dropdown.Item
+                        red
+                        content="Delete Dimension"
+                        onClick={ this._handleDeleteDimension }
+                    />
+                </Dropdown.Group>
             </Dropdown>
         );
     }
@@ -340,6 +356,13 @@ class RealmMenu extends Component {
                     <Dropdown.Item>
                         Hide Muted Realms
                     </Dropdown.Item>
+                </Dropdown.Group>
+                <Dropdown.Group>
+                    <Dropdown.Item
+                        red
+                        content="Delete Dimension"
+                        onClick={ this._handleDeleteDimension }
+                    />
                 </Dropdown.Group>
             </Dropdown>
         );

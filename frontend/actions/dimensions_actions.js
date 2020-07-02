@@ -46,7 +46,7 @@ export const createDimension = dimension => dispatch => (
 
 export const deleteDimension = dimensionId => dispatch => (
     DimensionsUtil.deleteDimension(dimensionId)
-        .then(res => dispatch(removeDimension(res)))
+        .then(res => dispatch(removeDimension(res.id)))
         .fail(jqXHR => dispatch(receiveDimensionsErrors(jqXHR.responseJSON)))
 );
 
