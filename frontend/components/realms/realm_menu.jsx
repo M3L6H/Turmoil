@@ -51,9 +51,8 @@ class RealmMenu extends Component {
     _handleCtxMenuItemClick(e, target) {
         switch(e.target.dataset.action) {
             case "delete":
-                console.log(target);
-                this.lookupTable[target.dataset.parent].removeItem(target.id);
-                this.props.deleteRealm(target.id.split("-")[1]);
+                this.props.deleteRealm(target.id.split("-")[1])
+                    .then(() => this.forceUpdate());
                 break;
         }
     }

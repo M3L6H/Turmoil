@@ -38,7 +38,7 @@ export const createRealm = realm => dispatch => (
 
 export const deleteRealm = realmId => dispatch => (
     RealmsUtil.deleteRealm(realmId)
-        .then(res => dispatch(removeRealm(res)))
+        .then(res => dispatch(removeRealm(res.id)))
         .fail(jqXHR => dispatch(receiveRealmsErrors(jqXHR.responseJSON)))
 );
 
