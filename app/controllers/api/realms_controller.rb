@@ -38,8 +38,8 @@ class Api::RealmsController < ApplicationController
             next_orderable = @realm.next_orderable_id ? @realm.next_orderable_type.constantize.find(@realm.next_orderable_id) : nil
 
             @realm.transaction do
-                prev_orderable.update!(next_orderable_id: @realm.next_orderable_id, next_orderable_type: @realm.next_orderable_type)
-                next_orderable.update!(prev_orderable_id: @realm.prev_orderable_id, prev_orderable_type: @realm.prev_orderable_type)
+                prev_orderable.update!(next_orderable_id: @realm.next_orderable_id, next_orderable_type: @realm.next_orderable_type) if prev_orderable
+                next_orderable.update!(prev_orderable_id: @realm.prev_orderable_id, prev_orderable_type: @realm.prev_orderable_type) if next_orderable
                 @realm.destroy
             end
             render :destroy

@@ -36,10 +36,12 @@ class RealmMenu extends Component {
         this.props.setUpContextMenu([
             {
                 label: "Edit Realm",
+                ["data-action"]: "edit",
                 onClick: this._handleCtxMenuItemClick
             },
             {
                 label: "Delete Realm",
+                ["data-action"]: "delete",
                 onClick: this._handleCtxMenuItemClick,
                 red: true
             }
@@ -47,7 +49,13 @@ class RealmMenu extends Component {
     }
 
     _handleCtxMenuItemClick(e, target) {
-        console.log(e, target);
+        switch(e.target.dataset.action) {
+            case "delete":
+                console.log(target);
+                this.lookupTable[target.dataset.parent].removeItem(target.id);
+                this.props.deleteRealm(target.id.split("-")[1]);
+                break;
+        }
     }
 
     _handleDropdownClick() {

@@ -116,7 +116,11 @@ ContextMenu.Item = class extends Component {
         const className = `context-menu-item${ parseColor(this.props) }`;
         
         return (
-            <div className={ className } onClick={ this._handleClick }>
+            <div 
+                data-action={ this.props["data-action"] }
+                className={ className } 
+                onClick={ this._handleClick }
+            >
                 { children || content }
             </div>
         );

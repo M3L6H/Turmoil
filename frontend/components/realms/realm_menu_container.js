@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import RealmMenu from './realm_menu';
 
 import { receiveContext } from '../../actions/context_menu_actions';
-
 import { 
     receiveClusterModal, 
     receiveRealmModal, 
     receiveSummonsModal 
 } from '../../actions/modals_actions';
 import { updateOrder } from '../../actions/dimensions_actions';
+import { deleteRealm } from '../../actions/realms_actions';
 import { selectRealm } from '../../actions/realm_menu_actions';
 import { receiveSidebar } from '../../actions/sidebar_actions';
 
@@ -27,7 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
     openClusterForm: () => dispatch(receiveClusterModal(true)),
     openRealmForm: () => dispatch(receiveRealmModal(true)),
     openSummonsForm: () => dispatch(receiveSummonsModal(true)),
-    setUpContextMenu: (items, name) => dispatch(receiveContext(items, name))
+    setUpContextMenu: (items, name) => dispatch(receiveContext(items, name)),
+    deleteRealm: (id) => dispatch(deleteRealm(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RealmMenu);

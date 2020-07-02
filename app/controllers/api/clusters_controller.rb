@@ -26,8 +26,8 @@ class Api::ClustersController < ApplicationController
             next_orderable = @cluster.next_orderable_id ? @cluster.next_orderable_type.constantize.find(@cluster.next_orderable_id) : nil
 
             @cluster.transaction do
-                prev_orderable.update!(next_orderable_id: @cluster.next_orderable_id, next_orderable_type: @cluster.next_orderable_type)
-                next_orderable.update!(prev_orderable_id: @cluster.prev_orderable_id, prev_orderable_type: @cluster.prev_orderable_type)
+                prev_orderable.update!(next_orderable_id: @cluster.next_orderable_id, next_orderable_type: @cluster.next_orderable_type) if prev_orderable
+                next_orderable.update!(prev_orderable_id: @cluster.prev_orderable_id, prev_orderable_type: @cluster.prev_orderable_type) if next_orderable
                 @cluster.destroy
             end
 

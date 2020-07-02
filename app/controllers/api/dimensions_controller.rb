@@ -112,7 +112,7 @@ class Api::DimensionsController < ApplicationController
                             realm.next_orderable_type != next_orderable_type ||
                             realm.prev_orderable_id != prev_orderable_id ||
                             realm.prev_orderable_type != prev_orderable_type ||
-                            realm.cluster_id.nil? != parent_id.nil?
+                            realm.cluster_id != parent_id
                             realm.update!(next_orderable_id: next_orderable_id,
                                 next_orderable_type: next_orderable_type,
                                 prev_orderable_id: prev_orderable_id,
