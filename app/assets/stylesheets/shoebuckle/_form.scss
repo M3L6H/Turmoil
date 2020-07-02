@@ -141,6 +141,10 @@
             background: $darkest;
             border-color: $darkest;
             color: $lightest;
+
+            &:focus {
+                border-color: $accent;
+            }
         }
 
         +.btn {
@@ -152,6 +156,49 @@
         }
     }
 
+    .form-textarea {
+        padding: $form-input-vertical-padding $form-input-horizontal-padding;
+        width: 100%;
+
+        border: $thin solid $lightest;
+        border-radius: $small-round;
+
+        display: block;
+
+        resize: none;
+
+        max-height: 50vh;
+        height: calc(#{ $body-font-size * 6 } + #{ 2 * $form-input-vertical-padding } + #{ 2 * $thin });
+
+        &:focus {
+            outline: none;
+            border-color: $accent;
+        }
+
+        &.growing {
+            height: calc(#{ $body-font-size } + #{ 2 * $form-input-vertical-padding } + #{ 2 * $thin });
+            overflow-y: hidden;
+        }
+
+        &.inverted {
+            background: $darkest;
+            border-color: $darkest;
+            color: $lightest;
+
+            &:focus {
+                border-color: $accent;
+            }
+        }
+
+        +.btn {
+            position: absolute;
+            padding: calc(#{ $thin } + #{ $form-input-vertical-padding }) $form-input-horizontal-padding;
+            right: 0;
+            bottom: 0;
+            margin-bottom: 0;
+        }
+    }
+    
     .form-note {
         margin-top: $form-note-top-margin;
         font-size: 0.8em;

@@ -6,7 +6,8 @@ import { receiveContext } from '../../actions/context_menu_actions';
 import { 
     receiveClusterModal, 
     receiveRealmModal, 
-    receiveSummonsModal 
+    receiveSummonsModal, 
+    receiveEditRealmModal
 } from '../../actions/modals_actions';
 import { updateOrder } from '../../actions/dimensions_actions';
 import { deleteRealm } from '../../actions/realms_actions';
@@ -26,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateOrder: (dimensionId, data) => dispatch(updateOrder(dimensionId, data)),
     openClusterForm: () => dispatch(receiveClusterModal(true)),
     openRealmForm: () => dispatch(receiveRealmModal(true)),
+    openEditRealmForm: () => dispatch(receiveEditRealmModal(true)),
     openSummonsForm: () => dispatch(receiveSummonsModal(true)),
     setUpContextMenu: (items, name) => dispatch(receiveContext(items, name)),
     deleteRealm: (id) => dispatch(deleteRealm(id))

@@ -14,14 +14,15 @@ import {
 
 import { ClusterForm } from '../clusters';
 import { SummonsForm } from '../summonses';
-import { RealmForm } from '../realms';
+import { RealmForm, EditRealmForm } from '../realms';
 
 class RealmMenu extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            dropdownOpen: false
+            dropdownOpen: false,
+            editRealm: null
         };
     
         this._handleCtxMenuItemClick = this._handleCtxMenuItemClick.bind(this);
@@ -49,7 +50,13 @@ class RealmMenu extends Component {
     }
 
     _handleCtxMenuItemClick(e, target) {
+        const { realms, openEditRealmForm } = this.props;
+
         switch(e.target.dataset.action) {
+            case "edit":
+                this.setState({ editRealm: realms[target.id.split("-")[1]] });
+                openEditRealmForm();
+                break;
             case "delete":
                 this.props.deleteRealm(target.id.split("-")[1])
                     .then(() => this.forceUpdate());
@@ -345,6 +352,7 @@ class RealmMenu extends Component {
         const { 
             inverted
         } = this.props;
+        const { editRealm } = this.state;
 
         const list = this._constructList();
 
@@ -379,6 +387,7 @@ class RealmMenu extends Component {
                 <ClusterForm lastOrderable={ lastOrderable } />
                 <SummonsForm />
                 <RealmForm firstOrderable={ firstOrderable } />
+                <EditRealmForm realm={ editRealm } />
             </Menu>
         );
     }

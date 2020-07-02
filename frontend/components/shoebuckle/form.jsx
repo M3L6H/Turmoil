@@ -269,6 +269,83 @@ Form.Input = class extends Component {
     }
 };
 
+Form.Textarea = class extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            stateValue: props.value || ""
+        };
+
+        this._autoExpand = this._autoExpand.bind(this);
+        this._handleChange = this._handleChange.bind(this);
+    }
+
+    _autoExpand(e) {
+        console.log("called");
+        if (!this.props.growing) return;
+        const textarea = e.currentTarget;
+
+        textarea.style.height = "inherit";
+        const computed = window.getComputedStyle(textarea);
+        const height = parseInt(computed.getPropertyValue("border-top-width"), 10) +
+            parseInt(computed.getPropertyValue("padding-top"), 10) + 
+            textarea.scrollHeight +
+            parseInt(computed.getPropertyValue("padding-bottom"), 10) + 
+            parseInt(computed.getPropertyValue("border-bottom-width"), 10);
+
+        textarea.style.height = height + "px";
+    }
+
+    _handleChange(e) {
+        this.setState({ stateValue: e.currentTarget.value });
+    }
+    
+    render() {
+        const { stateValue } = this.state;
+        
+        const { 
+            button,
+            error,
+            growing,
+            label,
+            inverted,
+            name,
+            onChange,
+            placeholder,
+            readOnly,
+            required,
+            value
+        } = this.props;
+
+        const className = `shoebuckle form-textarea${ error ? " error" : "" }${ growing ? " growing" : "" }${ inverted ? " inverted" : "" }${ this.props.className ? " " + this.props.className : "" }`;
+
+        const textarea = <textarea 
+            className={ className }
+            name={ name }
+            onChange={ onChange || this._handleChange }
+            placeholder={ placeholder }
+            readOnly={ readOnly }
+            data-type={ this.props["data-type"] }
+            value={ value === undefined ? stateValue : value }
+            onInput={ this._autoExpand }
+        ></textarea>;
+
+        if (label) {
+            return (
+                <Form.Field error={ error } inverted={ inverted }>
+                    <Form.Label content={ label } required={ required } />
+                    { textarea }
+                    { button }
+                </Form.Field>
+            );
+        } else {
+            return textarea;
+        }
+
+    }
+};
+
 Form.Note = (props) => {
     const {
         children,

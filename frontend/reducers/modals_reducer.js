@@ -2,6 +2,7 @@ import {
     RECEIVE_AUTH_MODAL,
     RECEIVE_CLUSTER_MODAL,
     RECEIVE_DIMENSION_MODAL,
+    RECEIVE_EDIT_REALM_MODAL,
     RECEIVE_REALM_MODAL,
     RECEIVE_SUMMONS_MODAL
 } from '../actions/modals_actions';
@@ -17,6 +18,9 @@ const _defaultState = {
         open: false
     },
     dimensions: {
+        open: false
+    },
+    editRealms: {
         open: false
     },
     realms: {
@@ -38,6 +42,8 @@ export default (state=_defaultState, action) => {
             return { ...state, clusters: action.modal };
         case RECEIVE_DIMENSION_MODAL:
             return { ...state, dimensions: action.modal };
+        case RECEIVE_EDIT_REALM_MODAL:
+            return { ...state, editRealms: action.modal };
         case RECEIVE_REALM_MODAL:
             return { ...state, realms: action.modal };
         case RECEIVE_SUMMONS_MODAL:
