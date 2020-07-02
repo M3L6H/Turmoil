@@ -4,7 +4,7 @@
 
 #### Table of Contents
 - [About](#about)
-  - [Live Demo)](#live-demo)
+  - [Live Demo](#live-demo)
 - [Technologies](#technologies)
 - [Features](#features)
   - [Drag and drop](#drag-and-drop)
@@ -22,7 +22,7 @@ their username.
 
 Additionally, it is fully responsive, supporting both mobile and desktop viewing.
 
-### [Live Demo]([turmoi](http://turmoil.herokuapp.com/))
+### [Live Demo](http://turmoil.herokuapp.com/)
 
 ## Technologies
 
