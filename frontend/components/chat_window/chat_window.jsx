@@ -19,14 +19,19 @@ export default class ChatWindow extends Component {
     componentDidUpdate(prevProps, prevState) {
         const { cable, receiveMissive, selectedRealm } = this.props;
 
-        if (selectedRealm && prevProps.selectedRealm !== selectedRealm) {
-            cable.subscriptions.create({
+        if (selectedRealm && (!prevProps.selectedRealm || prevProps.selectedRealm.id !== selectedRealm.id)) {
+            console.log(this.subscription, cable.subscriptions);
+            if (this.subscription) {
+                cable.subscriptions.remove(this.subscription);
+            }
+            
+            this.subscription = cable.subscriptions.create({
                 channel: "RealmChannel",
                 realm: selectedRealm.id
             },
             {
                 received: receiveMissive
-            })
+            });
         }
     }
 
