@@ -1,17 +1,18 @@
 .chat-window {
     position: relative;
     flex: 1 1 auto;
-    padding-bottom: 70px;
+    margin-bottom: $chat-bar-height;
     height: 100vh;
     overflow-y: auto;
 
     .chat-bar {
+        margin-bottom: 0;
         padding: $chat-bar-padding;
         
         position: fixed;
         bottom: 0;
         left: 0;
-        height: 70px;
+        height: $chat-bar-height;
 
         border-top: $thin dashed $black;
 
