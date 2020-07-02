@@ -20,7 +20,6 @@ export default class ChatWindow extends Component {
         const { cable, receiveMissive, selectedRealm } = this.props;
 
         if (selectedRealm && (!prevProps.selectedRealm || prevProps.selectedRealm.id !== selectedRealm.id)) {
-            console.log(this.subscription, cable.subscriptions);
             if (this.subscription) {
                 cable.subscriptions.remove(this.subscription);
             }
