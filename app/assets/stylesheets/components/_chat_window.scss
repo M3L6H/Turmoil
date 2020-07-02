@@ -1,18 +1,23 @@
 .chat-window {
     position: relative;
     flex: 1 1 auto;
+    padding-bottom: 70px;
+    height: 100vh;
+    overflow-y: auto;
 
     .chat-bar {
         padding: $chat-bar-padding;
         
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
+        height: 70px;
 
         border-top: $thin dashed $black;
 
         &.inverted {
             border-color: $dark;
+            background: $darker;
         }
         
         .shoebuckle.btn {
