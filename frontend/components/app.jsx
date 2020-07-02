@@ -14,7 +14,7 @@ const App = ({ currentBeingId }) => (
             <Route path="/join" component={ Summons } />
             { !currentBeingId && <Route path="/new" component={ Splash } /> }
             { currentBeingId &&
-                <Route path="/" render={ () => (
+                <Route exact path="/" render={ () => (
                     <AppContainer inverted>
                         <AppHeader />
                         <ChatWindow />
