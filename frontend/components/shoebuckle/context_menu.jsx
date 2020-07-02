@@ -30,7 +30,7 @@ export default class ContextMenu extends Component {
         let target = null;
 
         e.path.forEach(elt => {
-            if (elt.dataset && elt.dataset.context) {
+            if (elt.dataset && elt.dataset.context && target === null) {
                 target = elt;
             }
         });
