@@ -388,7 +388,7 @@ class RealmMenu extends Component {
             firstOrderable.type = type;
             firstOrderable.id = id;
         }
-        
+
         return (
             <Menu
                 fluid

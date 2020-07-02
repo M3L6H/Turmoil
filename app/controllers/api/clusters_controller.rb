@@ -4,9 +4,9 @@ class Api::ClustersController < ApplicationController
 
         if @cluster.save
             if @cluster.prev_orderable_id
-                prev = @cluster.prev_orderable_type.constantize().find_by(id: @cluster.prev_orderable_id)
-                if prev
-                    prev.update!(next_orderable_id: @cluster.id, next_orderable_type: "Cluster")
+                @prev = @cluster.prev_orderable_type.constantize().find_by(id: @cluster.prev_orderable_id)
+                if @prev
+                    @prev.update!(next_orderable_id: @cluster.id, next_orderable_type: "Cluster")
                 end
             end
             
@@ -22,12 +22,12 @@ class Api::ClustersController < ApplicationController
 
         if @cluster
             # TODO: Only beings with the right permissions should be able to destroy clusters
-            prev_orderable = @cluster.prev_orderable_id ? @cluster.prev_orderable_type.constantize.find(@cluster.prev_orderable_id) : nil
-            next_orderable = @cluster.next_orderable_id ? @cluster.next_orderable_type.constantize.find(@cluster.next_orderable_id) : nil
+            @prev_orderable = @cluster.prev_orderable_id ? @cluster.prev_orderable_type.constantize.find(@cluster.prev_orderable_id) : nil
+            @next_orderable = @cluster.next_orderable_id ? @cluster.next_orderable_type.constantize.find(@cluster.next_orderable_id) : nil
 
             @cluster.transaction do
-                prev_orderable.update!(next_orderable_id: @cluster.next_orderable_id, next_orderable_type: @cluster.next_orderable_type) if prev_orderable
-                next_orderable.update!(prev_orderable_id: @cluster.prev_orderable_id, prev_orderable_type: @cluster.prev_orderable_type) if next_orderable
+                @prev_orderable.update!(next_orderable_id: @cluster.next_orderable_id, next_orderable_type: @cluster.next_orderable_type) if @prev_orderable
+                @next_orderable.update!(prev_orderable_id: @cluster.prev_orderable_id, prev_orderable_type: @cluster.prev_orderable_type) if @next_orderable
                 @cluster.destroy
             end
 

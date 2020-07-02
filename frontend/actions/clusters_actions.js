@@ -1,6 +1,7 @@
 import * as ClustersUtil from "../util/clusters_util";
 
 export const CLEAR_CLUSTERS = "CLEAR_CLUSTERS";
+export const RECEIVE_CLUSTERS = "RECEIVE_CLUSTERS";
 export const RECEIVE_CLUSTER = "RECEIVE_CLUSTER";
 export const REMOVE_CLUSTER = "REMOVE_CLUSTER";
 export const RECEIVE_CLUSTERS_ERRORS = "RECEIVE_CLUSTERS_ERRORS";
@@ -9,14 +10,19 @@ export const clearClusters = () => ({
     type: CLEAR_CLUSTERS 
 });
 
+const receiveClusters = (clusters) => ({
+    type: RECEIVE_CLUSTERS,
+    clusters
+});
+
 const receiveCluster = (cluster) => ({
     type: RECEIVE_CLUSTER,
     cluster
 });
 
-const removeCluster = (clusterId) => ({
+const removeCluster = (data) => ({
     type: REMOVE_CLUSTER,
-    clusterId
+    ...data
 });
 
 const receiveClustersErrors = (errors) => ({
@@ -26,13 +32,13 @@ const receiveClustersErrors = (errors) => ({
 
 export const createCluster = cluster => dispatch => (
     ClustersUtil.createCluster(cluster)
-        .then(res => dispatch(receiveCluster(res)))
+        .then(res => dispatch(receiveClusters(res)))
         .fail(jqXHR => dispatch(receiveClustersErrors(jqXHR.responseJSON)))
 );
 
 export const deleteCluster = clusterId => dispatch => (
     ClustersUtil.deleteCluster(clusterId)
-        .then(res => dispatch(removeCluster(res.id)))
+        .then(res => dispatch(removeCluster(res)))
         .fail(jqXHR => dispatch(receiveClustersErrors(jqXHR.responseJSON)))
 );
 
