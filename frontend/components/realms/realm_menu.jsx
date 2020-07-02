@@ -37,28 +37,46 @@ class RealmMenu extends Component {
         this.props.setUpContextMenu([
             {
                 label: "Edit Realm",
-                ["data-action"]: "edit",
+                ["data-action"]: "editRealm",
                 onClick: this._handleCtxMenuItemClick
             },
             {
                 label: "Delete Realm",
-                ["data-action"]: "delete",
+                ["data-action"]: "deleteRealm",
                 onClick: this._handleCtxMenuItemClick,
                 red: true
             }
         ], "realm");
+
+        this.props.setUpContextMenu([
+            {
+                label: "Edit Cluster",
+                ["data-action"]: "editCluster",
+                onClick: this._handleCtxMenuItemClick
+            },
+            {
+                label: "Delete Cluster",
+                ["data-action"]: "deleteCluster",
+                onClick: this._handleCtxMenuItemClick,
+                red: true
+            }
+        ], "cluster");
     }
 
     _handleCtxMenuItemClick(e, target) {
         const { realms, openEditRealmForm } = this.props;
 
         switch(e.target.dataset.action) {
-            case "edit":
+            case "editRealm":
                 this.setState({ editRealm: realms[target.id.split("-")[1]] });
                 openEditRealmForm();
                 break;
-            case "delete":
+            case "deleteRealm":
                 this.props.deleteRealm(target.id.split("-")[1])
+                    .then(() => this.forceUpdate());
+                break;
+            case "deleteCluster":
+                this.props.deleteCluster(target.id.split("-")[1])
                     .then(() => this.forceUpdate());
                 break;
         }
@@ -135,7 +153,8 @@ class RealmMenu extends Component {
                 type: "folder",
                 next: cluster.nextOrderableId ? `${ cluster.nextOrderableType }-${ cluster.nextOrderableId }` : null,
                 prev: cluster.prevOrderableId ? `${ cluster.prevOrderableType }-${ cluster.prevOrderableId }` : null,
-                parent: "root"
+                parent: "root",
+                ["data-context"]: "cluster"
             });
         }
 

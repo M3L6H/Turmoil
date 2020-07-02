@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import RealmMenu from './realm_menu';
 
+import { deleteCluster } from '../../actions/clusters_actions';
 import { receiveContext } from '../../actions/context_menu_actions';
 import { 
     receiveClusterModal, 
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
     openEditRealmForm: () => dispatch(receiveEditRealmModal(true)),
     openSummonsForm: () => dispatch(receiveSummonsModal(true)),
     setUpContextMenu: (items, name) => dispatch(receiveContext(items, name)),
+    deleteCluster: (id) => dispatch(deleteCluster(id)),
     deleteRealm: (id) => dispatch(deleteRealm(id))
 });
 

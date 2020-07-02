@@ -32,7 +32,7 @@ export const createCluster = cluster => dispatch => (
 
 export const deleteCluster = clusterId => dispatch => (
     ClustersUtil.deleteCluster(clusterId)
-        .then(res => dispatch(removeCluster(res)))
+        .then(res => dispatch(removeCluster(res.id)))
         .fail(jqXHR => dispatch(receiveClustersErrors(jqXHR.responseJSON)))
 );
 
