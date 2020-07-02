@@ -16,16 +16,20 @@
 
         border-top: $thin dashed $black;
 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         &.inverted {
             border-color: $dark;
             background: $darker;
         }
         
         .shoebuckle.btn {
-            position: absolute;
-            top: calc(50% - #{ $large / 2 });
-            right: $chat-bar-padding;
+            position: static;
             padding: 0;
+            padding-top: 4px;
+            margin-left: $chat-bar-padding;
             bottom: initial;
         }
     }
