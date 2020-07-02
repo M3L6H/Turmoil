@@ -148,6 +148,7 @@
             padding: calc(#{ $thin } + #{ $form-input-vertical-padding }) $form-input-horizontal-padding;
             right: 0;
             bottom: 0;
+            margin-bottom: 0;
         }
     }
 
