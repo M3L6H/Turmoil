@@ -1,5 +1,6 @@
 .missive {
     padding: 0 $missive-horizontal-padding;
+    width: 100%;
 
     &.inverted {
         color: $lightest;
@@ -10,6 +11,7 @@
 
         pre {
             padding: $missive-pre-vertical-padding 0;
+            white-space: pre-wrap;
         }
     }
 

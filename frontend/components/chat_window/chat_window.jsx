@@ -29,7 +29,7 @@ export default class ChatWindow extends Component {
             })
         }
     }
-    
+
     _handleChange(e) {
         const input = e.currentTarget;
 
