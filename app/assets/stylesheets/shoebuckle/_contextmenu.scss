@@ -1,0 +1,32 @@
+.shoebuckle.context-menu {
+    color: $lightest;
+    background: $darkest;
+    border-radius: $small-round;
+    padding: $ctxmenu-padding;
+
+    z-index: 1;
+
+    .bg {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .context-menu-item {
+        padding: $ctxmenu-item-vertical-padding $ctxmenu-item-horizontal-padding;
+        border-radius: $small-round;
+        cursor: pointer;
+
+        &:hover {
+            background: $darker;
+        }
+
+        &.red {
+            color: $red;
+        }
+    }
+}

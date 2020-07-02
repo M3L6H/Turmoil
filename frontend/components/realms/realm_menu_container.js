@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 
 import RealmMenu from './realm_menu';
 
+import { receiveContext } from '../../actions/context_menu_actions';
+
 import { 
     receiveClusterModal, 
     receiveRealmModal, 
@@ -24,7 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
     updateOrder: (dimensionId, data) => dispatch(updateOrder(dimensionId, data)),
     openClusterForm: () => dispatch(receiveClusterModal(true)),
     openRealmForm: () => dispatch(receiveRealmModal(true)),
-    openSummonsForm: () => dispatch(receiveSummonsModal(true))
+    openSummonsForm: () => dispatch(receiveSummonsModal(true)),
+    setUpContextMenu: (items, name) => dispatch(receiveContext(items, name))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RealmMenu);

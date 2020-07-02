@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import AppHeader from './app_header';
 import AppContainer from './app_container/index';
+import AppContextMenu from './app_context_menu';
 import ChatWindow from './chat_window';
 import DimensionForm from './dimensions';
 import Splash from './splash';
@@ -24,6 +25,7 @@ const App = ({ currentBeingId }) => (
             <Route render={ () => currentBeingId ? <Redirect to="/" /> : <Redirect to="/new" /> } />
         </Switch>
         <DimensionForm inverted />
+        <AppContextMenu />
     </>
 );
 

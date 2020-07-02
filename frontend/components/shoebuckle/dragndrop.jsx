@@ -51,7 +51,7 @@ export default class DragNDrop extends Component {
         const list = [];
         
         while (it.value) {
-            const { id, content, onClick, parent, type, children } = it.value;
+            const { id, content, onClick, parent, type, children, ...other } = it.value;
             if (type === "folder") {
                 list.push(
                     <DragNDrop.Folder 
@@ -63,6 +63,7 @@ export default class DragNDrop extends Component {
                         handleDrop={ this._handleDrop }
                         draggingBefore={ dragging && over === id }
                         updateOver={ this._updateOver }
+                        { ...other }
                     >
                         { this._renderList(children) }
                     </DragNDrop.Folder>
@@ -78,6 +79,7 @@ export default class DragNDrop extends Component {
                         stopDrag={ this._stopDrag }
                         draggingBefore={ dragging && over === id }
                         updateOver={ this._updateOver }
+                        { ...other }
                     >
                         { content }
                     </DragNDrop.Item>
@@ -211,6 +213,7 @@ DragNDrop.Folder = class extends Draggable {
                 draggable
                 className={ className } 
                 data-type="dragndrop-folder" 
+                data-context={ this.props["data-context"] }
                 id={ id } 
                 onDragStart={ this._handleDragStart }
                 onDrag={ this._handleDrag }
@@ -248,6 +251,7 @@ DragNDrop.Item = class extends Draggable {
                 className={ className } 
                 data-type="dragndrop-item" 
                 data-parent={ this.props["data-parent"] }
+                data-context={ this.props["data-context"] }
                 onClick={ onClick } 
                 id={ id }
                 onDragStart={ this._handleDragStart }

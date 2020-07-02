@@ -53,6 +53,10 @@ $btn-cmpct-vertical-padding: 0.3125rem !default;
 $btn-horizontal-margin: 0.125rem !default;
 $btn-vertical-margin: 0rem !default;
 
+$ctxmenu-padding: 0.375rem !default;
+$ctxmenu-item-horizontal-padding: 0.625rem !default;
+$ctxmenu-item-vertical-padding: 0.375rem !default;
+
 $dragndrop-vertical-padding: 0.5rem !default;
 $dragndrop-item-bottom-padding: 0.5rem !default;
 $dragndrop-folder-children-left-padding: 0.5rem !default;
@@ -205,6 +209,7 @@ $vertical-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 
 /* Components */
 @import "button";
+@import "contextmenu";
 @import "dragndrop";
 @import "dropdown";
 @import "form";

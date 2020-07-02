@@ -3,7 +3,14 @@ import React, { Component } from 'react';
 import withWindowDimensions from '../hocs/with_window_dimensions';
 import LinkedList from '../../util/linked_list';
 
-import { Button, DragNDrop, Dropdown, Header, Icon, Menu } from '../shoebuckle';
+import { 
+    Button, 
+    DragNDrop, 
+    Dropdown, 
+    Header, 
+    Icon, 
+    Menu 
+} from '../shoebuckle';
 
 import { ClusterForm } from '../clusters';
 import { SummonsForm } from '../summonses';
@@ -17,6 +24,7 @@ class RealmMenu extends Component {
             dropdownOpen: false
         };
     
+        this._handleCtxMenuItemClick = this._handleCtxMenuItemClick.bind(this);
         this._handleDropdownClick = this._handleDropdownClick.bind(this);
         this._openClusterForm = this._openClusterForm.bind(this);
         this._openRealmForm = this._openRealmForm.bind(this);
@@ -24,6 +32,22 @@ class RealmMenu extends Component {
         this._selectRealm = this._selectRealm.bind(this);
         this._moveBefore = this._moveBefore.bind(this);
         this.lookupTable = {};
+
+        this.props.setUpContextMenu([
+            {
+                label: "Edit Realm",
+                onClick: this._handleCtxMenuItemClick
+            },
+            {
+                label: "Delete Realm",
+                onClick: this._handleCtxMenuItemClick,
+                red: true
+            }
+        ], "realm");
+    }
+
+    _handleCtxMenuItemClick(e, target) {
+        console.log(e, target);
     }
 
     _handleDropdownClick() {
@@ -122,7 +146,8 @@ class RealmMenu extends Component {
                 type: "item",
                 next: realm.nextOrderableId ? `${ realm.nextOrderableType }-${ realm.nextOrderableId }` : null,
                 prev: realm.prevOrderableId ? `${ realm.prevOrderableType }-${ realm.prevOrderableId }` : null,
-                parent
+                parent,
+                ["data-context"]: "realm"
             });
         }
 
