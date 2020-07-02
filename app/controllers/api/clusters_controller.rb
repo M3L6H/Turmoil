@@ -22,7 +22,15 @@ class Api::ClustersController < ApplicationController
 
         if @cluster
             # TODO: Only beings with the right permissions should be able to destroy clusters
-            @cluster.destroy
+            prev_orderable = @cluster.prev_orderable_id ? @cluster.prev_orderable_type.constantize.find(@cluster.prev_orderable_id) : nil
+            next_orderable = @cluster.next_orderable_id ? @cluster.next_orderable_type.constantize.find(@cluster.next_orderable_id) : nil
+
+            @cluster.transaction do
+                prev_orderable.update!(next_orderable_id: @cluster.next_orderable_id, next_orderable_type: @cluster.next_orderable_type)
+                next_orderable.update!(prev_orderable_id: @cluster.prev_orderable_id, prev_orderable_type: @cluster.prev_orderable_type)
+                @cluster.destroy
+            end
+
             render :destroy
         else
             render json: ["Could not find cluster with id #{ params[:id] }"], status: 404

@@ -16,7 +16,7 @@ class Api::RealmsController < ApplicationController
 
         if @realm.save
             if @realm.next_orderable_id
-                next_orderable = @realm.next_orderable_type.constantize().find_by(id: @realm.next_orderable_id)
+                next_orderable = @realm.next_orderable_type.constantize.find(@realm.next_orderable_id)
                 if next_orderable
                     next_orderable.update!(prev_orderable_id: @realm.id, prev_orderable_type: "Realm")
                 end
@@ -34,7 +34,14 @@ class Api::RealmsController < ApplicationController
 
         if @realm
             # TODO: Only beings with the right permissions should be able to delete realms
-            @realm.destroy
+            prev_orderable = @realm.prev_orderable_id ? @realm.prev_orderable_type.constantize.find(@realm.prev_orderable_id) : nil
+            next_orderable = @realm.next_orderable_id ? @realm.next_orderable_type.constantize.find(@realm.next_orderable_id) : nil
+
+            @realm.transaction do
+                prev_orderable.update!(next_orderable_id: @realm.next_orderable_id, next_orderable_type: @realm.next_orderable_type)
+                next_orderable.update!(prev_orderable_id: @realm.prev_orderable_id, prev_orderable_type: @realm.prev_orderable_type)
+                @realm.destroy
+            end
             render :destroy
         else
             render json: ["Could not find realm with id: #{ params[:id] }"], status: 404
