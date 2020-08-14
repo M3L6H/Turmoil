@@ -77,6 +77,8 @@ start() {
 
 ### Responsiveness
 
+![Image of mobile view](/images/responsive.png)
+
 Building for both mobile and desktop is a significant challenge. It cannot
 simply be accomplished by media queries alone. Sometimes the react components
 also need to be aware of whether they are in a mobile view or a desktop one.
