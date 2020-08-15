@@ -42,6 +42,8 @@ class Being < ApplicationRecord
     has_many :dimension_beings, dependent: :destroy
     has_many :joined_dimensions, through: :dimension_beings, source: :dimension
     has_many :missives, as: :messageable
+    has_many :comrades, dependent: :destroy
+    has_many :comrade_beings, foreign_key: :comrade_id, class_name: :Comrade, dependent: :destroy
 
     # Auth methods
     class << self
