@@ -35,4 +35,5 @@ json.comrade_beings do
         json.partial! "comrade", comrade: comrade
       end
     end
+  end
 end
