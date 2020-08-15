@@ -15,6 +15,7 @@ import {
 import { ClusterForm } from '../clusters';
 import { SummonsForm } from '../summonses';
 import { RealmForm, EditRealmForm } from '../realms';
+import { DashboardSidebar } from '../dashboard';
 
 class RealmMenu extends Component {
   constructor(props) {
@@ -389,6 +390,20 @@ class RealmMenu extends Component {
       return <Header>Dashboard</Header>;
     }
   }
+
+  _renderSidebar(list) {
+    const { dimension } = this.props;
+
+    if (dimension) {
+      return (
+        <Menu.Item>
+          <DragNDrop list={ list } moveBefore={ this._moveBefore } />
+        </Menu.Item>
+      );
+    } else {
+      return <DashboardSidebar />;
+    }
+  }
   
   render() {
     const { 
@@ -423,9 +438,7 @@ class RealmMenu extends Component {
         <Menu.Item>
           { this._renderHeader() }
         </Menu.Item>
-        <Menu.Item>
-          <DragNDrop list={ list } moveBefore={ this._moveBefore } />
-        </Menu.Item>
+        { this._renderSidebar(list) }
         <ClusterForm lastOrderable={ lastOrderable } />
         <SummonsForm />
         <RealmForm firstOrderable={ firstOrderable } />

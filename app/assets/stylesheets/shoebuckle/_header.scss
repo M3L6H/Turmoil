@@ -1,88 +1,89 @@
 h1 {
-    font-size: $h1-font-size;
+  font-size: $h1-font-size;
 }
 
 h2 {
-    font-size: $h2-font-size;
+  font-size: $h2-font-size;
 }
 
 h3 {
-    font-size: $h3-font-size;
+  font-size: $h3-font-size;
 }
 
 h4 {
-    font-size: $h4-font-size;
+  font-size: $h4-font-size;
+  font-weight: 400;
 }
 
 h5 {
-    font-size: $h5-font-size;
+  font-size: $h5-font-size;
 }
 
 h6 {
-    font-size: $h6-font-size;
+  font-size: $h6-font-size;
 }
 
 .shoebuckle.header {
-    font-family: $header-font;
-    
-    &.mini {
-        font-size: $mini-header-font-size;
-    }
-    
-    &.tiny {
-        font-size: $tiny-header-font-size;
-    }
+  font-family: $header-font;
+  
+  &.mini {
+    font-size: $mini-header-font-size;
+  }
+  
+  &.tiny {
+    font-size: $tiny-header-font-size;
+  }
 
-    &.small {
-        font-size: $small-header-font-size;
-    }
+  &.small {
+    font-size: $small-header-font-size;
+  }
 
-    &.medium {
-        font-size: $medium-header-font-size;
-    }
+  &.medium {
+    font-size: $medium-header-font-size;
+  }
 
-    &.large {
-        font-size: $large-header-font-size;
-    }
+  &.large {
+    font-size: $large-header-font-size;
+  }
 
-    &.huge {
-        font-size: $huge-header-font-size;
-    }
+  &.huge {
+    font-size: $huge-header-font-size;
+  }
 
-    &.fluid {
-        width: 100%;
-    }
+  &.fluid {
+    width: 100%;
+  }
 
-    &.link {
-        cursor: pointer;
-    }
-    
-    &.dividing:after {
-        content: " ";
-        display: block;
-        width: 100%;
-        border-bottom: $thin solid $lightest;
-        padding-bottom: $header-bottom-padding;
-        margin-bottom: $header-bottom-margin;
-    }
+  &.link {
+    cursor: pointer;
+  }
+  
+  &.dividing:after {
+    content: " ";
+    display: block;
+    width: 100%;
+    border-bottom: $thin solid $lightest;
+    padding-bottom: $header-bottom-padding;
+    margin-bottom: $header-bottom-margin;
+  }
 
-    &.icon {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .icon {
-            font-size: $massive;
-        }
-    }
+  &.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .icon {
-        font-size: $small-header-font-size;
+      font-size: $massive;
     }
+  }
 
-    .header-subheader {
-        font-family: $body-font;
-        font-weight: 400;
-        font-size: $mini-header-font-size;
-    }
+  .icon {
+    font-size: $small-header-font-size;
+  }
+
+  .header-subheader {
+    font-family: $body-font;
+    font-weight: 400;
+    font-size: $mini-header-font-size;
+  }
 }
