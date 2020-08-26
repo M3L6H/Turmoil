@@ -53,3 +53,12 @@ export const receiveSummonsModal = (open, formType="new") => ({
     formType
   }
 });
+
+export const RECEIVE_FRIENDS_MODAL = "RECEIVE_FRIENDS_MODAL";
+
+export const receiveFriendsModal = (open) => ({
+  type: RECEIVE_FRIENDS_MODAL,
+  modal: {
+    open
+  }
+})
