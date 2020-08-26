@@ -4,7 +4,7 @@ import { Header, Icon, Menu } from '../shoebuckle';
 
 import FriendsList from './friends_list_container';
 
-export default ({ inverted, noHover }) => {
+export default ({ inverted, noHover, receiveFriendsModal, friendsModal }) => {
   
   return (
     <>
@@ -15,9 +15,7 @@ export default ({ inverted, noHover }) => {
         </span>
         <Icon
           name="plus"
-          onClick={ () => {
-            console.log("Hi")
-          } }
+          onClick={ () => receiveFriendsModal(true) }
         />
 
         <FriendsList inverted={ inverted } />
