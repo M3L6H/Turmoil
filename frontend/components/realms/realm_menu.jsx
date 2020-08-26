@@ -401,7 +401,7 @@ class RealmMenu extends Component {
         </Menu.Item>
       );
     } else {
-      return <DashboardSidebar />;
+      return <DashboardSidebar inverted={ this.props.inverted } />;
     }
   }
   

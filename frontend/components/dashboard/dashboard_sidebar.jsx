@@ -4,7 +4,7 @@ import { Header, Icon, Menu } from '../shoebuckle';
 
 import FriendsList from './friends_list_container';
 
-export default (props) => {
+export default ({ inverted }) => {
   
   return (
     <>
@@ -14,7 +14,7 @@ export default (props) => {
         </span>
         <Icon name="plus" />
 
-        <FriendsList />
+        <FriendsList inverted={ inverted } />
       </Menu.Item>
       <Menu.Item>
         <Header as="h4">Direct Messages</Header>
