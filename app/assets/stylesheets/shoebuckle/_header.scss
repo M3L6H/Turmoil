@@ -77,6 +77,10 @@ h6 {
     }
   }
 
+  &.inline {
+    display: inline-block;
+  }
+
   .icon {
     font-size: $small-header-font-size;
   }
