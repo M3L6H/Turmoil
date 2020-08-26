@@ -13,7 +13,12 @@ export default ({ inverted, noHover }) => {
           <Icon name="user-friends" className="friends-icon" />
           <Header as="h4" inline>Friends</Header>
         </span>
-        <Icon name="plus" />
+        <Icon
+          name="plus"
+          onClick={ () => {
+            console.log("Hi")
+          } }
+        />
 
         <FriendsList inverted={ inverted } />
       </Menu.Item>
