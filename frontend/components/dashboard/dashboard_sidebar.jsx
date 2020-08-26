@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Header, Icon, Menu } from '../shoebuckle';
 
+import FriendsList from './friends_list_container';
+
 export default (props) => {
   
   return (
@@ -11,6 +13,8 @@ export default (props) => {
           <Icon name="user-friends" className="friends-icon" /> Friends
         </span>
         <Icon name="plus" />
+
+        <FriendsList />
       </Menu.Item>
       <Menu.Item>
         <Header as="h4">Direct Messages</Header>
