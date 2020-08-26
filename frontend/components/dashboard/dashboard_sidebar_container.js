@@ -4,8 +4,8 @@ import { receiveFriendsModal } from '../../actions/modals_actions';
 
 import DashboardSidebar from './dashboard_sidebar';
 
-const mapStateToProps = ({ ui: { modals: friends } }) => ({
-  friendsModal: friends
+const mapStateToProps = (state) => ({
+  friendsModal: state.ui.modals.friends
 });
 
 const mapDispatchToProps = (dispatch) => ({
