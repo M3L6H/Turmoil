@@ -1,7 +1,7 @@
 export const selectDimensions = (state) => (
-    Object.values(state.entities.dimensions)
+  state.entities.dimensions ? Object.values(state.entities.dimensions) : []
 );
 
 export const selectMissives = (state) => (
-    Object.values(state.entities.missives)
+  state.entities.missives ? Object.values(state.entities.missives) : []
 );
