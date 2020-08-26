@@ -26,19 +26,28 @@ export const receiveDimensionModal = (open) => ({
   }
 });
 
-export const RECEIVE_REALM_MODAL = "RECEIVE_REALM_MODAL";
+export const RECEIVE_EDIT_REALM_MODAL = "RECEIVE_EDIT_REALM_MODAL";
 
-export const receiveRealmModal = (open) => ({
-  type: RECEIVE_REALM_MODAL,
+export const receiveEditRealmModal = (open) => ({
+  type: RECEIVE_EDIT_REALM_MODAL,
   modal: {
     open
   }
 });
 
-export const RECEIVE_EDIT_REALM_MODAL = "RECEIVE_EDIT_REALM_MODAL";
+export const RECEIVE_FRIENDS_MODAL = "RECEIVE_FRIENDS_MODAL";
 
-export const receiveEditRealmModal = (open) => ({
-  type: RECEIVE_EDIT_REALM_MODAL,
+export const receiveFriendsModal = (open) => ({
+  type: RECEIVE_FRIENDS_MODAL,
+  modal: {
+    open
+  }
+});
+
+export const RECEIVE_REALM_MODAL = "RECEIVE_REALM_MODAL";
+
+export const receiveRealmModal = (open) => ({
+  type: RECEIVE_REALM_MODAL,
   modal: {
     open
   }
@@ -53,12 +62,3 @@ export const receiveSummonsModal = (open, formType="new") => ({
     formType
   }
 });
-
-export const RECEIVE_FRIENDS_MODAL = "RECEIVE_FRIENDS_MODAL";
-
-export const receiveFriendsModal = (open) => ({
-  type: RECEIVE_FRIENDS_MODAL,
-  modal: {
-    open
-  }
-})
