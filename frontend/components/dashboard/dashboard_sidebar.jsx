@@ -4,11 +4,11 @@ import { Header, Icon, Menu } from '../shoebuckle';
 
 import FriendsList from './friends_list_container';
 
-export default ({ inverted }) => {
+export default ({ inverted, noHover }) => {
   
   return (
     <>
-      <Menu.Item>
+      <Menu.Item noHover={ noHover }>
         <span>
           <Icon name="user-friends" className="friends-icon" />
           <Header as="h4" inline>Friends</Header>
@@ -17,7 +17,7 @@ export default ({ inverted }) => {
 
         <FriendsList inverted={ inverted } />
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item noHover={ noHover }>
         <span>
           <Icon name="comment" className="dms-icon" />
           <Header as="h4" inline>Direct Messages</Header>
