@@ -1,243 +1,248 @@
 .shoebuckle.menu {
-    width: 100%;
-    border: $thin solid $lightest;
-    border-radius: $small-round;
-    box-shadow: $vertical-shadow;
-    background: $white;
-    
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+  width: 100%;
+  border: $thin solid $lightest;
+  border-radius: $small-round;
+  box-shadow: $vertical-shadow;
+  background: $white;
+  
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 
-    &.compact {
-        width: auto;
+  &.compact {
+    width: auto;
 
-        .menu-item:last-child {
-            border-right: none;
-        }
+    .menu-item:last-child {
+      border-right: none;
     }
+  }
 
-    &.even .menu-item {
-        flex: 1 1 0;
-    }
-    
-    &.inverted {
-        background: $dark;
-        color: $lightest;
-        box-shadow: none;
-        border: none;
-
-        &.secondary {
-            background: transparent;
-        }
-
-        .menu-item {
-            border-right: $thin solid $darker;
-    
-            &:hover {
-                background: $darker;
-            }
-
-            &.no-hover:hover {
-                background: $dark;
-            }
-    
-            &.active {
-                background: $darker;
-                color: $white;
-            }
-    
-            &.position-right {
-                border-left: $thin solid $darker;
-            }
-        }
-    }
-
-    &.pointing .menu-item.active:after {
-        content: " ";
-        position: absolute;
-        left: calc(50% - #{ $menu-arrow });
-        bottom: -$menu-arrow;
-        border-left: $menu-arrow solid transparent;
-        border-right: $menu-arrow solid transparent;
-        border-top: $menu-arrow solid;
-        border-top-color: $lightest;
-    }
+  &.even .menu-item {
+    flex: 1 1 0;
+  }
+  
+  &.inverted {
+    background: $dark;
+    color: $lightest;
+    box-shadow: none;
+    border: none;
 
     &.secondary {
-        border: none;
-        box-shadow: none;
-
-        &.pointing {
-            border-bottom: $bold solid $lightest;
-
-            .menu-item {
-                padding: $menu-item-padding;
-                border-radius: 0;
-                margin: 0;
-
-                &.active, &:hover {
-                    background: transparent;
-
-                    &:after {
-                        border: none;
-                        border-bottom: $bold solid $primary;
-                        width: 100%;
-                        left: 0;
-                        bottom: -$bold;
-                    }
-                }
-            }
-        }
-
-        .menu-item {
-            padding: $menu-item-padding-secondary #{ 2 * $menu-item-padding-secondary };
-            margin: $menu-item-margin-secondary;
-            border-radius: $small-round;
-        }
-    }
-
-    &.stretch {
-        height: 100%;
-    }
-
-    &.tabular {
-        border: none;
-        border-bottom: $thin solid $lightest;
-        box-shadow: none;
-
-        .menu-item {
-            border-right: $thin solid transparent;
-            border-top: $thin solid transparent;
-            border-left: $thin solid transparent;
-
-            &:hover {
-                background: inherit;
-            }
-
-            &.active {
-                background: inherit;
-                border-top-left-radius: $small-round;
-                border-top-right-radius: $small-round;
-                border-right: $thin solid $lightest;
-                border-top: $thin solid $lightest;
-                border-left: $thin solid $lightest;
-
-                &:after {
-                    content: " ";
-                    width: calc(100% - #{ 2 * $thin });
-                    height: $thin;
-                    background: $white;
-                    position: absolute;
-                    bottom: -$thin;
-                    left: $thin;
-                }
-            }
-        }
-    }
-
-    &.vertical {
-        width: auto;
-        flex-direction: column;
-        align-items: flex-start;
-
-        &.fluid {
-            width: 100%;
-        }
-
-        &.inverted {
-            .menu-item:nth-child(n + 2) {
-                border-top-color: $darkest;
-            }
-        }
-
-        &.secondary {
-            .menu-item {
-                &.active:before {
-                    position: absolute;
-                    top: $menu-trapezoid-height;
-                    left: 0;
-
-                    content: " ";
-                    width: 0;
-                    height: calc(100% - #{ 3 * $menu-trapezoid-height });
-                    border-left: $menu-trapezoid-height solid $lightest;
-                    border-top: #{ $menu-trapezoid-height / 2} solid transparent;
-                    border-bottom: #{ $menu-trapezoid-height / 2} solid transparent;
-                }
-                
-                &:nth-child(n + 2) {
-                    border: none;
-                }
-            }
-
-            &.inverted .menu-item.active:before {
-                border-left-color: $light;
-            }
-        }
-
-        .menu-item {
-            width: 100%;
-            border: none;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0;
-            border-radius: $small-round;
-
-            &.center {
-                justify-content: center;
-            }
-
-            &.justify-start {
-                justify-content: flex-start;
-            }
-
-            &:nth-child(n + 2) {
-                border-top: $thin solid $lightest;
-            }
-
-            >*:nth-child(n + 2) {
-                margin-left: $menu-item-vertical-margin-left;
-            }
-        }
+      background: transparent;
     }
 
     .menu-item {
-        position: relative;
-        background: transparent;
-        padding: $menu-item-padding;
-        border-right: $thin solid $lightest;
-        cursor: pointer;
+      border-right: $thin solid $darker;
 
-        min-width: $menu-item-min-width;
-        display: flex;
-        justify-content: center;
+      &:hover {
+        background: $darker;
+      }
 
-        &.compact {
-            padding: 0; 
-        }
+      &.no-hover:hover {
+        background: $dark;
+      }
 
-        &:hover {
-            background: $lightest;
-        }
+      &.active {
+        background: $darker;
+        color: $white;
+      }
 
-        &.no-hover:hover {
-            background: transparent;
-            cursor: default;
-        }
-
-        &.active {
-            background: $lightest;
-        }
-
-        &.position-right {
-            border-left: $thin solid $lightest;
-            border-right: none;
-            margin-left: auto;
-
-            +.position-right {
-                margin-left: 0;
-            }
-        }
+      &.position-right {
+        border-left: $thin solid $darker;
+      }
     }
+  }
+
+  &.pointing .menu-item.active:after {
+    content: " ";
+    position: absolute;
+    left: calc(50% - #{ $menu-arrow });
+    bottom: -$menu-arrow;
+    border-left: $menu-arrow solid transparent;
+    border-right: $menu-arrow solid transparent;
+    border-top: $menu-arrow solid;
+    border-top-color: $lightest;
+  }
+
+  &.secondary {
+    border: none;
+    box-shadow: none;
+
+    &.pointing {
+      border-bottom: $bold solid $lightest;
+
+      .menu-item {
+        padding: $menu-item-padding;
+        border-radius: 0;
+        margin: 0;
+
+        &.active, &:hover {
+          background: transparent;
+
+          &:after {
+            border: none;
+            border-bottom: $bold solid $primary;
+            width: 100%;
+            left: 0;
+            bottom: -$bold;
+          }
+        }
+      }
+    }
+
+    .menu-item {
+      padding: $menu-item-padding-secondary #{ 2 * $menu-item-padding-secondary };
+      margin: $menu-item-margin-secondary;
+      border-radius: $small-round;
+    }
+  }
+
+  &.stretch {
+    height: 100%;
+  }
+
+  &.tabular {
+    border: none;
+    border-bottom: $thin solid $lightest;
+    box-shadow: none;
+
+    .menu-item {
+      border-right: $thin solid transparent;
+      border-top: $thin solid transparent;
+      border-left: $thin solid transparent;
+
+      &:hover {
+        background: inherit;
+      }
+
+      &.active {
+        background: inherit;
+        border-top-left-radius: $small-round;
+        border-top-right-radius: $small-round;
+        border-right: $thin solid $lightest;
+        border-top: $thin solid $lightest;
+        border-left: $thin solid $lightest;
+
+        &:after {
+          content: " ";
+          width: calc(100% - #{ 2 * $thin });
+          height: $thin;
+          background: $white;
+          position: absolute;
+          bottom: -$thin;
+          left: $thin;
+        }
+      }
+    }
+  }
+
+  &.vertical {
+    width: auto;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &.fluid {
+      width: 100%;
+    }
+
+    &.inverted {
+      .menu-item:nth-child(n + 2) {
+        border-top-color: $darkest;
+      }
+    }
+
+    &.secondary {
+      .menu-item {
+        &.active:before {
+          position: absolute;
+          top: $menu-trapezoid-height;
+          left: 0;
+
+          content: " ";
+          width: 0;
+          height: calc(100% - #{ 3 * $menu-trapezoid-height });
+          border-left: $menu-trapezoid-height solid $lightest;
+          border-top: #{ $menu-trapezoid-height / 2} solid transparent;
+          border-bottom: #{ $menu-trapezoid-height / 2} solid transparent;
+        }
+        
+        &:nth-child(n + 2) {
+          border: none;
+        }
+      }
+
+      &.inverted .menu-item.active:before {
+        border-left-color: $light;
+      }
+    }
+
+    .menu-item {
+      width: 100%;
+      border: none;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+      border-radius: $small-round;
+
+      &.center {
+        justify-content: center;
+      }
+
+      &.justify-start {
+        justify-content: flex-start;
+      }
+
+      &:nth-child(n + 2) {
+        border-top: $thin solid $lightest;
+      }
+
+      >*:nth-child(n + 2) {
+        margin-left: $menu-item-vertical-margin-left;
+      }
+    }
+  }
+
+  .menu-item {
+    position: relative;
+    background: transparent;
+    padding: $menu-item-padding;
+    border-right: $thin solid $lightest;
+    cursor: pointer;
+
+    min-width: $menu-item-min-width;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &.compact {
+      padding: 0; 
+    }
+
+    &:hover {
+      background: $lightest;
+    }
+
+    &.no-hover:hover {
+      background: transparent;
+      cursor: default;
+    }
+
+    &.active {
+      background: $lightest;
+    }
+
+    &.position-right {
+      border-left: $thin solid $lightest;
+      border-right: none;
+      margin-left: auto;
+
+      +.position-right {
+        margin-left: 0;
+      }
+    }
+
+    >.menu.submenu {
+      width: 100%;
+    }
+  }
 }
