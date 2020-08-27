@@ -1,14 +1,19 @@
 import * as BeingsUtil from "../util/beings_util";
 
 export const RECEIVE_BEINGS = "RECEIVE_BEINGS";
+export const RECEIVE_SEARCH_BEINGS = "RECEIVE_SEARCH_BEINGS";
 export const RECEIVE_BEING = "RECEIVE_BEING";
 export const REMOVE_BEING = "REMOVE_BEING";
 export const RECEIVE_BEINGS_ERRORS = "RECEIVE_BEINGS_ERRORS";
 
-const receiveBeings = (beings) => ({
-  type: RECEIVE_BEINGS,
+const receiveBeings = (beings, type=RECEIVE_BEINGS) => ({
+  type,
   beings 
 });
+
+const receiveSearchBeings = beings => (
+  receiveBeings(beings, "RECEIVE_SEARCH_BEINGS")
+);
 
 const receiveBeing = ({ being, dimensions, comrades, comradeBeings }) => ({
   type: RECEIVE_BEING,
@@ -29,9 +34,15 @@ const receiveBeingsErrors = (errors) => ({
   beings: errors
 });
 
-export const fetchBeings = (search) => dispatch => (
-  BeingsUtil.fetchBeings(search)
+export const fetchBeings = () => dispatch => (
+  BeingsUtil.fetchBeings()
     .then(res => dispatch(receiveBeings(res)))
+    .fail(jqXHR => dispatch(receiveBeingsErrors(jqXHR.responseJSON)))
+);
+
+export const searchBeings = search => dispatch => (
+  BeingsUtil.fetchBeings(search)
+    .then(res => dispatch(receiveSearchBeings(res)))
     .fail(jqXHR => dispatch(receiveBeingsErrors(jqXHR.responseJSON)))
 );
 
