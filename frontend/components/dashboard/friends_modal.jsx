@@ -27,7 +27,10 @@ export default ({
         <Form.Input
           placeholder="Search..."
           value={ search }
-          onChange={ e => setSearch(e.currentTarget.value) }
+          onChange={ e => {
+            if (e.currentTarget.value.match(/[^\w_]/)) return;
+            setSearch(e.currentTarget.value);
+          } }
           button={
             <Button
               icon
