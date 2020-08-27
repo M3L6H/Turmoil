@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Form, Icon, Modal } from '../shoebuckle';
+import { Button, Form, Icon, Modal, Section } from '../shoebuckle';
 
 export default ({ inverted, open, receiveFriendsModal }) => {
 
@@ -28,6 +28,9 @@ export default ({ inverted, open, receiveFriendsModal }) => {
             />
           }
         />
+        <Section outline>
+          Hi
+        </Section>
       </Modal.Content>
     </Modal>
   );

@@ -1,19 +1,30 @@
 .shoebuckle.section {
-    &.horizontal {
-        display: flex;
-    }
+  &.horizontal {
+    display: flex;
+  }
+
+  &.inverted {
+    color: $white;
+  }
+
+  &.outline {
+    border: $thin solid $black;
+    border-radius: $small-round;
+    padding: $section-outline-vertical-padding $section-outline-horizontal-padding;
 
     &.inverted {
-        color: $white;
+      border-color: transparent;
+      background: $darkest;
     }
+  }
 
-    &.text {
-        margin: auto;
-        max-width: $breakpoint;
-        padding: $section-text-horizontal-padding;
-    }
+  &.text {
+    margin: auto;
+    max-width: $breakpoint;
+    padding: $section-text-horizontal-padding;
+  }
 
-    >* {
-        margin-bottom: $section-item-bottom-margin;        
-    }
+  >* {
+    margin-bottom: $section-item-bottom-margin;        
+  }
 }
