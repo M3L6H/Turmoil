@@ -7,4 +7,17 @@
 .friends-search-list {
   height: 200px;
   overflow-y: auto;
+
+  .shoebuckle.section.friends-search-item {
+    margin: 0;
+
+    &:nth-child(n + 2) {
+      padding-top: 0.325rem;
+      border-top: $thin solid $darker;
+    }
+
+    &:not(:last-child) {
+      padding-bottom: 0.325rem;
+    }
+  }
 }

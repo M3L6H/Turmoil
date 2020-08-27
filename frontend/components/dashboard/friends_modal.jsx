@@ -52,6 +52,7 @@ export default ({
           { beings.map(being => (
             <Section
               key={ being.id }
+              className="friends-search-item"
             >
               { being.username }
             </Section>
