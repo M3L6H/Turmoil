@@ -5,7 +5,14 @@ import { Header, Icon, Menu } from '../shoebuckle';
 import FriendsList from './friends_list_container';
 import FriendsModal from './friends_modal';
 
-export default ({ inverted, noHover, receiveFriendsModal, friendsModal }) => {
+export default ({ 
+  inverted,
+  noHover,
+  receiveFriendsModal,
+  friendsModal,
+  fetchBeings,
+  beings
+}) => {
   
   return (
     <>
@@ -33,6 +40,8 @@ export default ({ inverted, noHover, receiveFriendsModal, friendsModal }) => {
         { ...friendsModal }
         inverted={ inverted }
         receiveFriendsModal={ receiveFriendsModal }
+        fetchBeings={ fetchBeings }
+        beings={ beings }
       />
     </>
   );

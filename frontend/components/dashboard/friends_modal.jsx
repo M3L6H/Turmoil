@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Button, Form, Icon, Modal, Section } from '../shoebuckle';
 
-export default ({ inverted, open, receiveFriendsModal }) => {
-
-  console.log(open);
+export default ({
+  inverted,
+  open,
+  receiveFriendsModal,
+  beings,
+  fetchBeings
+}) => {
+  const [search, setSearch] = useState("");
+  
+  useEffect(() => {
+    fetchBeings(search);
+  }, []);
 
   return (
     <Modal
@@ -17,6 +26,8 @@ export default ({ inverted, open, receiveFriendsModal }) => {
       <Modal.Content>
         <Form.Input
           placeholder="Search..."
+          value={ search }
+          onChange={ e => setSearch(e.currentTarget.value) }
           button={
             <Button
               icon
