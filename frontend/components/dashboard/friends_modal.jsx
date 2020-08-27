@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal } from '../shoebuckle';
+import { Button, Form, Icon, Modal } from '../shoebuckle';
 
 export default ({ inverted, open, receiveFriendsModal }) => {
 
@@ -11,10 +11,23 @@ export default ({ inverted, open, receiveFriendsModal }) => {
       open={ open }
       handleClose={ () => receiveFriendsModal(false) }
       inverted={ inverted }
+      className="friends-search-modal"
     >
       <Modal.Header>Find Friends</Modal.Header>
       <Modal.Content>
-        Content!
+        <Form.Input
+          placeholder="Search..."
+          button={
+            <Button
+              icon
+              content={
+                <Icon
+                  name="search"
+                />
+              }
+            />
+          }
+        />
       </Modal.Content>
     </Modal>
   );

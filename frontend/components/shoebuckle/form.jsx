@@ -254,10 +254,10 @@ Form.Input = class extends Component {
             data-type={ this.props["data-type"] }
         />;
 
-        if (label) {
+        if (label || button) {
             return (
                 <Form.Field error={ error } inverted={ inverted }>
-                    <Form.Label content={ label } required={ required } />
+                    { label && <Form.Label content={ label } required={ required } /> }
                     { input }
                     { button }
                 </Form.Field>
