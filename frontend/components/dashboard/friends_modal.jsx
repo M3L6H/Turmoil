@@ -28,7 +28,10 @@ export default ({ inverted, open, receiveFriendsModal }) => {
             />
           }
         />
-        <Section outline>
+        <Section
+          outline
+          className="friends-search-list"
+        >
           Hi
         </Section>
       </Modal.Content>
