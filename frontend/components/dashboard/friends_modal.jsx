@@ -33,6 +33,7 @@ export default ({
             if (e.currentTarget.value.match(/[^\w_]/)) return;
             setSearch(e.currentTarget.value);
           } }
+          onKeyDown={ e => (e.keyCode === 13) && submitSearch() }
           button={
             <Button
               icon
@@ -57,6 +58,9 @@ export default ({
               { being.username }
             </Section>
           )) }
+          { beings.length === 0 && (
+            <Section>No results found!</Section>
+          ) }
         </Section>
       </Modal.Content>
     </Modal>
