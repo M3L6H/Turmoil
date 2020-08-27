@@ -3,7 +3,7 @@ export const fetchBeings = (search="") => (
     method: "GET",
     url: "/api/beings",
     dataType: "json",
-    data: search
+    data: { query: search }
   }) 
 );
 
