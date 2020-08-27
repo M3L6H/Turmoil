@@ -29,8 +29,8 @@ const receiveBeingsErrors = (errors) => ({
   beings: errors
 });
 
-export const fetchBeings = () => dispatch => (
-  BeingsUtil.fetchBeings()
+export const fetchBeings = (search) => dispatch => (
+  BeingsUtil.fetchBeings(search)
     .then(res => dispatch(receiveBeings(res)))
     .fail(jqXHR => dispatch(receiveBeingsErrors(jqXHR.responseJSON)))
 );
