@@ -52,10 +52,12 @@ export default ({
         >
           { beings.map(being => (
             <Section
+              horizontal
               key={ being.id }
               className="friends-search-item"
             >
-              { being.username }
+              <span className="username">{ being.username }</span>
+              <Icon name="user-plus" />
             </Section>
           )) }
           { beings.length === 0 && (
