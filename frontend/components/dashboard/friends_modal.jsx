@@ -10,9 +10,11 @@ export default ({
   fetchBeings
 }) => {
   const [search, setSearch] = useState("");
+
+  const submitSearch = () => fetchBeings(search);
   
   useEffect(() => {
-    fetchBeings(search);
+    submitSearch();
   }, []);
 
   return (
@@ -34,6 +36,7 @@ export default ({
           button={
             <Button
               icon
+              onClick={ submitSearch }
               content={
                 <Icon
                   name="search"
