@@ -49,7 +49,13 @@ export default ({
           outline
           className="friends-search-list"
         >
-          Hi
+          { beings.map(being => (
+            <Section
+              key={ being.id }
+            >
+              { being.username }
+            </Section>
+          )) }
         </Section>
       </Modal.Content>
     </Modal>

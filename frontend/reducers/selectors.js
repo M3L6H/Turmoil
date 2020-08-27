@@ -9,3 +9,7 @@ export const selectDimensions = (state) => (
 export const selectMissives = (state) => (
   state.entities.missives ? Object.values(state.entities.missives) : []
 );
+
+export const selectSearchBeings = ({ entities: { searchBeings } }) => (
+  searchBeings ? Object.values(searchBeings) : []
+);
