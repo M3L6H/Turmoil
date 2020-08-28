@@ -50,7 +50,7 @@ export default ({
           outline
           className="friends-search-list"
         >
-          { beings.map(being => (
+          { beings.sort((a, b) => a.username.localeCompare(b.username)).map(being => (
             <Section
               horizontal
               key={ being.id }
