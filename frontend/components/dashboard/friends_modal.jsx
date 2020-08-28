@@ -5,6 +5,7 @@ import { Button, Form, Icon, Modal, Section } from '../shoebuckle';
 export default ({
   inverted,
   open,
+  createComrade,
   receiveFriendsModal,
   beings,
   fetchBeings
