@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let store;
 
   if (window.currentDetails) { 
-    console.log(window.currentDetails);
     const { being, dimensions, comrades, comradeBeings } = window.currentDetails;
     
     const preloadedState = {
