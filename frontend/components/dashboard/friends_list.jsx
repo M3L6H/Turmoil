@@ -3,6 +3,7 @@ import React from 'react';
 import { Menu } from '../shoebuckle';
 
 export default ({ comrades, inverted }) => {
+  comrades = comrades.filter(({ pending, blocked }) => !(pending || blocked ));
 
   return (
     <Menu.Menu
