@@ -8,8 +8,10 @@ export default ({
   currentBeingId,
   createComrade,
   receiveFriendsModal,
+  fetchBeings,
   beings,
-  fetchBeings
+  comrades,
+  comradeBeings
 }) => {
   const [search, setSearch] = useState("");
 

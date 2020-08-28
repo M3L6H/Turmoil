@@ -13,7 +13,9 @@ export default ({
   receiveFriendsModal,
   friendsModal,
   fetchBeings,
-  beings
+  beings,
+  comrades,
+  comradeBeings
 }) => {
   
   return (
@@ -46,6 +48,8 @@ export default ({
         receiveFriendsModal={ receiveFriendsModal }
         fetchBeings={ fetchBeings }
         beings={ beings }
+        comrades={ comrades }
+        comradeBeings={ comradeBeings }
       />
     </>
   );

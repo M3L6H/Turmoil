@@ -3,13 +3,19 @@ import { connect } from 'react-redux';
 import { searchBeings } from '../../actions/beings_actions';
 import { createComrade } from '../../actions/comrades_actions';
 import { receiveFriendsModal } from '../../actions/modals_actions';
-import { selectSearchBeings } from '../../reducers/selectors';
+import {
+  selectComrades,
+  selectComradeBeings,
+  selectSearchBeings
+} from '../../reducers/selectors';
 
 import DashboardSidebar from './dashboard_sidebar';
 
 const mapStateToProps = (state) => ({
   friendsModal: state.ui.modals.friends,
   beings: selectSearchBeings(state),
+  comrades: selectComrades(state),
+  comradeBeings: selectComradeBeings(state),
   currentBeingId: state.session.currentBeingId
 });
 
