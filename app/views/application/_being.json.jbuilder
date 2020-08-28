@@ -20,7 +20,7 @@ json.comrades do
   else
     being.comrades.each do |comrade|
       json.set! comrade.id do
-        json.partial! "comrade", comrade: comrade
+        json.partial! "application/comrade.json.jbuilder", comrade: comrade
       end
     end
   end
@@ -32,7 +32,7 @@ json.comrade_beings do
   else
     being.comrade_beings.each do |comrade|
       json.set! comrade.id do
-        json.partial! "comrade", comrade: comrade
+        json.partial! "application/comrade.json.jbuilder", comrade: comrade
       end
     end
   end
