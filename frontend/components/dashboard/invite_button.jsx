@@ -10,7 +10,7 @@ export default ({ currentBeingId, being, comrades, comradeBeings }) => {
   comrades.forEach(c => {
     if (c.comradeId === being.id) comrade = c;
   });
-  comradeBeings.foreach(c => {
+  comradeBeings.forEach(c => {
     if (c.beingId === being.id) comrade = c;
   });
 
@@ -49,7 +49,7 @@ export default ({ currentBeingId, being, comrades, comradeBeings }) => {
             <Icon
               name="arrow-left"
               color="primary"
-              transform="shrink-10 right-5"
+              transform="shrink-6"
             />
           </Icon.Group>
         );
