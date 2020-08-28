@@ -30,11 +30,11 @@ export default ({ currentBeingId, being, comrades, comradeBeings }) => {
           <Icon.Group>
             <Icon
               name="envelope"
+              transform="left-6"
             />
             <Icon
-              name="arrow-right"
-              color="primary"
-              transform="shrink-10 right-5"
+              name="angle-double-right"
+              transform="right-11"
             />
           </Icon.Group>
         );
@@ -45,11 +45,11 @@ export default ({ currentBeingId, being, comrades, comradeBeings }) => {
           <Icon.Group>
             <Icon
               name="envelope"
+              transform="left-6"
             />
             <Icon
-              name="arrow-left"
-              color="primary"
-              transform="shrink-6"
+              name="angle-double-left"
+              transform="right-11"
             />
           </Icon.Group>
         );
