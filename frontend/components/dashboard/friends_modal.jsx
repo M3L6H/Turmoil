@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { Button, Form, Icon, Modal, Section } from '../shoebuckle';
 
+import InviteButton from './invite_button';
+
 export default ({
   inverted,
   open,
@@ -61,14 +63,11 @@ export default ({
               className="friends-search-item"
             >
               <span className="username">{ being.username }</span>
-              <Icon
-                name="user-plus"
-                onClick={ () => createComrade({
-                  being_id: currentBeingId,
-                  comrade_id: being.id,
-                  blocked: false,
-                  pending: true
-                }) }
+              <InviteButton
+                currentBeingId={ currentBeingId }
+                being={ being }
+                comrades={ comrades }
+                comradeBeings={ comradeBeings }
               />
             </Section>
           ) : null) }
