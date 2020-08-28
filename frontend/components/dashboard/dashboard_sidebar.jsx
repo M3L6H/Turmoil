@@ -8,6 +8,7 @@ import FriendsModal from './friends_modal';
 export default ({ 
   inverted,
   noHover,
+  currentBeingId,
   createComrade,
   receiveFriendsModal,
   friendsModal,
@@ -40,6 +41,7 @@ export default ({
       <FriendsModal
         { ...friendsModal }
         inverted={ inverted }
+        currentBeingId={ currentBeingId }
         createComrade={ createComrade }
         receiveFriendsModal={ receiveFriendsModal }
         fetchBeings={ fetchBeings }

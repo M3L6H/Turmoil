@@ -9,7 +9,8 @@ import DashboardSidebar from './dashboard_sidebar';
 
 const mapStateToProps = (state) => ({
   friendsModal: state.ui.modals.friends,
-  beings: selectSearchBeings(state)
+  beings: selectSearchBeings(state),
+  currentBeingId: state.session.currentBeingId
 });
 
 const mapDispatchToProps = (dispatch) => ({

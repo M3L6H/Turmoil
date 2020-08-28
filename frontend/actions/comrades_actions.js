@@ -21,7 +21,7 @@ const receiveComradesErrors = (errors) => ({
 
 export const createComrade = comrade => dispatch => (
   ComradesUtil.createComrade(comrade)
-    .then(res => dispatch(receiveComrades(res)))
+    .then(res => dispatch(receiveComrade(res)))
     .fail(jqXHR => dispatch(receiveComradesErrors(jqXHR.responseJSON)))
 );
 

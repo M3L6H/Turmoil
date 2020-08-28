@@ -5,6 +5,7 @@ import { Button, Form, Icon, Modal, Section } from '../shoebuckle';
 export default ({
   inverted,
   open,
+  currentBeingId,
   createComrade,
   receiveFriendsModal,
   beings,
@@ -51,16 +52,24 @@ export default ({
           outline
           className="friends-search-list"
         >
-          { beings.sort((a, b) => a.username.localeCompare(b.username)).map(being => (
+          { beings.sort((a, b) => a.username.localeCompare(b.username)).map(being => being.id !== currentBeingId ? (
             <Section
               horizontal
               key={ being.id }
               className="friends-search-item"
             >
               <span className="username">{ being.username }</span>
-              <Icon name="user-plus" />
+              <Icon
+                name="user-plus"
+                onClick={ () => createComrade({
+                  being_id: currentBeingId,
+                  comrade_id: being.id,
+                  blocked: false,
+                  pending: true
+                }) }
+              />
             </Section>
-          )) }
+          ) : null) }
           { beings.length === 0 && (
             <Section>No results found!</Section>
           ) }
