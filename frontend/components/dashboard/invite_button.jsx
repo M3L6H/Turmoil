@@ -2,7 +2,13 @@ import React from 'react';
 
 import { Icon } from '../shoebuckle';
 
-export default ({ currentBeingId, being, comrades, comradeBeings }) => {
+export default ({
+  createComrade,
+  currentBeingId,
+  being,
+  comrades,
+  comradeBeings
+}) => {
   
   let comrade = null;
 

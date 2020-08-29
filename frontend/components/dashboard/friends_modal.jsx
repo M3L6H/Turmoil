@@ -64,6 +64,7 @@ export default ({
             >
               <span className="username">{ being.username }</span>
               <InviteButton
+                createComrade={ createComrade }
                 currentBeingId={ currentBeingId }
                 being={ being }
                 comrades={ comrades }
