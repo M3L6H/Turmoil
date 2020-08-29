@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import { searchBeings } from '../../actions/beings_actions';
 import { createComrade } from '../../actions/comrades_actions';
+import { receiveHeader } from '../../actions/header_actions';
 import { receiveFriendsModal } from '../../actions/modals_actions';
 import {
   selectComrades,
@@ -22,7 +23,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   createComrade: (comrade) => dispatch(createComrade(comrade)),
   receiveFriendsModal: (open) => dispatch(receiveFriendsModal(open)),
-  fetchBeings: (search) => dispatch(searchBeings(search))
+  fetchBeings: (search) => dispatch(searchBeings(search)),
+  receiveHeader: (header) => dispatch(receiveHeader(header))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardSidebar);

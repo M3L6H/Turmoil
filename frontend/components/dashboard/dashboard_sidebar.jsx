@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Header, Icon, Menu } from '../shoebuckle';
+import { Button, Header, Icon, Menu } from '../shoebuckle';
 
-import FriendsList from './friends_list_container';
 import FriendsModal from './friends_modal';
 
 export default ({ 
@@ -15,23 +14,28 @@ export default ({
   fetchBeings,
   beings,
   comrades,
-  comradeBeings
+  comradeBeings,
+  receiveHeader
 }) => {
+  const [selected, setSelected] = useState("friends");
+
+  useEffect(() => {
+    receiveHeader(selected);
+
+    return () => receiveHeader("app");
+  }, [selected]);
   
   return (
     <>
       <Menu.Item noHover={ noHover }>
-        <span>
-          <Icon name="user-friends" className="friends-icon" />
-          <Header as="h4" inline>Friends</Header>
-        </span>
-        <Icon
-          name="plus"
-          onClick={ () => receiveFriendsModal(true) }
-        />
-
-        <FriendsList inverted={ inverted } />
-      </Menu.Item>
+        <Button
+          fluid
+          compact
+          className={ `friends-button${ selected === "friends" ? " selected" : "" }` }
+        >
+          Friends
+        </Button>
+       </Menu.Item>
       <Menu.Item noHover={ noHover }>
         <span>
           <Icon name="comment" className="dms-icon" />
