@@ -15,5 +15,9 @@ mastermind = Being.create!(username: "Ma5t3rm1nd", password: "behindalltheplans"
 saboteur = Being.create!(username: "saboteur1994", password: "notpassword", email: "sam@sabotageforhire.net")
 ringleader = Being.create!(username: "Ringleader", password: "john!make a password", email: "admin@ringleader.com")
 spy = Being.create!(username: "spi23", password: "iamaspydont@mebro", email: "spy@spies.co")
+assassin = Being.create!(username: "aSSaSSin", password: "42killed69togo", email: "james.buckwheat@doesnotexist.org")
+collector = Being.create!(username: "Collector", password: "Time2Pay", email: "cccharcoalfront@collectors.com")
+haxxer = Being.create!(username: "haxxer", password: "Jhqy-xTzz-lkso", email: "anon1337@hackers.net")
+demolitionist = Being.create!(username: "Demolish1024", password: "UpUpdOwndOwnleFtleFtrigHtrigHt", email: "mark.troutside@bombers.com")
 
 demo_user = Being.create!(username: "DemoUser", password: "passw0rd123", email: "demo@example.com")
