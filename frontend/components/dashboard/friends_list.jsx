@@ -7,7 +7,7 @@ export default ({ comrades, inverted }) => {
 
   return (
     <Section inverted={ inverted }>
-      <Header as="h2" inverted={ inverted }>All Friends</Header>
+      <Header as="h3" inverted={ inverted }>All Friends</Header>
     </Section>
   );
 };
