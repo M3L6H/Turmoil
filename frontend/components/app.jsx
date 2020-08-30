@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import AppContainer from './app_container/index';
 import AppContextMenu from './app_context_menu';
-import ChatWindow from './chat_window';
+import Content from './content';
 import DimensionForm from './dimensions';
 import Header from './header';
 import Splash from './splash';
@@ -18,7 +18,7 @@ const App = ({ currentBeingId }) => (
                 <Route exact path="/" render={ () => (
                     <AppContainer inverted>
                         <Header />
-                        <ChatWindow />
+                        <Content />
                     </AppContainer>
                 ) } />
             }
