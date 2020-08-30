@@ -241,6 +241,16 @@
       }
     }
 
+    &:first-child {
+      border-top-left-radius: $small-round;
+      border-bottom-left-radius: $small-round;
+    }
+
+    &:last-child {
+      border-top-right-radius: $small-round;
+      border-bottom-right-radius: $small-round;
+    }
+
     >.menu.submenu {
       width: 100%;
     }

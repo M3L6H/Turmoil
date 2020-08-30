@@ -17,7 +17,11 @@ export default () => {
       className="friends-menu"
     >
       { items.map((item, i) => (
-        <Menu.Item key={ i } active={ selected === item }>
+        <Menu.Item
+          key={ i }
+          active={ selected === item }
+          onClick={ () => setSelected(item) }
+        >
           { item }
         </Menu.Item>
       )) }
