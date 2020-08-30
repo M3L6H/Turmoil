@@ -37,7 +37,9 @@
 }
 
 .shoebuckle.menu.friends-menu {
-  .menu-item.active {
-    background: $darkest;
-  }
+  .menu-item {
+    &.active, &:hover {
+      background: $darkest;
+    }
+  } 
 }
