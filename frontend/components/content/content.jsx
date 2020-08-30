@@ -1,14 +1,13 @@
 import React from 'react';
 
 import ChatWindow from '../chat_window';
+import Dashboard from '../dashboard';
 
 export default ({ selected }) => {
-  let Component;
-
   switch (selected) {
+    case "dashboard":
+      return <Dashboard />;
     default:
-      Component = ChatWindow;
+      return <ChatWindow />;
   }
-
-  return <Component />;
 };
