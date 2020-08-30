@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default ({ dashboard }) => {
+import FriendsList from './friends_list_container';
+
+export default ({ dashboard, ...otherProps }) => {
   switch (dashboard.selected) {
     default:
-      return <div>Test</div>
+      return <FriendsList { ...otherProps } />
   }
 };
