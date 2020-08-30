@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Menu } from '../shoebuckle';
 
+const items = [
+  "All",
+  "Invites",
+  "Blocked"
+];
+
 export default () => {
+  const [selected, setSelected] = useState(items[0]);
+  
   return (
     <Menu
       inverted
+      className="friends-menu"
     >
-      <Menu.Item>
-        Test
-      </Menu.Item>
+      { items.map((item, i) => (
+        <Menu.Item key={ i } active={ selected === item }>
+          { item }
+        </Menu.Item>
+      )) }
     </Menu>
   );
 };
