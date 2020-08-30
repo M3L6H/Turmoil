@@ -6,7 +6,7 @@ export default ({ comrades, inverted }) => {
   comrades = comrades.filter(({ pending, blocked }) => !(pending || blocked ));
 
   return (
-    <Section inverted={ inverted }>
+    <Section inverted={ inverted } className="friends-list-section">
       <Header as="h3" inverted={ inverted }>All Friends</Header>
     </Section>
   );
