@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Menu } from '../shoebuckle';
 
@@ -8,9 +8,7 @@ const items = [
   "Blocked"
 ];
 
-export default () => {
-  const [selected, setSelected] = useState(items[0]);
-  
+export default ({ tab, receiveDashboardSelection }) => {
   return (
     <Menu
       inverted
@@ -19,8 +17,8 @@ export default () => {
       { items.map((item, i) => (
         <Menu.Item
           key={ i }
-          active={ selected === item }
-          onClick={ () => setSelected(item) }
+          active={ tab === item.toLowerCase() }
+          onClick={ () => receiveDashboardSelection({ selected: "friends", tab: item.toLowerCase() }) }
         >
           { item }
         </Menu.Item>
