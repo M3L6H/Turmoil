@@ -1,11 +1,17 @@
 import * as ComradesUtil from "../util/comrades_util";
 
 export const RECEIVE_COMRADE = "RECEIVE_COMRADE";
+export const RECEIVE_COMRADE_BEING = "RECEIVE_COMRADE_BEING";
 export const REMOVE_COMRADE = "REMOVE_COMRADE";
 export const RECEIVE_COMRADES_ERRORS = "RECEIVE_COMRADES_ERRORS";
 
 const receiveComrade = (comrade) => ({
   type: RECEIVE_COMRADE,
+  comrade
+});
+
+const receiveComradeBeing = (comrade) => ({
+  type: RECEIVE_COMRADE_BEING,
   comrade
 });
 
@@ -31,8 +37,8 @@ export const deleteComrade = comradeId => dispatch => (
     .fail(jqXHR => dispatch(receiveComradesErrors(jqXHR.responseJSON)))
 );
 
-export const updateComrade = comrade => dispatch => (
+export const updateComrade = (comrade, comradeBeing=false) => dispatch => (
   ComradesUtil.updateComrade(comrade)
-    .then(res => dispatch(receiveComrade(res)))
+    .then(res => dispatch(comradeBeing ? receiveComradeBeing(res) : receiveComrade(res)))
     .fail(jqXHR => dispatch(receiveComradesErrors(jqXHR.responseJSON)))
 );
