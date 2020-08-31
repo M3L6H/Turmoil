@@ -48,4 +48,9 @@
   border-top: $thin solid $dark;
   padding: 1rem;
   flex: 1 1 auto;
+
+  .friends-list-header-container {
+    display: flex;
+    justify-content: space-between;
+  }
 }
