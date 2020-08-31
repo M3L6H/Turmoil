@@ -50,8 +50,8 @@ export default ({ beings, comrade, currentBeingId }) => {
     if (comrade.pending) {
       iconSet = (
         <span className="friend-entry-icon-set">
-          <Icon large name="check" />
-          <Icon large name="times" />
+          <Icon large name="check" green />
+          <Icon large name="times" red />
         </span>
       );
     }

@@ -72,6 +72,10 @@
       .friend-entry-icon-set {
         margin-left: auto;
         align-self: flex-end;
+
+        >* {
+          margin-left: 0.5rem;
+        }
       }
     }
   }
