@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { searchBeings } from '../../actions/beings_actions';
 import { receiveFriendsModal } from '../../actions/modals_actions';
-import { createComrade } from '../../actions/comrades_actions';
+import { createComrade, deleteComrade, updateComrade } from '../../actions/comrades_actions';
 import { selectComrades, selectComradeBeings, selectSearchBeings } from '../../reducers/selectors';
 
 import FriendsList from './friends_list';
@@ -19,6 +19,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   createComrade: (comrade) => dispatch(createComrade(comrade)),
+  deleteComrade: comradeId => dispatch(deleteComrade(comradeId)),
+  updateComrade: comrade => dispatch(updateComrade(comrade)),
   fetchSearchBeings: (search) => dispatch(searchBeings(search)),
   receiveFriendsModal: (open) => dispatch(receiveFriendsModal(open))
 });

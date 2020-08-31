@@ -2,7 +2,13 @@ import React from 'react';
 
 import { Icon, Section } from '../shoebuckle';
 
-export default ({ beings, comrade, currentBeingId }) => {
+export default ({
+  beings,
+  comrade,
+  currentBeingId,
+  deleteComrade,
+  updateComrade
+}) => {
   let pendingIcon;
   let being;
   let iconSet;
@@ -26,7 +32,12 @@ export default ({ beings, comrade, currentBeingId }) => {
     if (comrade.pending) {
       iconSet = (
         <span className="friend-entry-icon-set">
-          <Icon large name="times" />
+          <Icon
+            large
+            name="times"
+            red
+            onClick={ () => deleteComrade(comrade.id) }
+          />
         </span>
       );
     }
@@ -50,8 +61,18 @@ export default ({ beings, comrade, currentBeingId }) => {
     if (comrade.pending) {
       iconSet = (
         <span className="friend-entry-icon-set">
-          <Icon large name="check" green />
-          <Icon large name="times" red />
+          <Icon
+            large
+            name="check"
+            green
+            onClick={ () => updateComrade({ ...comrade, pending: false }) }
+          />
+          <Icon
+            large
+            name="times"
+            red
+            onClick={ () => deleteComrade(comrade.id) }
+          />
         </span>
       );
     }

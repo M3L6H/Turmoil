@@ -9,6 +9,8 @@ export default ({
   beings,
   currentBeingId,
   createComrade,
+  deleteComrade,
+  updateComrade,
   comrades,
   comradeBeings,
   fetchSearchBeings,
@@ -57,6 +59,8 @@ export default ({
             comrade={ comrade }
             beings={ beings }
             currentBeingId={ currentBeingId }
+            deleteComrade={ deleteComrade }
+            updateComrade={ updateComrade }
           />
         )) }
       </div>
