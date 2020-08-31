@@ -8,6 +8,16 @@ export default ({ comrades, inverted, tab }) => {
   let header;
 
   switch (tab) {
+    case "blocked":
+      header = (
+        <Header as="h3" inverted={ inverted }>Blocked Entities</Header>
+      );
+      break;
+    case "invites":
+      header = (
+        <Header as="h3" inverted={ inverted }>Friend Invites</Header>
+      );
+      break;
     default:
       header = (
         <div className="friends-list-header-container">
