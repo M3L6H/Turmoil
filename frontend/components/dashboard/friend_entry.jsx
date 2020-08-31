@@ -65,7 +65,7 @@ export default ({
             large
             name="check"
             green
-            onClick={ () => updateComrade({ ...comrade, pending: false }) }
+            onClick={ () => updateComrade({ ...comrade, pending: false }, true) }
           />
           <Icon
             large
@@ -81,6 +81,7 @@ export default ({
   return (
     <Section horizontal className="friend-entry">
       { comrade.pending && pendingIcon }
+      { !comrade.pending && <Icon name="user" large /> }
       <span className="friend-name">{ being.username }</span>
       { iconSet }
     </Section>
