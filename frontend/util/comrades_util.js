@@ -18,7 +18,7 @@ export const deleteComrade = (comradeId) => (
 export const updateComrade = (comrade) => (
   $.ajax({
     method: "PATCH",
-    url: `/api/comrades/${ being.id }`,
+    url: `/api/comrades/${ comrade.id }`,
     data: { comrade },
     dataType: "json"
   })
