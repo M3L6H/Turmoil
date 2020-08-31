@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let store;
 
   if (window.currentDetails) { 
-    const { being, dimensions, comrades, comradeBeings } = window.currentDetails;
+    const { being, beings, dimensions, comrades, comradeBeings } = window.currentDetails;
     
     const preloadedState = {
       entities: {
-        beings: { [being.id]: being },
+        beings,
         dimensions,
         comrades: comrades || {},
         comradeBeings: comradeBeings || {}

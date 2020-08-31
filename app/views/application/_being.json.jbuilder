@@ -1,5 +1,17 @@
 json.being do
-  json.extract! being, :username, :id, :status, :custom_status
+  json.extract! being, :id
+end
+
+json.beings do
+  if Being.all.empty?
+    json.null!
+  else
+    Being.all.each do |b|
+      json.set! b.id do
+        json.extract! b, :username, :id, :status, :custom_status
+      end
+    end
+  end
 end
 
 json.dimensions do
