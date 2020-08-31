@@ -2,7 +2,14 @@ import React from 'react';
 
 import { Header, Icon, Section } from '../shoebuckle';
 
-export default ({ comrades, comradeBeings, inverted, tab, openFriendsModal }) => {
+export default ({
+  beings,
+  comrades,
+  comradeBeings,
+  inverted,
+  tab,
+  openFriendsModal
+}) => {
   comrades = comrades.filter(({ pending, blocked }) => !(pending || blocked ));
 
   let header;
@@ -34,9 +41,14 @@ export default ({ comrades, comradeBeings, inverted, tab, openFriendsModal }) =>
         comradeBeings.filter(({ pending, blocked }) => !(pending || blocked));
   }
 
+  comradesList = comradesList || [];
+
   return (
     <Section inverted={ inverted } className="friends-list-section">
       { header }
+      { comradesList.map(c => (
+        <Section></Section>
+      )) }
     </Section>
   );
 };

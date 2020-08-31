@@ -1,3 +1,7 @@
+export const selectBeings = ({ entities: { beings } }) => (
+  beings ? Object.values(beings) : []
+);
+
 export const selectComrades = ({ entities: { comrades } }) => (
   comrades ? Object.values(comrades) : []
 );
