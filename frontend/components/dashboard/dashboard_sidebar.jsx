@@ -33,7 +33,7 @@ export default ({
           compact
           className={ `friends-button${ selected === "friends" ? " selected" : "" }` }
         >
-          Friends
+          Comrades
         </Button>
        </Menu.Item>
       <Menu.Item noHover={ noHover }>

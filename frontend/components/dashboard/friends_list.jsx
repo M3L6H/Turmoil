@@ -15,13 +15,13 @@ export default ({ comrades, inverted, tab }) => {
       break;
     case "invites":
       header = (
-        <Header as="h3" inverted={ inverted }>Friend Invites</Header>
+        <Header as="h3" inverted={ inverted }>Comrade Invites</Header>
       );
       break;
     default:
       header = (
         <div className="friends-list-header-container">
-          <Header as="h3" inline inverted={ inverted }>All Friends</Header>
+          <Header as="h3" inline inverted={ inverted }>All Comrades</Header>
           <Icon large name="plus" />
         </div>
       );
