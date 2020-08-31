@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import { Button, Header, Section } from '../shoebuckle';
 
-import AppHeader from '../app_header';
+import AppHeader from '../header';
 import Bubbles from '../bubbles';
 
 export default class Splash extends Component {
     render() {
-        const { signUp, signIn, openSignUp, inverted } = this.props;
+        const { openSignUp, inverted } = this.props;
 
         return (<>
             <AppHeader />
