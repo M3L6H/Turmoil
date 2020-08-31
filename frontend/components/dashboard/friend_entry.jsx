@@ -45,7 +45,7 @@ export default ({ beings, comrade, currentBeingId }) => {
       </Icon.Group>
     );
 
-    being = beings[cormade.beingId];
+    being = beings[comrade.beingId];
 
     if (comrade.pending) {
       iconSet = (
