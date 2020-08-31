@@ -2,19 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { Button, Header, Icon, Menu } from '../shoebuckle';
 
-import FriendsModal from './friends_modal';
-
 export default ({ 
-  inverted,
   noHover,
-  currentBeingId,
-  createComrade,
-  receiveFriendsModal,
-  friendsModal,
-  fetchBeings,
-  beings,
-  comrades,
-  comradeBeings,
   receiveHeader
 }) => {
   const [selected, setSelected] = useState("friends");
@@ -43,18 +32,6 @@ export default ({
         </span>
         <Icon name="plus" />
       </Menu.Item>
-
-      <FriendsModal
-        { ...friendsModal }
-        inverted={ inverted }
-        currentBeingId={ currentBeingId }
-        createComrade={ createComrade }
-        receiveFriendsModal={ receiveFriendsModal }
-        fetchBeings={ fetchBeings }
-        beings={ beings }
-        comrades={ comrades }
-        comradeBeings={ comradeBeings }
-      />
     </>
   );
 };
