@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     resources :comrades, only: [:create, :destroy, :update]
     
     resources :dimensions, except: [:new, :edit] do
-        resources :dimension_beings, only: [:create]
-        resources :roles, only: [:create]
+      resources :dimension_beings, only: [:create]
+      resources :roles, only: [:create]
     end
 
     resources :dimension_beings, only: [:show, :destroy, :update]
