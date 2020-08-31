@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :beings, except: [:new, :edit]
     resources :clusters, only: [:create, :destroy, :update]
-    resources :comrades, only: [:create, :delete, :update]
+    resources :comrades, only: [:create, :destroy, :update]
     
     resources :dimensions, except: [:new, :edit] do
         resources :dimension_beings, only: [:create]
