@@ -6,7 +6,7 @@ import { selectComrades, selectComradeBeings, selectBeings } from '../../reducer
 import FriendsList from './friends_list';
 
 const mapStateToProps = (state) => ({
-  beings: selectBeings(state),
+  beings: state.entities.beings,
   currentBeingId: state.session.currentBeingId,
   comrades: selectComrades(state),
   comradeBeings: selectComradeBeings(state),

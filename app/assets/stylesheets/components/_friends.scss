@@ -53,4 +53,21 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .friends-list-container {
+    .friend-entry {
+      background: $dark;
+      padding: 1rem;
+      padding-bottom: 0;
+      padding-left: 1.5rem;
+      border-radius: $small-round;
+      display: flex;
+      align-items: center;
+
+      .friend-name {
+        margin-left: 1rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
 }
