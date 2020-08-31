@@ -13,7 +13,7 @@ export default (state={}, action) => {
       return { ...state, [action.comrade.id]: action.comrade };
     case REMOVE_COMRADE:
       const newState = Object.assign({}, state);
-      delete newState[action.comradeId];
+      delete newState[action.id];
       return newState;
     default:
       return state;
