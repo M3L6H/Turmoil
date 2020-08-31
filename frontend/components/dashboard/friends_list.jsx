@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Header, Icon, Section } from '../shoebuckle';
 
-export default ({ comrades, inverted, tab }) => {
+export default ({ comrades, inverted, tab, openFriendsModal }) => {
   comrades = comrades.filter(({ pending, blocked }) => !(pending || blocked ));
 
   let header;
@@ -22,7 +22,7 @@ export default ({ comrades, inverted, tab }) => {
       header = (
         <div className="friends-list-header-container">
           <Header as="h3" inline inverted={ inverted }>All Comrades</Header>
-          <Icon large name="plus" />
+          <Icon large name="plus" onClick={ openFriendsModal } />
         </div>
       );
   }
