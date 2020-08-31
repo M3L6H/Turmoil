@@ -22,11 +22,14 @@ export default ({ beings, comrade, currentBeingId }) => {
     );
 
     being = beings[comrade.comradeId];
-    iconSet = (
-      <span className="friend-entry-icon-set">
-        <Icon large name="times" />
-      </span>
-    );
+
+    if (comrade.pending) {
+      iconSet = (
+        <span className="friend-entry-icon-set">
+          <Icon large name="times" />
+        </span>
+      );
+    }
   }
   else {
     pendingIcon = (
@@ -43,6 +46,15 @@ export default ({ beings, comrade, currentBeingId }) => {
     );
 
     being = beings[cormade.beingId];
+
+    if (comrade.pending) {
+      iconSet = (
+        <span className="friend-entry-icon-set">
+          <Icon large name="check" />
+          <Icon large name="times" />
+        </span>
+      );
+    }
   }
 
   return (
