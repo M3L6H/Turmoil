@@ -5,6 +5,7 @@ import { Icon, Section } from '../shoebuckle';
 export default ({ beings, comrade, currentBeingId }) => {
   let pendingIcon;
   let being;
+  let iconSet;
   
   if (comrade.beingId === currentBeingId) {
     pendingIcon = (
@@ -21,6 +22,11 @@ export default ({ beings, comrade, currentBeingId }) => {
     );
 
     being = beings[comrade.comradeId];
+    iconSet = (
+      <span className="friend-entry-icon-set">
+        <Icon large name="times" />
+      </span>
+    );
   }
   else {
     pendingIcon = (
@@ -43,6 +49,7 @@ export default ({ beings, comrade, currentBeingId }) => {
     <Section horizontal className="friend-entry">
       { comrade.pending && pendingIcon }
       <span className="friend-name">{ being.username }</span>
+      { iconSet }
     </Section>
   );
 };
