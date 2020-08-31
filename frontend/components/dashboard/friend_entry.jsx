@@ -78,6 +78,19 @@ export default ({
     }
   }
 
+  if (!comrade.pending && !comrade.blocked) {
+    iconSet = (
+      <span className="friend-entry-icon-set">
+        <Icon
+          large
+          name="user-minus"
+          red
+          onClick={ () => deleteComrade(comrade.id) }
+        />
+      </span>
+    );
+  }
+
   return (
     <Section horizontal className="friend-entry">
       { comrade.pending && pendingIcon }
