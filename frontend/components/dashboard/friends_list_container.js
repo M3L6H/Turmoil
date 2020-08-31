@@ -7,6 +7,7 @@ import FriendsList from './friends_list';
 
 const mapStateToProps = (state) => ({
   beings: selectBeings(state),
+  currentBeingId: state.session.currentBeingId,
   comrades: selectComrades(state),
   comradeBeings: selectComradeBeings(state),
   tab: state.ui.dashboard.tab
