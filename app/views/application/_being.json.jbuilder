@@ -63,3 +63,15 @@ json.conversations do
     end
   end
 end
+
+json.being_conversations do
+  if being.being_conversations.empty?
+    json.null!
+  else
+    json.being_conversations.each do |bc|
+      json.set! bc.id do
+        json.partial! "application/being_conversation.json.jbuilder", being_conversation: bc
+      end
+    end
+  end
+end
