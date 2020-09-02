@@ -14,7 +14,8 @@ export default ({
   beingConversations,
   dashboard,
   receiveDashboardSelection,
-  receiveHeader
+  receiveHeader,
+  closeSidebar
 }) => {
 
   return (
@@ -24,6 +25,7 @@ export default ({
           active={ dashboard.conversation === conv.id }
           key={ conv.id }
           onClick={ () => {
+            closeSidebar();
             receiveDashboardSelection({ selected: "conversation", conversation: conv.id });
             receiveHeader("conversation");
             fetchConversation(conv.id);

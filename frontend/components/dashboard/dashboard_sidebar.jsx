@@ -8,7 +8,8 @@ export default ({
   noHover,
   receiveDashboardSelection,
   receiveHeader,
-  dashboard
+  dashboard,
+  closeSidebar
 }) => {
   useEffect(() => {
     receiveHeader(dashboard.selected);
@@ -24,6 +25,7 @@ export default ({
           compact
           className={ `friends-button${ dashboard.selected === "friends" ? " selected" : "" }` }
           onClick={ () => {
+            closeSidebar();
             receiveDashboardSelection({ selected: "friends", tab: "all" });
             receiveHeader("friends");
           } }
