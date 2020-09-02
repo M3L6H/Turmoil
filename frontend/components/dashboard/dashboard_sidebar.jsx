@@ -36,7 +36,6 @@ export default ({
           <Icon name="comment" className="dms-icon" />
           <Header as="h4" inline>Direct Messages</Header>
         </span>
-        <Icon name="plus" />
       </Menu.Item>
       <ConversationList />
     </>
