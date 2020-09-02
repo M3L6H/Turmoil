@@ -9,7 +9,8 @@ export default ({
   receiveDashboardSelection,
   receiveHeader,
   dashboard,
-  closeSidebar
+  closeSidebar,
+  signOut
 }) => {
   useEffect(() => {
     receiveHeader(dashboard.selected);
@@ -32,7 +33,20 @@ export default ({
         >
           Comrades
         </Button>
-       </Menu.Item>
+      </Menu.Item>
+      <Menu.Item noHover={ noHover }>
+        <Button
+          fluid
+          compact
+          className={ `sign-out-button` }
+          onClick={ () => {
+            closeSidebar();
+            signOut();
+          } }
+        >
+          Sign Out
+        </Button>
+      </Menu.Item>
       <Menu.Item noHover={ noHover }>
         <span>
           <Icon name="comment" className="dms-icon" />

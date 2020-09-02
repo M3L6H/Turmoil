@@ -1,3 +1,14 @@
 .friends-icon, .dms-icon {
   margin-right: 0.5rem;
 }
+
+.shoebuckle.btn {
+  &.friends-button, &.sign-out-button {
+    background: transparent;
+    color: $lightest;
+  
+    &:hover, &.selected {
+      background: $darker;
+    }
+  }
+}

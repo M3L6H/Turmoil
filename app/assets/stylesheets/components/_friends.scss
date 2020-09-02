@@ -1,12 +1,3 @@
-.shoebuckle.btn.friends-button {
-  background: transparent;
-  color: $lightest;
-
-  &:hover, &.selected {
-    background: $darker;
-  }
-}
-
 .shoebuckle.modal.friends-search-modal {
   max-width: 500px;
   width: 100%;
