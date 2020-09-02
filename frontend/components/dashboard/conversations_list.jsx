@@ -10,7 +10,7 @@ export default ({ beings, conversations, beingConversations }) => {
     <Menu.Menu inverted className="conversation-list">
       { conversations.map(conv => (
         <Menu.Item key={ conv.id }>
-          { truncate(beingConversations.map(({ beingId }) => beings[beingId].username).concat([beings[conv.beingId].username]).join(", ")) }
+          { truncate(beingConversations.filter(({ conversationId }) => conversationId === conv.id).map(({ beingId }) => beings[beingId].username).concat([beings[conv.beingId].username]).join(", ")) }
         </Menu.Item>
       )) }
     </Menu.Menu>
