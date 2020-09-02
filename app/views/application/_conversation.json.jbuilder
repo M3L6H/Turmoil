@@ -2,6 +2,18 @@ json.conversation do
   json.extract! conversation, :id, :being_id
 end
 
+json.being_conversations do
+  if conversation.being_conversations.empty?
+    json.null!
+  else
+    conversation.being_conversations.each do |bc|
+      json.set! bc.id do
+        json.extract! bc, :id, :being_id, :conversation_id
+      end
+    end
+  end
+end
+
 json.beings do
   ([conversation.being] + conversation.joined_beings).each do |being|
     json.set! being.id do

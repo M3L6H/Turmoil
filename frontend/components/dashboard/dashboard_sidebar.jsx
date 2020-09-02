@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { Button, Header, Icon, Menu } from '../shoebuckle';
 
+import ConversationList from './conversations_list_container';
+
 export default ({ 
   noHover,
   receiveHeader
@@ -32,6 +34,7 @@ export default ({
         </span>
         <Icon name="plus" />
       </Menu.Item>
+      <ConversationList />
     </>
   );
 };

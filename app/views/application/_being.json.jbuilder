@@ -50,27 +50,29 @@ json.comrade_beings do
   end
 end
 
-json.conversations do
-  conversations = being.conversations + being.joined_conversations
+conversations = being.conversations.includes(:being_conversations) + being.joined_conversations.includes(:being_conversations)
+being_conversations = []
 
+json.conversations do
   if conversations.empty?
     json.null!
   else
     conversations.each do |c|
+      being_conversations += c.being_conversations
       json.set! c.id do
-        json.partial! "application/conversation.json.jbuilder", conversation: c
+        json.extract! c, :id, :being_id, :conversation_type
       end
     end
   end
 end
 
 json.being_conversations do
-  if being.being_conversations.empty?
+  if being_conversations.empty?
     json.null!
   else
-    json.being_conversations.each do |bc|
+    being_conversations.being_conversations.each do |bc|
       json.set! bc.id do
-        json.partial! "application/being_conversation.json.jbuilder", being_conversation: bc
+        json.extract! bc, :id, :being_id, :conversation_id
       end
     end
   end

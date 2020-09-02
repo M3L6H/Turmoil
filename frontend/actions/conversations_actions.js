@@ -7,8 +7,14 @@ export const RECEIVE_BEING_CONVERSATION = "RECEIVE_BEING_CONVERSATION";
 export const REMOVE_BEING_CONVERSATION = "REMOVE_BEING_CONVERSATION";
 export const RECEIVE_BEING_CONVERSATION_ERRORS = "RECEIVE_BEING_CONVERSATION_ERRORS";
 
-export const receiveConversation = ({ conversation, missives, beings }) => ({
+export const receiveConversation = ({
+  conversation,
+  beingConversations,
+  missives,
+  beings
+}) => ({
   type: RECEIVE_CONVERSATION,
+  beingConversations,
   conversation,
   missives,
   beings

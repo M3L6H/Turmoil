@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
       dimensions,
       comrades,
       comradeBeings,
-      conversations
+      conversations,
+      beingConversations
     } = window.currentDetails;
     
     const preloadedState = {
@@ -26,7 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
         dimensions,
         comrades: comrades || {},
         comradeBeings: comradeBeings || {},
-        conversations: conversations || {}
+        conversations: conversations || {},
+        beingConversations: beingConversations || {}
       },
       session: { currentBeingId: being.id }
     };
