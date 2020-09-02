@@ -35,6 +35,6 @@ class Api::ConversationsController < ApplicationController
 
 private
   def conversation_params
-    params.require(:conversation).permit(:being_id, :type)
+    params.require(:conversation).permit(:being_id, :conversation_type)
   end
 end

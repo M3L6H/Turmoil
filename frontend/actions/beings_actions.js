@@ -15,14 +15,22 @@ const receiveSearchBeings = beings => (
   receiveBeings(beings, "RECEIVE_SEARCH_BEINGS")
 );
 
-const receiveBeing = ({ being, beings, dimensions, comrades, comradeBeings }) => ({
+const receiveBeing = ({
+  being,
+  beings,
+  dimensions,
+  comrades,
+  comradeBeings,
+  conversations
+}) => ({
   type: RECEIVE_BEING,
   being,
   beings,
   dimensions,
   beingId: being.id,
   comrades,
-  comradeBeings
+  comradeBeings,
+  conversations
 });
 
 const removeBeing = (beingId) => ({
