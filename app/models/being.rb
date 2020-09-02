@@ -39,6 +39,7 @@ class Being < ApplicationRecord
 
   # Associations
   has_many :being_conversations, dependent: :destroy
+  has_many :joined_conversations, through: :being_conversations, source: :conversation
   has_many :conversations, dependent: :destroy
   has_many :dimensions, dependent: :restrict_with_exception
   has_many :dimension_beings, dependent: :destroy

@@ -49,3 +49,17 @@ json.comrade_beings do
     end
   end
 end
+
+json.conversations do
+  conversations = being.conversations + being.joined_conversations
+
+  if conversations.empty?
+    json.null!
+  else
+    conversations.each do |c|
+      json.set! c.id do
+        json.partial! "application/conversation.json.jbuilder", conversation: c
+      end
+    end
+  end
+end
