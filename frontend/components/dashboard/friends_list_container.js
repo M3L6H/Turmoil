@@ -26,8 +26,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   createComrade: (comrade) => dispatch(createComrade(comrade)),
-  deleteComrade: comradeId => dispatch(deleteComrade(comradeId)),
-  updateComrade: comrade => dispatch(updateComrade(comrade)),
+  deleteComrade: (comradeId, comradeBeing) => dispatch(deleteComrade(comradeId, comradeBeing)),
+  updateComrade: (comrade, comradeBeing) => dispatch(updateComrade(comrade, cormadeBeing)),
   receiveComrade: comrade => dispatch(receiveComrade(comrade)),
   receiveComradeBeing: comrade => dispatch(receiveComradeBeing(comrade)),
   fetchSearchBeings: (search) => dispatch(searchBeings(search)),

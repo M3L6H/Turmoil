@@ -71,7 +71,7 @@ export default ({
             large
             name="times"
             red
-            onClick={ () => deleteComrade(comrade.id) }
+            onClick={ () => deleteComrade(comrade.id, true) }
           />
         </span>
       );
@@ -85,7 +85,7 @@ export default ({
           large
           name="user-minus"
           red
-          onClick={ () => deleteComrade(comrade.id) }
+          onClick={ () => deleteComrade(comrade.id, comrade.beingId !== currentBeingId) }
         />
       </span>
     );
