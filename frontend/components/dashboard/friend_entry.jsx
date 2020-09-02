@@ -98,8 +98,10 @@ export default ({
           green
           onClick={ () => {
             createConversation({ being_id: currentBeingId })
-              .then(({ conversation }) => {
-                createBeingConversation({ being_id: comrade.being_id == currentBeingId ? comrade.comrade_id : comrade.being_id, conversation_id: conversation.id });
+              .then((data) => {
+                console.log(data);
+                const { conversation } = data;
+                createBeingConversation({ being_id: comrade.being_id === currentBeingId ? comrade.comradeId : comrade.beingId, conversation_id: conversation.id });
               });
           } }
         />

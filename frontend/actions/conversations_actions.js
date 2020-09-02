@@ -65,17 +65,17 @@ export const createConversation = (conversation) => dispatch => (
 
 export const deleteConversation = (conversationId) => dispatch => (
   ConvUtil.deleteConversation(conversationId)
-    .then(res => dispatch(removeConversation(res))))
-    .fail(jqXHR => dispatch(receiveConversationErrors(jqXHR.responseJSON))
+    .then(res => dispatch(removeConversation(res)))
+    .fail(jqXHR => dispatch(receiveConversationErrors(jqXHR.responseJSON)))
 );
 
-export const createBeingConversation = (beingConversation) => dispatch (
+export const createBeingConversation = (beingConversation) => dispatch => (
   ConvUtil.createBeingConversation(beingConversation)
     .then(res => dispatch(receiveBeingConversation(res)))
     .fail(jqXHR => dispatch(receiveBeingConversationErrors(jqXHR.responseJSON)))
 );
 
-export const deleteBeingConversation = (beingConversationId) => dispatch (
+export const deleteBeingConversation = (beingConversationId) => dispatch => (
   ConvUtil.deleteBeingConversation(beingConversationId)
     .then(res => dispatch(removeBeingConversation(res)))
     .fail(jqXHR => dispatch(receiveBeingConversationErrors(jqXHR.responseJSON)))

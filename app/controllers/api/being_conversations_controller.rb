@@ -8,7 +8,7 @@ class Api::BeingConversationsController < ApplicationController
     if @being_conversation.save
       render :create
     else
-      render json: @being.errors.full_messages, status: 422
+      render json: @being_conversation.errors.full_messages, status: 422
     end
   end
 

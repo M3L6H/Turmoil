@@ -70,7 +70,7 @@ json.being_conversations do
   if being_conversations.empty?
     json.null!
   else
-    being_conversations.being_conversations.each do |bc|
+    being_conversations.each do |bc|
       json.set! bc.id do
         json.extract! bc, :id, :being_id, :conversation_id
       end

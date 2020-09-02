@@ -1,3 +1,3 @@
 json.being_conversation do
-  json.extract! being_conversation, :id, :being_id, :type
+  json.extract! being_conversation, :id, :being_id, :conversation_id
 end
