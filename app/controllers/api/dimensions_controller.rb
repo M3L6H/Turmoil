@@ -28,10 +28,10 @@ class Api::DimensionsController < ApplicationController
                 Role.create!(dimension_id: @dimension.id, can_be_deleted: false, name: "everyone")
                 DimensionBeing.create!(nickname: current_being.username, being_id: current_being.id, dimension_id: @dimension.id)
                 text_cluster = Cluster.create!(name: "Text Realms", dimension_id: @dimension.id)
-                voice_cluster = Cluster.create!(name: "Voice Realms", dimension_id: @dimension.id, prev_orderable_id: text_cluster.id, prev_orderable_type: "Cluster")
-                text_cluster.update!(next_orderable_id: voice_cluster.id, next_orderable_type: "Cluster")
+                # voice_cluster = Cluster.create!(name: "Voice Realms", dimension_id: @dimension.id, prev_orderable_id: text_cluster.id, prev_orderable_type: "Cluster")
+                # text_cluster.update!(next_orderable_id: voice_cluster.id, next_orderable_type: "Cluster")
                 Realm.create!(name: "general", cluster_id: text_cluster.id, dimension_id: @dimension.id)
-                Realm.create!(name: "general", cluster_id: voice_cluster.id, dimension_id: @dimension.id, realm_type: "voice")
+                # Realm.create!(name: "general", cluster_id: voice_cluster.id, dimension_id: @dimension.id, realm_type: "voice")
             end
             render :create
         else
