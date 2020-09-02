@@ -1,3 +1,1 @@
-json.being_conversation do
-  json.extract! being_conversation, :id, :being_id, :conversation_id
-end
+json.extract! being_conversation, :id, :being_id, :conversation_id

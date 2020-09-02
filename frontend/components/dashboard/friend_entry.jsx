@@ -101,7 +101,7 @@ export default ({
               .then((data) => {
                 console.log(data);
                 const { conversation } = data;
-                createBeingConversation({ being_id: comrade.being_id === currentBeingId ? comrade.comradeId : comrade.beingId, conversation_id: conversation.id });
+                createBeingConversation({ being_id: comrade.beingId === currentBeingId ? comrade.comradeId : comrade.beingId, conversation_id: conversation.id });
               });
           } }
         />
