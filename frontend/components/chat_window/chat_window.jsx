@@ -128,7 +128,27 @@ export default class ChatWindow extends Component {
       currentBeingId
     } = this.props;
 
-    if ((!selectedRealm && !conversation) || !currentBeingId) return null;
+    if ((!selectedRealm && !conversation) || !currentBeingId) {
+      return (
+        <Section
+          className="chat-window"
+          inverted={ inverted }
+        >
+          <Form className="chat-bar" onSubmit={ this._handleSubmit }>
+            <Form.Input 
+              data-type="body" 
+              value={ body }
+              onChange={ this._handleChange } 
+            />
+            { body !== "" && (
+              <Button type="submit" icon>
+                <Icon name="arrow-alt-circle-right" primary large />
+              </Button>
+            ) }
+          </Form>
+        </Section>
+      );
+    }
     
     return (
       <Section 
