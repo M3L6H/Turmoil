@@ -5,10 +5,11 @@ import ConversationsList from './conversations_list';
 import { receiveDashboardSelection } from '../../actions/dashboard_actions';
 import { receiveHeader } from '../../actions/header_actions';
 
-const mapStateToProps = ({ entities: { beings, conversations, beingConversations } }) => ({
+const mapStateToProps = ({ entities: { beings, conversations, beingConversations }, ui: { dashboard } }) => ({
   beings,
   conversations: conversations ? Object.values(conversations) : [],
-  beingConversations: beingConversations ? Object.values(beingConversations) : []
+  beingConversations: beingConversations ? Object.values(beingConversations) : [],
+  dashboard
 });
 
 const mapDispatchToProps = (dispatch) => ({

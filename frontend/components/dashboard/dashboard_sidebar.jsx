@@ -6,15 +6,15 @@ import ConversationList from './conversations_list_container';
 
 export default ({ 
   noHover,
-  receiveHeader
+  receiveDashboardSelection,
+  receiveHeader,
+  dashboard
 }) => {
-  const [selected, setSelected] = useState("friends");
-
   useEffect(() => {
-    receiveHeader(selected);
+    receiveHeader(dashboard.selected);
 
     return () => receiveHeader("app");
-  }, [selected]);
+  }, []);
   
   return (
     <>
@@ -22,7 +22,11 @@ export default ({
         <Button
           fluid
           compact
-          className={ `friends-button${ selected === "friends" ? " selected" : "" }` }
+          className={ `friends-button${ dashboard.selected === "friends" ? " selected" : "" }` }
+          onClick={ () => {
+            receiveDashboardSelection({ selected: "friends", tab: "all" });
+            receiveHeader("friends");
+          } }
         >
           Comrades
         </Button>

@@ -8,6 +8,7 @@ export default ({
   beings,
   conversations,
   beingConversations,
+  dashboard,
   receiveDashboardSelection,
   receiveHeader
 }) => {
@@ -16,6 +17,7 @@ export default ({
     <Menu.Menu fluid vertical inverted className="conversation-list">
       { conversations.map(conv => (
         <Menu.Item
+          active={ dashboard.conversation === conv.id }
           key={ conv.id }
           onClick={ () => {
             receiveDashboardSelection({ selected: "conversation", conversation: conv.id });
