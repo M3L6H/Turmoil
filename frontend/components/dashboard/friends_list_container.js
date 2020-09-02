@@ -11,6 +11,10 @@ import {
   removeComrade,
   removeComradeBeing
 } from '../../actions/comrades_actions';
+import { 
+  createConversation,
+  createBeingConversation
+} from '../../actions/conversations_actions';
 import { selectComrades, selectComradeBeings, selectSearchBeings } from '../../reducers/selectors';
 
 import FriendsList from './friends_list';
@@ -35,7 +39,9 @@ const mapDispatchToProps = dispatch => ({
   removeComrade: id => dispatch(removeComrade({ id })),
   removeComradeBeing: id => dispatch(removeComradeBeing({ id })),
   fetchSearchBeings: (search) => dispatch(searchBeings(search)),
-  receiveFriendsModal: (open) => dispatch(receiveFriendsModal(open))
+  receiveFriendsModal: (open) => dispatch(receiveFriendsModal(open)),
+  createConversation: (conversation) => dispatch(createConversation(conversation)),
+  createBeingConversation: (beingConversation) => dispatch(createBeingConversation(beingConversation))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsList);

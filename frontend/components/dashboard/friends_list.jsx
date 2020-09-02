@@ -23,7 +23,9 @@ export default ({
   inverted,
   tab,
   friendsModal,
-  receiveFriendsModal
+  receiveFriendsModal,
+  createConversation,
+  createBeingConversation
 }) => {
   const subscription = useRef(null);
   
@@ -98,6 +100,8 @@ export default ({
             currentBeingId={ currentBeingId }
             deleteComrade={ deleteComrade }
             updateComrade={ updateComrade }
+            createConversation={ createConversation }
+            createBeingConversation={ createBeingConversation }
           />
         )) }
       </div>

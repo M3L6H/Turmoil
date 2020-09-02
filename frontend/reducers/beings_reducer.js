@@ -15,9 +15,10 @@ export default (state={}, action) => {
 
   switch (action.type) {
     case RECEIVE_BEINGS:
+      return action.beings;
     case RECEIVE_BEING_CONVERSATION:
     case RECEIVE_CONVERSATION:
-      return action.beings;
+      return { ...action.beings, ...state };
     case RECEIVE_MISSIVE:
       if (!action.being) return state;
     case RECEIVE_SESSION:

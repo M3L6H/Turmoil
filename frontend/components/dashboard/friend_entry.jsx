@@ -7,7 +7,9 @@ export default ({
   comrade,
   currentBeingId,
   deleteComrade,
-  updateComrade
+  updateComrade,
+  createConversation,
+  createBeingConversation
 }) => {
   let pendingIcon;
   let being;
@@ -94,6 +96,12 @@ export default ({
           large
           name="comment-medical"
           green
+          onClick={ () => {
+            createConversation({ being_id: currentBeingId })
+              .then(({ conversation }) => {
+                createBeingConversation({ being_id: comrade.being_id == currentBeingId ? comrade.comrade_id : comrade.being_id, conversation_id: conversation.id });
+              });
+          } }
         />
         <Icon
           large
