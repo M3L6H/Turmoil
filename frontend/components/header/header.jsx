@@ -7,6 +7,7 @@ import { Header, Icon } from '../shoebuckle'
 import AuthForm from '../auth/auth_form';
 
 import AppHeader from '../app_header';
+import ConversationHeader from '../conversation_header';
 import FriendsHeader from '../friends_header';
 
 const TopHeader = ({
@@ -26,6 +27,9 @@ const TopHeader = ({
 }) => {
   let Options;
   switch (header) {
+    case "conversation":
+      Options = ConversationHeader;
+      break;
     case "friends":
       Options = FriendsHeader;
       break;
