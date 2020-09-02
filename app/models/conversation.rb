@@ -16,4 +16,5 @@ class Conversation < ApplicationRecord
   validates :conversation_type, presence: true
 
   belongs_to :being
+  has_many :being_conversations, dependent: :destroy
 end
