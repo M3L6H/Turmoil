@@ -62,8 +62,8 @@ export default ({
       header = (
         <Header as="h3" inverted={ inverted }>Blocked Entities</Header>
       );
-      comradesList = comrades.filter(({ blocked }) => blocked).concat(
-        comradeBeings.filter(({ blocked }) => blocked));
+      comradesList = comrades.filter(({ blocked }) => blocked === currentBeingId).concat(
+        comradeBeings.filter(({ blocked }) => blocked === currentBeingId));
       break;
     case "invites":
       header = (
