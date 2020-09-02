@@ -38,6 +38,7 @@ class Being < ApplicationRecord
   after_initialize :ensure_session_token
 
   # Associations
+  has_many :conversations, dependent: :destroy
   has_many :dimensions, dependent: :restrict_with_exception
   has_many :dimension_beings, dependent: :destroy
   has_many :joined_dimensions, through: :dimension_beings, source: :dimension

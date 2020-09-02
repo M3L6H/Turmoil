@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_060823) do
+ActiveRecord::Schema.define(version: 2020_09_02_065133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(version: 2020_09_02_060823) do
     t.datetime "updated_at", null: false
     t.bigint "blocked"
     t.index ["comrade_id", "being_id"], name: "index_comrades_on_comrade_id_and_being_id", unique: true
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "being_id", null: false
+    t.string "conversation_type", default: "text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["being_id"], name: "index_conversations_on_being_id"
   end
 
   create_table "dimension_beings", force: :cascade do |t|
