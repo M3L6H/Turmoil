@@ -14,6 +14,11 @@ class Api::RealmsController < ApplicationController
     def create
         @realm = Realm.new(realm_params)
 
+        if @realm.realm_type == "Voice"
+          render json: ["Realms of type voice are currently not supported"], status: 422
+          return
+        end
+
         if @realm.save
             if @realm.next_orderable_id
                 next_orderable = @realm.next_orderable_type.constantize.find(@realm.next_orderable_id)
