@@ -67,7 +67,10 @@ export default ({
       break;
     case "invites":
       header = (
-        <Header as="h3" inverted={ inverted }>Comrade Invites</Header>
+        <div className="friends-list-header-container">
+          <Header as="h3" inverted={ inverted }>Comrade Invites</Header>
+          <Icon large name="plus" onClick={ () => receiveFriendsModal(true) } />
+        </div>
       );
       comradesList = comrades.filter(({ pending, blocked }) => pending && !blocked).concat(
         comradeBeings.filter(({ pending, blocked }) => pending && !blocked));
