@@ -29,6 +29,7 @@ class Api::ComradesController < ApplicationController
     @comrade = Comrade.find_by(id: params[:id])
 
     if @comrade
+      broadcast(@comrade, { comrade: @comrade, destroy: true })
       @comrade.destroy
       render :destroy
     else
@@ -41,8 +42,9 @@ private
     params.require(:comrade).permit(:comrade_id, :being_id, :blocked, :pending)
   end
 
-  def broadcast(comrade)
-    BeingChannel.broadcast_to Being.find(comrade.being_id), { comrade: comrade }
-    BeingChannel.broadcast_to Being.find(comrade.comrade_id), { comrade: comrade }
+  def broadcast(comrade, data=nil)
+    data ||= { comrade: comrade }
+    BeingChannel.broadcast_to Being.find(comrade.being_id), data
+    BeingChannel.broadcast_to Being.find(comrade.comrade_id), data
   end
 end

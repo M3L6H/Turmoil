@@ -16,6 +16,8 @@ export default ({
   comradeBeings,
   receiveComrade,
   receiveComradeBeing,
+  removeComrade,
+  removeComradeBeing,
   fetchSearchBeings,
   searchBeings,
   inverted,
@@ -30,13 +32,21 @@ export default ({
       channel: "BeingChannel",
       being: currentBeingId
     }, {
-      received: ({ comrade }) => {
+      received: ({ comrade, destroy }) => {
         const { being_id, blocked, comrade_id, id, pending } = comrade;
         comrade = { beingId: being_id, blocked, comradeId: comrade_id, id, pending };
         if (comrade.beingId === currentBeingId) {
-          receiveComrade(comrade);
+          if (destroy) {
+            removeComrade(comrade.id);
+          } else {
+            receiveComrade(comrade);
+          }
         } else {
-          receiveComradeBeing(comrade);
+          if (destroy) {
+            removeComradeBeing(comrade.id);
+          } else {
+            receiveComradeBeing(comrade);
+          }
         }
       }
     });

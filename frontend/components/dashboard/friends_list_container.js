@@ -7,7 +7,9 @@ import {
   deleteComrade,
   updateComrade,
   receiveComrade,
-  receiveComradeBeing
+  receiveComradeBeing,
+  removeComrade,
+  removeComradeBeing
 } from '../../actions/comrades_actions';
 import { selectComrades, selectComradeBeings, selectSearchBeings } from '../../reducers/selectors';
 
@@ -30,6 +32,8 @@ const mapDispatchToProps = dispatch => ({
   updateComrade: (comrade, comradeBeing) => dispatch(updateComrade(comrade, comradeBeing)),
   receiveComrade: comrade => dispatch(receiveComrade(comrade)),
   receiveComradeBeing: comrade => dispatch(receiveComradeBeing(comrade)),
+  removeComrade: id => dispatch(removeComrade({ id })),
+  removeComradeBeing: id => dispatch(removeComradeBeing({ id })),
   fetchSearchBeings: (search) => dispatch(searchBeings(search)),
   receiveFriendsModal: (open) => dispatch(receiveFriendsModal(open))
 });
