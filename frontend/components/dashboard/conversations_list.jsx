@@ -6,6 +6,7 @@ import truncate from '../../util/truncate';
 
 export default ({
   beings,
+  fetchConversation,
   conversations,
   beingConversations,
   dashboard,
@@ -22,6 +23,7 @@ export default ({
           onClick={ () => {
             receiveDashboardSelection({ selected: "conversation", conversation: conv.id });
             receiveHeader("conversation");
+            fetchConversation(conv.id);
           } }
         >
           { truncate(beingConversations.filter(({ conversationId }) => conversationId === conv.id).map(({ beingId }) => beings[beingId].username).concat([beings[conv.beingId].username]).join(", ")) }
