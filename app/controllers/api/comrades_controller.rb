@@ -3,8 +3,7 @@ class Api::ComradesController < ApplicationController
     @comrade = Comrade.new(comrade_params)
 
     if @comrade.save
-      BeingChannel.broadcast_to @current_being, { comrade: @comrade }
-      BeingChannel.broadcast_to Being.find(@comrade.comrade_id), { comrade: @comrade }
+      broadcast(@comrade)
       render :create
     else
       render json: @comrade.errors.full_messages, status: 422
@@ -16,6 +15,7 @@ class Api::ComradesController < ApplicationController
 
     if @comrade
       if @comrade.update(comrade_params)
+        broadcast(@comrade)
         render :update
       else
         render json: @comrade.errors.full_messages, status: 422
@@ -39,5 +39,10 @@ class Api::ComradesController < ApplicationController
 private
   def comrade_params
     params.require(:comrade).permit(:comrade_id, :being_id, :blocked, :pending)
+  end
+
+  def broadcast(comrade)
+    BeingChannel.broadcast_to Being.find(comrade.being_id), { comrade: comrade }
+    BeingChannel.broadcast_to Being.find(comrade.comrade_id), { comrade: comrade }
   end
 end
