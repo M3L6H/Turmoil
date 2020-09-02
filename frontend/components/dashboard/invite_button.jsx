@@ -68,7 +68,7 @@ export default ({
         onClick={ () => createComrade({
           being_id: currentBeingId,
           comrade_id: being.id,
-          blocked: false,
+          blocked: null,
           pending: true
         }) }
       />
