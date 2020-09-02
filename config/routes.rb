@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :beings, except: [:new, :edit]
     resources :clusters, only: [:create, :destroy, :update]
     resources :comrades, only: [:create, :destroy, :update]
+    resources :being_conversations, only: [:create, :destroy]
+    resources :conversations, only: [:show, :create, :destroy]
     
     resources :dimensions, except: [:new, :edit] do
       resources :dimension_beings, only: [:create]
