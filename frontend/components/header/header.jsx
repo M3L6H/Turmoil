@@ -27,9 +27,9 @@ const TopHeader = ({
 }) => {
   let Options;
   switch (header) {
-    case "conversation":
-      Options = ConversationHeader;
-      break;
+    // case "conversation":
+    //   Options = ConversationHeader;
+    //   break;
     case "friends":
       Options = FriendsHeader;
       break;
