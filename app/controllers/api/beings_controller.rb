@@ -5,6 +5,10 @@ class Api::BeingsController < ApplicationController
   def index
     query = params[:query] || ""
     @beings = Being.where("username LIKE ?", "%#{ query.gsub("%", "\\\\\%").gsub("_", "\\\\\_") }%")
+    comrades = {}
+    current_being.comrades.each { |c| comrades[c.comrade_id] = c }
+    current_being.comrade_beings.each { |c| comrades[c.being_id] = c }
+    @beings = @beings.select { |b| !comrades[b.id] || !comrades[b.id].blocked }
   end
 
   def show
