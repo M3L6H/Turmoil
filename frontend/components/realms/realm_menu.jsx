@@ -144,6 +144,8 @@ class RealmMenu extends Component {
     e.stopPropagation();
     const dragNDropItem = e.currentTarget;
     this.props.select(dragNDropItem.id.split("-")[1]);
+    this.props.receiveHeader("app");
+    this.props.receiveContent("realm");
     this.props.closeSidebar();
   }
 
