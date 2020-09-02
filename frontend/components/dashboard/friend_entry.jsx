@@ -12,7 +12,25 @@ export default ({
   let pendingIcon;
   let being;
   let iconSet;
-  
+
+  const blockButton = (
+    <Icon
+      large
+      name="user-slash"
+      red
+      onClick={ () => updateComrade({ ...comrade, blocked: currentBeingId }, comrade.beingId !== currentBeingId) }
+    />
+  );
+
+  const cancelButton = (
+    <Icon
+      large
+      name="times"
+      red
+      onClick={ () => deleteComrade(comrade.id, comrade.beingId !== currentBeingId) }
+    />
+  );
+
   if (comrade.beingId === currentBeingId) {
     pendingIcon = (
       <Icon.Group large>
@@ -32,12 +50,7 @@ export default ({
     if (comrade.pending) {
       iconSet = (
         <span className="friend-entry-icon-set">
-          <Icon
-            large
-            name="times"
-            red
-            onClick={ () => deleteComrade(comrade.id) }
-          />
+          { cancelButton }
         </span>
       );
     }
@@ -67,12 +80,8 @@ export default ({
             green
             onClick={ () => updateComrade({ ...comrade, pending: false }, true) }
           />
-          <Icon
-            large
-            name="times"
-            red
-            onClick={ () => deleteComrade(comrade.id, true) }
-          />
+          { cancelButton }
+          { blockButton }
         </span>
       );
     }
@@ -87,6 +96,7 @@ export default ({
           red
           onClick={ () => deleteComrade(comrade.id, comrade.beingId !== currentBeingId) }
         />
+        { blockButton }
       </span>
     );
   }
