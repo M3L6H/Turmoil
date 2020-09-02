@@ -9,6 +9,7 @@ export default ({
   beings,
   fetchConversation,
   deleteConversation,
+  deleteBeingConversation,
   conversations,
   beingConversations,
   dashboard,
@@ -38,6 +39,12 @@ export default ({
               e.stopPropagation();
               if (currentBeingId === conv.beingId) {
                 deleteConversation(conv.id);
+              } else {
+                beingConversations.forEach((bc) => {
+                  if (bc.beingId === currentBeingId && bc.conversationId === conv.id) {
+                    deleteBeingConversation(bc);
+                  }
+                });
               }
             } }
           />

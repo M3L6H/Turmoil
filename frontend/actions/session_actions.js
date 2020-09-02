@@ -4,13 +4,23 @@ export const RECEIVE_SESSION = "RECEIVE_SESSION";
 export const REMOVE_SESSION = "REMOVE_SESSION";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
-export const receiveSession = ({ being, beings, dimensions, comrades, comradeBeings }) => ({
+export const receiveSession = ({
+  being,
+  beings,
+  dimensions,
+  comrades,
+  comradeBeings,
+  beingConversations,
+  conversations
+}) => ({
   type: RECEIVE_SESSION,
   beingId: being.id,
   beings,
   dimensions,
   comrades,
-  comradeBeings
+  comradeBeings,
+  beingConversations,
+  conversations
 });
 
 const removeSession = () => ({

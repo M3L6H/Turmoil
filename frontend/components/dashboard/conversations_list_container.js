@@ -4,7 +4,9 @@ import ConversationsList from './conversations_list';
 
 import {
   fetchConversation,
-  deleteConversation
+  deleteConversation,
+  deleteBeingConversation,
+  removeConversation
 } from '../../actions/conversations_actions';
 import { receiveDashboardSelection } from '../../actions/dashboard_actions';
 import { receiveHeader } from '../../actions/header_actions';
@@ -20,6 +22,11 @@ const mapStateToProps = ({ entities: { beings, conversations, beingConversations
 const mapDispatchToProps = (dispatch) => ({
   fetchConversation: conversationId => dispatch(fetchConversation(conversationId)),
   deleteConversation: conversationId => dispatch(deleteConversation(conversationId)),
+  deleteBeingConversation: beingConversation => {
+    console.log(beingConversation);
+    dispatch(deleteBeingConversation(beingConversation.id));
+    dispatch(removeConversation({ id: beingConversation.conversationId }));
+  },
   receiveDashboardSelection: (dashboard) => dispatch(receiveDashboardSelection(dashboard)),
   receiveHeader: (header) => dispatch(receiveHeader(header))
 });

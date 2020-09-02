@@ -18,5 +18,5 @@ class Conversation < ApplicationRecord
   belongs_to :being
   has_many :being_conversations, dependent: :destroy
   has_many :joined_beings, through: :being_conversations, source: :being
-  has_many :missives, as: :messageable
+  has_many :missives, as: :messageable, dependent: :destroy
 end
