@@ -1,0 +1,2 @@
+class BeingConversation < ApplicationRecord
+end
