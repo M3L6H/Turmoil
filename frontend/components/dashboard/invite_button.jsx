@@ -60,6 +60,10 @@ export default ({
           </Icon.Group>
         );
       }
+    } else {
+      icon = (
+        <Icon name="user" />
+      )
     }
   } else {
     icon = (
