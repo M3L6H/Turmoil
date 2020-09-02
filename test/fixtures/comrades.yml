@@ -3,7 +3,7 @@
 # Table name: comrades
 #
 #  id         :bigint           not null, primary key
-#  blocked    :boolean          default(FALSE), not null
+#  blocked    :bigint
 #  pending    :boolean          default(TRUE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
