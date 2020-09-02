@@ -2,7 +2,8 @@ import { RECEIVE_BEING } from '../actions/beings_actions';
 
 import {
   RECEIVE_CONVERSATION,
-  REMOVE_CONVERSATION
+  REMOVE_CONVERSATION,
+  RECEIVE_BEING_CONVERSATION
 } from '../actions/conversations_actions';
 
 export default (state={}, action) => {
@@ -11,6 +12,7 @@ export default (state={}, action) => {
   switch(action.type) {
     case RECEIVE_BEING:
       return action.conversations;
+    case RECEIVE_BEING_CONVERSATION:
     case RECEIVE_CONVERSATION:
       return { ...state, [action.conversation.id]: action.conversation };
     case REMOVE_CONVERSATION:
