@@ -20,9 +20,9 @@ export const receiveConversation = ({
   beings
 });
 
-export const removeConversation = (conversationId) => ({
+export const removeConversation = (data) => ({
   type: REMOVE_CONVERSATION,
-  conversationId
+  conversationId: data.id
 });
 
 export const receiveConversationErrors = (errors) => ({
@@ -41,9 +41,9 @@ export const receiveBeingConversation = ({
   beings
 });
 
-export const removeBeingConversation = (beingConversationId) => ({
+export const removeBeingConversation = (data) => ({
   type: REMOVE_BEING_CONVERSATION,
-  beingConversationId
+  beingConversationId: data.id
 });
 
 export const receiveBeingConversationErrors = (errors) => ({

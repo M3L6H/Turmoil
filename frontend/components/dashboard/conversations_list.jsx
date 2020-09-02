@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { Menu } from '../shoebuckle';
+import { Icon, Menu } from '../shoebuckle';
 
 import truncate from '../../util/truncate';
 
 export default ({
+  currentBeingId,
   beings,
   fetchConversation,
+  deleteConversation,
   conversations,
   beingConversations,
   dashboard,
@@ -26,7 +28,19 @@ export default ({
             fetchConversation(conv.id);
           } }
         >
-          { truncate(beingConversations.filter(({ conversationId }) => conversationId === conv.id).map(({ beingId }) => beings[beingId].username).concat([beings[conv.beingId].username]).join(", ")) }
+          <span className="conversation-name">
+            { truncate(beingConversations.filter(({ conversationId }) => conversationId === conv.id).map(({ beingId }) => beings[beingId].username).concat([beings[conv.beingId].username]).join(", ")) }
+          </span>
+          <Icon
+            name="times"
+            className="delete-conversation"
+            onClick={ (e) => {
+              e.stopPropagation();
+              if (currentBeingId === conv.beingId) {
+                deleteConversation(conv.id);
+              }
+            } }
+          />
         </Menu.Item>
       )) }
     </Menu.Menu>

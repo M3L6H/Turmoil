@@ -2,11 +2,15 @@ import { connect } from 'react-redux';
 
 import ConversationsList from './conversations_list';
 
-import { fetchConversation } from '../../actions/conversations_actions';
+import {
+  fetchConversation,
+  deleteConversation
+} from '../../actions/conversations_actions';
 import { receiveDashboardSelection } from '../../actions/dashboard_actions';
 import { receiveHeader } from '../../actions/header_actions';
 
-const mapStateToProps = ({ entities: { beings, conversations, beingConversations }, ui: { dashboard } }) => ({
+const mapStateToProps = ({ entities: { beings, conversations, beingConversations }, session: { currentBeingId }, ui: { dashboard } }) => ({
+  currentBeingId,
   beings,
   conversations: conversations ? Object.values(conversations) : [],
   beingConversations: beingConversations ? Object.values(beingConversations) : [],
@@ -15,6 +19,7 @@ const mapStateToProps = ({ entities: { beings, conversations, beingConversations
 
 const mapDispatchToProps = (dispatch) => ({
   fetchConversation: conversationId => dispatch(fetchConversation(conversationId)),
+  deleteConversation: conversationId => dispatch(deleteConversation(conversationId)),
   receiveDashboardSelection: (dashboard) => dispatch(receiveDashboardSelection(dashboard)),
   receiveHeader: (header) => dispatch(receiveHeader(header))
 });
