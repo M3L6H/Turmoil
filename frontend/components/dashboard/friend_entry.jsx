@@ -99,6 +99,17 @@ export default ({
         { blockButton }
       </span>
     );
+  } else if (comrade.blocked) {
+    iconSet = (
+      <span className="friend-entry-icon-set">
+        <Icon
+          large
+          name="user-plus"
+          green
+          onClick={ () => updateComrade({ ...comrade, blocked: null }, comrade.beingId !== currentBeingId) }
+        />
+      </span>
+    );
   }
 
   return (
