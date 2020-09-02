@@ -21,6 +21,7 @@ const receiveBeing = ({
   dimensions,
   comrades,
   comradeBeings,
+  beingConversations,
   conversations
 }) => ({
   type: RECEIVE_BEING,
@@ -30,6 +31,7 @@ const receiveBeing = ({
   beingId: being.id,
   comrades,
   comradeBeings,
+  beingConversations,
   conversations
 });
 

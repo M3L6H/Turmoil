@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import beingConversationsReducer from './being_conversations_reducer';
 import beingsReducer from './beings_reducer';
 import clustersReducer from './clusters_reducer';
 import comradesReducer from './comrades_reducer';
@@ -14,6 +15,7 @@ import searchBeingsReducer from './search_beings_reducer';
 import summonsesReducer from './summonses_reducer';
 
 export default combineReducers({
+  beingConversations: beingConversationsReducer,
   beings: beingsReducer,
   clusters: clustersReducer,
   comrades: comradesReducer,
