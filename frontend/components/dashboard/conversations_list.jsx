@@ -48,6 +48,8 @@ export default ({
                   }
                 });
               }
+              receiveDashboardSelection({ selected: "friends", tab: "all" });
+              receiveHeader("friends");
             } }
           />
         </Menu.Item>
