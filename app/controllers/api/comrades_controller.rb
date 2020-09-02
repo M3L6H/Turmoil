@@ -3,6 +3,8 @@ class Api::ComradesController < ApplicationController
     @comrade = Comrade.new(comrade_params)
 
     if @comrade.save
+      BeingChannel.broadcast_to @current_being, { comrade: @comrade }
+      BeingChannel.broadcast_to Being.find(@comrade.comrade_id), { comrade: @comrade }
       render :create
     else
       render json: @comrade.errors.full_messages, status: 422

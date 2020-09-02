@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { Header, Icon, Section } from '../shoebuckle';
 
@@ -6,6 +6,7 @@ import FriendEntry from './friend_entry';
 import FriendsModal from './friends_modal';
 
 export default ({
+  cable,
   beings,
   currentBeingId,
   createComrade,
@@ -13,6 +14,8 @@ export default ({
   updateComrade,
   comrades,
   comradeBeings,
+  receiveComrade,
+  receiveComradeBeing,
   fetchSearchBeings,
   searchBeings,
   inverted,
@@ -20,6 +23,27 @@ export default ({
   friendsModal,
   receiveFriendsModal
 }) => {
+  const subscription = useRef(null);
+  
+  useEffect(() => {
+    subscription.current = cable.subscriptions.create({
+      channel: "BeingChannel",
+      being: currentBeingId
+    }, {
+      received: ({ comrade }) => {
+        const { being_id, blocked, comrade_id, id, pending } = comrade;
+        comrade = { beingId: being_id, blocked, comradeId: comrade_id, id, pending };
+        if (comrade.beingId === currentBeingId) {
+          receiveComrade(comrade);
+        } else {
+          receiveComradeBeing(comrade);
+        }
+      }
+    });
+
+    return () => cable.subscriptions.remove(subscription.current)
+  }, []);
+  
   let header;
   let comradesList;
 

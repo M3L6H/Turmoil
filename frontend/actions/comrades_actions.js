@@ -6,22 +6,22 @@ export const REMOVE_COMRADE = "REMOVE_COMRADE";
 export const REMOVE_COMRADE_BEING = "REMOVE_COMRADE_BEING";
 export const RECEIVE_COMRADES_ERRORS = "RECEIVE_COMRADES_ERRORS";
 
-const receiveComrade = (comrade) => ({
+export const receiveComrade = (comrade) => ({
   type: RECEIVE_COMRADE,
   comrade
 });
 
-const receiveComradeBeing = (comrade) => ({
+export const receiveComradeBeing = (comrade) => ({
   type: RECEIVE_COMRADE_BEING,
   comrade
 });
 
-const removeComrade = (data) => ({
+export const removeComrade = (data) => ({
   type: REMOVE_COMRADE,
   ...data
 });
 
-const removeComradeBeing = (data) => ({
+export const removeComradeBeing = (data) => ({
   type: REMOVE_COMRADE_BEING,
   ...data
 });
