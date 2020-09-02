@@ -92,6 +92,11 @@ export default ({
       <span className="friend-entry-icon-set">
         <Icon
           large
+          name="comment-medical"
+          green
+        />
+        <Icon
+          large
           name="user-minus"
           red
           onClick={ () => deleteComrade(comrade.id, comrade.beingId !== currentBeingId) }
