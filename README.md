@@ -4,7 +4,6 @@
 
 #### Table of Contents
 - [About](#about)
-  - [Live Demo](#live-demo)
 - [Technologies](#technologies)
 - [Features](#features)
   - [Drag and drop](#drag-and-drop)
@@ -21,8 +20,6 @@ Users can sign up easily and are able to sign in with either their email or
 their username.
 
 Additionally, it is fully responsive, supporting both mobile and desktop viewing.
-
-### [Live Demo](http://turmoil.herokuapp.com/)
 
 ## Technologies
 
